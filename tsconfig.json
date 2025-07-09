@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx", // Enables JSX support for React
+    "esModuleInterop": true, // Ensures compatibility with CommonJS modules
+    "allowJs": true, // Allows JavaScript files if needed
+    "resolveJsonModule": true, // Allows importing JSON
+    "strict": true // Optional but recommended for type safety
+  }
+}
