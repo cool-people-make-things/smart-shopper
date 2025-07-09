@@ -1,0 +1,59 @@
+{
+  "source": "https://www.paknsave.co.nz/shop/search?pg=1&q=butter",
+  "results": [
+    {
+      "id": "5004821",
+      "title": "Rolling Meadow Butter",
+      "amt": "500g",
+      "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384",
+      "productPageUrl": "/shop/product/5004821_ea_000pns?name=rolling-meadow-butter",
+      "price": {
+        "value": "8.29",
+        "unitPrice": "1.66",
+        "unit": "100g"
+      },
+      "promo": {}
+    },
+    {
+      "id": "5002650",
+      "title": "Anchor Butter",
+      "amt": "500g",
+      "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384",
+      "productPageUrl": "/shop/product/5002650_ea_000pns?name=anchor-butter",
+      "price": {
+        "value": "10.49",
+        "unitPrice": "2.10",
+        "unit": "100g"
+      },
+      "promo": {}
+    },
+    {
+      "id": "5001313",
+      "title": "Anchor Original Soft Spreadable Dairy Blend",
+      "amt": "500g",
+      "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5001313.png?w=384",
+      "productPageUrl": "/shop/product/5001313_ea_000pns?name=anchor-original-soft-spreadable-dairy-blend",
+      "price": {
+        "value": "6.59",
+        "unitPrice": "1.32",
+        "unit": "100g"
+      },
+      "promo": {
+        "tag": "extra-low"
+      }
+    },
+    {
+      "id": "5007348",
+      "title": "Country Soft Canola Oil And Buttermilk Spread",
+      "amt": "500g",
+      "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5007348.png?w=384",
+      "productPageUrl": "/shop/product/5007348_ea_000pns?name=country-soft-canola-oil-and-buttermilk-spread",
+      "price": {
+        "value": "3.79",
+        "unitPrice": "0.76",
+        "unit": "100g"
+      },
+      "promo": {}
+    }
+  ]
+}
