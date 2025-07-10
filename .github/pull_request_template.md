@@ -1,6 +1,6 @@
 <!-- Description of task purpose -->
 
-[](Project ticket)
+Project ticket: #
 
 ### Acceptance Criteria
 - []
