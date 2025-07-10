@@ -1,10 +1,18 @@
 ---
 name: Custom Issue Template
 about: Standard team project issue
-title: 'feat: feature title'
+title: 'type: title'
 labels: ''
 assignees: ''
 
 ---
 
-<------ Description of task purpose ----->
+<!-- Description of task purpose -->
+
+### Acceptance Criteria
+- []
+
+### Dev Notes
+<!-- Helpful notes for task assignee -->
+
+<!-- Link to any Miro relevant details -->
