@@ -5,12 +5,12 @@ class SearchController < ApplicationController
   def validate_search
     source = params[:supermarket]
     unless VALID_SHOPS.include?(source)
-      render json: { error: 'Invalid supermarket source' }, status: :bad_request
+      render json: { error: 'Bitch, that ain\'t a supermarket' }, status: :bad_request
       return
     end
 
     if params[:q].blank?
-      render json: { error: 'Query parameter is required' }, status: :bad_request
+      render json: { error: 'Bitch, you gotta provide a query' }, status: :bad_request
       return
     end
   end
