@@ -10,7 +10,7 @@ assignees: ''
 <!-- Description of task purpose -->
 
 ### Acceptance Criteria
-- []
+- [ ]
 
 ### Dev Notes
 <!-- Helpful notes for task assignee -->
