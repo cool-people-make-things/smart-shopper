@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  VALID_SHOPS = %w[nw pns wls]
+  VALID_SHOPS = %w[nw pns wls test_shop]
   before_action :validate_search
 
   def validate_search
