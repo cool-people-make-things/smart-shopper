@@ -23,7 +23,7 @@ end
 RSpec.describe 'Search API', type: :request do
   describe 'GET /search/:supermarket' do
     let(:query) { 'butter' }
-    let(:supermarket) { 'nw' }
+    let(:supermarket) { 'test_shop' }
     let(:file_path) { Rails.root.join('app', 'assets', 'data', "#{supermarket}.json") }
 
     context 'when supermarket is valid and file exists' do

@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# Example
 # Specs in this file have access to a helper object that includes
 # the HealthHelper. For example:
 #
