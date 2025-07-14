@@ -15,6 +15,3 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 end
 
-gem "vite_rails", "~> 3.0"
-
-gem "foreman", "~> 0.88.1", group: :development
