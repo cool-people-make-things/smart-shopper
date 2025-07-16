@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    environment:
+      - RAILS_ENV=development
+    # depends_on:
+    #   - db
+#   db:
+#     image: postgres:15
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: password
+#     volumes:
+#       - db-data:/var/lib/postgresql/data
+
+# volumes:
+#   db-data:
