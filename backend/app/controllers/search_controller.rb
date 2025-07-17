@@ -18,6 +18,18 @@ class SearchController < ApplicationController
   def index
     query = params[:q]
     supermarket = params[:supermarket]
+
+    if supermarket == "nw"
+      url = WebScraper.get_url(supermarket, query)
+      html = WebScraper.fetch_html(url)
+
+      # Save the HTML to a temporary file for development purposes
+      # This should be removed
+      temp_html_path = Rails.root.join("app", "assets", "data", "nw_actual.html")
+      File.write(temp_html_path, html)
+      puts "-----> Saved HTML to #{temp_html_path}"
+    end
+
     json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
 
     if File.exist?(json_path)
