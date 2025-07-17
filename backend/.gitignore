@@ -30,6 +30,9 @@
 
 /public/assets
 
+# Ignore large datafiles (generated during development)
+/app/assets/data/*_actual.*
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
