@@ -1,4 +1,6 @@
 {
+  "supermarket": "wls",
+  "query": "butter",
   "source": "https://www.woolworths.co.nz/shop/searchproducts?search=butter",
   "results": [
     {

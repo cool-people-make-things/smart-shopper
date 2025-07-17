@@ -21,11 +21,7 @@ class SearchController < ApplicationController
     json_path = Rails.root.join('app', 'assets', 'data', "#{supermarket}.json")
 
     if File.exist?(json_path)
-      render json: {
-        query: query,
-        supermarket: supermarket,
-        data: JSON.parse(File.read(json_path))
-      }, status: :ok
+      render json: File.read(json_path), status: :ok
     else
       render json: { error: 'Not found' }, status: :not_found
     end
