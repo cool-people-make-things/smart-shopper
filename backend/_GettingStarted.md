@@ -105,7 +105,20 @@ To check if you have it, run:
 docker -v
 ```
 
-If you don't have it, you can follow the Docker install guide. I think for Mac and Windows (non WSL) you can use the [Docker Desktop](https://www.docker.com/products/docker-desktop/). But this is what I (a WSL user) did:
+If you don't have it, you can follow the official Docker install guide or follow or steps below:
+
+<details><summary>Mac & Windows (non WSL)</summary>
+
+You can use the [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+- Install the Docker Desktop version for you Mac device (Silicon Chip or Intel)
+- Follow set up instructions from the application (create account/sign in)
+
+</details>
+
+<details><summary>WSL</summary>
+
+Install Docker via the command line:
 
 ```sh
 sudo apt-get update
@@ -119,7 +132,9 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-You can check if it worked by running:
+</details>
+
+To check it worked, run:
 
 ```sh
 docker run hello-world
@@ -131,9 +146,15 @@ And it should show a welcome print out.
 
 Docker Compose is used to run multiple containers at once, which is useful for the backend and database stuff (which we'll likely add later).
 
-Again, Mac and Windows can use the Docker Desktop app, and WSL will install it directly.
+To check if it's already installed:
 
-I, a WSL user, followed the docker docs which talked about certificates and keyrings and stuff, but tbh you can probably just install it directly and it should be fine.
+```sh
+docker compose version
+```
+
+<details><summary>WSL</summary>
+
+As a WSL user, followed the docker docs which talked about certificates and keyrings and stuff, but tbh you can probably just install it directly and it should be fine.
 
 To install it:
 
@@ -142,6 +163,32 @@ sudo apt-get install docker-compose-plugin
 ```
 
 This should let us use the command `docker compose` (with a space) instead of `docker-compose` (with a hyphen).
+
+</details>
+
+<details><summary>Mac (with Homebrew)</summary>
+
+Check you have homebrew with `brew --version` and if not present, install:
+
+```sh
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Update brew formulae and cask to make sure you have the latest package versions:
+
+```sh
+brew update
+```
+
+Use brew to install Docker Compose and add it to your system:
+
+```sh
+brew install docker-compose
+```
+
+And that‘s it! With 3 quick terminal commands, Homebrew pulled down its Docker Compose formula, handled installing any dependencies, resolved conflicts with other apps, and activated the latest supported Docker Compose release.
+
+</details>
 
 ## Starting the Backend
 
