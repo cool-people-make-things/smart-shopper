@@ -1,4 +1,6 @@
 {
+  "supermarket": "nw",
+  "query": "butter",
   "source": "https://www.newworld.co.nz/shop/search?pg=1&q=butter",
   "results": [
     {

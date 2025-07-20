@@ -1,4 +1,6 @@
 {
+  "supermarket": "pns",
+  "query": "butter",
   "source": "https://www.paknsave.co.nz/shop/search?pg=1&q=butter",
   "results": [
     {
