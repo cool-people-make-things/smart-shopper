@@ -18,3 +18,5 @@ end
 group :development do
   gem "rufo", "~> 0.18.1"
 end
+
+gem "selenium-webdriver", "~> 4.34"
