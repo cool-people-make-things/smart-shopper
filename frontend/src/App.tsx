@@ -1,4 +1,4 @@
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import { Toaster } from "@/components/retroui";
 
 function App() {
