@@ -1,4 +1,4 @@
 type Promo = {
-  tag: string
-  price?: Price
-}
+  tag: string;
+  price?: Price;
+};
