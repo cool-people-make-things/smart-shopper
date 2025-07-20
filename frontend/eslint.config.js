@@ -6,6 +6,7 @@ import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginPrettier from "eslint-plugin-prettier";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
@@ -13,14 +14,16 @@ export default defineConfig([
   js.configs.recommended,
   tseslint.configs.recommended,
   eslintPluginReact.configs.flat.recommended,
+  jsxA11y.configs.recommended,
   {
     ignores: [
       'eslint.config.js',
       'vite.config.ts',
       'jest.config.js',
+      '*.scss',
+      '*.css',
     ],
   },
-  // custom setup
   {
     files: ['src/**/*.{js,ts,jsx,tsx}'],
     languageOptions: {
@@ -32,11 +35,18 @@ export default defineConfig([
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest,
       },
     },
     settings: {
       react: {
         version: "detect",
+      },
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+          moduleDirectory: ["node_modules", "src"],
+        },
       },
     },
     plugins: {
@@ -45,26 +55,20 @@ export default defineConfig([
       import: eslintPluginImport,
       "simple-import-sort": eslintPluginSimpleImportSort,
       "@typescript-eslint": eslintPluginTypeScript,
+      "jsx-a11y": jsxA11y,
     },
     rules: {
-      // General rules
       "prettier/prettier": "warn",
       "max-params": "error",
       "prefer-arrow-callback": "error",
       "prefer-destructuring": "error",
       "no-shadow": "error",
-
-      // React rules
       "react/react-in-jsx-scope": "off",
       "react/state-in-constructor": "off",
-
-      // Import sorting rules
       "import/no-default-export": 2,
       "import/no-duplicates": ["error", { considerQueryString: true }],
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
-
-      // TypeScript rules
       "@typescript-eslint/no-unused-vars": [
         "error",
         { varsIgnorePattern: "_" },
