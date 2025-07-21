@@ -19,21 +19,24 @@ class SearchController < ApplicationController
     query = params[:q]
     supermarket = params[:supermarket]
 
-    if supermarket == "nw"
+    puts "---> Searching for '#{query}' in #{supermarket} supermarket"
+
+    # TO BE REMOVED: once all scrapers working, we should check against VALID_SHOPS instead
+    temp_supermarkets = %w[nw putYoursHere]
+
+    if temp_supermarkets.include?(supermarket)
       url = WebScraper.get_url(supermarket, query)
       html = WebScraper.fetch_html(url)
+      DataManager.write_html_file(supermarket, html)
 
-      # Save the HTML to a temporary file for development purposes
-      # This should be removed
-      temp_html_path = Rails.root.join("app", "assets", "data", "nw_actual.html")
-      File.write(temp_html_path, html)
-      puts "-----> Saved HTML to #{temp_html_path}"
+      # Use the appropriate parser service based on the supermarket
+      parser = case supermarket
+        when "nw"
+          NewWorldParser
+        end
 
-      products = NewWorldParser.get_products(html)
-
-      # To be removed in production
-      temp_json_path = Rails.root.join("app", "assets", "data", "nw_actual.json")
-      File.write(temp_json_path, products.to_json)
+      products = parser.get_products(html)
+      DataManager.write_json_file(supermarket, products)
 
       render json: {
         query: query,
@@ -42,13 +45,13 @@ class SearchController < ApplicationController
         results: products,
       }, status: :ok
     else
-      json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
+      json_data = DataManager.read_json_file(supermarket)
 
-      if File.exist?(json_path)
+      if json_data
         render json: {
           query: query,
           supermarket: supermarket,
-          data: JSON.parse(File.read(json_path)),
+          data: JSON.parse(json_data),
         }, status: :ok
       else
         render json: { error: "Not found" }, status: :not_found

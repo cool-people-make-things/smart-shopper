@@ -95,6 +95,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    json (2.13.0)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -205,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   debug
+  json (~> 2.13)
   nokogiri (~> 1.18)
   propshaft
   puma (>= 5.0)
