@@ -63,32 +63,32 @@ class NewWorldParser
 
     # --- Promo Price ---
     if has_promo?(node)
+      promo_badge_name = node.at_css("img", node)&.[]("alt")
+      promo[:tag] = promo_badge_name.gsub("Badge, ", "")
+
       promo[:value] = get_value(dollar_nodes.first, cent_nodes.first)
       promo[:per] = per_nodes.first.text.strip
 
       promo_unit_nodes = node.css("[data-testid='complex-promo-unit-price']", node)
-      promo_unit, promo_unit_per = promo_unit_nodes.text.strip.split("/")
+      promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
+      promo[:unitPrice] = promo_unit_price
       promo[:unit] = promo_unit
-      promo[:unit_per] = promo_unit_per
 
       limit_node = node.at_css("[data-testid='promo-product-limit']", node)
       if limit_node
         promo[:limit] = limit_node.text.strip
       end
-
-      promo_badge_name = node.at_css("img", node)&.[]("alt")
-      promo[:tag] = promo_badge_name.gsub("Badge, ", "")
     end
     # ---
 
     unit_nodes = node.css("[data-testid='non-promo-unit-price']", node)
-    unit, unit_per = unit_nodes.text.strip.split("/")
+    unit_price, unit = unit_nodes.text.strip.split("/")
 
     price = {
       value: get_value(dollar_nodes.last, cent_nodes.last),
       per: per_nodes.last.text.strip,
+      unitPrice: unit_price,
       unit: unit,
-      unit_per: unit_per,
     }
 
     {
@@ -100,7 +100,7 @@ class NewWorldParser
   def self.get_value(dollar_node, cent_node)
     pretty_dollars = dollar_node.text.strip.gsub(".", "")
     pretty_cents = cent_node.text.strip
-    "$#{pretty_dollars}.#{pretty_cents}"
+    "#{pretty_dollars}.#{pretty_cents}"
   end
 
   def self.has_promo?(node)
