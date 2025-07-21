@@ -28,18 +28,31 @@ class SearchController < ApplicationController
       temp_html_path = Rails.root.join("app", "assets", "data", "nw_actual.html")
       File.write(temp_html_path, html)
       puts "-----> Saved HTML to #{temp_html_path}"
-    end
 
-    json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
+      products = NewWorldParser.get_products(html)
 
-    if File.exist?(json_path)
+      # To be removed in production
+      temp_json_path = Rails.root.join("app", "assets", "data", "nw_actual.json")
+      File.write(temp_json_path, products.to_json)
+
       render json: {
         query: query,
         supermarket: supermarket,
-        data: JSON.parse(File.read(json_path)),
+        source: url,
+        results: products,
       }, status: :ok
     else
-      render json: { error: "Not found" }, status: :not_found
+      json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
+
+      if File.exist?(json_path)
+        render json: {
+          query: query,
+          supermarket: supermarket,
+          data: JSON.parse(File.read(json_path)),
+        }, status: :ok
+      else
+        render json: { error: "Not found" }, status: :not_found
+      end
     end
   end
 end

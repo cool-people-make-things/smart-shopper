@@ -10,7 +10,7 @@ export function NewWorld() {
           {/* PRODUCT GRID */}
           <div>
             <div class='_1ubi26e0'>
-              {/* Product Card */}
+              {/* Product Card - No Promo */}
               <div class='_1afq4wy0' data-testid='product-5023660-EA-000'>
                 <div class='_1afq4wy1'>
                   <a
@@ -143,7 +143,7 @@ export function NewWorld() {
                 </div>
                 <div class='_1afq4wym'></div>
               </div>
-              {/* Product Card */}
+              {/* Product Card - Every Day Low Price (No Promo) */}
               <div class='_1afq4wy0' data-testid='product-5002650-EA-000'>
                 <div class='_1afq4wy1'>
                   <a
@@ -162,6 +162,23 @@ export function NewWorld() {
                       </p>
                     </div>
                   </a>
+                  <div class='_1afq4wyi'>
+                    <div class='dkmg3a1' data-testid='product-decal-4700'>
+                      <div class=''>
+                        <img
+                          alt='Badge, Everyday Low Price'
+                          loading='lazy'
+                          width='0'
+                          height='0'
+                          decoding='async'
+                          data-nimg='1'
+                          class=''
+                          style='color: transparent'
+                          src='/next/images/decals/everyday-low-price.svg'
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class='_1afq4wyl'>
                   <div class='_1afq4wy8'>
@@ -276,7 +293,7 @@ export function NewWorld() {
                 </div>
                 <div class='_1afq4wym'></div>
               </div>
-              {/* Product Card */}
+              {/* Product Card - Promo With Limit */}
               <div class='_1afq4wy0' data-testid='product-5001313-EA-000'>
                 <div class='_1afq4wy1'>
                   <a
@@ -295,6 +312,72 @@ export function NewWorld() {
                       </p>
                     </div>
                   </a>
+                  <div class='_1afq4wyi'>
+                    <div class='dkmg3a1' data-testid='product-decal-5000'>
+                      <div class='dkmg3am dkmg3af'>
+                        <img
+                          alt='Badge, Super Saver Club Deal'
+                          loading='lazy'
+                          width='0'
+                          height='0'
+                          decoding='async'
+                          data-nimg='1'
+                          class='dkmg3aj'
+                          style='color: transparent'
+                          src='/next/images/decals/club-deal-multibuy-header.svg'
+                        />
+                        <div class='dkmg3a3' data-testid='decal'>
+                          <div
+                            class='_1coez4v0 dkmg3a2 dkmg3a5'
+                            data-testid='decal-price'
+                          >
+                            <p
+                              data-testid='price-dollars'
+                              class='_1coez4v1 _1h2kw9b0 _1h2kw9b4'
+                            >
+                              6.
+                            </p>
+                            <div class='_1coez4v2'>
+                              <p
+                                data-testid='price-cents'
+                                class='_1coez4v3 _1h2kw9b0 _1h2kw9b4'
+                              >
+                                99
+                              </p>
+                              <p
+                                data-testid='price-per'
+                                class='whm0tf4 _1xxz4ve8 _1xxz4vea'
+                              >
+                                ea
+                              </p>
+                            </div>
+                          </div>
+                          <p
+                            data-testid='complex-promo-unit-price'
+                            class='dkmg3a6 w6tzb39 w6tzb329'
+                          >
+                            $1.40/100g
+                          </p>
+                          <p
+                            data-testid='promo-product-limit'
+                            class='oxaxne0 w6tzb39 w6tzb329 w6tzb340 w6tzb35i'
+                          >
+                            Limit 12 assorted
+                          </p>
+                        </div>
+                      </div>
+                      <img
+                        alt='Badge footer, Super Saver Club Deal'
+                        loading='lazy'
+                        width='0'
+                        height='0'
+                        decoding='async'
+                        data-nimg='1'
+                        style='color: transparent'
+                        src='/next/images/decals/club-deal-multibuy-footer.svg'
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div class='_1afq4wyl'>
                   <div class='_1afq4wy8'>
@@ -409,7 +492,7 @@ export function NewWorld() {
                 </div>
                 <div class='_1afq4wym'></div>
               </div>
-              {/* Product Card */}
+              {/* Product Card - Promo (No Limit) */}
               <div class='_1afq4wy0' data-testid='product-5263014-EA-000'>
                 <div class='_1afq4wy1'>
                   <a
