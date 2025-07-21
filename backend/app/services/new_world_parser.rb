@@ -71,7 +71,7 @@ class NewWorldParser
 
       promo_unit_nodes = node.css("[data-testid='complex-promo-unit-price']", node)
       promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
-      promo[:unitPrice] = promo_unit_price
+      promo[:unitPrice] = promo_unit_price.gsub("$", "")
       promo[:unit] = promo_unit
 
       limit_node = node.at_css("[data-testid='promo-product-limit']", node)
@@ -87,7 +87,7 @@ class NewWorldParser
     price = {
       value: get_value(dollar_nodes.last, cent_nodes.last),
       per: per_nodes.last.text.strip,
-      unitPrice: unit_price,
+      unitPrice: unit_price.gsub("$", ""),
       unit: unit,
     }
 
