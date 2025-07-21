@@ -1,79 +1,91 @@
-import js from "@eslint/js";
-import eslintPluginTypeScript from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import { defineConfig } from "eslint/config";
-import eslintPluginImport from "eslint-plugin-import";
-import eslintPluginPrettier from "eslint-plugin-prettier";
-import eslintPluginReact from "eslint-plugin-react";
-import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+// eslint.config.js
+import js from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import tseslintPlugin from '@typescript-eslint/eslint-plugin';
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import eslintPluginReact from 'eslint-plugin-react';
+import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
+import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default defineConfig([
   js.configs.recommended,
-  tseslint.configs.recommended,
-  eslintPluginReact.configs.flat.recommended,
-  jsxA11y.configs.recommended,
+  ...tseslint.configs.recommended,
+  eslintConfigPrettier,
+
   {
     ignores: [
+      '*.scss',
+      '*.css',
       'eslint.config.js',
       'vite.config.ts',
       'jest.config.js',
-      '*.scss',
-      '*.css',
+      'prettier.config.js',
     ],
   },
+
   {
-    files: ['src/**/*.{js,ts,jsx,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: "./tsconfig.eslint.json",
-        sourceType: "module",
+        project: './tsconfig.eslint.json',
+        ecmaVersion: 2022,
+        sourceType: 'module',
+        ecmaFeatures: { jsx: true },
+        requireConfigFile: false,
       },
       globals: {
         ...globals.browser,
         ...globals.node,
         ...globals.jest,
+        ...globals.vitest,
+        ...globals.es6,
       },
     },
     settings: {
-      react: {
-        version: "detect",
-      },
-      "import/resolver": {
+      react: { version: 'detect' },
+      'import/resolver': {
         node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"],
-          moduleDirectory: ["node_modules", "src"],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          moduleDirectory: ['node_modules', 'src'],
         },
+        typescript: {},
       },
     },
     plugins: {
-      prettier: eslintPluginPrettier,
       react: eslintPluginReact,
+      'react-hooks': eslintPluginReactHooks,
       import: eslintPluginImport,
-      "simple-import-sort": eslintPluginSimpleImportSort,
-      "@typescript-eslint": eslintPluginTypeScript,
-      "jsx-a11y": jsxA11y,
+      prettier: eslintPluginPrettier,
+      'simple-import-sort': eslintPluginSimpleImportSort,
+      '@typescript-eslint': tseslintPlugin,
+      'jsx-a11y': jsxA11y,
     },
     rules: {
-      "prettier/prettier": "warn",
-      "max-params": "error",
-      "prefer-arrow-callback": "error",
-      "prefer-destructuring": "error",
-      "no-shadow": "error",
-      "react/react-in-jsx-scope": "off",
-      "react/state-in-constructor": "off",
-      "import/no-default-export": 2,
-      "import/no-duplicates": ["error", { considerQueryString: true }],
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { varsIgnorePattern: "_" },
-      ],
-      "@typescript-eslint/ban-ts-comment": "off",
+      'prettier/prettier': 'warn',
+      semi: ['error', 'always'],
+      quotes: ['error', 'double', { avoidEscape: true }],
+      'comma-dangle': ['error', 'always-multiline'],
+      'import/no-default-export': 'error',
+      'import/no-duplicates': ['error', { considerQueryString: true }],
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+      'max-params': 'error',
+      'prefer-arrow-callback': 'error',
+      'prefer-destructuring': 'error',
+      'no-shadow': 'error',
+      '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '_' }],
+      '@typescript-eslint/ban-ts-comment': 'off',
+      'react/state-in-constructor': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
 ]);
