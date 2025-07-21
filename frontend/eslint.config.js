@@ -22,10 +22,8 @@ export default defineConfig([
     ignores: [
       '*.scss',
       '*.css',
-      'eslint.config.js',
-      'vite.config.ts',
-      'jest.config.js',
-      'prettier.config.js',
+      '*.config.*',
+      '*.setup.*',
     ],
   },
 
