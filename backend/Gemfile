@@ -20,3 +20,5 @@ group :development do
 end
 
 gem "selenium-webdriver", "~> 4.34"
+
+gem "nokogiri", "~> 1.18"
