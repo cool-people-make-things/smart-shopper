@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 import { Toaster } from "@/components/retroui";
 
 import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route index element={<Home />} />
         {/* <Route path="browse" element={<Browse />} /> */}
         {/* <Route path="cart" element={<Cart />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <div className="bg-gray-600 w-screen h-1/10 text-center flex items-center justify-center text-5xl">
