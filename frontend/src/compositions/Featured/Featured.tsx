@@ -1,7 +1,7 @@
 import { Text, Button, Card } from "@/components/retroui";
 import { toast } from "sonner";
 
-export default function Featured() {
+export function Featured() {
   const addToCart = (item: string) => {
     toast.success(`${item} has been added to your cart`, {
       richColors: true,

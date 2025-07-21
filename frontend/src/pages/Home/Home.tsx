@@ -1,8 +1,8 @@
 import { Input, Text } from "@/components/retroui";
 
-import Featured from "@/compositions/Featured/Featured";
+import { Featured } from "@/compositions/Featured";
 
-export default function Home() {
+export function Home() {
   return (
     <main className="flex flex-col items-center justify-center h-8/10">
       <div className="w-screen h-7/20 flex flex-row">

@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 
-import Home from "../pages/Home";
+import Home from ".";
 
 describe("Home", () => {
   test("renders a heading", () => {
