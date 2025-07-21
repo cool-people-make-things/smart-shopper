@@ -29,8 +29,7 @@ class SearchController < ApplicationController
       File.write(temp_html_path, html)
       puts "-----> Saved HTML to #{temp_html_path}"
 
-      parser = NewWorldParser.new(html)
-      products = parser.get_products
+      products = NewWorldParser.get_products(html)
 
       # To be removed in production
       temp_json_path = Rails.root.join("app", "assets", "data", "nw_actual.json")

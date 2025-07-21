@@ -1,13 +1,11 @@
 class NewWorldParser
-  def initialize(html)
-    @doc = Nokogiri::HTML(html)
-  end
+  def self.get_products(html)
+    doc = Nokogiri::HTML(html)
 
-  def get_products
     results = []
-    puts "-----> Parsing HTML Document: #{@doc.title}"
+    puts "-----> Parsing HTML Document: #{doc.title}"
 
-    filter_menu = @doc.at_css("[data-testid='selected-refinements']")
+    filter_menu = doc.at_css("[data-testid='selected-refinements']")
     product_grid = filter_menu.next_element
     product_grid_items = product_grid.children.children
     puts "-----> Found #{product_grid_items.size} products"
@@ -33,28 +31,28 @@ class NewWorldParser
 
   private
 
-  def extract_id(node)
+  def self.extract_id(node)
     node["data-testid"][/product-(\d+)-EA-000/, 1]
   end
 
-  def extract_name(node)
+  def self.extract_name(node)
     node.at_css("[data-testid='product-title']", node)&.text&.strip
   end
 
-  def extract_amt(node)
+  def self.extract_amt(node)
     node.at_css("[data-testid='product-subtitle']", node)&.text&.strip
   end
 
-  def extract_image(node)
+  def self.extract_image(node)
     node.at_css("[data-testid='product-image']", node)&.[]("src") || ""
   end
 
-  def extract_product_page_url(node)
+  def self.extract_product_page_url(node)
     dirty_link = node.at_css("a", node)&.[]("href")
     dirty_link.split("#").first || ""
   end
 
-  def extract_price_and_promo(node)
+  def self.extract_price_and_promo(node)
     dollar_nodes = node.css("[data-testid='price-dollars']", node)
     cent_nodes = node.css("[data-testid='price-cents']", node)
     per_nodes = node.css("[data-testid='price-per']", node)
@@ -99,13 +97,13 @@ class NewWorldParser
     }
   end
 
-  def get_value(dollar_node, cent_node)
+  def self.get_value(dollar_node, cent_node)
     pretty_dollars = dollar_node.text.strip.gsub(".", "")
     pretty_cents = cent_node.text.strip
     "$#{pretty_dollars}.#{pretty_cents}"
   end
 
-  def has_promo?(node)
+  def self.has_promo?(node)
     node.at_css("[data-testid='decal']", node).present?
   end
 end
