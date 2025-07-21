@@ -1,5 +1,4 @@
 import { Input, Text } from "@/components/retroui";
-
 import { Featured } from "@/compositions/Featured";
 
 export function Home() {
