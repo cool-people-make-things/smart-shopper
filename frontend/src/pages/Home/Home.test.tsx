@@ -1,8 +1,9 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+
+import { fireEvent, render, screen } from "@testing-library/react";
 import { vi } from "vitest";
 
-import Home from ".";
+import { Home } from "./Home";
 
 describe("Home", () => {
   test("renders a heading", () => {

@@ -1,5 +1,5 @@
 type Price = {
-  value: string
-  unitPrice: string
-  unit: string
-}
+  value: string;
+  unitPrice: string;
+  unit: string;
+};
