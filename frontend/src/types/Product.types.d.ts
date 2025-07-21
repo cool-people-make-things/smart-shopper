@@ -1,3 +1,6 @@
+import { Price } from "./Price.types";
+import { Promo } from "./Promo.types";
+
 type Product = {
   id: string;
   title: string;

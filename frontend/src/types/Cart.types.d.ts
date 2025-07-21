@@ -1,3 +1,5 @@
+import { Product } from "./Product.types";
+
 type Cart = {
   nw: CartItem[];
   pns: CartItem[];

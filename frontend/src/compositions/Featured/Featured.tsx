@@ -1,5 +1,6 @@
-import { Text, Button, Card } from "@/components/retroui";
 import { toast } from "sonner";
+
+import { Button, Card, Text } from "@/components/retroui";
 
 export function Featured() {
   const addToCart = (item: string) => {
@@ -36,9 +37,7 @@ export function Featured() {
           </Card.Content>
           <Card.Content className="flex justify-between items-center">
             <p className="text-lg font-semibold">$8.45</p>
-            <Button onClick={() => addToCart("Pams Butter")}>
-              Add to cart
-            </Button>
+            <Button onClick={() => addToCart("Pams Butter")}>Add to cart</Button>
           </Card.Content>
         </Card>
         <Card className="w-[350px] shadow-none hover:shadow-none pt-1 pb-1">
@@ -57,9 +56,7 @@ export function Featured() {
           </Card.Content>
           <Card.Content className="flex justify-between items-center">
             <p className="text-lg font-semibold">$7.45</p>
-            <Button onClick={() => addToCart("Anchor Butter")}>
-              Add to cart
-            </Button>
+            <Button onClick={() => addToCart("Anchor Butter")}>Add to cart</Button>
           </Card.Content>
         </Card>
         <Card className="w-[350px] shadow-none hover:shadow-none pt-1 pb-1">
@@ -78,9 +75,7 @@ export function Featured() {
           </Card.Content>
           <Card.Content className="flex justify-between items-center">
             <p className="text-lg font-semibold">$8.90</p>
-            <Button onClick={() => addToCart("Rolling Meadow Butter")}>
-              Add to cart
-            </Button>
+            <Button onClick={() => addToCart("Rolling Meadow Butter")}>Add to cart</Button>
           </Card.Content>
         </Card>
       </div>

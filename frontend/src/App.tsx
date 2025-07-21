@@ -1,7 +1,9 @@
 /* eslint-disable import/no-default-export */
 import { Route, Routes } from "react-router";
-import { Home } from "./pages/Home";
+
 import { Toaster } from "@/components/retroui";
+
+import { Home } from "./pages/Home";
 
 function App() {
   return (
@@ -9,7 +11,7 @@ function App() {
       <div className="bg-gray-400 w-screen h-1/10 text-center flex items-center justify-center text-5xl">
         I AM A HEADER
       </div>
-      
+
       <Routes>
         <Route index element={<Home />} />
         {/* <Route path="browse" element={<Browse />} /> */}
@@ -21,7 +23,7 @@ function App() {
       </div>
       <Toaster />
     </main>
-  )
+  );
 }
 
 export default App;
