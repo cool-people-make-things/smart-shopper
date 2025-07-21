@@ -4,7 +4,7 @@ import { toast } from "sonner";
 interface ProductProps {
   imgSrc: string;
   productTitle: string;
-  price: number;
+  price: string;
   store: string;
 }
 
@@ -22,22 +22,20 @@ export function Card({ imgSrc, productTitle, price, store }: ProductProps) {
   };
 
   return (
-    <main>
-      <RUICard className="w-[350px] shadow-none hover:shadow-none pt-1 pb-1">
-        <RUICard.Content className="pb-0 pt-0 flex justify-center">
-          <img src={imgSrc} className="w-50 h-50 " alt={productTitle} />
-        </RUICard.Content>
-        <RUICard.Header className="pb-0 pt-0">
-          <RUICard.Title>{store}</RUICard.Title>
-        </RUICard.Header>
-        <RUICard.Content className="pb-0 pt-0">
-          <p>{productTitle}</p>
-        </RUICard.Content>
-        <RUICard.Content className="flex justify-between items-center">
-          <p className="text-lg font-semibold">${price}</p>
-          <Button onClick={() => addToCart(productTitle)}>Add to cart</Button>
-        </RUICard.Content>
-      </RUICard>
-    </main>
+    <RUICard className="w-[350px] shadow-none hover:shadow-none pt-1 pb-1">
+      <RUICard.Content className="py-0 flex justify-center">
+        <img src={imgSrc} className="w-50 h-50 " alt={productTitle} />
+      </RUICard.Content>
+      <RUICard.Header className="py-0">
+        <RUICard.Title>{store}</RUICard.Title>
+      </RUICard.Header>
+      <RUICard.Content className="py-0">
+        <p>{productTitle}</p>
+      </RUICard.Content>
+      <RUICard.Content className="flex justify-between items-center">
+        <p className="text-lg font-semibold">${price}</p>
+        <Button onClick={() => addToCart(productTitle)}>Add to cart</Button>
+      </RUICard.Content>
+    </RUICard>
   );
 }
