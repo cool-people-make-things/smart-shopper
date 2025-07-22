@@ -1,10 +1,17 @@
-# The rundown
+<h3 align="center">Rails FYI</h3>
+
+[~ /Backend/README.md](/backend/README.md)  
+[~ Project /README.md](/README.md)
+
+## The rundown
 
 Rails requires a more structured approach to it's directories as a lot of the names are predifined for various tasks. As their official site says:
 
 > Rails promotes "convention over configuration"
 
 Most of what we will touch is in `/app`. I've added a few more `_FYI.md` files in important directories to help us keep it straight while we get started.
+
+[All FYI document links](/backend/README.md#fyi-documents)
 
 The general flow of our app is:
 

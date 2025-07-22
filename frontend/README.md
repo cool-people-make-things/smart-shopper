@@ -1,69 +1,47 @@
-# React + TypeScript + Vite
+<h3 align="center">Smart Shopper - Frontend</h3>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📝 Table of Contents
 
-Currently, two official plugins are available:
+- [Getting Started](#getting_started)
+  - [Prerequisites](#prerequisites)
+  - [Running Locally](#running_locally)
+- [Testing](#testing)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[~ Project /README.md](/README.md)
 
-## Expanding the ESLint configuration
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites <a name = "prerequisites"></a>
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Before running following commands, make sure you have the correct node version. You can check in `package.json` or as decribed in [tool-versions](../.tool-versions)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+To set the correct node version in your local, you can use either [nvm](https://github.com/nvm-sh/nvm) or [adsf](https://github.com/asdf-vm/asdf-nodejs). (We use nvm)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+nvm install [Node version]
+nvm use [Node version]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Install the dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm i
 ```
+
+### 💻 Running locally  <a name = "running_locally"></a>
+
+```sh
+npm run dev
+```
+
+The app will be visible at [http://localhost:5173/](http://localhost:5173/) in the browser
+
+
+## 🧪 Testing <a name = "testing"></a>
+
+To run all tests
+
+```sh
+npm run test
+```
+
