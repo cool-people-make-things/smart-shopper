@@ -1,5 +1,5 @@
-import { Text } from "@/components/retroui";
 import { Card } from "@/components/Card";
+import { Text } from "@/components/retroui";
 
 export function Featured() {
   return (
