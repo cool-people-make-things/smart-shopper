@@ -23,12 +23,13 @@
 ## 📝 Table of Contents
 
 - [Getting Started](#getting_started)
+- [Running the tests](#running_the_tests)
 - [Deployment](#deployment)
-<!-- - [Usage](#usage) -->
 - [Architecture Decision Records tooling](#architecture_decision_records_tooling)
 - [Built Using](#built_using)
 - [About](#about)
 - [Authors](#authors)
+<!-- - [Usage](#usage) -->
 <!-- - [Acknowledgments](#acknowledgement) -->
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -41,7 +42,6 @@ This project is a monorepo made up of `/frontend` for our frontend code and `/ba
 - [Getting started with the backend](./backend/README.md)
 
 ## 🔧 Running the tests <a name = "tests"></a>
-Explain how to run the automated tests for this system.
 
 ### Frontend tests
 Run all the unit tests for the frontend
