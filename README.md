@@ -10,7 +10,7 @@
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
   [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+  [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 </div>
 
@@ -29,6 +29,7 @@
 - [Built Using](#built_using)
 - [About](#about)
 - [Authors](#authors)
+- [License](#license)
 <!-- - [Usage](#usage) -->
 <!-- - [Acknowledgments](#acknowledgement) -->
 
@@ -92,6 +93,11 @@ This project was a way for the three of us to work together, make something we'd
 - [@josh-liuaana](https://github.com/josh-liuaana)
 - [@kelly-keating](https://github.com/kelly-keating)
 
+## 🪪 License <a name = "license"></a>
+
+This project is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+You are free to use, modify, and contribute to this project for non-commercial purposes. Commercial use is **not permitted** without explicit permission from the maintainers. Please contact us if you'd like to discuss commercial licensing.
 
 <!-- ## 🎉 Acknowledgements <a name = "acknowledgement"></a> -->
 <!-- - Hat tip to anyone whose code was used
