@@ -5,7 +5,7 @@ import { MemoryRouter } from "react-router";
 
 import { CardDetails } from "./CardDetails";
 
-describe("Given a user is", () => {
+describe("Given a user is on the home page looking at the featured items section", () => {
   describe("When the user can see the CardDetails component", () => {
     it("Then the user is seeing the correct information when on the '/' route", () => {
       render(
