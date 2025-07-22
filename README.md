@@ -41,7 +41,7 @@ This project is a monorepo made up of `/frontend` for our frontend code and `/ba
 
 - [Getting started with the backend](./backend/README.md)
 
-## 🔧 Running the tests <a name = "tests"></a>
+## 🔧 Running the tests <a name = "running_the_tests"></a>
 
 ### Frontend tests
 Run all the unit tests for the frontend
