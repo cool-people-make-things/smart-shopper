@@ -1,6 +1,6 @@
 <h3 align="center">Controllers FYI</h3>
 
-- [~ /Backend/README.md](/backend/README.md)  
+- [~ /Backend/README.md](/backend/README.md)
   - [All FYI document links](/backend/README.md#fyi-documents)
 - [~ Project /README.md](/README.md)
 
@@ -14,10 +14,4 @@ I haven't touched most of this stuff, but there are two files with custom config
 
 ```sh
   root "pages#home"
-```
-
-**vite.json** - tells vite where to look for our js stuff
-
-```sh
-  "sourceCodeDir": "app/frontend",
 ```

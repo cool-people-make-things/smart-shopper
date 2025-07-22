@@ -89,8 +89,8 @@ This project was a way for the three of us to work together, make something we'd
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@emilyparkes](https://github.com/emilyparkes)
-- [@kelly-keating](https://github.com/kelly-keating)
 - [@josh-liuaana](https://github.com/josh-liuaana)
+- [@kelly-keating](https://github.com/kelly-keating)
 
 
 <!-- ## 🎉 Acknowledgements <a name = "acknowledgement"></a> -->
