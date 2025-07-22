@@ -1,23 +1,25 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
+
+import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { Cart } from "./Cart";
 
 describe("Given the user is looking at the cart page", () => {
   describe("When the cart page is rendered", () => {
     it("Then it displays the back link", () => {
-      render(<Cart />);
+      renderWithRouter(<Cart />);
     });
     it("Then it has no accessibility violations", async () => {
-      const { container } = render(<Cart />);
+      const { container } = renderWithRouter(<Cart />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
   });
   describe("When the cart has grocery items", () => {
     it("Then it displays the grocery lists and total spend", () => {
-      render(<Cart />);
+      renderWithRouter(<Cart />);
 
       expect(screen.getByText(/shopping list new world/i)).toBeInTheDocument();
       expect(screen.getByText(/shopping list woolworths/i)).toBeInTheDocument();
