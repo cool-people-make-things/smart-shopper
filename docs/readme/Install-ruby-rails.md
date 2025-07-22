@@ -1,16 +1,18 @@
-# Getting Started
 
-Check if Ruby, Gem, and Rails are available already:
+<h3 align="center">Install Ruby and Rails</h3>
 
-```sh
-ruby -v && gem -v && rails -v
-```
+## 📝 Table of Contents
 
-Turns out I had none so to installing I go.
+- [Ruby in WSL](#ruby_in_wsl)
+- [Rails](#rails)
+- [VS Code](#vs_code)
 
-## Ruby in WSL
+[~ /Backend/README.md](/backend/README.md)  
+[~ Project /README.md](/README.md)
 
-This should make sure you're up to date, then install the stuff needed by thye installers:
+## 💎 Ruby in WSL <a name = "ruby_in_wsl"></a>
+
+This should make sure you're up to date, then install the stuff needed by the installers:
 
 ```sh
 sudo apt update
@@ -64,7 +66,7 @@ ruby -v && gem -v
 
 Installed - YAY!!
 
-## Rails
+## 🛤️ Rails <a name = "rails"></a>
 
 Requires the earlier stuff, then v straightforward.
 
@@ -74,6 +76,6 @@ gem install rails
 rails -v
 ```
 
-## VS Code
+## 💻 VS Code <a name = "vs_code"></a>
 
 If ruby files look gross in VS Code, install the Ruby extension from Shopify.
