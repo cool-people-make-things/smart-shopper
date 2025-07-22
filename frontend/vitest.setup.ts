@@ -1,7 +1,12 @@
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
+import "vitest-axe/extend-expect";
+
+import * as matchers from "vitest-axe/matchers";
+import { expect } from "vitest";
+expect.extend(matchers);
 
 // Mock canvas getContext to avoid jsdom limitation
-Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
   value: () => {
     return {
       // you can mock methods like fillRect, clearRect if needed
