@@ -48,4 +48,4 @@ const CardComponent = Object.assign(Card, {
   Content: CardContent,
 });
 
-export { CardComponent as Card };
+export { CardComponent as RUICard };
