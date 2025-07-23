@@ -1,12 +1,12 @@
 import { Product } from "./Product.types";
 
-type Cart = {
+export type Cart = {
   nw: CartItem[];
   pns: CartItem[];
   wls: CartItem[];
 };
 
-type CartItem = {
+export type CartItem = {
   id: string;
   product: Product;
   quantity: number;
