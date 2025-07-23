@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  VALID_SHOPS = %w[nw pns wls]
+  VALID_SHOPS = %w[nw pns wls test_shop]
   before_action :validate_search
 
   # Handles the search request for products in a specified supermarket.
@@ -52,11 +52,7 @@ class SearchController < ApplicationController
       json_data = DataManager.read_json_file(supermarket)
 
       if json_data
-        render json: {
-          query: query,
-          supermarket: supermarket,
-          data: JSON.parse(json_data),
-        }, status: :ok
+        render json: json_data, status: :ok
       else
         render json: { error: "Not found" }, status: :not_found
       end

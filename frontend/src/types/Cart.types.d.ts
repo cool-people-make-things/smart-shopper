@@ -1,11 +1,13 @@
-type Cart = {
-  nw: CartItem[]
-  pns: CartItem[]
-  wls: CartItem[]
-}
+import { Product } from "./Product.types";
 
-type CartItem = {
-  id: string
-  product: Product
-  quantity: number
-}
+export type Cart = {
+  nw: CartItem[];
+  pns: CartItem[];
+  wls: CartItem[];
+};
+
+export type CartItem = {
+  id: string;
+  product: Product;
+  quantity: number;
+};
