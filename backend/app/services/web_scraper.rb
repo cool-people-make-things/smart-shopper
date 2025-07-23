@@ -1,4 +1,10 @@
 class WebScraper
+
+  # Generates a URL for the specified supermarket and query.
+  #
+  # @param supermarket [String] The name of the supermarket (e.g., "nw").
+  # @param query [String] The search query to append to the URL.
+  # @return [String] The generated URL for the supermarket search.
   def self.get_url(supermarket, query)
     case supermarket
     when "nw"
@@ -8,8 +14,12 @@ class WebScraper
     end
   end
 
+  # Fetches the HTML content of the specified URL using Selenium WebDriver.
+  #
+  # @param url [String] The URL to fetch.
+  # @return [String] The HTML content of the page.
   def self.fetch_html(url)
-    driver = Selenium::WebDriver.for(:chrome, options: get_browser_options)
+    driver = get_webdriver
 
     # Adds a script to the page to redefine the 'webdriver' property
     # This helps avoid issues with sites that block automated browsing
@@ -29,6 +39,12 @@ class WebScraper
       end
 
       driver.page_source
+    rescue Selenium::WebDriver::Error::TimeoutError => e
+      raise "Timeout while waiting for page to load: #{e.message}"
+    rescue Selenium::WebDriver::Error::WebDriverError => e
+      raise "WebDriver error occurred: #{e.message}"
+    rescue StandardError => e
+      raise "An error occurred while fetching HTML: #{e.message}"
     ensure
       driver.quit
     end
@@ -36,11 +52,28 @@ class WebScraper
 
   private
 
+  # Initializes a Selenium WebDriver instance with Chrome options.
+  #
+  # @return [Selenium::WebDriver] The initialized WebDriver instance.
+  def self.get_webdriver
+    Selenium::WebDriver.for(:chrome, options: get_browser_options)
+  rescue Selenium::WebDriver::Error::WebDriverError => e
+    raise "Failed to initialize WebDriver: #{e.message}"
+  rescue StandardError => e
+    raise "An error occurred while initializing WebDriver: #{e.message}"
+  end
+
+  # Returns the browser options for the Selenium WebDriver.
+  #
+  # @return [Selenium::WebDriver::Chrome::Options] The configured browser options.
   def self.get_browser_options
     options = Selenium::WebDriver::Chrome::Options.new
 
     # path for chromium on docker
     options.binary = "/usr/bin/chromium"
+    unless File.exist?(options.binary)
+      raise "Chromium binary not found at #{options.binary}."
+    end
 
     # ---- Some of these may be unnecessary, but they help with performance etc --
     options.add_argument("--headless=new") # new headless mode for compatibility
