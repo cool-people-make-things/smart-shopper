@@ -1,7 +1,7 @@
 import { Price } from "./Price.types";
 import { Promo } from "./Promo.types";
 
-type Product = {
+export type Product = {
   id: string;
   title: string;
   amt?: string;

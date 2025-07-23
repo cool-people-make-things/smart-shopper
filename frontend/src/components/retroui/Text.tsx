@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ElementType, HTMLAttributes } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/retroui.utils";
 
 const textVariants = cva("font-head", {
   variants: {

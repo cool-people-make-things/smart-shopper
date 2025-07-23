@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { type ButtonHTMLAttributes } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/retroui.utils";
 
 const buttonVariants = cva(
   "font-head transition-all outline-hidden cursor-pointer duration-200 font-medium flex items-center",
