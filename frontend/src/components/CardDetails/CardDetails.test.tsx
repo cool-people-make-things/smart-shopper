@@ -5,9 +5,9 @@ import { MemoryRouter } from "react-router";
 
 import { CardDetails } from "./CardDetails";
 
-describe("Given a user is on the home page looking at the featured items section", () => {
-  describe("When the user can see the CardDetails component", () => {
-    it("Then the user is seeing the correct information when on the '/' route", () => {
+describe("Given a user is looking at an individual product's details", () => {
+  describe("When the product is displayed on the home page", () => {
+    it("Then the store, product name and price is displayed", () => {
       render(
         <MemoryRouter initialEntries={["/"]}>
           <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />
@@ -16,7 +16,8 @@ describe("Given a user is on the home page looking at the featured items section
       expect(screen.getByText(/pams butter/i)).toBeInTheDocument();
     });
 
-    it("Then the user is not seeing the store when on the '/browse' route", () => {
+  describe("When the product is displayed on the browse page", () => {
+    it("The the product name and price is displayed", () => {
       render(
         <MemoryRouter initialEntries={["/browse"]}>
           <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />
@@ -24,8 +25,11 @@ describe("Given a user is on the home page looking at the featured items section
       );
       expect(screen.queryByText(/woolworths/i)).not.toBeInTheDocument();
     });
-
-    it("has no accessibility violations", async () => {
+   });
+   
+   
+describe("When the product details are displayed", () => {
+    it("Then it has no accessibility violations", async () => {
       const { container } = render(
         <MemoryRouter initialEntries={["/"]}>
           <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />,
