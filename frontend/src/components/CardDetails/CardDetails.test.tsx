@@ -7,7 +7,7 @@ import { CardDetails } from "./CardDetails";
 
 describe("Given a user is looking at an individual product's details", () => {
   describe("When the product is displayed on the home page", () => {
-    it("Then the store, product name and price is displayed", () => {
+    it("Then store, product name and price is displayed", () => {
       render(
         <MemoryRouter initialEntries={["/"]}>
           <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />
@@ -17,7 +17,7 @@ describe("Given a user is looking at an individual product's details", () => {
     });
 
     describe("When the product is displayed on the browse page", () => {
-      it("The the product name and price is displayed", () => {
+      it("The product name and price is displayed", () => {
         render(
           <MemoryRouter initialEntries={["/browse"]}>
             <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />
