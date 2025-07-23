@@ -4,9 +4,8 @@
 
 - [Getting Started](#getting_started)
   - [Prerequisites](#prerequisites)
-    - [Ruby in WSL](#ruby_in_wsl)
-    - [Rails](#rails)
-    - [VS Code](#vs_code)
+    - [Ruby, Rails, and Docker](#ruby_rails_docker)
+    - [VSCode Extensions](#vscode_extensions)
 - [Running Locally](#running_locally)
 - [Testing](#testing)
 
@@ -16,43 +15,49 @@
 
 ### Prerequisites <a name = "prerequisites"></a>
 
-Check if Ruby, Gem, and Rails are available already:
+Before running following commands, check for the correct ruby and docker versions. You can find these in [tool-versions](../.tool-versions).
+
+#### Ruby, Rails, and Docker <a name = "ruby_rails_docker"></a>
+
+Check if Ruby, Gem, and Rails are available:
 
 ```sh
 ruby -v && gem -v && rails -v
 ```
 
-Before running following commands, make sure you have the correct ruby version. You can check in [tool-versions](../.tool-versions).
+Check if Docker and Docker-Compose are available:
 
-If you don't, follow the below steps to install
+```sh
+docker -v && docker compose version
+```
+
+If you don't have the above available to your command line, follow the install steps provided (or official documentation):
 
 - [Install Ruby and Rails](../docs/readme/Install-ruby-rails.md)
+- [Install Docker and Docker-Compose](../docs/readme/Install-docker.md)
 
-If you do have them installed, then;
+#### VSCode Extensions <a name = "vscode_extensions"></a>
 
-Install the dependencies
+The backend code uses the following tool extensions in VSCode:
+
+- [Ruby LSP](vscode:extension/shopify.ruby-lsp) - Shopify
+- [rufo (Ruby formatter)](vscode:extension/mbessey.vscode-rufo) - Matt Bessey
+
+## 💻 Running locally <a name = "running_locally"></a>
+
+Install the dependencies:
 
 ```sh
 bundle install
 ```
 
-## 💻 Running locally <a name = "running_locally"></a>
-
-To start the rails server on port 3000 we'll be using a dev script that includes Docker Compose (check the [Getting Started](./_GettingStarted.md) doc for install tips).
-
-To run the dev script:
+Run the dev script:
 
 ```sh
 bin/dev
 ```
 
-or
-
-```sh
-bin/dev
-```
-
-The rails server will be at [http://localhost:3000/](http://localhost:3000/) in the browser
+The rails server will be at [http://localhost:3000/](http://localhost:3000/)
 
 ## 🧪 Testing <a name = "testing"></a>
 
