@@ -1,5 +1,6 @@
-import { RUICard, Button } from "@/components/retroui";
 import { toast } from "sonner";
+
+import { Button, RUICard } from "@/components/retroui";
 
 interface ProductProps {
   imgSrc: string;

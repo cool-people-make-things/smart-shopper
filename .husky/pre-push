@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+CHANGED_FILES=$(git diff --cached --name-only)
+
+RUN_FRONTEND_TESTS=false
+RUN_BACKEND_TESTS=false
+
+# Check if any frontend files changed
+echo "$CHANGED_FILES" | grep -q '^frontend/' && RUN_FRONTEND_TESTS=true
+
+# Check if any backend files changed
+echo "$CHANGED_FILES" | grep -q '^backend/' && RUN_BACKEND_TESTS=true
+
+if [ "$RUN_FRONTEND_TESTS" = true ]; then
+  echo "Running frontend tests..."
+  npm --prefix frontend test || exit 1
+fi
+
+if [ "$RUN_BACKEND_TESTS" = true ]; then
+  echo "Running backend tests..."
+  bundle --gemfile backend/Gemfile exec rspec || exit 1
+fi
+
+exit 0

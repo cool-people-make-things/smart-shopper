@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running frontend lint..."
+npm --prefix frontend run lint || exit 1

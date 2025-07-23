@@ -66,7 +66,7 @@ export default defineConfig([
       'jsx-a11y': jsxA11y,
     },
     rules: {
-      'prettier/prettier': 'warn',
+      'prettier/prettier': 'error',
       semi: ['error', 'always'],
       quotes: ['error', 'double', { avoidEscape: true }],
       'comma-dangle': ['error', 'always-multiline'],
