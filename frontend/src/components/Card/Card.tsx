@@ -1,42 +1,20 @@
-import { toast } from "sonner";
+import { RUICard } from "@/components/retroui";
+import { CardDetails } from "../CardDetails";
 
-import { Button, RUICard } from "@/components/retroui";
-
-interface ProductProps {
+export type ProductProps = {
   imgSrc: string;
   productTitle: string;
   price: string;
   store: string;
-}
+};
 
 export function Card({ imgSrc, productTitle, price, store }: ProductProps) {
-  const addToCart = (item: string) => {
-    toast.success(`${item} has been added to your cart`, {
-      richColors: true,
-      cancel: {
-        label: "Undo",
-        onClick: () => {
-          alert(`${item} removed`);
-        },
-      },
-    });
-  };
-
   return (
     <RUICard className="w-[350px] shadow-none hover:shadow-none pt-1 pb-1">
       <RUICard.Content className="py-0 flex justify-center">
         <img src={imgSrc} className="w-50 h-50 " alt={productTitle} />
       </RUICard.Content>
-      <RUICard.Header className="py-0">
-        <RUICard.Title>{store}</RUICard.Title>
-      </RUICard.Header>
-      <RUICard.Content className="py-0">
-        <p>{productTitle}</p>
-      </RUICard.Content>
-      <RUICard.Content className="flex justify-between items-center">
-        <p className="text-lg font-semibold">${price}</p>
-        <Button onClick={() => addToCart(productTitle)}>Add to cart</Button>
-      </RUICard.Content>
+      <CardDetails productTitle={productTitle} price={price} store={store} />
     </RUICard>
   );
 }

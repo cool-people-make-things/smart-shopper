@@ -11,7 +11,7 @@ describe("Given a user is on the home page", () => {
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
           productTitle="Pams Butter"
-          price={8.45}
+          price="8.45"
           store="New World"
         />,
       );
@@ -22,7 +22,7 @@ describe("Given a user is on the home page", () => {
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
           productTitle="Pams Butter"
-          price={8.45}
+          price="8.45"
           store="New World"
         />,
       );
