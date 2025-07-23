@@ -1,12 +1,12 @@
 import { RUICard } from "@/components/retroui";
 import { CardDetails } from "../CardDetails";
 
-export interface ProductProps {
+export type ProductProps = {
   imgSrc: string;
   productTitle: string;
   price: string;
   store: string;
-}
+};
 
 export function Card({ imgSrc, productTitle, price, store }: ProductProps) {
   return (
