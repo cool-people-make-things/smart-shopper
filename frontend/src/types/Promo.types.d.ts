@@ -1,6 +1,20 @@
-import { Price } from "./Price.types";
+export type Promo = NWPromo | PNSPromo | WLSPromo;
 
-export type Promo = {
+type NWPromo = {
   tag: string;
-  price?: Price;
+  value: string;
+  per: string;
+  unitPrice: string;
+  unit: string;
+  limit?: string;
+};
+
+type PNSPromo = {
+  tag: string;
+  value: string;
+};
+
+type WLSPromo = {
+  tag: string;
+  value: string;
 };

@@ -1,2 +1,7 @@
 #!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+
+exec "docker compose up --build --remove-orphans"
+# This script is used to start the backend services using Docker Compose.
+# -d : Run containers in detached mode.
+# --build : Build images before starting containers.
+# --remove-orphans : Remove containers for services not defined in the Compose file.

@@ -1,14 +1,22 @@
-
 <h3 align="center">Install Ruby and Rails</h3>
 
 ## 📝 Table of Contents
 
+- [Ruby in MacOS](#ruby_in_mac)
 - [Ruby in WSL](#ruby_in_wsl)
 - [Rails](#rails)
-- [VS Code](#vs_code)
+- [VSCode Extensions](#vscode_extensions)
 
 [~ /Backend/README.md](/backend/README.md)  
 [~ Project /README.md](/README.md)
+
+## 💎 Ruby in MacOS <a name = "ruby_in_mac"></a>
+
+Do a homebrew thing :)
+
+```sh
+brew install rbenv
+```
 
 ## 💎 Ruby in WSL <a name = "ruby_in_wsl"></a>
 
@@ -19,10 +27,18 @@ sudo apt update
 sudo apt install -y curl git build-essential libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev
 ```
 
+### rbenv
+
 Install ruby version manager (like nvm, but rbenv)
 
 ```sh
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-installer | bash
+```
+
+_If you have problems with the **ruby-build** plugin use:_
+
+```sh
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 ```
 
 Add the following to your `.zshrc` (or `.bashrc` if you don't have zsh)
@@ -33,7 +49,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 ```
 
-Optional extra for your `.zshrc`:
+Optional extra to define where gems are located:
 
 ```bash
 # Install Ruby Gems to ~/gems specifically
@@ -47,7 +63,7 @@ Close then reopen your terminal to load the new setup. You should then be able t
 rbenv -v
 ```
 
-_If you have problems with the ruby-build plugin: `git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build`_
+### Ruby install
 
 The [Ruby site](https://www.ruby-lang.org/en/downloads/) lists the current lts version. Add ruby, then set the version for use:
 
@@ -76,6 +92,9 @@ gem install rails
 rails -v
 ```
 
-## 💻 VS Code <a name = "vs_code"></a>
+## 💻 VS Code Extensions <a name = "vscode_extensions"></a>
 
-If ruby files look gross in VS Code, install the Ruby extension from Shopify.
+The backend code uses the following ruby tool extensions in VSCode:
+
+- [Ruby LSP](vscode:extension/shopify.ruby-lsp) - Shopify
+- [rufo (Ruby formatter)](vscode:extension/mbessey.vscode-rufo) - Matt Bessey
