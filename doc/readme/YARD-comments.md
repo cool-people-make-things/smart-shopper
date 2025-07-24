@@ -1,5 +1,11 @@
 <h3 align="center">YARD Comments</h3>
 
+## Context
+
+YARD comments are used to document Ruby code, making it easier for developers to understand the purpose and usage of code. There are specific guidelines for YARD comments and tools that can read and generate documentation from these comments, but we are using it more as a guideline.
+
+We will use the basic structure of YARD comments in our codebase, with adaptations for our project.
+
 ## Guidelines
 
 1. **Method Name**: Include the method name in the comment, so it is clear when skimming.
