@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
-import { MemoryRouter } from "react-router";
 
 import { CardDetails } from "./CardDetails";
 
@@ -10,7 +10,11 @@ describe("Given a user is looking at an individual product's details", () => {
     it("Then store, product name and price is displayed", () => {
       render(
         <MemoryRouter initialEntries={["/"]}>
-          <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />
+          <CardDetails
+            productTitle="Pams Butter"
+            price="3.50"
+            store="Woolworths"
+          />
         </MemoryRouter>,
       );
       expect(screen.getByText(/pams butter/i)).toBeInTheDocument();
@@ -20,7 +24,11 @@ describe("Given a user is looking at an individual product's details", () => {
       it("The product name and price is displayed", () => {
         render(
           <MemoryRouter initialEntries={["/browse"]}>
-            <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />
+            <CardDetails
+              productTitle="Pams Butter"
+              price="3.50"
+              store="Woolworths"
+            />
           </MemoryRouter>,
         );
         expect(screen.queryByText(/woolworths/i)).not.toBeInTheDocument();
@@ -31,7 +39,12 @@ describe("Given a user is looking at an individual product's details", () => {
       it("Then it has no accessibility violations", async () => {
         const { container } = render(
           <MemoryRouter initialEntries={["/"]}>
-            <CardDetails productTitle="Pams Butter" price="3.50" store="Woolworths" />,
+            <CardDetails
+              productTitle="Pams Butter"
+              price="3.50"
+              store="Woolworths"
+            />
+            ,
           </MemoryRouter>,
         );
         const results = await axe(container);

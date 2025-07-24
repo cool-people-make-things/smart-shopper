@@ -1,7 +1,9 @@
-import { RUICard, Button } from "@/components/retroui";
-import { toast } from "sonner";
-import type { ProductProps } from "../Card/Card";
 import { useLocation } from "react-router";
+import { toast } from "sonner";
+
+import { Button, RUICard } from "@/components/retroui";
+
+import type { ProductProps } from "../Card/Card";
 
 // TODO /browse comp needs styling once in the browse grid
 

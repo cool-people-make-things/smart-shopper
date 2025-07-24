@@ -1,4 +1,5 @@
 import { RUICard } from "@/components/retroui";
+
 import { CardDetails } from "../CardDetails";
 
 export type ProductProps = {
