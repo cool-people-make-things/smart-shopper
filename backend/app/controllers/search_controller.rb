@@ -18,7 +18,7 @@ class SearchController < ApplicationController
     puts "---> Searching for '#{query}' in #{supermarket} supermarket"
 
     # TO BE REMOVED: once all scrapers working, we should check against VALID_SHOPS instead
-    temp_supermarkets = %w[nw pns]
+    temp_supermarkets = %w[nw pns wls putYoursHere]
 
     if temp_supermarkets.include?(supermarket)
       begin
@@ -32,6 +32,10 @@ class SearchController < ApplicationController
         parser = case supermarket
           when "nw"
             NewWorldParser
+
+          # when "wls"
+          #   WoolworthsParser
+
           end
 
         products = parser.get_products(html)
