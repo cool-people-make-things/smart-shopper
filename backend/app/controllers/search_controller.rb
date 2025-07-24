@@ -18,7 +18,7 @@ class SearchController < ApplicationController
     puts "---> Searching for '#{query}' in #{supermarket} supermarket"
 
     # TO BE REMOVED: once all scrapers working, we should check against VALID_SHOPS instead
-    temp_supermarkets = %w[nw putYoursHere]
+    temp_supermarkets = %w[nw pns]
 
     if temp_supermarkets.include?(supermarket)
       begin
