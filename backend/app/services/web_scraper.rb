@@ -9,6 +9,8 @@ class WebScraper
     case supermarket
     when "nw"
       "https://www.newworld.co.nz/shop/search?q=#{query}&pg=1"
+    when "pns"
+      "https://www.paknsave.co.nz/shop/search?pg=1&q=#{query}"
     else
       raise ArgumentError, "Unknown supermarket: #{supermarket}"
     end
