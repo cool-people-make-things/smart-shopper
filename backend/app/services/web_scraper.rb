@@ -11,6 +11,8 @@ class WebScraper
       "https://www.newworld.co.nz/shop/search?q=#{query}&pg=1"
     when "pns"
       "https://www.paknsave.co.nz/shop/search?pg=1&q=#{query}"
+    when "wls"
+      "https://www.woolworths.co.nz/shop/searchproducts?search=#{query}"
     else
       raise ArgumentError, "Unknown supermarket: #{supermarket}"
     end
