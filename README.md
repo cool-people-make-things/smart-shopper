@@ -67,7 +67,7 @@ This project is not yet deployed.
 
 ## 📄 Architecture Decision Records tooling <a name = "architecture_decision_records_tooling"></a> 
 - All [ADRs](https://github.com/joelparkerhenderson/architecture-decision-record#what-is-an-architecture-decision-record) are stored in `/doc/architecture` folder.
-- Follow [ADR-tooling-install-guide](docs/readme/ADR-tooling.md) if you want to use automate ADR tooling 
+- Follow [ADR-tooling-install-guide](doc/readme/ADR-tooling.md) if you want to use automate ADR tooling 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 

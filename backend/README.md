@@ -33,8 +33,8 @@ docker -v && docker compose version
 
 If you don't have the above available to your command line, follow the install steps provided (or official documentation):
 
-- [Install Ruby and Rails](../docs/readme/Install-ruby-rails.md)
-- [Install Docker and Docker-Compose](../docs/readme/Install-docker.md)
+- [Install Ruby and Rails](../doc/readme/Install-ruby-rails.md)
+- [Install Docker and Docker-Compose](../doc/readme/Install-docker.md)
 
 #### VSCode Extensions <a name = "vscode_extensions"></a>
 
