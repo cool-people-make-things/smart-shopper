@@ -1,16 +1,16 @@
 class SearchController < ApplicationController
   VALID_SHOPS = %w[nw pns wls test_shop]
-  before_action :validate_search
+  before_action :validate_search!
 
-  # Handles the search request for products in a specified supermarket.
+  # search#index - Handles the search request for products from a specified supermarket
   #
-  # @param q [String] The search query.
-  # @param supermarket [String] The supermarket identifier.
-  # @return [JSON] The search results in JSON format.
-  #   - query: The search query.
-  #   - supermarket: The supermarket identifier.
-  #   - source: The URL of the search results.
-  #   - results: An array of products found in the search.
+  # @param q [String] The product search query
+  # @param supermarket [String] The supermarket identifier
+  # @return [JSON] The search results
+  #   - query: The search query
+  #   - supermarket: The supermarket identifier
+  #   - source: The URL of the supermarket search
+  #   - results: The array of products found
   def index
     query = params[:q]
     supermarket = params[:supermarket]
@@ -61,10 +61,10 @@ class SearchController < ApplicationController
 
   private
 
-  # Validates the search parameters.
+  # validate_search! - Responds with an error if the supermarket or query is invalid
   #
-  # @raise [ActionController::BadRequest] If the supermarket is invalid or the query is blank.
-  def validate_search
+  # @raise [ActionController::BadRequest] If the supermarket is not in the list of valid shops or if the query parameter is blank
+  def validate_search!
     source = params[:supermarket]
     unless VALID_SHOPS.include?(source)
       render json: { error: "Invalid supermarket source" }, status: :bad_request

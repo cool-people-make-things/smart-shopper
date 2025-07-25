@@ -1,12 +1,12 @@
 class DataManager
   VALID_SUPERMARKETS = %w[nw pns wls]
 
-  # Reads the HTML file for the specified supermarket.
+  # read_json_file - Reads the JSON file for the specified supermarket
   #
-  # @param supermarket [String] The supermarket identifier.
-  # @return [JSON || nil] The JSON content or nil if the file does not exist.
+  # @param supermarket [String] The supermarket identifier
+  # @return [JSON || nil] The JSON content or nil if the file does not exist
   def self.read_json_file(supermarket)
-    validate_supermarket!(supermarket) # <= ! for DANGER
+    validate_supermarket!(supermarket)
     json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
 
     File.exist?(json_path) ? File.read(json_path) : nil
@@ -15,10 +15,10 @@ class DataManager
     nil
   end
 
-  # Writes the HTML content to a file for the specified supermarket.
+  # write_html_file - Writes HTML to a file for the specific supermarket
   #
-  # @param supermarket [String] The supermarket identifier.
-  # @param data [String] The HTML content to write.
+  # @param supermarket [String] The supermarket identifier
+  # @param data [String] The HTML content to write
   def self.write_html_file(supermarket, data)
     if Rails.env.development?
       validate_supermarket!(supermarket)
@@ -31,13 +31,14 @@ class DataManager
     warn "Error writing HTML file: #{e.message}"
   end
 
-  # Writes the JSON data to a file for the specified supermarket.
+  # write_json_file - Writes JSON data to a file for the specific supermarket
   #
-  # @param supermarket [String] The supermarket identifier.
-  # @param data [Hash] The data to write as JSON.
+  # @param supermarket [String] The supermarket identifier
+  # @param data [Hash] The data to write
   def self.write_json_file(supermarket, data)
     if Rails.env.development?
       validate_supermarket!(supermarket)
+
       json_path = Rails.root.join("app", "assets", "data", "#{supermarket}_actual.json")
 
       File.write(json_path, JSON.pretty_generate(data))
@@ -49,10 +50,10 @@ class DataManager
 
   private
 
-  # Validates the supermarket identifier.
+  # validate_supermarket! - Checks that the supermarket is recognized
   #
-  # @param supermarket [String] The supermarket identifier.
-  # @raise [ArgumentError] If the supermarket is not recognized.
+  # @param supermarket [String] The supermarket identifier
+  # @raise [ArgumentError] If the supermarket is not recognized
   def self.validate_supermarket!(supermarket)
     unless VALID_SUPERMARKETS.include?(supermarket)
       raise ArgumentError, "Unknown supermarket: #{supermarket}"

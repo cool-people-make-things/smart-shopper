@@ -1,9 +1,9 @@
 class NewWorldParser
 
-  # Parses the HTML content of a New World product page to extract product details.
+  # get_products - Parses HTML to extract product details
   #
-  # @param html [String] The HTML content of the product page.
-  # @return [Array<Product>] An array of hashes containing product details.
+  # @param html [String] The HTML from a product page
+  # @return [Array<Product>] A list of products
   def self.get_products(html)
     doc = Nokogiri::HTML(html)
     puts "-----> Parsing HTML Document: #{doc.title}"
@@ -28,10 +28,10 @@ class NewWorldParser
 
   private
 
-  # Parses a single product node to extract its details.
+  # parse_one_product - Extracts details for a single product
   #
-  # @param node [Nokogiri::XML::Element] The product node to parse.
-  # @return [Product || nil] A hash containing the product details or nil if parsing fails.
+  # @param node [Nokogiri::XML::Element] The parent tag containing product details
+  # @return [Product || nil] The product details or nil if parsing fails
   def self.parse_one_product(node)
     ticketed_prices = extract_price_and_promo(node)
 
@@ -49,62 +49,61 @@ class NewWorldParser
     nil
   end
 
-  # Extracts the product ID from the node.
+  # extract_id - Retrieves the product ID
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [String] The product ID.
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [String] The product ID
   def self.extract_id(node)
     node["data-testid"][/product-(\d+)-EA-000/, 1]
   end
 
-  # Extracts the product name from the node.
+  # extract_name - Retrieves the product name
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [String] The product name.
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [String] The product name
   def self.extract_name(node)
     node.at_css("[data-testid='product-title']", node)&.text&.strip
   end
 
-  # Extracts the amount from the node.
+  # extract_amt - Retrieves the amount (weight, volume) of the product
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [String] The amount (weight, volume) of the product.
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [String] The total product amount
   def self.extract_amt(node)
     node.at_css("[data-testid='product-subtitle']", node)&.text&.strip
   end
 
-  # Extracts the product image URL from the node.
+  # extract_image - Retrieves the product image URL
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [String] The product image URL.
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [String] The product image URL
   def self.extract_image(node)
     node.at_css("[data-testid='product-image']", node)&.[]("src")
   end
 
-  # Extracts the product page URL from the node.
+  # extract_product_page_url - Retrieves the page URL for the individual product
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [String] The product page URL.
-  #
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [String] The product page URL
   def self.extract_product_page_url(node)
     dirty_link = node.at_css("a", node)&.[]("href")
     dirty_link.split("#").first
   end
 
-  # Extracts the price and promotional details from the product node.
+  # extract_price_and_promo - Retrieves the price and promo details
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [Hash] A hash containing the price and promotional details.
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] The price and promo details
   #   - :price [Hash] :value, :per, :unitPrice, :unit
-  #   - :promo [Hash] :value, :per, :unitPrice, :unit, :tag, and optionally :limit.
+  #   - :promo [Hash] :value, :per, :unitPrice, :unit, :tag, :limit?
   def self.extract_price_and_promo(node)
     dollar_nodes = node.css("[data-testid='price-dollars']", node)
     cent_nodes = node.css("[data-testid='price-cents']", node)
     per_nodes = node.css("[data-testid='price-per']", node)
 
+    promo = {}
     # If there is a promo, it will appear before the main price
     # otherwise, we will leave promo as an empty hash
-    promo = {}
 
     # --- Promo Price ---
     if has_promo?(node)
@@ -142,23 +141,25 @@ class NewWorldParser
     }
   end
 
-  # Formats the price value from dollar and cent nodes.
+  # get_value - returns the price as a standardized string, "dollars.cents"
   #
-  # @param dollar_node [Nokogiri::XML::Element] Node containing the dollar price.
-  # @param cent_node [Nokogiri::XML::Element] Node containing the cent price.
-  # @return [String] The formatted price value as a string.
+  # @param dollar_node [Nokogiri::XML::Element] Node containing the dollars
+  # @param cent_node [Nokogiri::XML::Element] Node containing the cents
+  # @return [String] The formatted price
   #
-  # Example: get_value(<p>3.</p>, <p>12</p>) => "3.12"
+  # @example
+  #   get_value(<p> 3 </p>, <p> 12 </p>) => "3.12"
+  #   get_value(<p> 3. </p>, <p> 12 </p>) => "3.12"
   def self.get_value(dollar_node, cent_node)
     pretty_dollars = dollar_node.text.strip.gsub(".", "")
     pretty_cents = cent_node.text.strip
     "#{pretty_dollars}.#{pretty_cents}"
   end
 
-  # Checks if the product node has a promotional decal.
+  # has_promo? - Checks if the product has a promo
   #
-  # @param node [Nokogiri::XML::Element] The product node.
-  # @return [Boolean] TRUE if the product has a promo decal, FALSE otherwise.
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Boolean] TRUE if a promo decal is present
   def self.has_promo?(node)
     node.at_css("[data-testid='decal']", node).present?
   end
