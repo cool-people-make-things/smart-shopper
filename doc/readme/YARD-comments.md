@@ -19,13 +19,17 @@ We will use the basic structure of YARD comments in our codebase, with adaptatio
 
 - Descriptions should be short and non-technical, focusing on what the method does rather than how it does it.
 
-- If multiple types are possible, you can use the `||` operator to indicate this - e.g. `@return [String || nil]` for a method that returns nil sometimes, but is expected to return a String usually (String goes first).
-
 - If a pre-defined frontend type is returned, use that type instead of the raw Hash structure.
 
 - Generally, if a Hash object is returned, document the keys.
 
 - If an Array is returned, document the type of the items in the array.
+
+- If multiple types are possible, you can use the `||` operator to indicate this - e.g. `@return [String || nil]` is expected to return a String (so String goes first), but sometimes returns nil.
+
+- If a param or return value (etc) is optional, use `?` at the end of the key - e.g. `@param name? [String]` or `@return [Hash] :id, :name?` to indicate that `:name` is optional.
+
+- If a Boolean is returned, describe what the boolean means, prioritising clarity, i.e. `@return [Boolean] TRUE if the user has a name`.
 
 - If a methods _purpose_ is to raise an exception, document this using `@raise`. It is not necessary to include this tag for side effects of the method as most methods will raise some exceptions in our code.
 
@@ -88,11 +92,41 @@ def fetch_products
 end
 ```
 
-### Hash, with more complex structure
+### Booleans
+
+The description tells us what the boolean means in context, and prioritises what information this gives us rather then describing both true and false.
+
+In this example the method checks multiple things, so the boolean is only TRUE if all conditions are met. This is why we show TRUE in our `@return` tag rather than both TRUE and FALSE.
+
+```ruby
+# on_sale? - Checks if the product is considered on sale
+#
+# @param product [Product] The product to check
+# @return [Boolean] TRUE if the sale is currently available
+def on_sale?(product)
+  if product[:quantity] == 0
+    false
+  elsif product[:promo].nil?
+    false
+  end
+
+  promo_details = product[:promo]
+
+  if promo_details[:discount].nil? || promo_details[:sale_expires].nil?
+    return false
+  end
+
+  promo_details[:sale_expires] > Time.now
+end
+```
+
+### Hash, complex structure
 
 In this example we have a more complex structure, so we document the keys in the Hash to make it clear what each key represents.
 
 Depending on the complexity of the structure, you may want to break it down further or provide more detail, but this is a good starting point as more complex structures are likely predefined types.
+
+This example also shows optional keys, indicated by the `?` at the end of the key names.
 
 ```ruby
 # fetch_product - Retrieves product details from the database
@@ -102,8 +136,9 @@ Depending on the complexity of the structure, you may want to break it down furt
 #   :id [Integer] The ID of the product
 #   :title [String] The product name
 #   :categories [Array<String>] The categories the product belongs to
-#   :price [Hash] :amount, :currency, :onSale
+#   :price [Hash] :amount, :currency, :onSale, :saleExpires
 #   :stock [Hash] :available, :quantity
+#   :amount? [Float] The amount of the product
 def fetch_product(product_id)
   {
     id: product_id,
@@ -112,35 +147,13 @@ def fetch_product(product_id)
     price: {
       amount: 19.99,
       currency: "USD",
-      onSale: false
+      onSale: false,
+      saleExpires: "2030-12-31"
     },
     stock: {
       available: true,
       quantity: 100
     },
-  }
-end
-```
-
-### Multiple parameters and return types
-
-```ruby
-# calculate_discount - Works out the discount details for a product
-#
-# @param price [Float] The original price
-# @param discount_rate [Float] The discount rate as a percentage (0-100)
-# @return [Hash] Discount details
-#   :original_price [Float] Starting price before discount
-#   :discount_amount [Float] Amount removed from the original price
-#   :final_price [Float] Price after applying the discount
-def calculate_discount(price, discount_rate)
-  discount_amount = price * (discount_rate / 100.0)
-  final_price = price - discount_amount
-
-  {
-    original_price: price,
-    discount_amount: discount_amount,
-    final_price: final_price
   }
 end
 ```
@@ -165,6 +178,10 @@ end
 
 ### Example with @example
 
+Because sometimes it's easier to see how a method is used rather than just reading about it.
+
+Useful if specific inputs are needed, or if the way it is used is not obvious.
+
 ```ruby
 # format_date - Turns a date into a human-readable string
 #
@@ -175,5 +192,25 @@ end
 #   format_date(Date.new(2023, 10, 5)) => "2023-10-05"
 def format_date(date)
   date.strftime("%Y-%m-%d")
+end
+
+# get_modifier_function - Given a key, returns a func to modify a value respectively
+#
+# @param key [Symbol] The key to determine the modifier function
+# @return [Proc] A function that takes a value and returns the modified value
+#
+# @example
+#   modifier = get_modifier_function(:double)
+#   modifier.call(5) => 10
+#   modifier.call(3) => 6
+def get_modifier_function(key)
+  case key
+  when :double
+    Proc.new { |value| value * 2 }
+  when :square
+    Proc.new { |value| value ** 2 }
+  else
+    Proc.new { |value| value }
+  end
 end
 ```

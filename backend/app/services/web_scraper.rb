@@ -1,10 +1,10 @@
 class WebScraper
 
-  # Generates a URL for the specified supermarket and query.
+  # get_url - Generates the search URL for the specified supermarket
   #
-  # @param supermarket [String] The name of the supermarket (e.g., "nw").
-  # @param query [String] The search query to append to the URL.
-  # @return [String] The generated URL for the supermarket search.
+  # @param supermarket [String] The supermarket identifier (e.g., "nw")
+  # @param query [String] The search query
+  # @return [String] The URL for the supermarket search
   def self.get_url(supermarket, query)
     case supermarket
     when "nw"
@@ -18,10 +18,10 @@ class WebScraper
     end
   end
 
-  # Fetches the HTML content of the specified URL using Selenium WebDriver.
+  # fetch_html - Fetches the HTML from a given URL
   #
-  # @param url [String] The URL to fetch.
-  # @return [String] The HTML content of the page.
+  # @param url [String] The URL to fetch
+  # @return [String] The HTML content of the page
   def self.fetch_html(url)
     driver = get_webdriver
 
@@ -56,9 +56,9 @@ class WebScraper
 
   private
 
-  # Initializes a Selenium WebDriver instance with Chrome options.
+  # get_webdriver - Initializes the Selenium WebDriver with Chrome options
   #
-  # @return [Selenium::WebDriver] The initialized WebDriver instance.
+  # @return [Selenium::WebDriver] The initialized WebDriver instance
   def self.get_webdriver
     Selenium::WebDriver.for(:chrome, options: get_browser_options)
   rescue Selenium::WebDriver::Error::WebDriverError => e
@@ -67,9 +67,9 @@ class WebScraper
     raise "An error occurred while initializing WebDriver: #{e.message}"
   end
 
-  # Returns the browser options for the Selenium WebDriver.
+  # get_browser_options - Provides the configured browser options
   #
-  # @return [Selenium::WebDriver::Chrome::Options] The configured browser options.
+  # @return [Selenium::WebDriver::Chrome::Options] The browser options
   def self.get_browser_options
     options = Selenium::WebDriver::Chrome::Options.new
 
