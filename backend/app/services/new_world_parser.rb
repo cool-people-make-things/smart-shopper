@@ -6,17 +6,17 @@ class NewWorldParser
   # @return [Array<Product>] A list of products
   def self.get_products(html)
     doc = Nokogiri::HTML(html)
-    puts "-----> Parsing HTML Document: #{doc.title}"
+    Log.info("Parsing HTML Document: #{doc.title}")
 
     filter_menu = doc.at_css("[data-testid='selected-refinements']")
     product_grid = filter_menu&.next_element
 
     unless product_grid
-      raise "Product grid not found in the HTML document."
+      Log.error("Product grid not found in the HTML document.")
     end
 
     product_grid_items = product_grid.children.children
-    puts "-----> Found #{product_grid_items.size} products"
+    Log.debug("Found #{product_grid_items.size} products")
 
     results = []
     product_grid_items.each do |node|
@@ -45,7 +45,7 @@ class NewWorldParser
       promo: ticketed_prices[:promo],
     }
   rescue => e
-    warn "Skipping product due to parse error: #{e.message}"
+    Log.warn("Skipping product due to parse error: #{e.message}")
     nil
   end
 

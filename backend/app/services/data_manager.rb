@@ -11,7 +11,7 @@ class DataManager
 
     File.exist?(json_path) ? File.read(json_path) : nil
   rescue => e
-    warn "Error reading JSON file: #{e.message}"
+    Log.warn("Error reading JSON file: #{e.message}")
     nil
   end
 
@@ -25,10 +25,10 @@ class DataManager
       html_path = Rails.root.join("app", "assets", "data", "#{supermarket}_actual.html")
 
       File.write(html_path, data)
-      puts "-----> Saved HTML to #{html_path}"
+      Log.debug("Saved HTML to #{html_path}")
     end
   rescue => e
-    warn "Error writing HTML file: #{e.message}"
+    Log.warn("Error writing HTML file: #{e.message}")
   end
 
   # write_json_file - Writes JSON data to a file for the specific supermarket
@@ -42,10 +42,10 @@ class DataManager
       json_path = Rails.root.join("app", "assets", "data", "#{supermarket}_actual.json")
 
       File.write(json_path, JSON.pretty_generate(data))
-      puts "-----> Saved JSON to #{json_path}"
+      Log.debug("Saved JSON to #{json_path}")
     end
   rescue => e
-    warn "Error writing JSON file: #{e.message}"
+    Log.warn("Error writing JSON file: #{e.message}")
   end
 
   private
@@ -56,7 +56,7 @@ class DataManager
   # @raise [ArgumentError] If the supermarket is not recognized
   def self.validate_supermarket!(supermarket)
     unless VALID_SUPERMARKETS.include?(supermarket)
-      raise ArgumentError, "Unknown supermarket: #{supermarket}"
+      Log.error(ArgumentError, "Unknown supermarket: #{supermarket}")
     end
   end
 end

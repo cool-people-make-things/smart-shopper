@@ -15,7 +15,7 @@ class SearchController < ApplicationController
     query = params[:q]
     supermarket = params[:supermarket]
 
-    puts "---> Searching for '#{query}' in #{supermarket} supermarket"
+    Log.debug("Searching for '#{query}' in #{supermarket} supermarket")
 
     # TO BE REMOVED: once all scrapers working, we should check against VALID_SHOPS instead
     temp_supermarkets = %w[nw pns wls putYoursHere]
@@ -24,7 +24,7 @@ class SearchController < ApplicationController
       begin
         url = WebScraper.get_url(supermarket, query)
         html = WebScraper.fetch_html(url)
-        raise "No HTML returned" if html.blank?
+        Log.error("No HTML returned") if html.blank?
 
         DataManager.write_html_file(supermarket, html)
 
@@ -39,7 +39,7 @@ class SearchController < ApplicationController
           end
 
         products = parser.get_products(html)
-        raise "No products found" if products.empty?
+        Log.warn("No products found") if products.empty?
 
         DataManager.write_json_file(supermarket, products)
 

@@ -14,7 +14,7 @@ class WebScraper
     when "wls"
       "https://www.woolworths.co.nz/shop/searchproducts?search=#{query}"
     else
-      raise ArgumentError, "Unknown supermarket: #{supermarket}"
+      Log.error(ArgumentError, "Unknown supermarket: #{supermarket}")
     end
   end
 
@@ -44,11 +44,11 @@ class WebScraper
 
       driver.page_source
     rescue Selenium::WebDriver::Error::TimeoutError => e
-      raise "Timeout while waiting for page to load: #{e.message}"
+      Log.error("Timeout while waiting for page to load: #{e.message}")
     rescue Selenium::WebDriver::Error::WebDriverError => e
-      raise "WebDriver error occurred: #{e.message}"
+      Log.error("WebDriver error occurred: #{e.message}")
     rescue StandardError => e
-      raise "An error occurred while fetching HTML: #{e.message}"
+      Log.error("An error occurred while fetching HTML: #{e.message}")
     ensure
       driver.quit
     end
@@ -62,9 +62,9 @@ class WebScraper
   def self.get_webdriver
     Selenium::WebDriver.for(:chrome, options: get_browser_options)
   rescue Selenium::WebDriver::Error::WebDriverError => e
-    raise "Failed to initialize WebDriver: #{e.message}"
+    Log.error("Failed to initialize WebDriver: #{e.message}")
   rescue StandardError => e
-    raise "An error occurred while initializing WebDriver: #{e.message}"
+    Log.error("An error occurred while initializing WebDriver: #{e.message}")
   end
 
   # get_browser_options - Provides the configured browser options
@@ -76,7 +76,7 @@ class WebScraper
     # path for chromium on docker
     options.binary = "/usr/bin/chromium"
     unless File.exist?(options.binary)
-      raise "Chromium binary not found at #{options.binary}."
+      Log.error("Chromium binary not found at #{options.binary}.")
     end
 
     # ---- Some of these may be unnecessary, but they help with performance etc --
