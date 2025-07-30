@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, type ReactNode, useContext, useState } from "react";
+
 import type { Cart } from "@/types/Cart.types";
 
 type CartContextType = {
@@ -15,7 +16,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart({ nw: [], pns: [], wls: [] });
   };
 
-  return <CartContext.Provider value={{ cart, clearCart }}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ cart, clearCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export const useCart = () => {
