@@ -10,11 +10,12 @@ type NWPromo = {
 };
 
 type PNSPromo = {
+  tag: string;
   multibuyThreshold?: string;
   value: string;
   unitPrice: string;
   unit: string;
-  limit?: string
+  limit?: string;
 };
 
 type WLSPromo = {

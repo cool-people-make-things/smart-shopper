@@ -33,7 +33,9 @@ class PaknsaveParser
   # @param node [Nokogiri::XML::Element] The parent tag containing product details
   # @return [Product || nil] The product details or nil if parsing fails
   def self.parse_one_product(node)
-    ticketed_prices = extract_price_and_promo(node)
+    # if has_complex do complex
+    # if has simple do simple {tag: everyday/extra low}
+    # else {}
 
     {
       id: extract_id(node),
@@ -41,8 +43,8 @@ class PaknsaveParser
       amt: extract_amt(node),
       image: extract_img(node),
       productPageUrl: extract_product_page_url(node),
-      price: ticketed_prices[:price],
-      promo: ticketed_prices[:promo]
+      price: extract_price(node),
+      promo: extract_promo(node),
     }
   rescue => e
     Log.warn("Skipping product due to parsing error: #{e.message}")
@@ -90,40 +92,15 @@ class PaknsaveParser
     dirty_link.split("#").first
   end
 
-
-  # extract_price_and_promo - Retrieves the price and promo details
+  # extract_price - Retrieves the price details
   #
   # @param node [Nokogiri::XML::Element] The product node
-  # @return [Hash] The price and promo details
+  # @return [Hash] The price details
   #   - :price [Hash] :value, :per, :unitPrice, :unit
-  #   - :promo [Hash] :value, :unitPrice, :unit, :multibuyThreshold?, :limit?
-  def self.extract_price_and_promo(node)
+  def self.extract_price(node)
     dollar_nodes = node.css("[data-testid='price-dollars']")
     cent_nodes = node.css("[data-testid='price-cents']")
     per_nodes = node.css("[data-testid='price-per']")
-
-    promo = {}
-    
-    if has_promo?(node)
-      multibuy_threshold_node = node.at_css("[data-testid='multibuy-threshold']")
-      if multibuy_threshold_node
-        promo[:multibuyThreshold] = multibuy_threshold_node.text.split(" ").first
-      end
-      
-      promo[:value] = get_value(dollar_nodes.first, cent_nodes.first)
-      
-      promo_unit_nodes = node.css("[data-testid='complex-promo-unit-price']")
-      promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
-      
-      promo[:unitPrice] = promo_unit_price.gsub("$", "")
-      promo[:unit] = promo_unit
-      
-
-      limit_node = node.at_css("[data-testid='promo-product-limit']")
-      if limit_node
-        promo[:limit] = limit_node.text.strip
-      end
-    end
     
     unit_nodes = node.css("[data-testid='non-promo-unit-price']")
     unit_price, unit = unit_nodes.text.strip.split("/")
@@ -135,22 +112,93 @@ class PaknsaveParser
       unit: unit,
     }
     
-    {
-      price: price,
-      promo: promo
-    }
-    
+    price
+  end
+  
+  # Extracts promo details, choosing the appropriate method.
+  #
+  # @param node [Nokogiri::XML::Element] The product node.
+  # @return [Hash] Promotion data.
+  #
+  # If the node contains a complex promotion, it uses `extract_complex_promo`.
+  # If the node contains a standard promo tag, it uses `extract_promo_tag`.
+  # If neither, returns an empty object.
+  def self.extract_promo(node)
+    return extract_complex_promo(node) if has_complex_promo?(node)
+    return extract_promo_tag(node) if has_promo?(node)
+    {}
   end
 
-  # has_promo? - Checks if the product has a promo
+  # extract_complex_promo - Retrieves the promo details
+  # 
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] The promo details
+  #   - :promo [Hash] :tag, :value, :unitPrice, :unit, :multibuyThreshold?, :limit?
+  #   
+  def self.extract_complex_promo(node)
+    promo = { tag: "Extra Low" }
+    promo_node = node.css("[data-testid='decal']")
+    # promo_node = node.at_xpath(".//*[contains(@data-testid, 'product-decal-')]")
+  
+    dollar_nodes = promo_node.css("[data-testid='price-dollars']")
+    cent_nodes = promo_node.css("[data-testid='price-cents']")
+    
+
+    promo[:value] = get_value(dollar_nodes.first, cent_nodes.first)
+    
+    promo_unit_nodes = promo_node.css("[data-testid='complex-promo-unit-price']")
+    promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
+    promo[:unitPrice] = promo_unit_price.gsub("$", "")
+    promo[:unit] = promo_unit
+    
+    multibuy_threshold_node = promo_node.at_css("[data-testid='multibuy-threshold']")
+    
+    if multibuy_threshold_node
+      promo[:multibuyThreshold] = multibuy_threshold_node.text.split(" ").first
+    end
+    
+    limit_node = promo_node.at_css("[data-testid='promo-product-limit']")
+    if limit_node
+      promo[:limit] = limit_node.text.strip
+    end
+    
+    promo
+  end
+  
+  # extract_promo_tag - Retrieves the tag details
+  # 
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] :tag
+  def self.extract_promo_tag(node)
+    promo_node = node.at_xpath(".//*[contains(@data-testid, 'product-decal-')]")
+    promo_badge_name = promo_node.at_css("svg")&.[]("aria-label")
+    
+    tag = case promo_badge_name
+      when "6000 badge" then "Extra Low"
+      when "7000 badge" then "Everyday Low"
+      else nil
+    end
+
+    { tag: tag }
+  end
+  
+  # has_complex_promo? - Checks if the product has a complex promo
   #
   # @param node [Nokogiri::XML::Element] The product node
-  # @return [Boolean] TRUE if a promo decal is present
-  def self.has_promo?(node)
+  # @return [Boolean] TRUE if a complex promo decal is present
+  def self.has_complex_promo?(node)
     node.at_css("[data-testid='decal']").present?
   end
   
-  # get_value - returns the price as a standardized string, "dollars.cents"
+  # has_promo? - checks if the product has a promo
+  # 
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Boolean] TRUE if a promo deal is present
+  def self.has_promo?(node)
+    node.at_xpath(".//*[contains(@data-testid, 'product-decal-')]").present?
+  end
+  
+    # get_value - returns the price as a standardized string, "dollars.cents"
   #
   # @param dollar_node [Nokogiri::XML::Element] Node containing the dollars
   # @param cent_node [Nokogiri::XML::Element] Node containing the cents
