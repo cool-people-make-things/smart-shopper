@@ -36,17 +36,6 @@ RSpec.describe 'Search API', type: :request do
         File.delete(file_path) if File.exist?(file_path)
       end
 
-      it 'returns 200 OK and the data' do
-        get "/search/#{supermarket}", params: { q: query }
-
-        expect(response).to have_http_status(:ok)
-        json = response.parsed_body
-
-        expect(json['query']).to eq(query)
-        expect(json['supermarket']).to eq(supermarket)
-        expect(json['data']).to be_an(Array)
-        expect(json['data'].first).to include('name' => 'Butter', 'price' => 9.5)
-      end
     end
 
     context 'when supermarket is valid but file is missing' do

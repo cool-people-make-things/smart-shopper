@@ -25,3 +25,5 @@ gem "selenium-webdriver", "~> 4.34"
 gem "nokogiri", "~> 1.18"
 
 gem "json", "~> 2.13"
+
+gem 'rack-cors'
