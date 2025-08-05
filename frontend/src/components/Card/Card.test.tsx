@@ -1,13 +1,18 @@
 import { screen } from "@testing-library/react";
+import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
 import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { Card } from "./Card";
 
+vi.mock("../CardDetails", () => ({
+  CardDetails: () => <div data-testid="card-details">Mocked CardDetails</div>,
+}));
+
 describe("Given a user is on the home page", () => {
   describe("When the Card component is rendered", () => {
-    it("Then the user is seeing the correct product", () => {
+    it("Then the user see's the correct image", () => {
       renderWithRouter(
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
@@ -18,10 +23,6 @@ describe("Given a user is on the home page", () => {
       );
 
       const image = screen.getByAltText(/pams butter/i);
-
-      expect(screen.getByText(/pams/i)).toBeInTheDocument();
-      expect(screen.getByText(/8.45/i)).toBeInTheDocument();
-      expect(screen.getByText(/new world/i)).toBeInTheDocument();
 
       expect(image).toHaveAttribute(
         "src",
@@ -43,7 +44,7 @@ describe("Given a user is on the home page", () => {
       expect(screen.getByTestId("card-details")).toBeInTheDocument();
     });
 
-    it("has no accessibility violations", async () => {
+    it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouter(
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
