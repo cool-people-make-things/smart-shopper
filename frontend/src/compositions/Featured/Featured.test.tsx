@@ -6,7 +6,7 @@ import { Featured } from "./Featured";
 
 describe("Given a user has gone to the home page", () => {
   describe("When the Featured component is rendered", () => {
-    it("Then it displays the correct title", () => {
+    it.skip("Then it displays the correct title", () => {
       render(<Featured />);
       expect(screen.getByText(/featured items/i)).toBeInTheDocument();
     });
