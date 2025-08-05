@@ -1,15 +1,20 @@
 import "@testing-library/jest-dom";
 
 import { screen } from "@testing-library/react";
+import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
 import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { Home, welcomeBlurb, welcomeSubBlurb } from "./Home";
 
+vi.mock("@/compositions/Featured", () => ({
+  Featured: () => <div data-testid="featured-component">Mocked Featured</div>,
+}));
+
 describe("Given a user is looking at the home page", () => {
   describe("When the home page is rendered", () => {
-    it("Then is displays a welcome message", async () => {
+    it("Then it displays a welcome title", async () => {
       renderWithRouter(<Home />);
 
       const heading = await screen.findByRole("heading", { level: 1 });
@@ -19,15 +24,14 @@ describe("Given a user is looking at the home page", () => {
       expect(heading).toHaveTextContent(/welcome!/i);
     });
 
-    it("Then it has a welcome message", () => {
+    it("Then it displays a welcome blurb", () => {
       renderWithRouter(<Home />);
       expect(screen.getByText(welcomeBlurb)).toBeInTheDocument();
       expect(screen.getByText(welcomeSubBlurb)).toBeInTheDocument();
     });
 
-    it("Then it renders the child components", () => {
+    it("Then it displays the featured component", () => {
       renderWithRouter(<Home />);
-
       expect(screen.getByTestId("featured-component")).toBeInTheDocument();
     });
 

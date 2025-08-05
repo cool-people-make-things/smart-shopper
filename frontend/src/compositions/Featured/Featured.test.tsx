@@ -1,13 +1,18 @@
 import { screen } from "@testing-library/react";
+import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
 import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { Featured } from "./Featured";
 
+vi.mock("@/components/Card", () => ({
+  Card: () => <div data-testid="product-card">Mocked Card</div>,
+}));
+
 describe("Given a user has gone to the home page", () => {
   describe("When the Featured component is rendered", () => {
-    it("Then it displays the correct title", () => {
+    it("Then it displays the title", () => {
       renderWithRouter(<Featured />);
 
       const subheading = screen.getByRole("heading", { level: 2 });
@@ -18,11 +23,10 @@ describe("Given a user has gone to the home page", () => {
 
     it("Then it renders three product cards", () => {
       renderWithRouter(<Featured />);
-
       expect(screen.getAllByTestId("product-card")).toHaveLength(3);
     });
 
-    it("has no accessibility violations", async () => {
+    it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouter(<Featured />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
