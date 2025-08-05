@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 import { Toaster } from "@/components/retroui";
 
 import { CartProvider } from "./context/CartContext";
+import { Browse } from "./pages/Browse";
 import { Cart } from "./pages/Cart";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
@@ -18,7 +19,7 @@ function App() {
 
         <Routes>
           <Route index element={<Home />} />
-          {/* <Route path="browse" element={<Browse />} /> */}
+          <Route path="browse" element={<Browse />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

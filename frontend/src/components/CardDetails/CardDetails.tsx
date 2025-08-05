@@ -44,7 +44,9 @@ export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
     return (
       <div>
         <RUICard.Header className="py-0">
-          <RUICard.Title className="text-xl">{productTitle}</RUICard.Title>
+          <RUICard.Title className="text-center text-base">
+            {productTitle}
+          </RUICard.Title>
         </RUICard.Header>
         <RUICard.Content className="flex justify-around items-center">
           <p className="">${price}</p>
