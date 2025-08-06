@@ -32,8 +32,9 @@ class SearchController < ApplicationController
         parser = case supermarket
           when "nw"
             NewWorldParser
-
-          # when "wls"
+          when "pns"
+            PaknsaveParser
+            # when "wls"
           #   WoolworthsParser
 
           end
