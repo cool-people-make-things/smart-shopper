@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://127.0.0.1:5173'  # or '*' if you're just testing locally
+    origins ENV.fetch('CORS_ORIGINS', '').split(',')
 
     resource '*',
       headers: :any,
