@@ -6,4 +6,5 @@ type Product = {
   productPageUrl: string;
   price: Price;
   promo: Promo;
+  supermarket?: Supermarket;
 };
