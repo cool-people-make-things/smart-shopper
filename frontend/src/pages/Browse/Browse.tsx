@@ -1,6 +1,10 @@
 import { Card } from "@/components/Card";
 import { Input } from "@/components/retroui";
 
+import nwData from "../../../../backend/app/assets/data/nw_actual.json";
+import pnsData from "../../../../backend/app/assets/data/pns_actual.json";
+import wlsData from "../../../../backend/app/assets/data/wls.json";
+
 export function Browse() {
   return (
     <div>
@@ -11,109 +15,64 @@ export function Browse() {
       </div>
 
       <div className="browse-container flex justify-center">
-        <div className="supermarket-container nw w-1/3 pb-10 bg-gray-300">
+        <div
+          data-testid="nw"
+          className="supermarket-container w-1/3 pb-10 bg-gray-300"
+        >
           <h3 className=" text-center text-4xl py-6">New World</h3>
-          <div className="product-grid grid grid-cols-2 gap-2 px-2 justify-items-center ">
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
-              productTitle="Pams Butter"
-              price="8.45"
-              store="New World"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
-              productTitle="Pams Butter"
-              price="8.45"
-              store="New World"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
-              productTitle="Pams Butter"
-              price="8.45"
-              store="New World"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
-              productTitle="Pams Butter"
-              price="8.45"
-              store="New World"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
-              productTitle="Pams Butter"
-              price="8.45"
-              store="New World"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
-              productTitle="Pams Butter"
-              price="8.45"
-              store="New World"
-            />
+          <div
+            data-testid="product-grid"
+            className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
+          >
+            {nwData.map((product) => (
+              <Card
+                key={product.id}
+                imgSrc={product.image}
+                productTitle={product.title}
+                price={product.price.value}
+                store={"New World"}
+              />
+            ))}
           </div>
         </div>
-        <div className="supermarket-container pns w-1/3 pb-10 bg-gray-100 border-x">
+        <div
+          data-testid="pns"
+          className="supermarket-container w-1/3 pb-10 bg-gray-100 border-x"
+        >
           <h3 className=" text-center text-4xl py-6">Pak'nSave</h3>
-          <div className="product-grid grid grid-cols-2 gap-2 px-2 justify-items-center ">
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
-              productTitle="Anchor Butter"
-              price="7.45"
-              store="Pak'nSave"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
-              productTitle="Anchor Butter"
-              price="7.45"
-              store="Pak'nSave"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
-              productTitle="Anchor Butter"
-              price="7.45"
-              store="Pak'nSave"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
-              productTitle="Anchor Butter"
-              price="7.45"
-              store="Pak'nSave"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
-              productTitle="Anchor Butter"
-              price="7.45"
-              store="Pak'nSave"
-            />
+          <div
+            data-testid="product-grid"
+            className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
+          >
+            {pnsData.map((product) => (
+              <Card
+                key={product.id}
+                imgSrc={product.image}
+                productTitle={product.title}
+                price={product.price.value}
+                store={"Pak'nSave"}
+              />
+            ))}
           </div>
         </div>
-        <div className="supermarket-container wls w-1/3 pb-10 bg-gray-300">
+        <div
+          data-testid="wls"
+          className="supermarket-container w-1/3 pb-10 bg-gray-300"
+        >
           <h3 className=" text-center text-4xl py-6">Woolworths</h3>
-          <div className="product-grid grid grid-cols-2 gap-2 px-2 justify-items-center ">
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
-              productTitle="Rolling Meadow Butter"
-              price="8.90"
-              store="Woolworths"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
-              productTitle="Rolling Meadow Butter"
-              price="8.90"
-              store="Woolworths"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
-              productTitle="Rolling Meadow Butter"
-              price="8.90"
-              store="Woolworths"
-            />
-            <Card
-              imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
-              productTitle="Rolling Meadow Butter"
-              price="8.90"
-              store="Woolworths"
-            />
+          <div
+            data-testid="product-grid"
+            className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
+          >
+            {wlsData.results.map((product) => (
+              <Card
+                key={product.id}
+                imgSrc={product.image}
+                productTitle={product.title}
+                price={product.price.value}
+                store={"Woolworths"}
+              />
+            ))}
           </div>
         </div>
       </div>
