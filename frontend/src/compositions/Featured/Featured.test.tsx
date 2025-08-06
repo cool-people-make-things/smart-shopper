@@ -1,19 +1,35 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { screen } from "@testing-library/react";
+import { vi } from "vitest";
 import { axe } from "vitest-axe";
+
+import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { Featured } from "./Featured";
 
+vi.mock("@/components/Card", () => ({
+  Card: () => <div data-testid="product-card">Mocked Card</div>,
+}));
+
 describe("Given a user has gone to the home page", () => {
   describe("When the Featured component is rendered", () => {
-    it.skip("Then it displays the correct title", () => {
-      render(<Featured />);
-      expect(screen.getByText(/featured items/i)).toBeInTheDocument();
+    it("Then it displays the title", () => {
+      renderWithRouter(<Featured />);
+
+      const subheading = screen.getByRole("heading", { level: 2 });
+
+      expect(subheading).toBeInTheDocument();
+      expect(subheading).toHaveTextContent(/featured items/i);
     });
-    it.skip("has no accessibility violations", async () => {
-      const { container } = render(<Featured />);
+
+    it("Then it renders three product cards", () => {
+      renderWithRouter(<Featured />);
+      expect(screen.getAllByTestId("product-card")).toHaveLength(3);
+    });
+
+    it("Then it has no accessibility violations", async () => {
+      const { container } = renderWithRouter(<Featured />);
       const results = await axe(container);
-      expect(results.violations).toHaveLength(0);
+      expect(results).toHaveNoViolations();
     });
   });
 });

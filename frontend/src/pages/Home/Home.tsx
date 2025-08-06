@@ -1,6 +1,12 @@
 import { Input, Text } from "@/components/retroui";
 import { Featured } from "@/compositions/Featured";
 
+export const welcomeBlurb =
+  "At smart shopper we're here to help you build your shopping list across New Zealand's big brand supermarkets. Inspired by the rising costs of butter, we want to spend our money wisely but without the hassle of tramping back and forth between them.";
+
+export const welcomeSubBlurb =
+  "Smart shopper will create a shopping list of items you choose and where you want them from.";
+
 export function Home() {
   return (
     <main className="flex flex-col items-center justify-center h-8/10">
@@ -9,17 +15,9 @@ export function Home() {
           <Input type="text" placeholder="Search Product" />
         </div>
         <div className="bg-gray-100 w-1/2 px-16 py-10 flex flex-col justify-between border-l border-black">
-          <Text as="h2">Welcome!</Text>
-          <Text className="font-sans text-base">
-            At smart shopper we're here to help you build your shopping list
-            across New Zealand's big brand supermarkets. Inspired by the rising
-            costs of butter, we want to spend our money wisely but without the
-            hassle of tramping back and forth between them.
-          </Text>
-          <Text className="font-sans text-base">
-            Smart shopper will create a shopping list of items you choose and
-            where you want them from.
-          </Text>
+          <Text as="h1">Welcome!</Text>
+          <Text className="font-sans text-base">{welcomeBlurb}</Text>
+          <Text className="font-sans text-base">{welcomeSubBlurb}</Text>
         </div>
       </div>
 

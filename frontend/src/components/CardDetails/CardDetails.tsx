@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 
 import { Button, RUICard } from "@/components/retroui";
@@ -27,7 +27,7 @@ export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
 
   if (isHome) {
     return (
-      <div>
+      <div data-testid="card-details">
         <RUICard.Header className="py-0">
           <RUICard.Title>{store}</RUICard.Title>
         </RUICard.Header>
@@ -42,7 +42,7 @@ export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
     );
   } else {
     return (
-      <div>
+      <div data-testid="card-details">
         <RUICard.Header className="py-0">
           <RUICard.Title className="text-center text-base">
             {productTitle}

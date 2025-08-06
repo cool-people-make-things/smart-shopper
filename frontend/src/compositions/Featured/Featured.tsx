@@ -3,7 +3,10 @@ import { Text } from "@/components/retroui";
 
 export function Featured() {
   return (
-    <section className="bg-gray-100 w-screen p-8 pl-40 pr-40 border-t border-black">
+    <section
+      data-testid="featured-component"
+      className="bg-gray-100 w-screen p-8 pl-40 pr-40 border-t border-black"
+    >
       <Text as="h2" className="text-center">
         Featured items - Butter
       </Text>
