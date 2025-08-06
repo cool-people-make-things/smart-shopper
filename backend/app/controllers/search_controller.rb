@@ -34,9 +34,8 @@ class SearchController < ApplicationController
             NewWorldParser
           when "pns"
             PaknsaveParser
-            # when "wls"
-          #   WoolworthsParser
-
+          when "wls"
+            WoolworthsParser
           end
 
         products = parser.get_products(html)
