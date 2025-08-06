@@ -1,39 +1,49 @@
 import "@testing-library/jest-dom";
 
-import { fireEvent, render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { vi } from "vitest";
+import { axe } from "vitest-axe";
 
-import { Home } from "./Home";
+import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
-describe("Home", () => {
-  test.skip("renders a heading", () => {
-    render(<Home />);
+import { Home, welcomeBlurb, welcomeSubBlurb } from "./Home";
 
-    const heading = screen.getByRole("heading", { level: 1 });
-    const headingText = screen.getByRole("heading", {
-      name: /smartshopper/i,
+vi.mock("@/compositions/Featured", () => ({
+  Featured: () => <div data-testid="featured-component">Mocked Featured</div>,
+}));
+
+describe("Given a user is looking at the home page", () => {
+  describe("When the home page is rendered", () => {
+    it("Then it displays a welcome title", async () => {
+      renderWithRouter(<Home />);
+
+      const heading = await screen.findByRole("heading", { level: 1 });
+
+      expect(screen.getByText(/welcome/i)).toBeInTheDocument();
+      expect(heading).toBeInTheDocument();
+      expect(heading).toHaveTextContent(/welcome!/i);
     });
 
-    expect(heading).toBeInTheDocument();
-    expect(headingText).toBeInTheDocument();
-  });
+    it("Then it displays a welcome blurb", () => {
+      renderWithRouter(<Home />);
+      expect(screen.getByText(welcomeBlurb)).toBeInTheDocument();
+      expect(screen.getByText(welcomeSubBlurb)).toBeInTheDocument();
+    });
 
-  test.skip("renders a button with text 'Click Me!'", () => {
-    render(<Home />);
+    it("Then it displays the featured component", () => {
+      renderWithRouter(<Home />);
+      expect(screen.getByTestId("featured-component")).toBeInTheDocument();
+    });
 
-    const button = screen.getByRole("button", { name: /click me!/i });
+    it("Then it has no accessibility violations", async () => {
+      const { container } = renderWithRouter(<Home />);
 
-    expect(button).toBeInTheDocument();
-  });
-
-  test.skip("calls alert when clicked", () => {
-    render(<Home />);
-    const button = screen.getByText(/click me!/i);
-
-    const alertMock = vi.fn();
-    window.alert = alertMock;
-    fireEvent.click(button);
-
-    expect(alertMock).toHaveBeenCalledWith("Button Clicked!");
+      const results = await axe(container, {
+        rules: {
+          "color-contrast": { enabled: false },
+        },
+      });
+      expect(results).toHaveNoViolations();
+    });
   });
 });
