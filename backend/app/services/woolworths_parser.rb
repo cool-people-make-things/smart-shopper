@@ -1,15 +1,16 @@
+# encoding: UTF-8
 class WoolworthsParser
 
-  # Parses the HTML content of a New World product page to extract product details.
+  # get_products - Parses the HTML content of a New World product page to extract product details.
   #
-  # @param html [String] The HTML content of the product page.
-  # @return [Array<Product>] An array of hashes containing product details.
+  # @param html [String] The HTML content of the product page
+  # @return [Array<Product>] A list of product objects extracted from the HTML
   def self.get_products(html)
     doc = Nokogiri::HTML(html)
     Log.info("Parsing HTML Document: #{doc.title}")
 
     product_grid = doc.at_css("product-grid")
-    
+
     unless product_grid
       Log.error("Product grid not found in the HTML document.")
     end
@@ -30,11 +31,11 @@ class WoolworthsParser
 
   private
 
-  # Parses a single product node to extract its details
+  # parse_one_product - Parses a single product node to extract its details
   #
   # @param node [Nokogiri::XML::Element] The product node to parse
   # @return [Product || nil] A hash containing the product details or nil if parsing fails
-  def self.parse_one_product(node, idx)
+  def self.parse_one_product(node)
     title = extract_name(node)
     ticketed_prices = extract_price_and_promo(node)
 
@@ -52,15 +53,15 @@ class WoolworthsParser
     nil
   end
 
-  # Extracts the product ID from the node
+  # extract_id - Extracts the product ID from the node
   #
   # @param node [Nokogiri::XML::Element] The product node
-  # @return [String] The product ID
+  # @return [String] The product ID extracted from the element's ID attribute
   def self.extract_id(node)
     node.at_css("h3")["id"][/product-(\d+)/, 1]
   end
 
-  # Extracts the product name from the node
+  # extract_name - Extracts the product name from the node
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [String] The product name
@@ -72,21 +73,21 @@ class WoolworthsParser
       &.strip
   end
 
-  # Extracts the amount from the node
-  
+  # extract_amt - Extracts the amount from the node
+
   # @param node [Nokogiri::XML::Element] The product node
   # @return [String] The amount (weight, volume) of the product
   def self.extract_amt(title)
     return nil unless title
     # Match patterns like "0.6-0.8kg", "580g - 800g", "1.0kg - 1.35kg", "1.3-1.9kg", "500g"
-    match = title.match(/(\d+(?:\.\d+)?(?:\s*[–-]\s*\d+(?:\.\d+)?)(?:kg|g|ml|l)|\d+(?:\.\d+)?(?:kg|g|ml|l))/i)
+    match = title.match(/(\d+(?:\.\d+)?(?:\s*[-–]\s*\d+(?:\.\d+)?)(?:kg|g|ml|l)|\d+(?:\.\d+)?(?:kg|g|ml|l))/i)
     match[1].gsub(/\s+/, "") if match
   end
 
-  # Extracts the product image URL from the node
+  # extract_image - Extracts the product image URL from the node
   #
   # @param node [Nokogiri::XML::Element] The product node
-  # @return [String] The product image URL
+  # @return [String, nil] The image URL, or nil if no image is found
   def self.extract_image(node)
     node.at_css("img")&.[]("src")
   end
@@ -94,8 +95,7 @@ class WoolworthsParser
   # Extracts the product page URL from the node
   #
   # @param node [Nokogiri::XML::Element] The product node
-  # @return [String] The product page URL
-  #
+  # @return [String, nil] The product page URL, or nil if not found
   def self.extract_product_page_url(node)
     title_link = node.at_css("a:has(h3[id*='product-'][id$='-title'])")
     href = title_link&.[]("href")
@@ -104,13 +104,32 @@ class WoolworthsParser
     "https://www.woolworths.co.nz#{href}"
   end
 
-  # Extracts current price and promo details from a product node
+  # extract_price_and_promo - Extracts current price and promo details from a product node
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Hash] Price info with value, unit, unit price, and any promo details
   def self.extract_price_and_promo(node)
+    current_price = get_current_price(node)
+
+    return get_member_prices(node, current_price) if has_member_price?(node)
+    return get_multibuy_prices(node, current_price) if has_multi_buy?(node)
+    return get_special_prices(node, current_price) if has_prev_price?(node)
+
+    # No previous price found
+    tag = get_tag(node)
+    {
+      price: current_price,
+      promo: tag ? { tag: tag } : {},
+    }
+  end
+
+  # get_current_price - Extracts the current price details from a product node
+  #
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] Price details with :value, :per, :unitPrice, and :unit keys
+  def self.get_current_price(node)
     price_node = node.at_css("h3[id$='-price']")
-    raise "Price missing" unless price_node
+    Log.error("Price missing") unless price_node
 
     # --- Current price (promo or regular) ---
     promo_dollars_node = price_node.at_css("em")
@@ -130,34 +149,18 @@ class WoolworthsParser
       unitPrice: unit_price,
       unit: unit,
     }
-    # --- ---
-
-    return get_member_prices(node, current_price) if has_member_price?(node)
-    return get_multibuy_prices(node, current_price) if has_multi_buy?(node)
-    return get_special_prices(node, current_price) if has_prev_price?(node)
-
-    # No previous price found
-    tag = get_tag(node)
-    {
-      price: {
-        value: current_value,
-        per: current_per,
-        unitPrice: unit_price,
-        unit: unit,
-      },
-      promo: tag ? { tag: tag } : {},
-    }
+    current_price
   end
 
-
-  # Builds price and promo hashes for member-priced products
+  # get_member_prices - Builds price and promo hashes for member-priced products
   #
   # Extracts the original (non-member) price and compares it to the current
   # member price. Returns both as structured hashes
   #
-  # @param node [Nokogiri::XML::Element] The product node
-  # @param current_price [Hash] The member price details
-  # @return [Hash] Hash with :price (original) and :promo (member) entries
+  # @param node [Nokogiri::XML::Element] The product node containing pricing HTML
+  # @return [Hash] A hash with :price and optional :promo keys
+  #   - :price [Hash] :value :per :unitPrice :unit
+  #   - :promo [Hash] :tag :plus any overridden price/unit/unitPrice data from the promo
   def self.get_member_prices(node, current_price)
     price = {}
     promo = {}
@@ -186,7 +189,7 @@ class WoolworthsParser
     return { price: price, promo: promo }
   end
 
-  # Adds multibuy promo details to the current price
+  # get_multibuy_prices - Adds multibuy promo details to the current price
   #
   # Extracts multibuy unit price and tag from the node
   #
@@ -194,7 +197,6 @@ class WoolworthsParser
   # @param current_price [Hash] The base price data
   # @return [Hash] Hash with :price and multibuy :promo details
   def self.get_multibuy_prices(node, current_price)
-
     non_member_unit_node = node.css(".multiCupPrice")
     promo_unit_combo = non_member_unit_node&.text&.strip.gsub(/\s+/, "").split("/")
     promo_unit_price = promo_unit_combo.first&.gsub("$", "")
@@ -204,12 +206,12 @@ class WoolworthsParser
       tag: get_tag(node),
       value: get_tag_text(node),
       unitPrice: promo_unit_price,
-      unit: promo_unit
+      unit: promo_unit,
     }
     return { price: current_price, promo: promo }
   end
 
-  # Builds pricing details for specials with a previous (was) price
+  # get_special_prices - Builds pricing details for specials with a previous (was) price
   #
   # Uses the previous price as the main price and sets the current
   # price as a promo, without unit pricing
@@ -220,7 +222,7 @@ class WoolworthsParser
   def self.get_special_prices(node, current_price)
     price = {}
     promo = {}
-    
+
     was = get_was_price(node)
 
     price[:value] = was[:value]
@@ -238,17 +240,17 @@ class WoolworthsParser
     return { price: price, promo: promo }
   end
 
-  # Extracts the previous (was) price from the product node
+  # get_was_price - Extracts the previous (was) price from the product node
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Hash] Hash with :value (e.g. "4.99") and :per (unit descriptor)
   def self.get_was_price(node)
-    
+
     # Look for previous price — prefer .previousPrice .price--was but if not present check for any .price--was with "non-member"
-    potential_nodes = node.css(".previousPrice .price--was") 
+    potential_nodes = node.css(".previousPrice .price--was")
     was_node = potential_nodes.find { |el| el.text.strip.match(/\$\d+\.\d{2}/) }
     raise "Prev price missing" unless was_node
-   
+
     price_strings = was_node.text.strip.match(/\$(\d+)\.(\d+)/)
     was_dollars = price_strings[1]
     was_cents = price_strings[2]
@@ -259,7 +261,7 @@ class WoolworthsParser
     }
   end
 
-  # Combines dollar and cent nodes into a price string
+  # get_value - Combines dollar and cent nodes into a price string
   #
   # @param dollar_node [Nokogiri::XML::Element, nil] The node containing dollar value
   # @param cent_node [Nokogiri::XML::Element, nil] The node containing cent value
@@ -270,9 +272,9 @@ class WoolworthsParser
     "#{pretty_dollars}.#{pretty_cents}"
   end
 
-  # Extracts the unit from the cent node text (e.g., "kg", "L").
+  # get_unit - Extracts the unit from the cent node text (e.g., "kg", "L").
   #
-  # Defaults to "ea" (each) if no match is found.
+  # Defaults to "ea" (each) if no unit pattern is found
   #
   # @param cent_node [Nokogiri::XML::Element, nil] The node containing unit info
   # @return [String] The extracted unit or "ea"
@@ -287,7 +289,7 @@ class WoolworthsParser
     match ? match[1] : "ea"
   end
 
-  # Extracts a promotional tag from the product node
+  # get_tag - Extracts a promotional tag from the product node
   #
   # Checks for member price, Disney promo SVG, or general strap title
   #
@@ -323,7 +325,7 @@ class WoolworthsParser
     nil
   end
 
-  # Checks if the product has a member-only price
+  # has_member_price? - Checks if the product has a member-only price
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Boolean] True if member price is present
@@ -331,7 +333,7 @@ class WoolworthsParser
     node.at_css(".isMemberPrice").present?
   end
 
-  # Checks if the product has a multibuy offer (e.g., "2 for $5").
+  # has_multi_buy? - Checks if the product has a multibuy offer (e.g., "2 for $5").
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Boolean] True if multibuy text is detected
@@ -341,7 +343,7 @@ class WoolworthsParser
     multi_check.match?(banner_text)
   end
 
-  # Checks if the product displays a previous price
+  # has_prev_price? - Checks if the product displays a previous price
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Boolean] True if a previous price is found
@@ -349,7 +351,7 @@ class WoolworthsParser
     node.at_css(".previousPrice .price--was").present?
   end
 
-  # Checks if the product has a promotional banner tag.
+  # has_banner_tag? - Checks if the product has a promotional banner tag.
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Boolean] True if a product strap/banner is present
@@ -357,12 +359,11 @@ class WoolworthsParser
     node.at_css(".productStrap").present?
   end
 
-  # Retrieves the lowercase text from the product's banner tag.
+  # get_tag_text - Retrieves the lowercase text from the product's banner tag.
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [String, nil] The banner text, or nil if not found
   def self.get_tag_text(node)
     node.at_css(".productStrap-text")&.text&.strip&.downcase
   end
-
 end
