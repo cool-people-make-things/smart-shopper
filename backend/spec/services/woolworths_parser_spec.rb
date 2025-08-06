@@ -37,7 +37,7 @@ RSpec.describe WoolworthsParser do
           actual = @actual_products[idx]
 
           expect(actual[:title]).to eq(expected[:title])
-          # expect(actual[:amt]).to eq(expected[:amt])
+          expect(actual[:amt]).to eq(expected[:amt])
           expect(actual[:image]).to eq(expected[:image])
           expect(actual[:productPageUrl]).to eq(expected[:productPageUrl])
           expect(actual[:price]).to eq(expected[:price])
