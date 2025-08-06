@@ -16,10 +16,10 @@ RSpec.describe WoolworthsParser do
   describe "get_products" do
     context "when parsing curated html" do
       before(:all) do
-        temp_html_path = Rails.root.join("app", "assets", "data", "wls_curated_actual.html")
+        temp_html_path = Rails.root.join("spec", "fixtures", "wls_curated.html")
         html = File.read(temp_html_path)
 
-        temp_json_path = Rails.root.join("app", "assets", "data", "wls_curated_actual.json")
+        temp_json_path = Rails.root.join("spec", "fixtures", "wls_curated.json")
         json = JSON.parse(File.read(temp_json_path), symbolize_names: true)
 
         @expected_data = json[:results]
