@@ -1,10 +1,10 @@
 import { screen } from "@testing-library/react";
 import { vi } from "vitest";
+import { axe } from "vitest-axe";
 
 import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { Browse } from "./Browse";
-import { axe } from "vitest-axe";
 vi.mock("@/components/ProductColumn", () => ({
   ProductColumn: () => (
     <div data-testid="supermarket-container">Mocked ProductColumn</div>

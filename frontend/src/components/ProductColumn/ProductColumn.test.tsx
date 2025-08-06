@@ -4,9 +4,8 @@ import { axe } from "vitest-axe";
 
 import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
-import { ProductColumn } from "./ProductColumn";
-
 import nwData from "../../../../backend/app/assets/data/nw_actual.json";
+import { ProductColumn } from "./ProductColumn";
 
 const mockData = { data: nwData, store: "New World" };
 
