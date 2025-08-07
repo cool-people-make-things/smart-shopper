@@ -2,6 +2,8 @@ import { createContext, type ReactNode, useContext, useState } from "react";
 
 import type { Cart } from "@/types/Cart.types";
 
+import { initialCart } from "./utils/initialCart";
+
 type CartContextType = {
   cart: Cart;
   clearCart: () => void;
@@ -10,7 +12,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState({ nw: [], pns: [], wls: [] });
+  const [cart, setCart] = useState(initialCart);
 
   const clearCart = () => {
     setCart({ nw: [], pns: [], wls: [] });
