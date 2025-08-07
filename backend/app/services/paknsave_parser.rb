@@ -116,7 +116,7 @@ class PaknsaveParser
   def self.extract_promo(node)
     return extract_complex_promo(node) if has_complex_promo?(node)
     return extract_promo_tag(node) if has_promo?(node)
-    {}
+    nil
   end
 
   # extract_complex_promo - Retrieves the promo details

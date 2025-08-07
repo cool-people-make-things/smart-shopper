@@ -137,7 +137,7 @@ class NewWorldParser
 
     {
       price: price,
-      promo: promo,
+      promo: has_promo?(node) ? promo : nil,
     }
   end
 
