@@ -8,5 +8,5 @@ export type Product = {
   image: string;
   productPageUrl: string;
   price: Price;
-  promo: Promo | object;
+  promo: Promo | null;
 };

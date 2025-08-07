@@ -9,12 +9,31 @@ type NWPromo = {
   limit?: string;
 };
 
-type PNSPromo = {
+type PNSPromo = PNSSimplePromo | PNSComplexPromo;
+
+type PNSSimplePromo = {
   tag: string;
-  value: string;
 };
 
-type WLSPromo = {
+type PNSComplexPromo = {
   tag: string;
   value: string;
+  unit: string;
+  unitPrice: string;
+  multibuyThreshold?: string;
+  limit?: string;
+};
+
+type WLSPromo = WLSSimplePromo | WLSComplexPromo;
+
+type WLSSimplePromo = {
+  tag: string;
+};
+
+type WLSComplexPromo = {
+  tag: string;
+  value: string;
+  per?: string;
+  unit: string;
+  unitPrice: string;
 };

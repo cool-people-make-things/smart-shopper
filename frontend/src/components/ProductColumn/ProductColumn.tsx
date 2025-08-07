@@ -15,7 +15,7 @@ export function ProductColumn({ data, store }: ProductColumnProps) {
       className={`supermarket-container w-full pb-10 ${store === "Pak'nSave" ? "bg-gray-100" : "bg-gray-300"}`}
     >
       <Text as={"h2"} className="py-6 text-center">
-        {store}
+        {store ? store : "Error displaying Supermarket name"}
       </Text>
       <div
         data-testid="product-grid"
@@ -28,7 +28,7 @@ export function ProductColumn({ data, store }: ProductColumnProps) {
               imgSrc={product.image}
               productTitle={product.title}
               price={product.price.value}
-              store={""}
+              store={store}
             />
           ))
         ) : (

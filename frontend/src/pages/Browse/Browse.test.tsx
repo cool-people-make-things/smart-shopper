@@ -12,7 +12,7 @@ vi.mock("@/components/ProductColumn", () => ({
   ),
 }));
 
-describe("Given a user has gone to the browse page", () => {
+describe("Given a user is on to the browse page", () => {
   describe("When the browse page is rendered", () => {
     it("Then it displays 3 supermarket product grids", async () => {
       renderWithRouter(<Browse />);

@@ -1,0 +1,330 @@
+[
+  {
+    "id": "312806",
+    "title": "griffins snax crackers original 250g",
+    "amt": "250g",
+    "image": "https://assets.woolworths.com.au/images/2010/312806.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=312806&name=griffins-snax-crackers-original",
+    "price": {
+      "value": "3.99",
+      "per": "ea",
+      "unitPrice": "1.60",
+      "unit": "100g"
+    },
+    "promo": {
+      "value": "3.50",
+      "per": "ea",
+      "unitPrice": "1.40",
+      "unit": "100g",
+      "tag": "Member Price"
+    }
+  },
+  {
+    "id": "775663",
+    "title": "griffins snax crackers original 135g",
+    "amt": "135g",
+    "image": "https://assets.woolworths.com.au/images/2010/775663.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=775663&name=griffins-snax-crackers-original",
+    "price": {
+      "value": "2.40",
+      "per": "ea",
+      "unitPrice": "1.78",
+      "unit": "100g"
+    },
+    "promo": {
+      "tag": "LOW PRICE"
+    }
+  },
+  {
+    "id": "274912",
+    "title": "griffin's snax crackers minis original 125g 5pack",
+    "amt": "125g",
+    "image": "https://assets.woolworths.com.au/images/2010/274912.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=274912&name=griffins-snax-crackers-minis-original-125g",
+    "price": {
+      "value": "4.19",
+      "per": "ea",
+      "unitPrice": "3.35",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "261282",
+    "title": "ritz crackers original 227g",
+    "amt": "227g",
+    "image": "https://assets.woolworths.com.au/images/2010/261282.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=261282&name=ritz-crackers-original",
+    "price": {
+      "value": "3.50",
+      "per": "ea",
+      "unitPrice": "1.54",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "6033331",
+    "title": "snax crackers cheddar cheese 225g",
+    "amt": "225g",
+    "image": "https://assets.woolworths.com.au/images/2010/6033331.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=6033331&name=snax-crackers-cheddar-cheese",
+    "price": {
+      "value": "3.99",
+      "per": "ea",
+      "unitPrice": "1.77",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "384247",
+    "title": "arnotts shapes crackers cheese & bacon 175g",
+    "amt": "175g",
+    "image": "https://assets.woolworths.com.au/images/2010/384247.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=384247&name=arnotts-shapes-crackers-cheese-bacon",
+    "price": {
+      "value": "3.99",
+      "per": "ea",
+      "unitPrice": "2.22",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "312722",
+    "title": "griffins meal mates crackers original 230g",
+    "amt": "230g",
+    "image": "https://assets.woolworths.com.au/images/2010/312722.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=312722&name=griffins-meal-mates-crackers-original",
+    "price": {
+      "value": "3.99",
+      "per": "ea",
+      "unitPrice": "1.73",
+      "unit": "100g"
+    },
+    "promo": {
+      "value": "3.50",
+      "per": "ea",
+      "unitPrice": "1.52",
+      "unit": "100g",
+      "tag": "Member Price"
+    }
+  },
+  {
+    "id": "36019",
+    "title": "arnotts salada crackers original Box 250g",
+    "amt": "250g",
+    "image": "https://assets.woolworths.com.au/images/2010/36019.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=36019&name=arnotts-salada-crackers-original",
+    "price": {
+      "value": "3.70",
+      "per": "ea",
+      "unitPrice": "1.48",
+      "unit": "100g"
+    },
+    "promo": {
+      "tag": "LOW PRICE"
+    }
+  },
+  {
+    "id": "271341",
+    "title": "woolworths crackers original 250g",
+    "amt": "250g",
+    "image": "https://assets.woolworths.com.au/images/2010/271341.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=271341&name=woolworths-crackers-original",
+    "price": {
+      "value": "2.70",
+      "per": "ea",
+      "unitPrice": "1.08",
+      "unit": "100g"
+    },
+    "promo": {
+      "tag": "LOW PRICE"
+    }
+  },
+  {
+    "id": "348062",
+    "title": "ritz mini crackers munching cheese 155g",
+    "amt": "155g",
+    "image": "https://assets.woolworths.com.au/images/2010/348062.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=348062&name=ritz-mini-crackers-munching-cheese",
+    "price": {
+      "value": "4.00",
+      "per": "ea",
+      "unitPrice": "2.58",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "612774",
+    "title": "arnotts jatz crackers gluten free 130g",
+    "amt": "130g",
+    "image": "https://assets.woolworths.com.au/images/2010/612774.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=612774&name=arnotts-jatz-crackers-gluten-free",
+    "price": {
+      "value": "5.00",
+      "per": "ea",
+      "unitPrice": "3.85",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "384244",
+    "title": "arnotts shapes crackers cheddar 175g",
+    "amt": "175g",
+    "image": "https://assets.woolworths.com.au/images/2010/384244.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=384244&name=arnotts-shapes-crackers-cheddar",
+    "price": {
+      "value": "3.99",
+      "per": "ea",
+      "unitPrice": "2.28",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "70772",
+    "title": "woolworths crackers traditional 250g",
+    "amt": "250g",
+    "image": "https://assets.woolworths.com.au/images/2010/70772.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=70772&name=woolworths-crackers-traditional",
+    "price": {
+      "value": "2.00",
+      "per": "ea",
+      "unitPrice": "0.80",
+      "unit": "100g"
+    },
+    "promo": {
+      "tag": "LOW PRICE"
+    }
+  },
+  {
+    "id": "271223",
+    "title": "arnotts crackers harvest wheat 250g",
+    "amt": "250g",
+    "image": "https://assets.woolworths.com.au/images/2010/271223.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=271223&name=arnotts-crackers-harvest-wheat",
+    "price": {
+      "value": "4.49",
+      "per": "ea",
+      "unitPrice": "1.80",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "971024",
+    "title": "rutherford & meyer crackers fig & walnut 90g",
+    "amt": "90g",
+    "image": "https://assets.woolworths.com.au/images/2010/971024.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=971024&name=rutherford-meyer-crackers-fig-walnut",
+    "price": {
+      "value": "6.50",
+      "per": "ea",
+      "unitPrice": "7.22",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "971248",
+    "title": "rutherford & meyer crackers seed selection 90g",
+    "amt": "90g",
+    "image": "https://assets.woolworths.com.au/images/2010/971248.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=971248&name=rutherford-meyer-crackers-seed-selection",
+    "price": {
+      "value": "6.50",
+      "per": "ea",
+      "unitPrice": "7.22",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "971070",
+    "title": "rutherford & meyer crackers cranberry & coconut 90g",
+    "amt": "90g",
+    "image": "https://assets.woolworths.com.au/images/2010/971070.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=971070&name=rutherford-meyer-crackers-cranberry-coconut",
+    "price": {
+      "value": "6.50",
+      "per": "ea",
+      "unitPrice": "7.22",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "956188",
+    "title": "dairyworks cheese snack snax crackers & tasty 120g",
+    "amt": "120g",
+    "image": "https://assets.woolworths.com.au/images/2010/956188.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=956188&name=dairyworks-cheese-snack-snax-crackers-tasty",
+    "price": {
+      "value": "6.39",
+      "per": "ea",
+      "unitPrice": "5.33",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "383873",
+    "title": "griffin's biscuits toffee pops minis 5pk 125g",
+    "amt": "125g",
+    "image": "https://assets.woolworths.com.au/images/2010/383873.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=383873&name=griffins-biscuits-toffee-pops-minis",
+    "price": {
+      "value": "4.89",
+      "per": "ea",
+      "unitPrice": "3.91",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "230825",
+    "title": "griffins biscuits kiwi faves 375g 15pack",
+    "amt": "375g",
+    "image": "https://assets.woolworths.com.au/images/2010/230825.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=230825&name=griffins-biscuits-kiwi-faves-375g",
+    "price": {
+      "value": "8.00",
+      "per": "ea",
+      "unitPrice": "2.13",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "504166",
+    "title": "arnott's gold biscuits walnut & oat 110g",
+    "amt": "110g",
+    "image": "https://assets.woolworths.com.au/images/2010/504166.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=504166&name=arnotts-gold-biscuits-walnut-oat",
+    "price": {
+      "value": "5.00",
+      "per": "ea",
+      "unitPrice": "4.55",
+      "unit": "100g"
+    },
+    "promo": null
+  },
+  {
+    "id": "908431",
+    "title": "arnotts lightly toasted crackers apricot & macadamia 100g",
+    "amt": "100g",
+    "image": "https://assets.woolworths.com.au/images/2010/908431.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=908431&name=arnotts-lightly-toasted-crackers-apricot-macadamia",
+    "price": {
+      "value": "5.00",
+      "per": "ea",
+      "unitPrice": "5.00",
+      "unit": "100g"
+    },
+    "promo": null
+  }
+]
