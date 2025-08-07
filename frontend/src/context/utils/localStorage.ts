@@ -1,5 +1,3 @@
-import type { Cart } from "@/types/Cart.types";
-
 type LocalStorageKey = "cart" | "test";
 
 /*
