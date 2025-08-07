@@ -1,4 +1,4 @@
-export type Price = {
+type Price = {
   value: string;
   per?: string;
   unitPrice: string;
