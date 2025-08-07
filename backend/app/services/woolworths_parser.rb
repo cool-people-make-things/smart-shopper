@@ -125,7 +125,7 @@ class WoolworthsParser
     tag = get_tag(node)
     {
       price: current_price,
-      promo: tag ? { tag: tag } : {},
+      promo: tag ? { tag: tag } : nil,
     }
   end
 
@@ -165,7 +165,7 @@ class WoolworthsParser
   #
   # @param node [Nokogiri::XML::Element] The product node containing pricing HTML
   # @return [Hash] A hash with :price and optional :promo keys
-  #   - :price [Hash] :value :per :unitPrice :unit 
+  #   - :price [Hash] :value :per :unitPrice :unit
   #   - :promo [Hash]  :tag :plus any overridden price/unit/unitPrice data from the promo
   def self.get_member_prices(node, current_price)
     price = {}
