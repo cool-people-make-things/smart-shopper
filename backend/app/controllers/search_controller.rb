@@ -32,10 +32,10 @@ class SearchController < ApplicationController
         parser = case supermarket
           when "nw"
             NewWorldParser
-
-          # when "wls"
-          #   WoolworthsParser
-
+          when "pns"
+            PaknsaveParser
+          when "wls"
+            WoolworthsParser
           end
 
         products = parser.get_products(html)
