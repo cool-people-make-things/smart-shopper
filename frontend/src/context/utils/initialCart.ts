@@ -1,5 +1,3 @@
-import type { Cart } from "@/types/Cart.types";
-
 // TODO: This (temporary) cart does not match current Cart type
 // `as Cart` is used to satisfy type checking, but replace with:
 // export const initialCart: Cart = {
