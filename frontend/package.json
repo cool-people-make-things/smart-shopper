@@ -11,6 +11,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,md}'",
     "preview": "vite preview",
     "test": "vitest",
+    "test:coverage": "npx vitest run --coverage",
     "test:run": "vitest run",
     "test:watch": "vitest --watch"
   },
@@ -40,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
     "@vitejs/plugin-react": "^4.6.0",
+    "@vitest/coverage-v8": "^3.2.4",
     "axe-core": "^4.10.3",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
