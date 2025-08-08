@@ -1,5 +1,3 @@
-import type { Product } from "@/types/Product.types";
-
 export type SearchResponse = {
   query: string;
   supermarket: string;
