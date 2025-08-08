@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Ignore coverage reports
+coverage/
+
 # env
 .env

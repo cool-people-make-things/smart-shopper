@@ -8,9 +8,22 @@ import type { ViteUserConfig } from "vitest/config";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"],
+      exclude: [
+        "**/index.{ts,tsx}", 
+        "**/__mocks__/**", 
+        "**/*.config.{js,ts}", 
+        "**/vite-env.d.ts", 
+        "**/*.types.d.ts",
+        "**/main.tsx",
+        "**/App.tsx",
+      ],
+    },
     globals: true,
     environment: "jsdom",
-    setupFiles: './vitest.setup.ts',
+    setupFiles: "./vitest.setup.ts",
   },
   resolve: {
     alias: {
