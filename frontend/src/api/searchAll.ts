@@ -1,9 +1,7 @@
-import type { Supermarket } from "@/hooks/useSearchAllSupermarkets";
-import type { Product } from "@/types/Product.types";
-
 import { searchProducts } from "./search";
 
-export const supermarkets = ["nw", "wls", "pns"];
+export const supermarkets = ["nw", "pns", "wls"] as const;
+export type Supermarket = (typeof supermarkets)[number];
 
 type SearchStatus = "loading" | "success" | "error";
 
@@ -63,6 +61,5 @@ export async function searchAllSupermarkets(
       };
     }
   });
-
   return result;
 }
