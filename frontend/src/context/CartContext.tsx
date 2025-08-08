@@ -1,6 +1,13 @@
-import { createContext, type ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-import { initialCart } from "./utils/initialCart";
+import { initialCart } from "./utils/initialCart"; // On remove, uncomment initialCart below
+import { getLocalData, setLocalData } from "./utils/localStorage";
 
 type CartContextType = {
   cart: Cart;
@@ -9,11 +16,18 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+// TODO: uncomment when removing fake cart data
+// const initialCart = { nw: [], pns: [], wls: [] };
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState(initialCart);
+  const [cart, setCart] = useState(getLocalData("cart") || initialCart);
+
+  useEffect(() => {
+    setLocalData("cart", cart);
+  }, [cart]);
 
   const clearCart = () => {
-    setCart({ nw: [], pns: [], wls: [] });
+    setCart(initialCart);
   };
 
   return (
