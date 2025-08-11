@@ -4,5 +4,5 @@ type Product = {
   image: string;
   productPageUrl: string;
   price: Price;
-  promo: Promo;
+  promo: Promo | null;
 };
