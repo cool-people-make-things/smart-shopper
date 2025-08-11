@@ -1,5 +1,20 @@
 #!/bin/bash
 
-echo "-- Running all RSpec tests..."
-bundle exec rspec --format documentation
+TEST_DIR="spec"
+
+if [ -z "$1" ]; then
+  echo "-- Running all RSpec tests..."
+  bundle exec rspec --format documentation
+else
+  FILE_PATH=$(find "$TEST_DIR" -type f -name "*$1*" | head -n 1)
+
+  if [ -n "$FILE_PATH" ]; then
+    echo "-- Running tests for: $FILE_PATH"
+    bundle exec rspec "$FILE_PATH" --format documentation
+  else
+    echo "Error: No test file found matching '$1' in '$TEST_DIR'."
+    exit 1
+  fi
+fi
+
 echo "-- Completed all RSpec tests"
