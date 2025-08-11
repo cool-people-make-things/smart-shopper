@@ -1,4 +1,4 @@
-export type Promo = NWPromo | PNSPromo | WLSPromo;
+type Promo = NWPromo | PNSPromo | WLSPromo;
 
 type NWPromo = {
   tag: string;

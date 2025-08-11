@@ -26,7 +26,7 @@ describe("Given a user is looking at an individual supermarkets product column "
       renderWithRouter(<ProductColumn {...mockData} />);
 
       const supermarketProducts = screen.getAllByTestId("card-component");
-      expect(supermarketProducts).toHaveLength(3);
+      expect(supermarketProducts).toHaveLength(11);
     });
     it("Then it displays the product cards in a 2 column grid", () => {
       renderWithRouter(<ProductColumn {...mockData} />);

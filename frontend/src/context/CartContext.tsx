@@ -1,7 +1,5 @@
 import { createContext, type ReactNode, useContext, useState } from "react";
 
-import type { Cart } from "@/types/Cart.types";
-
 import { initialCart } from "./utils/initialCart";
 
 type CartContextType = {
