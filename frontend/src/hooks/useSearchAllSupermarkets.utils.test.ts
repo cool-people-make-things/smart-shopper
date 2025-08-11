@@ -1,14 +1,14 @@
 import type { UseQueryResult } from "@tanstack/react-query";
 import { describe, expect, it } from "vitest";
 
-import type { Supermarket } from "@/api/searchAll";
 import nwFixture from "@/lib/test/fixtures/nw_actual.json";
 
+import type { Supermarket } from "./useSearchAllSupermarkets";
 import { groupQueryResultsBySupermarket } from "./useSearchAllSupermarkets.utils";
 
 const supermarkets: Supermarket[] = ["nw", "wls", "pns"];
 
-const mockProducts = nwFixture as Product[];
+const mockProducts = nwFixture;
 
 describe("Given a request has been made to all supermarkets and the groupQueryResultsBySupermarket is called to group the results", () => {
   describe("When all request results are successful", () => {
@@ -17,7 +17,7 @@ describe("Given a request has been made to all supermarkets and the groupQueryRe
         data: mockProducts,
         isLoading: false,
         error: null,
-      })) as UseQueryResult<Product[]>[];
+      })) as unknown as UseQueryResult<Product[]>[];
 
       const result = groupQueryResultsBySupermarket(supermarkets, mockQueries);
 

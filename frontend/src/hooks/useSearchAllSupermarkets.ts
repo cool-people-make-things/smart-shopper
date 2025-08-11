@@ -8,15 +8,11 @@ const supermarkets = ["nw", "pns", "wls"] as const;
 
 export type Supermarket = (typeof supermarkets)[number];
 
-export type ProductWithSupermarket = Product & {
-  supermarket: Supermarket;
-};
-
 /**
  * Represents the state of search results for a particular supermarket
  */
 export type MarketResult = {
-  data: ProductWithSupermarket[]; // The array of products returned by the search
+  data: Product[]; // The array of products returned by the search
   isLoading: boolean; // TRUE if the search query for this
   error: unknown; // Error object or value if the search failed
 };
@@ -45,7 +41,7 @@ export function useSearchAllSupermarkets(
       staleTime: 5 * 60 * 1000, // cache results for 5 minutes
       retry: false,
     })),
-  }) as UseQueryResult<ProductWithSupermarket[]>[];
+  }) as UseQueryResult<Product[]>[];
 
   // Processes each item in the array
   return groupQueryResultsBySupermarket([...supermarkets], queries);
