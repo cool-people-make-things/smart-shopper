@@ -146,7 +146,7 @@ class PaknsaveParser
 
     limit_node = promo_node.at_css("[data-testid='promo-product-limit']")
     if limit_node
-      promo[:limit] = limit_node.text.strip
+      promo[:limit] = limit_node.text.strip.split(" ").last
     end
 
     promo
