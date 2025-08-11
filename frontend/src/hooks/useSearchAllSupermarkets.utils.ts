@@ -1,10 +1,6 @@
 import type { UseQueryResult } from "@tanstack/react-query";
 
-import type {
-  MarketResult,
-  ProductWithSupermarket,
-  Supermarket,
-} from "./useSearchAllSupermarkets";
+import type { MarketResult, Supermarket } from "./useSearchAllSupermarkets";
 
 /**
  * groupQueryResultsBySupermarket - Groups query results by supermarket
@@ -15,7 +11,7 @@ import type {
  */
 export function groupQueryResultsBySupermarket(
   supermarkets: Supermarket[],
-  queries: UseQueryResult<ProductWithSupermarket[]>[],
+  queries: UseQueryResult<Product[]>[],
 ): Record<Supermarket, MarketResult> {
   const results = {} as Record<Supermarket, MarketResult>;
 
