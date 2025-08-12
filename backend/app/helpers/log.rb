@@ -27,9 +27,7 @@ class Log
   # @param propagate [Boolean] Defaults to TRUE, raising the error for further handling
   def self.error(message, propagate: true)
     Rails.logger.error("--> ERR!! #{message}")
-    if propagate
-      raise message.is_a?(Exception) ? message : StandardError.new(message)
-    end
+    raise message.is_a?(Exception) ? message : StandardError.new(message) if propagate
   end
 
   private

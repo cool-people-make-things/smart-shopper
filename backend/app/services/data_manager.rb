@@ -55,8 +55,6 @@ class DataManager
   # @param supermarket [String] The supermarket identifier
   # @raise [ArgumentError] If the supermarket is not recognized
   def self.validate_supermarket!(supermarket)
-    unless VALID_SUPERMARKETS.include?(supermarket)
-      Log.error(ArgumentError, "Unknown supermarket: #{supermarket}")
-    end
+    Log.error(ArgumentError, "Unknown supermarket: #{supermarket}") unless VALID_SUPERMARKETS.include?(supermarket)
   end
 end

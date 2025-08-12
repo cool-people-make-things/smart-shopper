@@ -11,9 +11,7 @@ class WoolworthsParser
 
     product_grid = doc.at_css("product-grid")
 
-    unless product_grid
-      Log.error("Product grid not found in the HTML document.")
-    end
+    Log.error("Product grid not found in the HTML document.") unless product_grid
 
     product_grid_items = product_grid.children
     valid_items = product_grid_items.select { |node| node.element? && node.name == "cdx-card" }
@@ -41,6 +39,7 @@ class WoolworthsParser
     ticketed_prices = extract_price_and_promo(node)
 
     {
+      supermarket: "wls",
       id: extract_id(node),
       title: title,
       amt: extract_amt(title),
