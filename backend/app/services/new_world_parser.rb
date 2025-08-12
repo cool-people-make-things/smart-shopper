@@ -11,9 +11,7 @@ class NewWorldParser
     filter_menu = doc.at_css("[data-testid='selected-refinements']")
     product_grid = filter_menu&.next_element
 
-    unless product_grid
-      Log.error("Product grid not found in the HTML document.")
-    end
+    Log.error("Product grid not found in the HTML document.") unless product_grid
 
     product_grid_items = product_grid.children.children
     Log.debug("Found #{product_grid_items.size} products")
@@ -36,6 +34,7 @@ class NewWorldParser
     ticketed_prices = extract_price_and_promo(node)
 
     {
+      supermarket: "nw",
       id: extract_id(node),
       title: extract_name(node),
       amt: extract_amt(node),
@@ -115,8 +114,8 @@ class NewWorldParser
 
       promo_unit_nodes = node.css("[data-testid='complex-promo-unit-price']", node)
       promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
-      promo[:unitPrice] = promo_unit_price.gsub("$", "")
-      promo[:unit] = promo_unit
+      promo[:unitPrice] = promo_unit_price&.gsub("$", "")
+      promo[:unit] = promo_unit ? promo_unit : nil
 
       limit_node = node.at_css("[data-testid='promo-product-limit']", node)
       if limit_node
@@ -131,8 +130,8 @@ class NewWorldParser
     price = {
       value: get_value(dollar_nodes.last, cent_nodes.last),
       per: per_nodes.last.text.strip,
-      unitPrice: unit_price.gsub("$", ""),
-      unit: unit,
+      unitPrice: unit_price&.gsub("$", ""),
+      unit: unit ? unit : nil,
     }
 
     {

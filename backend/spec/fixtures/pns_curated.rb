@@ -1,5 +1,6 @@
 module MockTestData
   PNS_MULTIBUY_OBJ = {
+    supermarket: "pns",
     id: "5109655",
     title: "Mogu Mogu Lychee Juice With Nate De Coco",
     amt: "320ml",
@@ -21,6 +22,7 @@ module MockTestData
   }
 
   PNS_LIMIT_OBJ = {
+    supermarket: "pns",
     id: "5236273",
     title: "Karicare 1 Baby Infant Formula From Birth to 6 Months",
     amt: "900g",
@@ -41,6 +43,7 @@ module MockTestData
     },
   }
   PNS_EXTRA_LOW_OBJ = {
+    supermarket: "pns",
     id: "5011024",
     title: "Arnott's Shapes Originals Chicken Crimpy Crackers",
     amt: "175g",
@@ -58,6 +61,7 @@ module MockTestData
   }
 
   PNS_NORMAL_OBJ = {
+    supermarket: "pns",
     id: "5236771",
     title: "Flying Goose Original Sriracha Hot Chilli Sauce",
     amt: "455ml",

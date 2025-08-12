@@ -11,9 +11,7 @@ class PaknsaveParser
     filter_menu = doc.at_css("[data-testid='selected-refinements']")
     product_grid = filter_menu&.next_element
 
-    unless product_grid
-      Log.error("Product grid not found in the HTML document.")
-    end
+    Log.error("Product grid not found in the HTML document.") unless product_grid
 
     product_grid_items = product_grid.children.children
     Log.debug("Found #{product_grid_items.size} products")
@@ -34,6 +32,7 @@ class PaknsaveParser
   # @return [Product || nil] The product details or nil if parsing fails
   def self.parse_one_product(node)
     {
+      supermarket: "pns",
       id: extract_id(node),
       title: extract_name(node),
       amt: extract_amt(node),
@@ -104,8 +103,8 @@ class PaknsaveParser
     {
       value: get_value(dollar_nodes.last, cent_nodes.last),
       per: per_nodes.last.text.strip,
-      unitPrice: unit_price.gsub("$", ""),
-      unit: unit,
+      unitPrice: unit_price&.gsub("$", ""),
+      unit: unit ? unit : nil,
     }
   end
 
@@ -135,19 +134,14 @@ class PaknsaveParser
 
     promo_unit_nodes = promo_node.css("[data-testid='complex-promo-unit-price']")
     promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
-    promo[:unitPrice] = promo_unit_price.gsub("$", "")
-    promo[:unit] = promo_unit
+    promo[:unitPrice] = promo_unit_price&.gsub("$", "")
+    promo[:unit] = promo_unit ? promo_unit : nil
 
     multibuy_threshold_node = promo_node.at_css("[data-testid='multibuy-threshold']")
-
-    if multibuy_threshold_node
-      promo[:multibuyThreshold] = multibuy_threshold_node.text.split(" ").first
-    end
+    promo[:multibuyThreshold] = multibuy_threshold_node.text.split(" ").first if multibuy_threshold_node
 
     limit_node = promo_node.at_css("[data-testid='promo-product-limit']")
-    if limit_node
-      promo[:limit] = limit_node.text.strip.split(" ").last
-    end
+    promo[:limit] = limit_node.text.strip.split(" ").last if limit_node
 
     promo
   end
