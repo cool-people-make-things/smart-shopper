@@ -75,9 +75,8 @@ class WebScraper
 
     # path for chromium on docker
     options.binary = "/usr/bin/chromium"
-    unless File.exist?(options.binary)
-      Log.error("Chromium binary not found at #{options.binary}.")
-    end
+
+    Log.error("Chromium binary not found at #{options.binary}.") unless File.exist?(options.binary)
 
     # ---- Some of these may be unnecessary, but they help with performance etc --
     options.add_argument("--headless=new") # new headless mode for compatibility

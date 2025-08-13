@@ -70,14 +70,7 @@ class SearchController < ApplicationController
   # @raise [ActionController::BadRequest] If the supermarket is not in the list of valid shops or if the query parameter is blank
   def validate_search!
     source = params[:supermarket]
-    unless VALID_SHOPS.include?(source)
-      render json: { error: "Invalid supermarket source" }, status: :bad_request
-      return
-    end
-
-    if params[:q].blank?
-      render json: { error: "Query parameter is required" }, status: :bad_request
-      return
-    end
+    render json: { error: "Invalid supermarket source" }, status: :bad_request and return unless VALID_SHOPS.include?(source)
+    render json: { error: "Query parameter is required" }, status: :bad_request and return if params[:q].blank?
   end
 end

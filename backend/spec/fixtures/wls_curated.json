@@ -4,6 +4,7 @@
   "source": "https://www.woolworths.co.nz/shop/searchproducts?search=v",
   "results": [
     {
+      "supermarket": "wls",
       "id": "139864",
       "title": "v vitalise energy drink guarana Single can 250mL",
       "amt": "250mL",
@@ -24,6 +25,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "132815",
       "title": "v vitalise energy drink 250ml Can 4pack",
       "amt": "250ml",
@@ -38,6 +40,7 @@
       "promo": null
     },
     {
+      "supermarket": "wls",
       "id": "315692",
       "title": "v vitalise energy drink Single can 500mL",
       "amt": "500mL",
@@ -58,6 +61,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "98508",
       "title": "turks free range chicken breast skinless fillet 450g",
       "amt": "450g",
@@ -74,6 +78,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "344618",
       "title": "woolworths chicken whole Each 1.35kg",
       "amt": "1.35kg",
@@ -93,6 +98,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "363271",
       "title": "tegel meal maker free range shredded roast chicken 100g 2 x 50g pks",
       "amt": "100g",
@@ -113,6 +119,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "251463",
       "title": "woolworths NZ chicken mince breast 3% fat barn raised Tray 400g",
       "amt": "400g",
@@ -132,6 +139,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "6014370",
       "title": "tegel free range quick cook chicken steaks chargrilled 4pk 400g",
       "amt": "400g",
@@ -148,6 +156,7 @@
       }
     },
     {
+      "supermarket": "wls",
       "id": "281082",
       "title": "fresh vegetable broccoli head",
       "amt": null,

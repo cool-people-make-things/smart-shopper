@@ -17,16 +17,15 @@ export default defineConfig([
   js.configs.recommended,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
-
   {
     ignores: [
-      '*.scss',
-      '*.css',
-      '*.config.*',
-      '*.setup.*',
+    "coverage/",
+    "*.scss",
+    "*.css",
+    "*.config.*",
+    "*.setup.*",
     ],
   },
-
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
