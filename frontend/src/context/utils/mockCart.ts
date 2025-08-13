@@ -3,10 +3,9 @@
 // export const initialCart: Cart = {
 // once Parsing types from backend are finalised.
 
-export const initialCart = {
-  nw: [
-    {
-      id: "5263014",
+export const mockCartData = {
+  nw: {
+    "5263014": {
       quantity: 2,
       product: {
         id: "5263014",
@@ -31,8 +30,7 @@ export const initialCart = {
         },
       },
     },
-    {
-      id: "5023660",
+    "5023660": {
       quantity: 5,
       product: {
         id: "5023660",
@@ -47,11 +45,10 @@ export const initialCart = {
           unitPrice: "1.70",
           unit: "100g",
         },
-        promo: {},
+        promo: null,
       },
     },
-    {
-      id: "5007494",
+    "5007494": {
       quantity: 1,
       product: {
         id: "5007494",
@@ -77,8 +74,7 @@ export const initialCart = {
         },
       },
     },
-    {
-      id: "5201479",
+    "5201479": {
       quantity: 40,
       product: {
         id: "5201479",
@@ -94,13 +90,12 @@ export const initialCart = {
           unitPrice: "2.30",
           unit: "1L",
         },
-        promo: {},
+        promo: null,
       },
     },
-  ],
-  pns: [
-    {
-      id: "5002650",
+  },
+  pns: {
+    "5002650": {
       quantity: 2,
       product: {
         id: "5002650",
@@ -124,9 +119,7 @@ export const initialCart = {
         },
       },
     },
-
-    {
-      id: "5109655",
+    "5109655": {
       quantity: 12,
       product: {
         id: "5109655",
@@ -151,9 +144,7 @@ export const initialCart = {
         },
       },
     },
-
-    {
-      id: "5294382",
+    "5294382": {
       quantity: 1,
       product: {
         id: "5294382",
@@ -169,12 +160,10 @@ export const initialCart = {
           unitPrice: "5.49",
           unit: "1kg",
         },
-        promo: {},
+        promo: null,
       },
     },
-
-    {
-      id: "5012239",
+    "5012239": {
       quantity: 4,
       product: {
         id: "5012239",
@@ -195,9 +184,7 @@ export const initialCart = {
         },
       },
     },
-
-    {
-      id: "5306376",
+    "5306376": {
       quantity: 1,
       product: {
         id: "5306376",
@@ -218,10 +205,9 @@ export const initialCart = {
         },
       },
     },
-  ],
-  wls: [
-    {
-      id: "6030021",
+  },
+  wls: {
+    "6030021": {
       quantity: 2,
       product: {
         id: "6030021",
@@ -246,8 +232,7 @@ export const initialCart = {
         },
       },
     },
-    {
-      id: "956132",
+    "956132": {
       quantity: 10,
       product: {
         id: "956132",
@@ -272,13 +257,11 @@ export const initialCart = {
         },
       },
     },
-    {
-      id: "253877",
+    "253877": {
       quantity: 1,
       product: {
         id: "253877",
         title: "macro eggs free range mixed grade Carton 12pack",
-        amt: null,
         image:
           "https://assets.woolworths.com.au/images/2010/253877.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -294,13 +277,11 @@ export const initialCart = {
         },
       },
     },
-    {
-      id: "281809",
+    "281809": {
       quantity: 5,
       product: {
         id: "281809",
         title: "woolworths cheese edam Block 1kg",
-        amt: "1kg",
         image:
           "https://assets.woolworths.com.au/images/2010/281809.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -311,16 +292,14 @@ export const initialCart = {
           unitPrice: "1.33",
           unit: "100g",
         },
-        promo: {},
+        promo: null,
       },
     },
-    {
-      id: "266023",
+    "266023": {
       quantity: 1,
       product: {
         id: "266023",
         title: "watties spaghetti in tomato sauce Cans 3pack",
-        amt: null,
         image:
           "https://assets.woolworths.com.au/images/2010/266023.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -336,8 +315,7 @@ export const initialCart = {
         },
       },
     },
-    {
-      id: "74613",
+    "74613": {
       quantity: 1,
       product: {
         id: "74613",
@@ -361,5 +339,5 @@ export const initialCart = {
         },
       },
     },
-  ],
+  },
 } as Cart;

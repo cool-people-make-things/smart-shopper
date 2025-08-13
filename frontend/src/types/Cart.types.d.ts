@@ -1,11 +1,10 @@
 type Cart = {
-  nw: CartItem[];
-  pns: CartItem[];
-  wls: CartItem[];
+  nw: Record<string, CartItem>;
+  pns: Record<string, CartItem>;
+  wls: Record<string, CartItem>;
 };
 
 type CartItem = {
-  id: string;
   product: Product;
   quantity: number;
 };
