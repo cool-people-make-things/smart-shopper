@@ -6,12 +6,12 @@ import {
   useState,
 } from "react";
 
+import { devInitialCart } from "./utils/devInitialCart";
 import { getLocalData, setLocalData } from "./utils/localStorage";
-import { mockCartData } from "./utils/mockCart";
 
 const EMPTY_CART = { nw: {}, pns: {}, wls: {} };
 const initialCart =
-  process.env.NODE_ENV === "development" ? mockCartData : EMPTY_CART;
+  process.env.NODE_ENV === "development" ? devInitialCart : EMPTY_CART;
 
 type CartContextType = {
   cart: Cart;

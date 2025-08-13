@@ -1,16 +1,10 @@
-// TODO: This (temporary) cart does not match current Cart type
-// `as Cart` is used to satisfy type checking, but replace with:
-// export const initialCart: Cart = {
-// once Parsing types from backend are finalised.
-
-export const mockCartData = {
+export const devInitialCart: Cart = {
   nw: {
     "5263014": {
       quantity: 2,
       product: {
         id: "5263014",
-        title: "Pams Buttery Spread",
-        amt: "500g",
+        title: "Pams Buttery Spread 500g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5263014.png?w=384",
         productPageUrl:
@@ -34,8 +28,7 @@ export const mockCartData = {
       quantity: 5,
       product: {
         id: "5023660",
-        title: "Pams Pure Butter",
-        amt: "500g",
+        title: "Pams Pure Butter 500g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384",
         productPageUrl: "/shop/product/5023660_ea_000nw?name=pams-pure-butter",
@@ -52,8 +45,7 @@ export const mockCartData = {
       quantity: 1,
       product: {
         id: "5007494",
-        title: "V Blue Guarana Energy Drink",
-        amt: "500ml",
+        title: "V Blue Guarana Energy Drink 500ml",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5007494.png?w=384",
         productPageUrl:
@@ -78,8 +70,7 @@ export const mockCartData = {
       quantity: 40,
       product: {
         id: "5201479",
-        title: "Pams Value Standard Milk",
-        amt: "2l",
+        title: "Pams Value Standard Milk 2l",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5201479.png?w=384",
         productPageUrl:
@@ -99,8 +90,7 @@ export const mockCartData = {
       quantity: 2,
       product: {
         id: "5002650",
-        title: "Anchor Butter",
-        amt: "500g",
+        title: "Anchor Butter 500g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384",
         productPageUrl: "/shop/product/5002650_ea_000nw?name=anchor-butter",
@@ -123,8 +113,7 @@ export const mockCartData = {
       quantity: 12,
       product: {
         id: "5109655",
-        title: "Mogu Mogu Lychee Juice With Nate De Coco",
-        amt: "320ml",
+        title: "Mogu Mogu Lychee Juice With Nate De Coco 320ml",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5109655.png?w=384",
         productPageUrl:
@@ -148,8 +137,7 @@ export const mockCartData = {
       quantity: 1,
       product: {
         id: "5294382",
-        title: "SB Frozen Whole Florets Broccoli",
-        amt: "1kg",
+        title: "SB Frozen Whole Florets Broccoli 1kg",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5294382.png?w=384",
         productPageUrl:
@@ -167,8 +155,7 @@ export const mockCartData = {
       quantity: 4,
       product: {
         id: "5012239",
-        title: "Wattie's Broccoli & Cauliflower Medley",
-        amt: "650g",
+        title: "Wattie's Broccoli & Cauliflower Medley 650g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5012239.png?w=384",
         productPageUrl:
@@ -188,8 +175,7 @@ export const mockCartData = {
       quantity: 1,
       product: {
         id: "5306376",
-        title: "Coca-Cola Zero Sugar Soft Drinks Cans",
-        amt: "8 x 330ml",
+        title: "Coca-Cola Zero Sugar Soft Drinks Cans 8 x 330ml",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5306376.png?w=384",
         productPageUrl:
@@ -212,7 +198,6 @@ export const mockCartData = {
       product: {
         id: "6030021",
         title: "riley coffee beans heyday 500g",
-        amt: "500g",
         image:
           "https://assets.woolworths.com.au/images/2010/6030021.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -227,8 +212,6 @@ export const mockCartData = {
           tag: "Special",
           value: "22.50",
           per: "ea",
-          unitPrice: null,
-          unit: null,
         },
       },
     },
@@ -237,7 +220,6 @@ export const mockCartData = {
       product: {
         id: "956132",
         title: "whittakers chocolate block raspberry & NZ strawberry 100g",
-        amt: "100g",
         image:
           "https://assets.woolworths.com.au/images/2010/956132.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -252,8 +234,6 @@ export const mockCartData = {
           tag: "Special",
           value: "4.70",
           per: "ea",
-          unitPrice: null,
-          unit: null,
         },
       },
     },
@@ -320,7 +300,6 @@ export const mockCartData = {
       product: {
         id: "74613",
         title: "la molisana pasta spaghetti 500g",
-        amt: "500g",
         image:
           "https://assets.woolworths.com.au/images/2010/74613.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -340,4 +319,4 @@ export const mockCartData = {
       },
     },
   },
-} as Cart;
+};
