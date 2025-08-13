@@ -31,11 +31,12 @@ class PaknsaveParser
   # @param node [Nokogiri::XML::Element] The parent tag containing product details
   # @return [Product || nil] The product details or nil if parsing fails
   def self.parse_one_product(node)
+    product_title = "#{extract_name(node)} #{extract_amt(node)}"
+
     {
       supermarket: "pns",
       id: extract_id(node),
-      title: extract_name(node),
-      amt: extract_amt(node),
+      title: product_title,
       image: extract_img(node),
       productPageUrl: extract_product_page_url(node),
       price: extract_price(node),
@@ -84,7 +85,8 @@ class PaknsaveParser
   # @return [String] The product page URL
   def self.extract_product_page_url(node)
     dirty_link = node.at_css("a")&.[]("href")
-    dirty_link.split("#").first
+    link = dirty_link.split("#").first
+    "https://www.paknsave.co.nz#{link}"
   end
 
   # extract_price - Retrieves the price details

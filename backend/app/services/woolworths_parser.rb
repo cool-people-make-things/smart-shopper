@@ -42,7 +42,6 @@ class WoolworthsParser
       supermarket: "wls",
       id: extract_id(node),
       title: title,
-      amt: extract_amt(title),
       image: extract_image(node),
       productPageUrl: extract_product_page_url(node),
       price: ticketed_prices[:price],
@@ -71,22 +70,6 @@ class WoolworthsParser
       &.text
       &.gsub(/\s+/, " ") # <- Replaces whitespace chunks with a single space
       &.strip
-  end
-
-  # extract_amt - Extracts the amount (e.g., weight or volume) from the product title
-  #
-  # @param title [String, nil] The product title text
-  # @return [String, nil] The extracted amount string (e.g., "500g", "0.6-0.8kg"), or nil if not found
-  #
-  # @example
-  #   extract_amt("Chicken Thighs 580g - 800g") # => "580g-800g"
-  #   extract_amt("Milk 2L")                    # => "2L"
-  #   extract_amt(nil)                          # => nil
-  def self.extract_amt(title)
-    return nil unless title
-    # Match patterns like "0.6-0.8kg", "580g - 800g", "1.0kg - 1.35kg", "1.3-1.9kg", "500g"
-    match = title.match(/(\d+(?:\.\d+)?(?:\s*[–-]\s*\d+(?:\.\d+)?)(?:kg|g|ml|l)|\d+(?:\.\d+)?(?:kg|g|ml|l))/i)
-    match[1].gsub(/\s+/, "") if match
   end
 
   # extract_image - Extracts the product image URL from the node
