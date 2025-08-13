@@ -165,6 +165,40 @@
         "unit": null,
         "unitPrice": null
       }
+    },
+    {
+      "supermarket": "wls",
+      "id": "705958",
+      "title": "speight's summit beer lager ultra low carb Bottle 24x330mL",
+      "image": "https://assets.woolworths.com.au/images/2010/705958.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+      "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=705958&name=speights-summit-beer-lager-ultra-low-carb",
+      "price": {
+        "value": "49.99",
+        "per": "ea",
+        "unitPrice": null,
+        "unit": null
+      },
+      "promo": {
+        "tag": "Special",
+        "value": "41.00",
+        "per": "ea",
+        "unitPrice": null,
+        "unit": null
+      }
+    },
+    {
+      "supermarket": "wls",
+      "id": "907038",
+      "title": "speight's gold medal beer ale Bottle 24x330mL",
+      "image": "https://assets.woolworths.com.au/images/2010/907038.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+      "productPageUrl": "https://www.woolworths.co.nz/shop/productdetails?stockcode=907038&name=speights-gold-medal-beer-ale",
+      "price": {
+        "value": "48.99",
+        "per": "ea",
+        "unitPrice": null,
+        "unit": null
+      },
+      "promo": null
     }
   ]
 }
