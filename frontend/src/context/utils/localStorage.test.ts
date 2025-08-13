@@ -152,6 +152,6 @@ describe("Given a user's data is saved to localStorage", () => {
   });
 
   describe("When invalid data is saved", () => {
-    it.todo("Then the data error is thrown");
+    it.todo("Then the data error is thrown"); // setLocalData currently does not validate data
   });
 });
