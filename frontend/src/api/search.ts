@@ -19,7 +19,7 @@ export async function searchProducts(
   query: string,
   supermarket: string,
 ): Promise<SearchResponse> {
-  return apiClient(`/search/${supermarket}`, {
+  return apiClient(`/api/v1/search/${supermarket}`, {
     method: "GET",
     query: { q: query },
   });
