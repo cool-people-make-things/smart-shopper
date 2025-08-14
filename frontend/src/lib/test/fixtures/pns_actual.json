@@ -1,8 +1,8 @@
 [
   {
     "id": "5010439",
-    "title": "Griffin's Snax Original Crackers",
-    "amt": "250g",
+    "supermarket": "pns",
+    "title": "Griffin's Snax Original Crackers 250g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5010439.png?w=384",
     "productPageUrl": "/shop/product/5010439_ea_000pns?name=griffin%27s-snax-original-crackers",
     "price": {
@@ -15,8 +15,8 @@
   },
   {
     "id": "5023171",
-    "title": "Griffin's Snax Original Crackers",
-    "amt": "135g",
+    "supermarket": "pns",
+    "title": "Griffin's Snax Original Crackers 135g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023171.png?w=384",
     "productPageUrl": "/shop/product/5023171_ea_000pns?name=griffin%27s-snax-original-crackers",
     "price": {
@@ -29,8 +29,8 @@
   },
   {
     "id": "5313051",
-    "title": "Griffin's Snax Minis Original Crackers",
-    "amt": "5 x 25g",
+    "supermarket": "pns",
+    "title": "Griffin's Snax Minis Original Crackers 5 x 25g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5313051.png?w=384",
     "productPageUrl": "/shop/product/5313051_ea_000pns?name=griffin%27s-snax-minis-original-crackers",
     "price": {
@@ -45,8 +45,8 @@
   },
   {
     "id": "5020690",
-    "title": "Arnott's Jatz Original Crackers",
-    "amt": "225g",
+    "supermarket": "pns",
+    "title": "Arnott's Jatz Original Crackers 225g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5020690.png?w=384",
     "productPageUrl": "/shop/product/5020690_ea_000pns?name=arnott%27s-jatz-original-crackers",
     "price": {
@@ -61,8 +61,8 @@
   },
   {
     "id": "5329222",
-    "title": "Dairyworks Tasty Natural Cheese and Griffins Snax Crackers",
-    "amt": "4 x 30g",
+    "supermarket": "pns",
+    "title": "Dairyworks Tasty Natural Cheese and Griffins Snax Crackers 4 x 30g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5329222.png?w=384",
     "productPageUrl": "/shop/product/5329222_ea_000pns?name=dairyworks-tasty-natural-cheese-and-griffins-snax-crackers",
     "price": {
@@ -75,8 +75,8 @@
   },
   {
     "id": "5338549",
-    "title": "Griffin's Snax Cheddar Cheese Crackers",
-    "amt": "225g",
+    "supermarket": "pns",
+    "title": "Griffin's Snax Cheddar Cheese Crackers 225g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5338549.png?w=384",
     "productPageUrl": "/shop/product/5338549_ea_000pns?name=griffin%27s-snax-cheddar-cheese-crackers",
     "price": {
@@ -89,8 +89,8 @@
   },
   {
     "id": "5335195",
-    "title": "Arnott's Jatz Original Crackers",
-    "amt": "310g",
+    "supermarket": "pns",
+    "title": "Arnott's Jatz Original Crackers 310g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5335195.png?w=384",
     "productPageUrl": "/shop/product/5335195_ea_000pns?name=arnott%27s-jatz-original-crackers",
     "price": {
@@ -103,8 +103,8 @@
   },
   {
     "id": "5325533",
-    "title": "Arnott's Jatz Gluten Free Cracker",
-    "amt": "130g",
+    "supermarket": "pns",
+    "title": "Arnott's Jatz Gluten Free Cracker 130g",
     "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5325533.png?w=384",
     "productPageUrl": "/shop/product/5325533_ea_000pns?name=arnott%27s-jatz-gluten-free-cracker",
     "price": {

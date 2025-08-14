@@ -6,9 +6,9 @@ import wlsData from "@/lib/test/fixtures/wls_actual.json";
 
 export function Browse() {
   const dummyData = {
-    nw: { data: nwData, store: "New World" },
-    pns: { data: pnsData, store: "Pak'nSave" },
-    wls: { data: wlsData, store: "Woolworths" },
+    nw: { data: nwData as Product[], store: "New World" },
+    pns: { data: pnsData as Product[], store: "Pak'n'Save" },
+    wls: { data: wlsData as Product[], store: "Woolworths" },
   };
 
   return (

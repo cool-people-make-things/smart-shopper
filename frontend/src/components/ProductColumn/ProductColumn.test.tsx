@@ -7,7 +7,7 @@ import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { ProductColumn } from "./ProductColumn";
 
-const mockData = { data: nwData, store: "New World" };
+const mockData = { data: nwData as Product[], store: "New World" };
 
 vi.mock("../Card", () => ({
   Card: () => <div data-testid="card-component">Mocked Card</div>,
