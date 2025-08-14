@@ -6,32 +6,50 @@ import {
   useState,
 } from "react";
 
-import { initialCart } from "./utils/initialCart"; // On remove, uncomment initialCart below
+import { devInitialCart } from "./utils/devInitialCart";
 import { getLocalData, setLocalData } from "./utils/localStorage";
+
+const EMPTY_CART = { nw: {}, pns: {}, wls: {} };
+const initialCart =
+  process.env.NODE_ENV === "development" ? devInitialCart : EMPTY_CART;
 
 type CartContextType = {
   cart: Cart;
+  addCartItem: (supermarket: ShopCode, item: Product) => void;
   clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// TODO: uncomment when removing fake cart data
-// const initialCart = { nw: [], pns: [], wls: [] };
-
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState(getLocalData("cart") || initialCart);
+  const [cart, setCart] = useState<Cart>(getLocalData("cart") || initialCart);
 
   useEffect(() => {
+    // Any time the cart changes, update local storage
     setLocalData("cart", cart);
   }, [cart]);
 
   const clearCart = () => {
-    setCart(initialCart);
+    setCart(EMPTY_CART);
+  };
+
+  const addCartItem = (supermarket: ShopCode, item: Product) => {
+    setCart((currentCart) => {
+      return {
+        ...currentCart,
+        [supermarket]: {
+          ...currentCart[supermarket],
+          [item.id]: {
+            product: item,
+            quantity: 1,
+          },
+        },
+      };
+    });
   };
 
   return (
-    <CartContext.Provider value={{ cart, clearCart }}>
+    <CartContext.Provider value={{ cart, addCartItem, clearCart }}>
       {children}
     </CartContext.Provider>
   );
