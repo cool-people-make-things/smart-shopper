@@ -132,6 +132,43 @@ describe("Given a user already has items in their cart", () => {
       expect(itemInCart.quantity).toBe(1);
     });
   });
+
+  describe("When they delete an item from their cart", () => {
+    it("Then the item is removed from the correct supermarket", () => {
+      const { result } = renderComponentWithCart(preexistingCart);
+      expect(result.current.cart.nw.nw1).toBeDefined();
+
+      act(() => {
+        result.current.removeCartItem("nw", "nw1");
+      });
+
+      expect(result.current.cart.nw.nw1).toBeUndefined();
+      expect(result.current.cart.nw).toEqual({});
+    });
+
+    it("Then only that item is removed from the cart", () => {
+      const { result } = renderComponentWithCart(preexistingCart);
+      act(() => {
+        result.current.removeCartItem("pns", "pns1");
+      });
+
+      expect(result.current.cart).toEqual({
+        nw: {
+          nw1: {
+            product: fullProductDetails,
+            quantity: 5,
+          },
+        },
+        pns: {
+          pns2: {
+            product: fullProductDetails,
+            quantity: 1,
+          },
+        },
+        wls: {},
+      });
+    });
+  });
 });
 
 // ----- BEHIND THE SCENES -----
