@@ -32,12 +32,12 @@ class NewWorldParser
   # @return [Product || nil] The product details or nil if parsing fails
   def self.parse_one_product(node)
     ticketed_prices = extract_price_and_promo(node)
+    product_title = "#{extract_name(node)} #{extract_amt(node)}"
 
     {
       supermarket: "nw",
       id: extract_id(node),
-      title: extract_name(node),
-      amt: extract_amt(node),
+      title: product_title,
       image: extract_image(node),
       productPageUrl: extract_product_page_url(node),
       price: ticketed_prices[:price],
@@ -86,7 +86,8 @@ class NewWorldParser
   # @return [String] The product page URL
   def self.extract_product_page_url(node)
     dirty_link = node.at_css("a", node)&.[]("href")
-    dirty_link.split("#").first
+    link = dirty_link.split("#").first
+    "https://www.newworld.co.nz#{link}"
   end
 
   # extract_price_and_promo - Retrieves the price and promo details

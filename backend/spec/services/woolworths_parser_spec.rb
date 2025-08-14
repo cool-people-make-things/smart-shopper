@@ -10,6 +10,8 @@ DEAL_TYPES = [
   "Low Price w Multi-Buy",
   "Disney Disc",
   "Fresh Deal Multi-Buy",
+  "Unitless Promo",
+  "Unitless Normal",
 ]
 
 RSpec.describe WoolworthsParser do
