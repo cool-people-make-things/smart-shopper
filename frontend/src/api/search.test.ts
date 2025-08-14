@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { apiClient } from "@/lib/apiClient";
 import nwFixture from "@/lib/test/fixtures/nw_actual.json";
 
-import { baseURL, searchProducts } from "./search";
+import { searchProducts } from "./search";
 
 vi.mock("@/lib/apiClient", async () => {
   return {
@@ -28,7 +28,7 @@ describe("Given a user is searching for a product", () => {
 
       const result = await searchProducts("eggs", "nw");
 
-      expect(apiClient).toHaveBeenCalledWith(`${baseURL}/search/nw`, {
+      expect(apiClient).toHaveBeenCalledWith("/api/v1/search/nw", {
         method: "GET",
         query: { q: "eggs" },
       });
