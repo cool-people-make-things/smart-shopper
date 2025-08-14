@@ -1,5 +1,3 @@
-import type { Product } from "@/types/Product.types";
-
 import { Card } from "../Card";
 import { Text } from "../retroui";
 
