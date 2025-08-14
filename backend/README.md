@@ -8,6 +8,9 @@
     - [VSCode Extensions](#vscode_extensions)
 - [Running Locally](#running_locally)
 - [Testing](#testing)
+- [API Endpoints](#api-endpoints)
+- [FYI Documents](#fyi-documents)
+
 
 [~ Project /README.md](/README.md)
 
@@ -66,6 +69,97 @@ To run all tests
 ```sh
 bin/run_tests
 ```
+
+## API Endpoints <a name = "api-endpoints"></a>
+
+### Search Products
+
+`GET /api/v1/search/:supermarket?q=product_name`
+
+Search for products in a specified supermarket
+
+### URL Parameters
+
+| Parameter     | Type   | Description                                   | Required |
+|---------------|--------|-----------------------------------------------|----------|
+| `:supermarket`| string | Identifier of the supermarket (e.g., `nw`, `pns`, `wls`) | Yes      |
+
+### Query Parameters
+
+| Parameter | Type   | Description                    | Required |
+|-----------|--------|--------------------------------|----------|
+| `q`       | string | Product search query (e.g., `"spaghetti"`) | Yes      |
+
+### Responses
+
+- **200 OK**  
+  Returns JSON with search results:
+
+  ```json
+  {
+    "query": "spaghetti",
+    "supermarket": "nw",
+    "source": "https://www.newworld.co.nz/search?q=spaghetti",
+    "results": [
+      {
+        "supermarket": "nw",
+        "id": "5002082",
+        "title": "Wattie's Spaghetti In Tomato Sauce",
+        "amt": "420g",
+        "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002082.png?w=384",
+        "productPageUrl": "/shop/product/5002082_ea_000nw?name=wattie%27s-spaghetti-in-tomato-sauce",
+        "price": {
+          "value": "2.79",
+          "per": "ea",
+          "unitPrice": "0.66",
+          "unit": "100g"
+        },
+        "promo": {
+          "tag": "",
+          "value": "1.99",
+          "per": "ea",
+          "unitPrice": "0.47",
+          "unit": "100g",
+          "limit": "Limit 6 assorted"
+        }
+      }
+      // ...more products
+    ]
+  }
+
+
+- **400 Bad Request**  
+  Missing or invalid parameters:
+
+  ```json
+  { "error": "Invalid supermarket source" }
+  ```
+  or
+
+  ```json
+  { "error": "Query parameter is required" }
+  ```
+
+- **404 Not Found**  
+  Cached results not found for the supermarket
+
+  ```json
+  { "error": "Not found" }
+  ```
+
+- **500 Internal Server Error**  
+  Unexpected error occurred during processing
+
+  ```json
+  { "error": "An error occurred while processing the request" }
+  ```
+
+**Notes**. 
+- Supported supermarkets: nw, pns, wls, test_shop  
+- The API scrapes supermarket websites for live data when possible  
+- Falls back to cached data if scraping is unavailable or for unsupported supermarkets  
+- Cached data is stored in JSON files per supermarket  
+
 
 ## FYI Documents <a name = "fyi_documents"></a>
 

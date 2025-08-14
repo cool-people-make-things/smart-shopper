@@ -7,6 +7,8 @@ export type SearchResponse = {
 
 import { apiClient } from "../lib/apiClient";
 
+export const baseURL = "/api/v1";
+
 /**
  * searchProducts - Fetches products matching the query from a specific supermarket
  *
@@ -19,7 +21,7 @@ export async function searchProducts(
   query: string,
   supermarket: string,
 ): Promise<SearchResponse> {
-  return apiClient(`/search/${supermarket}`, {
+  return apiClient(`${baseURL}/search/${supermarket}`, {
     method: "GET",
     query: { q: query },
   });
