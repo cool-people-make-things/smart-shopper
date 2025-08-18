@@ -15,17 +15,26 @@ export const fullProductDetails = {
 export const preexistingCart = {
   nw: {
     nw1: {
-      product: fullProductDetails,
+      product: {
+        ...fullProductDetails,
+        id: "nw1",
+      },
       quantity: 5,
     },
   },
   pns: {
     pns1: {
-      product: fullProductDetails,
+      product: {
+        ...fullProductDetails,
+        id: "pns1",
+      },
       quantity: 12,
     },
     pns2: {
-      product: fullProductDetails,
+      product: {
+        ...fullProductDetails,
+        id: "pns2",
+      },
       quantity: 1,
     },
   },

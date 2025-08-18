@@ -133,6 +133,22 @@ describe("Given a user already has items in their cart", () => {
     });
   });
 
+  describe("When they add an item that already exists in their cart", () => {
+    it("Then the quantity of the item is increased", () => {
+      const { result } = renderComponentWithCart(preexistingCart);
+
+      const existingItem = result.current.cart.nw.nw1;
+      expect(existingItem.quantity).toBe(5);
+
+      act(() => {
+        result.current.addCartItem("nw", existingItem.product);
+      });
+
+      const updatedItem = result.current.cart.nw.nw1;
+      expect(updatedItem.quantity).toBe(6);
+    });
+  });
+
   describe("When they delete an item from their cart", () => {
     it("Then the item is removed from the correct supermarket", () => {
       const { result } = renderComponentWithCart(preexistingCart);
@@ -155,18 +171,85 @@ describe("Given a user already has items in their cart", () => {
       expect(result.current.cart).toEqual({
         nw: {
           nw1: {
-            product: fullProductDetails,
+            product: {
+              ...fullProductDetails,
+              id: "nw1",
+            },
             quantity: 5,
           },
         },
         pns: {
           pns2: {
-            product: fullProductDetails,
+            product: {
+              ...fullProductDetails,
+              id: "pns2",
+            },
             quantity: 1,
           },
         },
         wls: {},
       });
+    });
+  });
+
+  describe("When they update the item quantity", () => {
+    it("Then the item quantity is updated in the cart", () => {
+      const { result } = renderComponentWithCart(preexistingCart);
+      act(() => {
+        result.current.updateCartItemQuantity("pns", "pns2", 10);
+      });
+
+      const updatedItem = result.current.cart.pns.pns2;
+      expect(updatedItem.quantity).toBe(10);
+    });
+
+    it("Then only that item quantity is updated", () => {
+      const { result } = renderComponentWithCart(preexistingCart);
+      act(() => {
+        result.current.updateCartItemQuantity("pns", "pns1", 3);
+      });
+
+      expect(result.current.cart.pns.pns1.quantity).toBe(3);
+
+      expect(result.current.cart).toEqual({
+        nw: {
+          nw1: {
+            product: {
+              ...fullProductDetails,
+              id: "nw1",
+            },
+            quantity: 5,
+          },
+        },
+        pns: {
+          pns1: {
+            product: {
+              ...fullProductDetails,
+              id: "pns1",
+            },
+            quantity: 3,
+          },
+          pns2: {
+            product: {
+              ...fullProductDetails,
+              id: "pns2",
+            },
+            quantity: 1,
+          },
+        },
+        wls: {},
+      });
+    });
+
+    it("Then the item is removed if the quantity is set to 0", () => {
+      const { result } = renderComponentWithCart(preexistingCart);
+      act(() => {
+        result.current.updateCartItemQuantity("nw", "nw1", 0);
+      });
+
+      const removedItem = result.current.cart.nw.nw1;
+      expect(removedItem).toBeUndefined();
+      expect(result.current.cart.nw).toEqual({});
     });
   });
 });
