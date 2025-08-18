@@ -31,17 +31,16 @@ class NewWorldParser
   # @param node [Nokogiri::XML::Element] The parent tag containing product details
   # @return [Product || nil] The product details or nil if parsing fails
   def self.parse_one_product(node)
-    ticketed_prices = extract_price_and_promo(node)
+    product_title = "#{extract_name(node)} #{extract_amt(node)}"
 
     {
       supermarket: "nw",
       id: extract_id(node),
-      title: extract_name(node),
-      amt: extract_amt(node),
+      title: product_title,
       image: extract_image(node),
       productPageUrl: extract_product_page_url(node),
-      price: ticketed_prices[:price],
-      promo: ticketed_prices[:promo],
+      price: extract_price(node),
+      promo: extract_promo(node),
     }
   rescue => e
     Log.warn("Skipping product due to parse error: #{e.message}")
@@ -53,7 +52,7 @@ class NewWorldParser
   # @param node [Nokogiri::XML::Element] The product node
   # @return [String] The product ID
   def self.extract_id(node)
-    node["data-testid"][/product-(\d+)-EA-000/, 1]
+    node["data-testid"][/product-(\d+)-(?:EA|KGM)-000/, 1]
   end
 
   # extract_name - Retrieves the product name
@@ -86,58 +85,87 @@ class NewWorldParser
   # @return [String] The product page URL
   def self.extract_product_page_url(node)
     dirty_link = node.at_css("a", node)&.[]("href")
-    dirty_link.split("#").first
+    link = dirty_link.split("#").first
+    "https://www.newworld.co.nz#{link}"
   end
 
-  # extract_price_and_promo - Retrieves the price and promo details
+  # extract_price - Retrieves the price details
   #
   # @param node [Nokogiri::XML::Element] The product node
-  # @return [Hash] The price and promo details
-  #   - :price [Hash] :value, :per, :unitPrice, :unit
-  #   - :promo [Hash] :value, :per, :unitPrice, :unit, :tag, :limit?
-  def self.extract_price_and_promo(node)
+  # @return [Hash] The price details
+  #  - :price [Hash] :value, :per, :unitPrice, :unit
+  def self.extract_price(node)
     dollar_nodes = node.css("[data-testid='price-dollars']", node)
     cent_nodes = node.css("[data-testid='price-cents']", node)
     per_nodes = node.css("[data-testid='price-per']", node)
 
-    promo = {}
-    # If there is a promo, it will appear before the main price
-    # otherwise, we will leave promo as an empty hash
-
-    # --- Promo Price ---
-    if has_promo?(node)
-      promo_badge_name = node.at_css("img", node)&.[]("alt")
-      promo[:tag] = promo_badge_name.gsub("Badge, ", "")
-
-      promo[:value] = get_value(dollar_nodes.first, cent_nodes.first)
-      promo[:per] = per_nodes.first.text.strip
-
-      promo_unit_nodes = node.css("[data-testid='complex-promo-unit-price']", node)
-      promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
-      promo[:unitPrice] = promo_unit_price&.gsub("$", "")
-      promo[:unit] = promo_unit ? promo_unit : nil
-
-      limit_node = node.at_css("[data-testid='promo-product-limit']", node)
-      if limit_node
-        promo[:limit] = limit_node.text.strip
-      end
-    end
-    # ---
-
     unit_nodes = node.css("[data-testid='non-promo-unit-price']", node)
     unit_price, unit = unit_nodes.text.strip.split("/")
 
-    price = {
+    {
       value: get_value(dollar_nodes.last, cent_nodes.last),
       per: per_nodes.last.text.strip,
       unitPrice: unit_price&.gsub("$", ""),
       unit: unit ? unit : nil,
     }
+  end
 
-    {
-      price: price,
-      promo: has_promo?(node) ? promo : nil,
-    }
+  # extract_promo - Retrieves the promo details, choosing the appropriate method based on the promo type
+  #
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] promo data
+  def self.extract_promo(node)
+    return extract_complex_promo(node) if has_complex_promo?(node)
+    return extract_promo_tag(node) if has_simple_promo?(node)
+    nil
+  end
+
+  # extract_complex_promo - Retrieves the promo details
+  #
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] The promo details
+  #   - :promo [Hash] :tag, :value, :per, :unitPrice, :unit, :limit?, :multibuyThreshold?
+  def self.extract_complex_promo(node)
+    promo = {}
+
+    dollar_nodes = node.css("[data-testid='price-dollars']")
+    cent_nodes = node.css("[data-testid='price-cents']")
+    per_nodes = node.css("[data-testid='price-per']")
+
+    promo[:tag] = extract_promo_tag(node)[:tag]
+
+    promo[:value] = get_value(dollar_nodes.first, cent_nodes.first)
+    promo[:per] = per_nodes.first.text.strip
+
+    promo_unit_nodes = node.css("[data-testid='complex-promo-unit-price']")
+    promo_unit_price, promo_unit = promo_unit_nodes.text.strip.split("/")
+    promo[:unitPrice] = promo_unit_price&.gsub("$", "")
+    promo[:unit] = promo_unit ? promo_unit : nil
+
+    limit_node = node.at_css("[data-testid='promo-product-limit']")
+    if limit_node
+      promo[:limit] = limit_node.text.strip.match(/\d+/)[0]
+      promo[:tag] = "#{promo[:tag]} Limit"
+    end
+
+    multibuy_threshold_node = node.at_css("[data-testid='multibuy-threshold']")
+    if multibuy_threshold_node
+      promo[:multibuyThreshold] = multibuy_threshold_node.text.strip.split(" ").first
+      promo[:tag] = "#{promo[:tag]} Multibuy"
+    end
+    promo
+  end
+
+  # extract_promo_tag - Retrieves the promo tag from the product node
+  #
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Hash] promo tag data
+  #   - :tag [String] The promo tag name
+  def self.extract_promo_tag(node)
+    promo_node = node.at_xpath(".//*[contains(@data-testid, 'product-decal-')]")
+    promo_badge = promo_node.at_css("svg")&.[]("aria-label")
+    promo_badge_name = promo_badge.gsub("Badge, ", "")
+    { tag: promo_badge_name.include?("Club Deal") ? "Club Deal" : promo_badge_name }
   end
 
   # get_value - returns the price as a standardized string, "dollars.cents"
@@ -155,11 +183,19 @@ class NewWorldParser
     "#{pretty_dollars}.#{pretty_cents}"
   end
 
-  # has_promo? - Checks if the product has a promo
+  # has_complex_promo? - Checks if the product has a promo
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Boolean] TRUE if a promo decal is present
-  def self.has_promo?(node)
+  def self.has_complex_promo?(node)
     node.at_css("[data-testid='decal']", node).present?
+  end
+
+  # has_simple_promo? - Checks if the product has a simple promo (e.g. Everyday Low))
+  #
+  # @param node [Nokogiri::XML::Element] The product node
+  # @return [Boolean] TRUE if a simple promo decal is present
+  def self.has_simple_promo?(node)
+    node.at_xpath(".//*[contains(@data-testid, 'product-decal-')]").present?
   end
 end
