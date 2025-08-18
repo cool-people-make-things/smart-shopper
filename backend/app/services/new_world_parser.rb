@@ -115,7 +115,7 @@ class NewWorldParser
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Hash] promo data
   def self.extract_promo(node)
-    return extract_complex_promo(node) if has_promo?(node)
+    return extract_complex_promo(node) if has_complex_promo?(node)
     return extract_promo_tag(node) if has_simple_promo?(node)
     nil
   end
@@ -183,11 +183,11 @@ class NewWorldParser
     "#{pretty_dollars}.#{pretty_cents}"
   end
 
-  # has_promo? - Checks if the product has a promo
+  # has_complex_promo? - Checks if the product has a promo
   #
   # @param node [Nokogiri::XML::Element] The product node
   # @return [Boolean] TRUE if a promo decal is present
-  def self.has_promo?(node)
+  def self.has_complex_promo?(node)
     node.at_css("[data-testid='decal']", node).present?
   end
 
