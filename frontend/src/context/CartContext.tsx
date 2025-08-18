@@ -17,6 +17,7 @@ type CartContextType = {
   cart: Cart;
   addCartItem: (supermarket: ShopCode, item: Product) => void;
   clearCart: () => void;
+  removeCartItem: (supermarket: ShopCode, itemId: string) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -48,8 +49,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const removeCartItem = (supermarket: ShopCode, itemId: string) => {
+    setCart((currentCart) => {
+      const supermarketCopy = { ...currentCart[supermarket] };
+      delete supermarketCopy[itemId];
+      return { ...currentCart, [supermarket]: { ...supermarketCopy } };
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addCartItem, clearCart }}>
+    <CartContext.Provider
+      value={{ cart, addCartItem, clearCart, removeCartItem }}
+    >
       {children}
     </CartContext.Provider>
   );
