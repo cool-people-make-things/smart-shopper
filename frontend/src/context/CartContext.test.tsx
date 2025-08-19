@@ -15,8 +15,8 @@ vi.mock("./utils/localStorage", () => ({
 // ----- USER INTERACTIONS -----
 
 describe("Given a user has an empty cart", () => {
-  describe("When they add an item from a specific supermarket", () => {
-    it("Then the cart contains that item under the supermarket they selected", () => {
+  describe("When the user adds an item from a specific supermarket", () => {
+    it("Then the cart contains that item under the correct supermarket", () => {
       const testProduct = {
         ...fullProductDetails,
         id: "test_product_1",
@@ -79,7 +79,7 @@ describe("Given a user has an empty cart", () => {
 });
 
 describe("Given a user already has items in their cart", () => {
-  describe("When they clear their cart", () => {
+  describe("When the user clears their cart", () => {
     it("Then all supermarkets show no items", () => {
       const { result } = renderComponentWithCart(preexistingCart);
       act(() => {
@@ -94,7 +94,7 @@ describe("Given a user already has items in their cart", () => {
     });
   });
 
-  describe("When they add a new item to their cart", () => {
+  describe("When the user adds a new item to their cart", () => {
     it("Then the item is added to the correct supermarket", () => {
       const { result } = renderComponentWithCart(preexistingCart);
       const testProduct = {
@@ -133,8 +133,8 @@ describe("Given a user already has items in their cart", () => {
     });
   });
 
-  describe("When they add an item that already exists in their cart", () => {
-    it("Then the quantity of the item is increased", () => {
+  describe("When the user adds an item that already exists in their cart", () => {
+    it("Then the quantity of the existing item is increased by 1", () => {
       const { result } = renderComponentWithCart(preexistingCart);
 
       const existingItem = result.current.cart.nw.nw1;
@@ -149,7 +149,7 @@ describe("Given a user already has items in their cart", () => {
     });
   });
 
-  describe("When they delete an item from their cart", () => {
+  describe("When the user deletes an item from their cart", () => {
     it("Then the item is removed from the correct supermarket", () => {
       const { result } = renderComponentWithCart(preexistingCart);
       expect(result.current.cart.nw.nw1).toBeDefined();
@@ -192,7 +192,7 @@ describe("Given a user already has items in their cart", () => {
     });
   });
 
-  describe("When they update the item quantity", () => {
+  describe("When the user updates the item quantity", () => {
     it("Then the item quantity is updated in the cart", () => {
       const { result } = renderComponentWithCart(preexistingCart);
       act(() => {
@@ -261,7 +261,7 @@ describe("Given a user has not been to the site before", () => {
     vi.clearAllMocks();
   });
 
-  describe("When they visit the site for the first time", () => {
+  describe("When the user visits the site for the first time", () => {
     it("Then an empty cart is loaded up", () => {
       const { result } = renderComponentWithCart(null);
       expect(result.current.cart).toEqual({ nw: {}, pns: {}, wls: {} });
@@ -279,7 +279,7 @@ describe("Given a user has not been to the site before", () => {
 });
 
 describe("Given a user has previously been to the site", () => {
-  describe("When they load up the site", () => {
+  describe("When the user loads up the site", () => {
     it("Then their cart is restored to its previous state", () => {
       const { result } = renderComponentWithCart(preexistingCart);
       expect(result.current.cart).toEqual(preexistingCart);
