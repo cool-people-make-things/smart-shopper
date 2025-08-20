@@ -1,5 +1,5 @@
 import { ChevronLeft, Minus, Plus, Save, Trash } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Input, Label, Text } from "@/components/retroui";
@@ -14,13 +14,13 @@ type SupermarketSpend = {
 
 export function Cart() {
   const navigate = useNavigate();
-  const devInitialCart = { nw: {}, pns: {}, wls: {} } as Cart;
-  const [supermarketSpend, setSupermarketSpend] = useState(
-    {} as SupermarketSpend,
+
+  const devInitialCart = useMemo(
+    () => ({ nw: {}, pns: {}, wls: {} }) as Cart,
+    [],
   );
 
-  // Calculate the total spend for each supermarket and the overall total
-  useEffect(() => {
+  const supermarketSpend: SupermarketSpend = useMemo(() => {
     const nwTotal = Object.values(devInitialCart.nw)
       .reduce(
         (cost, item) =>
@@ -28,6 +28,7 @@ export function Cart() {
         0,
       )
       .toFixed(2);
+
     const pnsTotal = Object.values(devInitialCart.pns)
       .reduce(
         (cost, item) =>
@@ -35,6 +36,7 @@ export function Cart() {
         0,
       )
       .toFixed(2);
+
     const wlsTotal = Object.values(devInitialCart.wls)
       .reduce(
         (cost, item) =>
@@ -42,9 +44,11 @@ export function Cart() {
         0,
       )
       .toFixed(2);
+
     const totalSpend = (+nwTotal + +pnsTotal + +wlsTotal).toFixed(2);
-    setSupermarketSpend({ nwTotal, pnsTotal, wlsTotal, totalSpend });
-  }, []);
+
+    return { nwTotal, pnsTotal, wlsTotal, totalSpend };
+  }, [devInitialCart]);
 
   return (
     <div className="min-h-screen flex flex-col gap-5 w-2/3 mx-auto">
@@ -148,7 +152,7 @@ export function Cart() {
                       <img
                         src={item.product.image}
                         alt={item.product.title}
-                        className="w-24 h-24 object-cover"
+                        className=" w-16 h-16 object-cover"
                       />
                     </div>
                     <div className="flex-1 min-h-full">
@@ -180,17 +184,16 @@ export function Cart() {
                           <Button size="icon">
                             <Minus className="w-4 h-4" />
                           </Button>
-                          <Text className="font-sans text-base">
-                            {item.quantity}
-                          </Text>
                           <Button size="icon">
                             <Plus className="w-4 h-4" />
                           </Button>
+                          <Button
+                            size="icon"
+                            className="bg-destructive text-white hover:bg-destructive/90"
+                          >
+                            <Trash className="w-4 h-4" />
+                          </Button>
                         </div>
-                        <Button className="bg-destructive text-white hover:bg-destructive/90">
-                          <Trash />
-                          Remove
-                        </Button>
                       </div>
                     </div>
                   </div>
@@ -213,7 +216,7 @@ export function Cart() {
                       <img
                         src={item.product.image}
                         alt={item.product.title}
-                        className="w-24 h-24 object-cover"
+                        className=" w-16 h-16 object-cover"
                       />
                     </div>
                     <div className="flex-1 min-h-full">
@@ -245,17 +248,16 @@ export function Cart() {
                           <Button size="icon">
                             <Minus className="w-4 h-4" />
                           </Button>
-                          <Text className="font-sans text-base">
-                            {item.quantity}
-                          </Text>
                           <Button size="icon">
                             <Plus className="w-4 h-4" />
                           </Button>
+                          <Button
+                            size="icon"
+                            className="bg-destructive text-white hover:bg-destructive/90"
+                          >
+                            <Trash className="w-4 h-4" />
+                          </Button>
                         </div>
-                        <Button className="bg-destructive text-white hover:bg-destructive/90">
-                          <Trash />
-                          Remove
-                        </Button>
                       </div>
                     </div>
                   </div>
