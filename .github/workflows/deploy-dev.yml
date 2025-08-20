@@ -45,4 +45,9 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
       - name: 🔗 Set stable dev alias
-        run: npx vercel alias set ${{ steps.deploy.outputs.preview-url }} dev-smart-shopper.emilyparkes-projects.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          DEPLOY_URL="${{ steps.vercel.outputs.preview-url }}"
+          echo "Deployment URL: $DEPLOY_URL"
+
+          npx vercel alias set "$DEPLOY_URL" dev-smart-shopper.emilyparkes-projects.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+          
