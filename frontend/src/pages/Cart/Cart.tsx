@@ -267,7 +267,7 @@ export function Cart() {
         </div>
 
         <div className="flex justify-end">
-          <div className="w-1/3 text-right">
+          <div data-testid="total-spend" className="w-1/3 text-right">
             <Text as={"h3"} className="text-2xl font-semibold">
               Total Spend
             </Text>
