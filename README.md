@@ -25,7 +25,7 @@
 | Notes | Production <br/> (`main` branch) | Development <br/> (`dev` branch) | 
 |----------|----------|----------|
 | `/frontend` | https://smart-grocery-shopper.vercel.app/ | https://dev-smart-shopper.emilyparkes-projects.vercel.app/ |
-| `/backend`  | https://smart-shopper-ivke.onrender.com/ | |
+| `/backend`  | https://smart-shopper-ivke.onrender.com | https://smart-shopper-dev.onrender.com |
 
 
 ## 📝 Table of Contents
