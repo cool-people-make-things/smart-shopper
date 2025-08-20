@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "GET /search/:supermarket" do
+RSpec.describe "GET /search/:supermarket" do
   context "with invalid supermarket" do
     it "returns 400 Bad Request" do
       get "/search/invalid", params: { q: "butter" }
