@@ -3,7 +3,7 @@ name: Deploy Dev Branch to Vercel (Preview Alias)
 on:
   push:
     branches:
-      - dev
+      - dev-test-deploy
 
 jobs:
   deploy-dev:
