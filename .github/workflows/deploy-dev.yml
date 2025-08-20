@@ -1,4 +1,4 @@
-name: Deploy Dev Branch to Vercel (Preview Alias)
+name: Deploy dev Branch (Preview Alias)
 
 on:
   push:
@@ -45,10 +45,4 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
       - name: 🔗 Set stable dev alias
-        run: |
-          # Get the latest deployment URL from the action output
-          DEPLOY_URL="${{ steps.vercel.outputs.preview-url }}"
-          echo "Deployment URL: $DEPLOY_URL"
-
-          # Set a stable dev alias (free tier allows this)
-          npx vercel alias set "$DEPLOY_URL" dev.smart-shopper.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel alias set ${{ steps.deploy.outputs.preview-url }} dev-smart-shopper.emilyparkes-projects.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
