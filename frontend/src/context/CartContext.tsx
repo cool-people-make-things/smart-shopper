@@ -18,6 +18,11 @@ type CartContextType = {
   addCartItem: (supermarket: ShopCode, item: Product) => void;
   clearCart: () => void;
   removeCartItem: (supermarket: ShopCode, itemId: string) => void;
+  updateCartItemQuantity: (
+    supermarket: ShopCode,
+    itemId: string,
+    quantity: number,
+  ) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -35,6 +40,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addCartItem = (supermarket: ShopCode, item: Product) => {
+    const existingItem = cart[supermarket][item.id];
+    if (existingItem) {
+      updateCartItemQuantity(supermarket, item.id, existingItem.quantity + 1);
+      return;
+    }
+
     setCart((currentCart) => {
       return {
         ...currentCart,
@@ -57,9 +68,37 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const updateCartItemQuantity = (
+    supermarket: ShopCode,
+    itemId: string,
+    quantity: number,
+  ) => {
+    if (quantity === 0) {
+      removeCartItem(supermarket, itemId);
+      return;
+    }
+    if (!cart[supermarket][itemId]) return;
+
+    setCart((currentCart) => {
+      const supermarketCopy = { ...currentCart[supermarket] };
+      const newItemInstance = { ...supermarketCopy[itemId] };
+      newItemInstance.quantity = quantity;
+      return {
+        ...currentCart,
+        [supermarket]: { ...supermarketCopy, [itemId]: newItemInstance },
+      };
+    });
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, addCartItem, clearCart, removeCartItem }}
+      value={{
+        cart,
+        addCartItem,
+        clearCart,
+        removeCartItem,
+        updateCartItemQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
