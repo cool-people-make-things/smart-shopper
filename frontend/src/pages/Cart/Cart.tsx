@@ -1,9 +1,10 @@
-import { ChevronLeft, Minus, Plus, Save, Trash } from "lucide-react";
+import { ChevronLeft, Save, Trash } from "lucide-react";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Input, Label, Text } from "@/components/retroui";
+import { Text } from "@/components/retroui";
 import { Button } from "@/components/retroui/Button";
+import { IndividualSupermarketCart } from "@/compositions/IndividualSupermarketCart";
 
 type SupermarketSpend = {
   nwTotal: string;
@@ -15,11 +16,13 @@ type SupermarketSpend = {
 export function Cart() {
   const navigate = useNavigate();
 
+  // TODO logic will be handled in Context
   const devInitialCart = useMemo(
     () => ({ nw: {}, pns: {}, wls: {} }) as Cart,
     [],
   );
 
+  // TODO logic will be handled in Context
   const supermarketSpend: SupermarketSpend = useMemo(() => {
     const nwTotal = Object.values(devInitialCart.nw)
       .reduce(
@@ -69,201 +72,10 @@ export function Cart() {
       </div>
 
       <>
-        <div className="flex flex-col  mt-5">
-          <div className=" space-y-4 ">
-            <div id="new-world-cart">
-              <div className="flex flex-row justify-between mb-4">
-                <Text className="text-4xl font-semibold ">New World</Text>
-                <Text className="text-4xl font-semibold">
-                  ${supermarketSpend.nwTotal}
-                </Text>
-              </div>
-              {devInitialCart.nw &&
-                Object.entries(devInitialCart.nw).map(([id, item]) => (
-                  <div
-                    key={id}
-                    className="flex border items-center justify-center"
-                  >
-                    <div className=" p-6">
-                      <img
-                        src={item.product.image}
-                        alt={item.product.title}
-                        className=" w-16 h-16 object-cover"
-                      />
-                    </div>
-                    <div className="flex-1 min-h-full">
-                      <Text className="text-md font-medium font-sans text-base">
-                        {item.product.title}
-                      </Text>
-                      <Text className=" font-sans text-base">
-                        ${item.product.price.value}
-                      </Text>
-                    </div>
-                    <div className="flex-1 flex justify-around min-h-full items-center gap-6">
-                      <div className="flex flex-row gap-4 items-center justify-around">
-                        <Label
-                          htmlFor="quantity"
-                          className="font-sans text-base"
-                        >
-                          Quantity:
-                        </Label>
-                        <div className="w-[50%]">
-                          <Input
-                            placeholder={String(item.quantity)}
-                            id="quantity"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-5">
-                        <div className="flex gap-5 justify-between items-center">
-                          <Button size="icon">
-                            <Minus className="w-4 h-4" />
-                          </Button>
-                          <Button size="icon">
-                            <Plus className="w-4 h-4" />
-                          </Button>
-                          <Button
-                            size="icon"
-                            className="bg-destructive text-white hover:bg-destructive/90"
-                          >
-                            <Trash className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div id="pak-n-save-cart">
-              <div className="flex flex-row justify-between mb-4">
-                <Text className="text-4xl font-semibold">Pak'nSave</Text>
-                <Text className="text-4xl font-semibold">
-                  ${supermarketSpend.pnsTotal}
-                </Text>
-              </div>
-              {devInitialCart.pns &&
-                Object.entries(devInitialCart.pns).map(([id, item]) => (
-                  <div
-                    key={id}
-                    className="flex border items-center justify-center"
-                  >
-                    <div className=" p-6">
-                      <img
-                        src={item.product.image}
-                        alt={item.product.title}
-                        className=" w-16 h-16 object-cover"
-                      />
-                    </div>
-                    <div className="flex-1 min-h-full">
-                      <Text className="text-md font-medium font-sans text-base">
-                        {item.product.title}
-                      </Text>
-                      <Text className=" font-sans text-base">
-                        ${item.product.price.value}
-                      </Text>
-                    </div>
-                    <div className="flex-1 flex justify-around min-h-full items-center gap-6">
-                      <div className="flex flex-row gap-4 items-center justify-around">
-                        <Label
-                          htmlFor="quantity"
-                          className="font-sans text-base"
-                        >
-                          Quantity:
-                        </Label>
-                        <div className="w-[50%]">
-                          <Input
-                            placeholder={String(item.quantity)}
-                            id="quantity"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-5">
-                        <div className="flex gap-5 justify-between items-center">
-                          <Button size="icon">
-                            <Minus className="w-4 h-4" />
-                          </Button>
-                          <Button size="icon">
-                            <Plus className="w-4 h-4" />
-                          </Button>
-                          <Button
-                            size="icon"
-                            className="bg-destructive text-white hover:bg-destructive/90"
-                          >
-                            <Trash className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div id="woolworths-cart">
-              <div className="flex flex-row justify-between mb-4">
-                <Text className="text-4xl font-semibold">Woolworths</Text>
-                <Text className="text-4xl font-semibold">
-                  ${supermarketSpend.wlsTotal}
-                </Text>
-              </div>
-              {devInitialCart.wls &&
-                Object.entries(devInitialCart.wls).map(([id, item]) => (
-                  <div
-                    key={id}
-                    className="flex border items-center justify-center"
-                  >
-                    <div className=" p-6">
-                      <img
-                        src={item.product.image}
-                        alt={item.product.title}
-                        className=" w-16 h-16 object-cover"
-                      />
-                    </div>
-                    <div className="flex-1 min-h-full">
-                      <Text className="text-md font-medium font-sans text-base">
-                        {item.product.title}
-                      </Text>
-                      <Text className=" font-sans text-base">
-                        ${item.product.price.value}
-                      </Text>
-                    </div>
-                    <div className="flex-1 flex justify-around min-h-full items-center gap-6">
-                      <div className="flex flex-row gap-4 items-center justify-around">
-                        <Label
-                          htmlFor="quantity"
-                          className="font-sans text-base"
-                        >
-                          Quantity:
-                        </Label>
-                        <div className="w-[50%]">
-                          <Input
-                            placeholder={String(item.quantity)}
-                            id="quantity"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-5">
-                        <div className="flex gap-5 justify-between items-center">
-                          <Button size="icon">
-                            <Minus className="w-4 h-4" />
-                          </Button>
-                          <Button size="icon">
-                            <Plus className="w-4 h-4" />
-                          </Button>
-                          <Button
-                            size="icon"
-                            className="bg-destructive text-white hover:bg-destructive/90"
-                          >
-                            <Trash className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
+        <div className="flex flex-col space-y-4 mt-5">
+          <IndividualSupermarketCart supermarket="New World" shopCode="nw" />
+          <IndividualSupermarketCart supermarket="Pak'nSave" shopCode="pns" />
+          <IndividualSupermarketCart supermarket="Woolworths" shopCode="wls" />
         </div>
 
         <div className="flex justify-end">
