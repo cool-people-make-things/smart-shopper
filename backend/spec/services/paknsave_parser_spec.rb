@@ -6,6 +6,8 @@ PNS_DEAL_TYPES = [
   "Multibuy",
   "Limit",
   "Extra Low",
+  "Unitless",
+  "Unitless Promo",
 ]
 
 RSpec.describe PaknsaveParser do
@@ -48,10 +50,28 @@ RSpec.describe PaknsaveParser do
       end
 
       it "correctly formats product type: Normal" do
-        normal_product = @actual_products.find { |deal| !deal[:promo] }
+        normal_product = @actual_products.find { |deal| !deal[:promo] && deal[:price][:unit] }
         expect(normal_product[:id]).to eq(MockTestData::PNS_NORMAL_OBJ[:id])
         expect(normal_product[:title]).to eq(MockTestData::PNS_NORMAL_OBJ[:title])
         expect(normal_product[:promo]).to eq(nil)
+      end
+
+      it "correctly formats product type: Normal products with no unit/unitPrice" do
+        unitless_product = @actual_products.find { |deal| deal[:price][:unit].nil? && deal[:promo].nil? }
+        expect(unitless_product[:id]).to eq(MockTestData::PNS_UNITLESS_OBJ[:id])
+        expect(unitless_product[:title]).to eq(MockTestData::PNS_UNITLESS_OBJ[:title])
+        expect(unitless_product[:price][:unitPrice]).to eq(nil)
+        expect(unitless_product[:price][:unit]).to eq(nil)
+        expect(unitless_product[:promo]).to eq(nil)
+      end
+
+      it "correctly formats product type: Promo products with no unit/unitPrice" do
+        unitless_promo_product = @actual_products.find { |deal| deal[:price][:unit].nil? && deal[:promo] }
+        expect(unitless_promo_product[:id]).to eq(MockTestData::PNS_UNITLESS_OBJ_PROMO[:id])
+        expect(unitless_promo_product[:title]).to eq(MockTestData::PNS_UNITLESS_OBJ_PROMO[:title])
+        expect(unitless_promo_product[:price][:unitPrice]).to eq(nil)
+        expect(unitless_promo_product[:price][:unit]).to eq(nil)
+        expect(unitless_promo_product[:promo][:tag]).to eq("Extra Low")
       end
 
       it "correctly returns all data" do

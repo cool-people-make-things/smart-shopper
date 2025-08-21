@@ -1,5 +1,5 @@
 class DataManager
-  VALID_SUPERMARKETS = %w[nw pns wls]
+  VALID_SUPERMARKETS = %w[nw pns wls test_shop]
 
   # read_json_file - Reads the JSON file for the specified supermarket
   #
@@ -9,7 +9,7 @@ class DataManager
     validate_supermarket!(supermarket)
     json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
 
-    File.exist?(json_path) ? File.read(json_path) : nil
+    File.exist?(json_path) ? JSON.parse(File.read(json_path)) : nil
   rescue => e
     Log.warn("Error reading JSON file: #{e.message}")
     nil

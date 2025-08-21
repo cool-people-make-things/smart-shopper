@@ -1,4 +1,4 @@
-FROM ruby:3.4
+FROM ruby:3.4.1-bullseye
 
 # Install system dependencies
 RUN apt-get update -qq && apt-get install -y \

@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
-  get 'search/:supermarket', to: 'search#index'
+  namespace :api do
+    namespace :v1 do
+      get "search/:supermarket", to: "search#index"
+    end
+  end
 end
