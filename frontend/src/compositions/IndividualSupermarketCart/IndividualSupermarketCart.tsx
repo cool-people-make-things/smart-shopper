@@ -63,7 +63,7 @@ export function IndividualSupermarketCart({
                   Quantity:
                 </Label>
                 <div className="w-[50%]">
-                  <Input placeholder={String(item.quantity)} id="quantity" />
+                  <Input type="number" value={item.quantity} id="quantity" />
                 </div>
               </div>
 
