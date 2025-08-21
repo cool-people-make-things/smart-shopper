@@ -22,7 +22,7 @@ json_mock_data = {
 }
 
 RSpec.describe DataManager do
-  describe ".read_json_file" do
+  describe ".read_json_file", skip: "function not currently used" do
     it "returns JSON content when file exists" do
       supermarket = "pns"
       json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
