@@ -14,7 +14,7 @@ class WebScraper
     when "wls"
       "https://www.woolworths.co.nz/shop/searchproducts?search=#{query}"
     else
-      Log.error(ArgumentError, "Unknown supermarket: #{supermarket}")
+      Log.error("Unknown supermarket: #{supermarket}")
     end
   end
 
