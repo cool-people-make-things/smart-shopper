@@ -236,6 +236,80 @@ describe("Given a user already has items in their cart", () => {
   });
 });
 
+describe("Given a user attempts to interact with a faulty item", () => {
+  describe("When the user adds an empty item to the cart", () => {
+    it("Then no item is added", () => {
+      const { result } = renderComponentWithCart();
+      act(() => {
+        result.current.addCartItem("nw", {} as Product);
+      });
+
+      expect(result.current.nwCart).toEqual({});
+    });
+
+    it("Then the cart itself remains unchanged", () => {
+      const { result } = renderComponentWithCart(fullCart);
+      const startingCart = result.current.wlsCart;
+
+      act(() => {
+        result.current.addCartItem("wls", {} as Product);
+      });
+
+      expect(result.current.wlsCart).toBe(startingCart);
+    });
+
+    it.todo("Then error info is shown to the user");
+  });
+
+  describe("When the user removes a non-existent item from the cart", () => {
+    it("Then no item is removed", () => {
+      const { result } = renderComponentWithCart(fullCart);
+      act(() => {
+        result.current.removeCartItem("pns", "9999999");
+      });
+
+      expect(result.current.pnsCart).toEqual(fullCart.pns);
+    });
+
+    it("Then the cart itself remains unchanged", () => {
+      const { result } = renderComponentWithCart(fullCart);
+      const startingCart = result.current.nwCart;
+
+      act(() => {
+        result.current.removeCartItem("nw", "9999999");
+      });
+
+      expect(result.current.nwCart).toBe(startingCart);
+    });
+
+    it.todo("Then error info is shown to the user");
+  });
+
+  describe("When the user updates a non-existent item's quantity", () => {
+    it("Then the cart items are not updated", () => {
+      const { result } = renderComponentWithCart(fullCart);
+      act(() => {
+        result.current.updateCartItemQuantity("wls", "9999999", 5);
+      });
+
+      expect(result.current.wlsCart).toEqual(fullCart.wls);
+    });
+
+    it("Then the cart itself remains unchanged", () => {
+      const { result } = renderComponentWithCart(fullCart);
+      const startingCart = result.current.pnsCart;
+
+      act(() => {
+        result.current.updateCartItemQuantity("pns", "9999999", 5);
+      });
+
+      expect(result.current.pnsCart).toBe(startingCart);
+    });
+
+    it.todo("Then error info is shown to the user");
+  });
+});
+
 // ----- BEHIND THE SCENES -----
 
 describe("Given a user has not been to the site before", () => {

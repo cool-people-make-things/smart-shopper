@@ -14,8 +14,8 @@ type CartContextType = {
   nwCart: Cart;
   pnsCart: Cart;
   wlsCart: Cart;
-  addCartItem: (supermarket: ShopCode, item: Product) => void;
   clearCart: () => void;
+  addCartItem: (supermarket: ShopCode, item: Product) => void;
   removeCartItem: (supermarket: ShopCode, itemId: string) => void;
   updateCartItemQuantity: (
     supermarket: ShopCode,
@@ -53,6 +53,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addCartItem = (supermarket: ShopCode, item: Product) => {
+    if (!item.id || !item.title || !item.price.value) return;
+
     const existingItem = cart[supermarket][item.id];
     if (existingItem) {
       updateCartItemQuantity(supermarket, item.id, existingItem.quantity + 1);
@@ -71,6 +73,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeCartItem = (supermarket: ShopCode, itemId: string) => {
+    if (!cart[supermarket][itemId]) return;
+
     setState[supermarket]((currentCart) => {
       const supermarketCopy = { ...currentCart };
       delete supermarketCopy[itemId];
@@ -83,11 +87,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     itemId: string,
     quantity: number,
   ) => {
+    if (!cart[supermarket][itemId]) return;
+
     if (quantity === 0) {
       removeCartItem(supermarket, itemId);
       return;
     }
-    if (!cart[supermarket][itemId]) return;
 
     setState[supermarket]((currentCart) => {
       const supermarketCopy = { ...currentCart };
@@ -106,8 +111,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         nwCart,
         pnsCart,
         wlsCart,
-        addCartItem,
         clearCart,
+        addCartItem,
         removeCartItem,
         updateCartItemQuantity,
       }}
