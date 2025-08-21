@@ -1,8 +1,10 @@
-type Cart = {
-  nw: Record<string, CartItem>;
-  pns: Record<string, CartItem>;
-  wls: Record<string, CartItem>;
+type CombinedCart = {
+  nw: Cart;
+  pns: Cart;
+  wls: Cart;
 };
+
+type Cart = Record<string, CartItem>;
 
 type CartItem = {
   product: Product;

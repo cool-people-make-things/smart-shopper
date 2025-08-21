@@ -10,7 +10,7 @@ import { getLocalData } from "./localStorage";
  * @default mockLocalData { nw: {}, pns: {}, wls: {} }
  */
 export function renderComponentWithCart(
-  mockLocalData: Cart | null = { nw: {}, pns: {}, wls: {} },
+  mockLocalData: CombinedCart | null = { nw: {}, pns: {}, wls: {} },
 ): RenderHookResult<ReturnType<typeof useCart>, unknown> {
   vi.mocked(getLocalData).mockReturnValue(mockLocalData);
 

@@ -3,18 +3,17 @@ import {
   type ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 
-import { devInitialCart } from "./utils/devInitialCart";
-import { getLocalData, setLocalData } from "./utils/localStorage";
-
-const EMPTY_CART = { nw: {}, pns: {}, wls: {} };
-const initialCart =
-  process.env.NODE_ENV === "development" ? devInitialCart : EMPTY_CART;
+import { getStartingState } from "./utils/cartData";
+import { setLocalData } from "./utils/localStorage";
 
 type CartContextType = {
-  cart: Cart;
+  nwCart: Cart;
+  pnsCart: Cart;
+  wlsCart: Cart;
   addCartItem: (supermarket: ShopCode, item: Product) => void;
   clearCart: () => void;
   removeCartItem: (supermarket: ShopCode, itemId: string) => void;
@@ -28,7 +27,19 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<Cart>(getLocalData("cart") || initialCart);
+  const [nwCart, setNwCart] = useState<Cart>(getStartingState("nw"));
+  const [pnsCart, setPnsCart] = useState<Cart>(getStartingState("pns"));
+  const [wlsCart, setWlsCart] = useState<Cart>(getStartingState("wls"));
+  const setState = {
+    nw: setNwCart,
+    pns: setPnsCart,
+    wls: setWlsCart,
+  };
+
+  const cart = useMemo(
+    () => ({ nw: nwCart, pns: pnsCart, wls: wlsCart }),
+    [nwCart, pnsCart, wlsCart],
+  );
 
   useEffect(() => {
     // Any time the cart changes, update local storage
@@ -36,7 +47,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [cart]);
 
   const clearCart = () => {
-    setCart(EMPTY_CART);
+    setState.nw({});
+    setState.pns({});
+    setState.wls({});
   };
 
   const addCartItem = (supermarket: ShopCode, item: Product) => {
@@ -46,25 +59,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setCart((currentCart) => {
+    setState[supermarket]((currentCart) => {
       return {
         ...currentCart,
-        [supermarket]: {
-          ...currentCart[supermarket],
-          [item.id]: {
-            product: item,
-            quantity: 1,
-          },
+        [item.id]: {
+          product: item,
+          quantity: 1,
         },
       };
     });
   };
 
   const removeCartItem = (supermarket: ShopCode, itemId: string) => {
-    setCart((currentCart) => {
-      const supermarketCopy = { ...currentCart[supermarket] };
+    setState[supermarket]((currentCart) => {
+      const supermarketCopy = { ...currentCart };
       delete supermarketCopy[itemId];
-      return { ...currentCart, [supermarket]: { ...supermarketCopy } };
+      return { ...supermarketCopy };
     });
   };
 
@@ -79,13 +89,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
     if (!cart[supermarket][itemId]) return;
 
-    setCart((currentCart) => {
-      const supermarketCopy = { ...currentCart[supermarket] };
+    setState[supermarket]((currentCart) => {
+      const supermarketCopy = { ...currentCart };
       const newItemInstance = { ...supermarketCopy[itemId] };
       newItemInstance.quantity = quantity;
       return {
-        ...currentCart,
-        [supermarket]: { ...supermarketCopy, [itemId]: newItemInstance },
+        ...supermarketCopy,
+        [itemId]: newItemInstance,
       };
     });
   };
@@ -93,7 +103,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   return (
     <CartContext.Provider
       value={{
-        cart,
+        nwCart,
+        pnsCart,
+        wlsCart,
         addCartItem,
         clearCart,
         removeCartItem,

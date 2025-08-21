@@ -36,7 +36,7 @@ describe("Given a user has an empty cart", () => {
         result.current.addCartItem("wls", testProduct);
       });
 
-      const itemInCart = result.current.cart.wls["3330159"];
+      const itemInCart = result.current.wlsCart["3330159"];
 
       expect(itemInCart).toBeDefined();
       expect(itemInCart.product.title).toBe("Shampoo");
@@ -53,7 +53,7 @@ describe("Given a user has an empty cart", () => {
         result.current.addCartItem("pns", testProduct);
       });
 
-      const itemInCart = result.current.cart.pns["2220732"];
+      const itemInCart = result.current.pnsCart["2220732"];
 
       expect(itemInCart).toBeDefined();
       expect(itemInCart.quantity).toBe(1);
@@ -70,7 +70,12 @@ describe("Given a user has an empty cart", () => {
         result.current.addCartItem("nw", testProduct);
       });
 
-      expect(result.current.cart).toEqual(cartWithSingleItem);
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(cartWithSingleItem);
     });
   });
 });
@@ -83,9 +88,12 @@ describe("Given a user already has items in their cart", () => {
         result.current.clearCart();
       });
 
-      expect(result.current.cart.nw).toEqual({});
-      expect(result.current.cart.pns).toEqual({});
-      expect(result.current.cart.wls).toEqual({});
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(emptyCart);
     });
   });
 
@@ -102,7 +110,7 @@ describe("Given a user already has items in their cart", () => {
         result.current.addCartItem("nw", testProduct);
       });
 
-      const itemInCart = result.current.cart.nw["1110548"];
+      const itemInCart = result.current.nwCart["1110548"];
 
       expect(itemInCart).toBeDefined();
       expect(itemInCart.product).toEqual(testProduct);
@@ -120,7 +128,7 @@ describe("Given a user already has items in their cart", () => {
         result.current.addCartItem("pns", testProduct);
       });
 
-      const itemInCart = result.current.cart.pns["2220489"];
+      const itemInCart = result.current.pnsCart["2220489"];
 
       expect(itemInCart).toBeDefined();
       expect(itemInCart.product).toEqual(testProduct);
@@ -132,14 +140,14 @@ describe("Given a user already has items in their cart", () => {
     it("Then the quantity of the existing item is increased by 1", () => {
       const { result } = renderComponentWithCart(partialCart);
 
-      const existingItem = result.current.cart.nw["1110001"];
+      const existingItem = result.current.nwCart["1110001"];
       expect(existingItem.quantity).toBe(5);
 
       act(() => {
         result.current.addCartItem("nw", existingItem.product);
       });
 
-      const updatedItem = result.current.cart.nw["1110001"];
+      const updatedItem = result.current.nwCart["1110001"];
       expect(updatedItem.quantity).toBe(6);
     });
   });
@@ -147,14 +155,14 @@ describe("Given a user already has items in their cart", () => {
   describe("When the user deletes an item from their cart", () => {
     it("Then the item is removed from the correct supermarket", () => {
       const { result } = renderComponentWithCart(partialCart);
-      expect(result.current.cart.nw["1110001"]).toBeDefined();
+      expect(result.current.nwCart["1110001"]).toBeDefined();
 
       act(() => {
         result.current.removeCartItem("nw", "1110001");
       });
 
-      expect(result.current.cart.nw["1110001"]).toBeUndefined();
-      expect(result.current.cart.nw).toEqual({});
+      expect(result.current.nwCart["1110001"]).toBeUndefined();
+      expect(result.current.nwCart).toEqual({});
     });
 
     it("Then only that item is removed from the cart", () => {
@@ -163,7 +171,12 @@ describe("Given a user already has items in their cart", () => {
         result.current.removeCartItem("pns", "2220001");
       });
 
-      expect(result.current.cart).toEqual(partialCart_itemRemoved);
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(partialCart_itemRemoved);
     });
   });
 
@@ -174,7 +187,7 @@ describe("Given a user already has items in their cart", () => {
         result.current.updateCartItemQuantity("pns", "2220002", 10);
       });
 
-      const updatedItem = result.current.cart.pns["2220002"];
+      const updatedItem = result.current.pnsCart["2220002"];
       expect(updatedItem.quantity).toBe(10);
     });
 
@@ -184,9 +197,14 @@ describe("Given a user already has items in their cart", () => {
         result.current.updateCartItemQuantity("pns", "2220001", 300);
       });
 
-      expect(result.current.cart.pns["2220001"].quantity).toBe(300);
+      expect(result.current.pnsCart["2220001"].quantity).toBe(300);
 
-      expect(result.current.cart).toEqual(partialCart_quantityUpdated);
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(partialCart_quantityUpdated);
     });
   });
 
@@ -197,9 +215,9 @@ describe("Given a user already has items in their cart", () => {
         result.current.updateCartItemQuantity("nw", "1110001", 0);
       });
 
-      const removedItem = result.current.cart.nw["1110001"];
+      const removedItem = result.current.nwCart["1110001"];
       expect(removedItem).toBeUndefined();
-      expect(result.current.cart.nw).toEqual({});
+      expect(result.current.nwCart).toEqual({});
     });
 
     it("Then only that item is removed from the cart", () => {
@@ -208,7 +226,12 @@ describe("Given a user already has items in their cart", () => {
         result.current.updateCartItemQuantity("pns", "2220001", 0);
       });
 
-      expect(result.current.cart).toEqual(partialCart_itemRemoved);
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(partialCart_itemRemoved);
     });
   });
 });
@@ -223,7 +246,12 @@ describe("Given a user has not been to the site before", () => {
   describe("When the user visits the site for the first time", () => {
     it("Then an empty cart is loaded up", () => {
       const { result } = renderComponentWithCart(null);
-      expect(result.current.cart).toEqual(emptyCart);
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(emptyCart);
     });
 
     it("Then an empty cart is saved for next time", () => {
@@ -237,7 +265,12 @@ describe("Given a user has previously been to the site", () => {
   describe("When the user loads up the site", () => {
     it("Then their cart is restored to its previous state", () => {
       const { result } = renderComponentWithCart(fullCart);
-      expect(result.current.cart).toEqual(fullCart);
+      const resultingCart = {
+        nw: result.current.nwCart,
+        pns: result.current.pnsCart,
+        wls: result.current.wlsCart,
+      };
+      expect(resultingCart).toEqual(fullCart);
     });
   });
 });

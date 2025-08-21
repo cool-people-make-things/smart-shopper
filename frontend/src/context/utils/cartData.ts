@@ -1,4 +1,18 @@
-export const devInitialCart: Cart = {
+import { getLocalData } from "./localStorage";
+
+export const getStartingState = (supermarket: ShopCode) => {
+  const localData = getLocalData("cart");
+  if (localData) {
+    return localData[supermarket] || {};
+  }
+  const initialCart =
+    process.env.NODE_ENV === "development" ? devInitialCart : emptyCart;
+  return initialCart[supermarket];
+};
+
+const emptyCart = { nw: {}, pns: {}, wls: {} };
+
+const devInitialCart: CombinedCart = {
   nw: {
     "5263014": {
       quantity: 2,
