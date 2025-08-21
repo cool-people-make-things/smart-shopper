@@ -22,6 +22,7 @@ export const devInitialCart: Cart = {
           unitPrice: "0.68",
           unit: "100g",
         },
+        supermarket: "nw",
       },
     },
     "5023660": {
@@ -39,6 +40,7 @@ export const devInitialCart: Cart = {
           unit: "100g",
         },
         promo: null,
+        supermarket: "nw",
       },
     },
     "5007494": {
@@ -64,6 +66,7 @@ export const devInitialCart: Cart = {
           unit: "1L",
           limit: "Limit 12 assorted",
         },
+        supermarket: "nw",
       },
     },
     "5201479": {
@@ -82,6 +85,7 @@ export const devInitialCart: Cart = {
           unit: "1L",
         },
         promo: null,
+        supermarket: "nw",
       },
     },
   },
@@ -107,6 +111,7 @@ export const devInitialCart: Cart = {
           unitPrice: "1.98",
           unit: "100g",
         },
+        supermarket: "pns",
       },
     },
     "5109655": {
@@ -131,6 +136,7 @@ export const devInitialCart: Cart = {
           unit: "1L",
           multibuyThreshold: "4",
         },
+        supermarket: "pns",
       },
     },
     "5294382": {
@@ -149,6 +155,7 @@ export const devInitialCart: Cart = {
           unit: "1kg",
         },
         promo: null,
+        supermarket: "pns",
       },
     },
     "5012239": {
@@ -169,6 +176,7 @@ export const devInitialCart: Cart = {
         promo: {
           tag: "Extra Low",
         },
+        supermarket: "pns",
       },
     },
     "5306376": {
@@ -189,6 +197,7 @@ export const devInitialCart: Cart = {
         promo: {
           tag: "Extra Low",
         },
+        supermarket: "pns",
       },
     },
   },
@@ -213,6 +222,7 @@ export const devInitialCart: Cart = {
           value: "22.50",
           per: "ea",
         },
+        supermarket: "wls",
       },
     },
     "956132": {
@@ -235,6 +245,7 @@ export const devInitialCart: Cart = {
           value: "4.70",
           per: "ea",
         },
+        supermarket: "wls",
       },
     },
     "253877": {
@@ -255,6 +266,7 @@ export const devInitialCart: Cart = {
         promo: {
           tag: "LOW PRICE",
         },
+        supermarket: "wls",
       },
     },
     "281809": {
@@ -273,6 +285,7 @@ export const devInitialCart: Cart = {
           unit: "100g",
         },
         promo: null,
+        supermarket: "wls",
       },
     },
     "266023": {
@@ -293,6 +306,7 @@ export const devInitialCart: Cart = {
         promo: {
           tag: "Disney Discs Bonus Products.",
         },
+        supermarket: "wls",
       },
     },
     "74613": {
@@ -316,6 +330,7 @@ export const devInitialCart: Cart = {
           unitPrice: "0.50",
           unit: "100g",
         },
+        supermarket: "wls",
       },
     },
   },
