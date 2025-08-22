@@ -1,3 +1,33 @@
+import {
+  nwProduct,
+  nwProduct_membersCard_multibuy,
+  nwProduct_membersCard_withLimit,
+  nwProduct_multibuy,
+  nwProduct_multibuy_unitless,
+  nwProduct_promo,
+  nwProduct_promo_withLimit,
+  nwProduct_promoTag,
+  nwProduct_promoTag_everyday,
+  nwProduct_unitless,
+  pnsProduct,
+  pnsProduct_multibuy,
+  pnsProduct_promo_withLimit,
+  pnsProduct_promoTag,
+  pnsProduct_promoTag_unitless,
+  pnsProduct_unitless,
+  wlsProduct,
+  wlsProduct_disney,
+  wlsProduct_disney_promo,
+  wlsProduct_membersCard,
+  wlsProduct_multibuy,
+  wlsProduct_multibuy_fresh,
+  wlsProduct_multibuy_low,
+  wlsProduct_promo,
+  wlsProduct_promo_unitless,
+  wlsProduct_promoTag,
+  wlsProduct_unitless,
+} from "./products";
+
 export const fullProductDetails = {
   id: "0000000",
   title: "Product Name 500g",
@@ -12,7 +42,7 @@ export const fullProductDetails = {
   promo: null,
 } as Product;
 
-// ----- CART STATES -----
+// ----- PARTIALLY FILLED CART & VARIANTS -----
 
 export const emptyCart = {
   nw: {},
@@ -22,11 +52,8 @@ export const emptyCart = {
 
 export const cartWithSingleItem = {
   nw: {
-    1110000: {
-      product: {
-        ...fullProductDetails,
-        id: "1110000",
-      },
+    "5331318": {
+      product: nwProduct,
       quantity: 1,
     },
   },
@@ -34,126 +61,62 @@ export const cartWithSingleItem = {
   wls: {},
 };
 
-export const fullCart = {
-  nw: {
-    1110111: {
-      product: {
-        ...fullProductDetails,
-        id: "1110111",
-      },
-      quantity: 50,
-    },
-    1110222: {
-      product: {
-        ...fullProductDetails,
-        id: "1110222",
-      },
-      quantity: 16,
-    },
-  },
-  pns: {
-    2220111: {
-      product: {
-        ...fullProductDetails,
-        id: "2220111",
-      },
-      quantity: 1,
-    },
-    2220222: {
-      product: {
-        ...fullProductDetails,
-        id: "2220222",
-      },
-      quantity: 13,
-    },
-    2220333: {
-      product: {
-        ...fullProductDetails,
-        id: "2220333",
-      },
-      quantity: 74,
-    },
-  },
-  wls: {
-    333011: {
-      product: {
-        ...fullProductDetails,
-        id: "333011",
-      },
-      quantity: 34,
-    },
-    3330222: {
-      product: {
-        ...fullProductDetails,
-        id: "3330222",
-      },
-      quantity: 12,
-    },
-    33303: {
-      product: {
-        ...fullProductDetails,
-        id: "33303",
-      },
-      quantity: 8,
-    },
-    3330444: {
-      product: {
-        ...fullProductDetails,
-        id: "3330444",
-      },
-      quantity: 5,
-    },
-  },
-};
-
-// ----- PARTIALLY FILLED CART & VARIANTS -----
-
 export const partialCart = {
   nw: {
-    1110001: {
-      product: {
-        ...fullProductDetails,
-        id: "1110001",
-      },
+    "5039976": {
+      product: nwProduct_promoTag,
       quantity: 5,
     },
   },
   pns: {
-    2220001: {
-      product: {
-        ...fullProductDetails,
-        id: "2220001",
-      },
-      quantity: 12,
-    },
-    2220002: {
-      product: {
-        ...fullProductDetails,
-        id: "2220002",
-      },
+    "5236771": {
+      product: pnsProduct,
       quantity: 1,
+    },
+    "5109655": {
+      product: pnsProduct_multibuy,
+      quantity: 12,
     },
   },
   wls: {},
 };
 
-export const partialCart_itemRemoved = {
+export const partialCart_itemAdded = {
   nw: {
-    1110001: {
-      product: {
-        ...fullProductDetails,
-        id: "1110001",
-      },
+    "5039976": {
+      product: nwProduct_promoTag,
       quantity: 5,
     },
   },
   pns: {
-    2220002: {
-      product: {
-        ...fullProductDetails,
-        id: "2220002",
-      },
+    "5236771": {
+      product: pnsProduct,
       quantity: 1,
+    },
+    "5109655": {
+      product: pnsProduct_multibuy,
+      quantity: 12,
+    },
+  },
+  wls: {
+    "132815": {
+      product: wlsProduct,
+      quantity: 1,
+    },
+  },
+};
+
+export const partialCart_itemRemoved = {
+  nw: {
+    "5039976": {
+      product: nwProduct_promoTag,
+      quantity: 5,
+    },
+  },
+  pns: {
+    "5109655": {
+      product: pnsProduct_multibuy,
+      quantity: 12,
     },
   },
   wls: {},
@@ -161,29 +124,274 @@ export const partialCart_itemRemoved = {
 
 export const partialCart_quantityUpdated = {
   nw: {
-    1110001: {
-      product: {
-        ...fullProductDetails,
-        id: "1110001",
-      },
+    "5039976": {
+      product: nwProduct_promoTag,
       quantity: 5,
     },
   },
   pns: {
-    2220001: {
-      product: {
-        ...fullProductDetails,
-        id: "2220001",
-      },
-      quantity: 300,
-    },
-    2220002: {
-      product: {
-        ...fullProductDetails,
-        id: "2220002",
-      },
+    "5236771": {
+      product: pnsProduct,
       quantity: 1,
+    },
+    "5109655": {
+      product: pnsProduct_multibuy,
+      quantity: 300,
     },
   },
   wls: {},
+};
+
+// ----- CART WITH ALL PRODUCT TYPES -----
+
+export const fullCart = {
+  nw: {
+    [nwProduct.id]: {
+      product: nwProduct,
+      quantity: 4,
+    },
+    [nwProduct_unitless.id]: {
+      product: nwProduct_unitless,
+      quantity: 3,
+    },
+    [nwProduct_promoTag.id]: {
+      product: nwProduct_promoTag,
+      quantity: 6,
+    },
+    [nwProduct_promoTag_everyday.id]: {
+      product: nwProduct_promoTag_everyday,
+      quantity: 3,
+    },
+    [nwProduct_promo.id]: {
+      product: nwProduct_promo,
+      quantity: 6,
+    },
+    [nwProduct_promo_withLimit.id]: {
+      product: nwProduct_promo_withLimit,
+      quantity: 3,
+    },
+    [nwProduct_multibuy.id]: {
+      product: nwProduct_multibuy,
+      quantity: 2,
+    },
+    [nwProduct_multibuy_unitless.id]: {
+      product: nwProduct_multibuy_unitless,
+      quantity: 1,
+    },
+    [nwProduct_membersCard_withLimit.id]: {
+      product: nwProduct_membersCard_withLimit,
+      quantity: 3,
+    },
+    [nwProduct_membersCard_multibuy.id]: {
+      product: nwProduct_membersCard_multibuy,
+      quantity: 5,
+    },
+  },
+  pns: {
+    [pnsProduct.id]: {
+      product: pnsProduct,
+      quantity: 4,
+    },
+    [pnsProduct_unitless.id]: {
+      product: pnsProduct_unitless,
+      quantity: 7,
+    },
+    [pnsProduct_promoTag.id]: {
+      product: pnsProduct_promoTag,
+      quantity: 10,
+    },
+    [pnsProduct_promoTag_unitless.id]: {
+      product: pnsProduct_promoTag_unitless,
+      quantity: 4,
+    },
+    [pnsProduct_promo_withLimit.id]: {
+      product: pnsProduct_promo_withLimit,
+      quantity: 2,
+    },
+    [pnsProduct_multibuy.id]: {
+      product: pnsProduct_multibuy,
+      quantity: 5,
+    },
+  },
+  wls: {
+    [wlsProduct.id]: {
+      product: wlsProduct,
+      quantity: 2,
+    },
+    [wlsProduct_unitless.id]: {
+      product: wlsProduct_unitless,
+      quantity: 1,
+    },
+    [wlsProduct_promoTag.id]: {
+      product: wlsProduct_promoTag,
+      quantity: 4,
+    },
+    [wlsProduct_promo.id]: {
+      product: wlsProduct_promo,
+      quantity: 5,
+    },
+    [wlsProduct_promo_unitless.id]: {
+      product: wlsProduct_promo_unitless,
+      quantity: 2,
+    },
+    [wlsProduct_multibuy.id]: {
+      product: wlsProduct_multibuy,
+      quantity: 5,
+    },
+    [wlsProduct_multibuy_low.id]: {
+      product: wlsProduct_multibuy_low,
+      quantity: 3,
+    },
+    [wlsProduct_multibuy_fresh.id]: {
+      product: wlsProduct_multibuy_fresh,
+      quantity: 1,
+    },
+    [wlsProduct_membersCard.id]: {
+      product: wlsProduct_membersCard,
+      quantity: 5,
+    },
+    [wlsProduct_disney.id]: {
+      product: wlsProduct_disney,
+      quantity: 2,
+    },
+    [wlsProduct_disney_promo.id]: {
+      product: wlsProduct_disney_promo,
+      quantity: 4,
+    },
+  },
+};
+
+export const fullCart_simple = {
+  nw: {
+    [nwProduct.id]: {
+      product: nwProduct,
+      quantity: 4,
+    },
+    [nwProduct_unitless.id]: {
+      product: nwProduct_unitless,
+      quantity: 3,
+    },
+    [nwProduct_promoTag.id]: {
+      product: nwProduct_promoTag,
+      quantity: 6,
+    },
+    [nwProduct_promoTag_everyday.id]: {
+      product: nwProduct_promoTag_everyday,
+      quantity: 3,
+    },
+  },
+  pns: {
+    [pnsProduct.id]: {
+      product: pnsProduct,
+      quantity: 4,
+    },
+    [pnsProduct_unitless.id]: {
+      product: pnsProduct_unitless,
+      quantity: 7,
+    },
+    [pnsProduct_promoTag.id]: {
+      product: pnsProduct_promoTag,
+      quantity: 10,
+    },
+    [pnsProduct_promoTag_unitless.id]: {
+      product: pnsProduct_promoTag_unitless,
+      quantity: 4,
+    },
+  },
+  wls: {
+    [wlsProduct.id]: {
+      product: wlsProduct,
+      quantity: 2,
+    },
+    [wlsProduct_unitless.id]: {
+      product: wlsProduct_unitless,
+      quantity: 1,
+    },
+    [wlsProduct_promoTag.id]: {
+      product: wlsProduct_promoTag,
+      quantity: 4,
+    },
+    [wlsProduct_disney.id]: {
+      product: wlsProduct_disney,
+      quantity: 2,
+    },
+  },
+};
+
+export const fullCart_specials = {
+  nw: {
+    [nwProduct_promo.id]: {
+      product: nwProduct_promo,
+      quantity: 6,
+    },
+    [nwProduct_promo_withLimit.id]: {
+      product: nwProduct_promo_withLimit,
+      quantity: 3,
+    },
+    [nwProduct_membersCard_withLimit.id]: {
+      product: nwProduct_membersCard_withLimit,
+      quantity: 3,
+    },
+  },
+  pns: {
+    [pnsProduct_promo_withLimit.id]: {
+      product: pnsProduct_promo_withLimit,
+      quantity: 2,
+    },
+  },
+  wls: {
+    [wlsProduct_promo.id]: {
+      product: wlsProduct_promo,
+      quantity: 5,
+    },
+    [wlsProduct_promo_unitless.id]: {
+      product: wlsProduct_promo_unitless,
+      quantity: 2,
+    },
+    [wlsProduct_membersCard.id]: {
+      product: wlsProduct_membersCard,
+      quantity: 5,
+    },
+    [wlsProduct_disney_promo.id]: {
+      product: wlsProduct_disney_promo,
+      quantity: 4,
+    },
+  },
+};
+
+export const fullCart_multibuy = {
+  nw: {
+    [nwProduct_multibuy.id]: {
+      product: nwProduct_multibuy,
+      quantity: 2,
+    },
+    [nwProduct_multibuy_unitless.id]: {
+      product: nwProduct_multibuy_unitless,
+      quantity: 1,
+    },
+    [nwProduct_membersCard_multibuy.id]: {
+      product: nwProduct_membersCard_multibuy,
+      quantity: 5,
+    },
+  },
+  pns: {
+    [pnsProduct_multibuy.id]: {
+      product: pnsProduct_multibuy,
+      quantity: 5,
+    },
+  },
+  wls: {
+    [wlsProduct_multibuy.id]: {
+      product: wlsProduct_multibuy,
+      quantity: 5,
+    },
+    [wlsProduct_multibuy_low.id]: {
+      product: wlsProduct_multibuy_low,
+      quantity: 3,
+    },
+    [wlsProduct_multibuy_fresh.id]: {
+      product: wlsProduct_multibuy_fresh,
+      quantity: 1,
+    },
+  },
 };
