@@ -73,9 +73,9 @@ export function Cart() {
 
       <>
         <div className="flex flex-col space-y-4 mt-5">
-          <IndividualSupermarketCart supermarket="New World" shopCode="nw" />
-          <IndividualSupermarketCart supermarket="Pak'nSave" shopCode="pns" />
-          <IndividualSupermarketCart supermarket="Woolworths" shopCode="wls" />
+          <IndividualSupermarketCart shopCode="nw" />
+          <IndividualSupermarketCart shopCode="pns" />
+          <IndividualSupermarketCart shopCode="wls" />
         </div>
 
         <div className="flex justify-end">
