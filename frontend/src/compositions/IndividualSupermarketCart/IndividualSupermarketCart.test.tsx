@@ -10,7 +10,7 @@ describe("Given the user is looking at the cart page", () => {
   describe("When the individual supermarket cart component is rendered", () => {
     it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouter(
-        <IndividualSupermarketCart supermarket="New World" shopCode="nw" />,
+        <IndividualSupermarketCart shopCode="nw" />,
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -18,9 +18,7 @@ describe("Given the user is looking at the cart page", () => {
   });
   describe("When the cart has no grocery items", () => {
     it("Then it displays the empty list and supermarket spend of $0.00", () => {
-      renderWithRouter(
-        <IndividualSupermarketCart supermarket="New World" shopCode="nw" />,
-      );
+      renderWithRouter(<IndividualSupermarketCart shopCode="nw" />);
 
       expect(screen.getByText(/new world/i)).toBeInTheDocument();
       expect(screen.getByTestId("supermarket-spend")).toHaveTextContent(
