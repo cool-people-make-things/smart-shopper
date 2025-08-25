@@ -51,8 +51,6 @@ export const wlsData: Product[] = [
       tag: "Disney Discs Bonus Products.",
       value: "2.30",
       per: "ea",
-      unitPrice: null,
-      unit: null,
     },
   },
   {
@@ -165,8 +163,6 @@ export const wlsData: Product[] = [
       tag: "Special",
       value: "3.40",
       per: "ea",
-      unitPrice: null,
-      unit: null,
     },
   },
   {
@@ -205,8 +201,6 @@ export const wlsData: Product[] = [
       tag: "Disney Discs Bonus Products.",
       value: "2.30",
       per: "ea",
-      unitPrice: null,
-      unit: null,
     },
   },
   {
@@ -298,8 +292,6 @@ export const wlsData: Product[] = [
       tag: "Disney Discs Bonus Products.",
       value: "2.30",
       per: "ea",
-      unitPrice: null,
-      unit: null,
     },
   },
   {
@@ -572,8 +564,6 @@ export const wlsData: Product[] = [
       tag: "Special",
       value: "3.20",
       per: "ea",
-      unitPrice: null,
-      unit: null,
     },
   },
   {
