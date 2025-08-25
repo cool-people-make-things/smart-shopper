@@ -24,6 +24,7 @@ export default defineConfig([
     "*.css",
     "*.config.*",
     "*.setup.*",
+    "dist/"
     ],
   },
   {

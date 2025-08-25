@@ -1,0 +1,84 @@
+name: Deploy Frontend PR Branch to Vercel
+
+on:
+  pull_request:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: 🧹 Lint
+        run: npm run lint
+
+      - name: 🧪 Test
+        run: npm test
+
+      - name: 🛠️ Build frontend
+        run: npm run build
+
+      - name: 🚀 Deploy to Vercel
+        id: vercel
+        uses: amondnet/vercel-action@v41.1.4
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--yes'
+          github-comment: true
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: 📝 Register GitHub Deployment
+        if: github.event_name == 'pull_request' && steps.vercel.outputs.preview-url != ''
+        run: |
+          DEPLOYMENT_ID=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/deployments \
+            -d @- <<EOF | jq -r '.id'
+          {
+            "ref": "${{ github.head_ref }}",
+            "required_contexts": [],
+            "environment": "preview",
+            "description": "Vercel Preview Deployment",
+            "auto_merge": false,
+            "payload": {
+              "preview_url": "${{ steps.vercel.outputs.preview-url }}"
+            }
+          }
+          EOF
+          )
+          echo "GitHub deployment ID: $DEPLOYMENT_ID"
+
+          # Mark deployment as success
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
+            -d @- <<EOF
+          {
+            "state": "success",
+            "environment": "preview",
+            "description": "Vercel Preview is ready",
+            "target_url": "${{ steps.vercel.outputs.preview-url }}"
+          }
+          EOF
+
