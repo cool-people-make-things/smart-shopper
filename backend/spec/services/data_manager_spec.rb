@@ -22,33 +22,6 @@ json_mock_data = {
 }
 
 RSpec.describe DataManager do
-  describe ".read_json_file", skip: "function not currently used" do
-    it "returns JSON content when file exists" do
-      supermarket = "pns"
-      json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
-
-      allow(File).to receive(:exist?).with(json_path).and_return(true)
-      allow(File).to receive(:read).with(json_path).and_return(json_mock_data)
-
-      expect(DataManager.read_json_file(supermarket)).to eq(json_mock_data)
-    end
-
-    it "returns nil content when file doesnt exist" do
-      supermarket = "pns"
-      json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
-
-      allow(File).to receive(:exist?).with(json_path).and_return(false)
-
-      expect(DataManager.read_json_file(supermarket)).to be_nil
-    end
-    it "logs a warning when an error occurs" do
-      supermarket = "pns"
-      allow(File).to receive(:exist?).and_raise(StandardError.new("error reading file"))
-
-      expect(Log).to receive(:warn).with("Error reading JSON file: error reading file")
-      expect(DataManager.read_json_file(supermarket)).to be_nil
-    end
-  end
   describe ".write_html_file" do
     it "writes HTML to a file" do
       supermarket = "pns"
