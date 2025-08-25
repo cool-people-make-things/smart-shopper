@@ -340,9 +340,10 @@ const devInitialCart: CombinedCart = {
         },
         promo: {
           tag: "Special",
-          value: "2 for $5.00",
+          value: "5.00",
           unitPrice: "0.50",
           unit: "100g",
+          multibuyThreshold: "2",
         },
         supermarket: "wls",
       },
