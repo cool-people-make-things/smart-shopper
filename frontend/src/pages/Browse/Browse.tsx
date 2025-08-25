@@ -7,7 +7,7 @@ import { wlsData } from "@/lib/test/fixtures/wls_actual";
 export function Browse() {
   const dummyData = {
     nw: { data: nwData, store: "New World" },
-    pns: { data: pnsData, store: "Pak'n'Save" },
+    pns: { data: pnsData, store: "PAK'nSAVE" },
     wls: { data: wlsData, store: "Woolworths" },
   };
 

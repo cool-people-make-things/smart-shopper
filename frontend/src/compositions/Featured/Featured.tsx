@@ -21,7 +21,7 @@ export function Featured() {
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
           productTitle="Anchor Butter"
           price="7.45"
-          store="Pak'nSave"
+          store="PAK'nSAVE"
         />
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
