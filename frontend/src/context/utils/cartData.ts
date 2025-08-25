@@ -1,12 +1,20 @@
-// TODO: This (temporary) cart does not match current Cart type
-// `as Cart` is used to satisfy type checking, but replace with:
-// export const initialCart: Cart = {
-// once Parsing types from backend are finalised.
+import { getLocalData } from "./localStorage";
 
-export const initialCart = {
-  nw: [
-    {
-      id: "5263014",
+export const getStartingState = (supermarket: ShopCode) => {
+  const localData = getLocalData("cart");
+  if (localData) {
+    return localData[supermarket] || {};
+  }
+  const initialCart =
+    process.env.NODE_ENV === "development" ? devInitialCart : emptyCart;
+  return initialCart[supermarket];
+};
+
+const emptyCart = { nw: {}, pns: {}, wls: {} };
+
+const devInitialCart: CombinedCart = {
+  nw: {
+    "5263014": {
       quantity: 2,
       product: {
         id: "5263014",
@@ -28,10 +36,10 @@ export const initialCart = {
           unitPrice: "0.68",
           unit: "100g",
         },
+        supermarket: "nw",
       },
     },
-    {
-      id: "5023660",
+    "5023660": {
       quantity: 5,
       product: {
         id: "5023660",
@@ -45,11 +53,11 @@ export const initialCart = {
           unitPrice: "1.70",
           unit: "100g",
         },
-        promo: {},
+        promo: null,
+        supermarket: "nw",
       },
     },
-    {
-      id: "5007494",
+    "5007494": {
       quantity: 1,
       product: {
         id: "5007494",
@@ -72,10 +80,10 @@ export const initialCart = {
           unit: "1L",
           limit: "Limit 12 assorted",
         },
+        supermarket: "nw",
       },
     },
-    {
-      id: "5201479",
+    "5201479": {
       quantity: 40,
       product: {
         id: "5201479",
@@ -90,13 +98,13 @@ export const initialCart = {
           unitPrice: "2.30",
           unit: "1L",
         },
-        promo: {},
+        promo: null,
+        supermarket: "nw",
       },
     },
-  ],
-  pns: [
-    {
-      id: "5002650",
+  },
+  pns: {
+    "5002650": {
       quantity: 2,
       product: {
         id: "5002650",
@@ -117,11 +125,10 @@ export const initialCart = {
           unitPrice: "1.98",
           unit: "100g",
         },
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5109655",
+    "5109655": {
       quantity: 12,
       product: {
         id: "5109655",
@@ -143,11 +150,10 @@ export const initialCart = {
           unit: "1L",
           multibuyThreshold: "4",
         },
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5294382",
+    "5294382": {
       quantity: 1,
       product: {
         id: "5294382",
@@ -162,12 +168,11 @@ export const initialCart = {
           unitPrice: "5.49",
           unit: "1kg",
         },
-        promo: {},
+        promo: null,
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5012239",
+    "5012239": {
       quantity: 4,
       product: {
         id: "5012239",
@@ -185,11 +190,10 @@ export const initialCart = {
         promo: {
           tag: "Extra Low",
         },
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5306376",
+    "5306376": {
       quantity: 1,
       product: {
         id: "5306376",
@@ -207,12 +211,12 @@ export const initialCart = {
         promo: {
           tag: "Extra Low",
         },
+        supermarket: "pns",
       },
     },
-  ],
-  wls: [
-    {
-      id: "6030021",
+  },
+  wls: {
+    "6030021": {
       quantity: 2,
       product: {
         id: "6030021",
@@ -231,13 +235,11 @@ export const initialCart = {
           tag: "Special",
           value: "22.50",
           per: "ea",
-          unitPrice: null,
-          unit: null,
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "956132",
+    "956132": {
       quantity: 10,
       product: {
         id: "956132",
@@ -256,13 +258,11 @@ export const initialCart = {
           tag: "Special",
           value: "4.70",
           per: "ea",
-          unitPrice: null,
-          unit: null,
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "253877",
+    "253877": {
       quantity: 1,
       product: {
         id: "253877",
@@ -280,10 +280,10 @@ export const initialCart = {
         promo: {
           tag: "LOW PRICE",
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "281809",
+    "281809": {
       quantity: 5,
       product: {
         id: "281809",
@@ -298,11 +298,11 @@ export const initialCart = {
           unitPrice: "1.33",
           unit: "100g",
         },
-        promo: {},
+        promo: null,
+        supermarket: "wls",
       },
     },
-    {
-      id: "266023",
+    "266023": {
       quantity: 1,
       product: {
         id: "266023",
@@ -320,10 +320,10 @@ export const initialCart = {
         promo: {
           tag: "Disney Discs Bonus Products.",
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "74613",
+    "74613": {
       quantity: 1,
       product: {
         id: "74613",
@@ -344,7 +344,8 @@ export const initialCart = {
           unitPrice: "0.50",
           unit: "100g",
         },
+        supermarket: "wls",
       },
     },
-  ],
-} as Cart;
+  },
+};

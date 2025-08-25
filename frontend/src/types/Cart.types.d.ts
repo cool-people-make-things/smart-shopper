@@ -1,11 +1,12 @@
-type Cart = {
-  nw: CartItem[];
-  pns: CartItem[];
-  wls: CartItem[];
+type CombinedCart = {
+  nw: Cart;
+  pns: Cart;
+  wls: Cart;
 };
 
+type Cart = Record<string, CartItem>;
+
 type CartItem = {
-  id: string;
   product: Product;
   quantity: number;
 };

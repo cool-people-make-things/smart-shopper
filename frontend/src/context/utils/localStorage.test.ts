@@ -118,11 +118,11 @@ describe("Given a user's data is saved to localStorage", () => {
   describe("When valid data is saved", () => {
     it("Then the data is saved under the specified name and in the correct format", () => {
       const setSpy = vi.spyOn(window.localStorage, "setItem");
-      setLocalData("cart", { nw: [], pns: [], wls: [] });
+      setLocalData("cart", { nw: {}, pns: {}, wls: {} });
 
       expect(setSpy).toHaveBeenCalledWith(
         "smartShopper.cart",
-        '{"nw":[],"pns":[],"wls":[]}',
+        '{"nw":{},"pns":{},"wls":{}}',
       );
     });
   });
@@ -137,7 +137,7 @@ describe("Given a user's data is saved to localStorage", () => {
 
     it("Then the generated error is logged", () => {
       try {
-        setLocalData("test", { nw: [], pns: [], wls: [] });
+        setLocalData("test", { nw: {}, pns: {}, wls: {} });
       } catch {
         expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
         expect(consoleErrorSpy).toHaveBeenCalledWith(failureMessage);
@@ -146,12 +146,12 @@ describe("Given a user's data is saved to localStorage", () => {
 
     it("Then the localStorage error is thrown", () => {
       expect(() => {
-        setLocalData("test", { nw: [], pns: [], wls: [] });
+        setLocalData("test", { nw: {}, pns: {}, wls: {} });
       }).toThrow("Error setting localStorage data.");
     });
   });
 
   describe("When invalid data is saved", () => {
-    it.todo("Then the data error is thrown");
+    it.todo("Then the data error is thrown"); // setLocalData currently does not validate data
   });
 });
