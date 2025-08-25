@@ -4,11 +4,15 @@ import { Text } from "@/components/retroui";
 
 import { CartProduct } from "../CartProduct";
 
+const supermarketTitles = {
+  nw: "New World",
+  pns: "PAK'nSAVE",
+  wls: "Woolworths",
+};
+
 export function IndividualSupermarketCart({
-  supermarket,
   shopCode,
 }: {
-  supermarket: string;
   shopCode: ShopCode;
 }) {
   // TODO logic will be handled in Context
@@ -32,7 +36,9 @@ export function IndividualSupermarketCart({
   return (
     <div id="new-world-cart">
       <div className="flex flex-row justify-between mb-4">
-        <Text className="text-4xl font-semibold ">{supermarket}</Text>
+        <Text className="text-4xl font-semibold ">
+          {supermarketTitles[shopCode]}
+        </Text>
         <Text
           data-testid="supermarket-spend"
           className="text-4xl font-semibold"
