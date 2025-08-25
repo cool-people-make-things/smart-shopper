@@ -1,0 +1,24 @@
+{
+  "id": "000000",
+  "quantity": 2,
+  "product": {
+    "supermarket": "nw",
+    "id": "5263014",
+    "title": "Pams Buttery Spread 500g",
+    "image": "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5263014.png?w=384",
+    "productPageUrl": "/shop/product/5263014_ea_000nw?name=pams-buttery-spread",
+    "price": {
+      "value": "4.29",
+      "per": "ea",
+      "unitPrice": "0.86",
+      "unit": "100g"
+    },
+    "promo": {
+      "tag": "",
+      "value": "3.39",
+      "per": "ea",
+      "unitPrice": "0.68",
+      "unit": "100g"
+    }
+  }
+}

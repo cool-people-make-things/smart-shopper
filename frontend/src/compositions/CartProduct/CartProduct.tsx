@@ -2,22 +2,27 @@ import { Minus, Plus, Trash } from "lucide-react";
 
 import { Button, Input, Label, Text } from "@/components/retroui";
 
-export function CartProduct({ item }: { item: CartItem }) {
+export function CartProduct({
+  cartProductItem,
+}: {
+  cartProductItem: CartItem;
+}) {
+  const { product, quantity } = cartProductItem;
   return (
     <div className="flex border items-center justify-center">
       <div className=" p-6">
         <img
-          src={item.product.image}
-          alt={item.product.title}
+          src={product?.image}
+          alt={product?.title}
           className=" w-16 h-16 object-cover"
         />
       </div>
       <div className="flex-1 min-h-full">
         <Text className="text-xl font-medium font-sans">
-          {item.product.title}
+          {product?.title ?? ""}
         </Text>
         <Text className="inline-block bg-gray-100 rounded-md text-xl font-sans py-1 px-3">
-          ${item.product.price.value}
+          ${product?.price?.value ?? "0.00"}
         </Text>
       </div>
       <div className="flex-1 flex justify-around min-h-full items-center gap-6">
@@ -26,7 +31,7 @@ export function CartProduct({ item }: { item: CartItem }) {
             Quantity:
           </Label>
           <div className="w-[50%]">
-            <Input type="number" value={item.quantity} id="quantity" />
+            <Input type="number" value={quantity ?? 0} id="quantity" />
           </div>
         </div>
 
