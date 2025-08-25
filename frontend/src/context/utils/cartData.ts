@@ -1,6 +1,11 @@
 import { getLocalData } from "./localStorage";
 
-export const getStartingState = (supermarket: ShopCode) => {
+/**
+ * Get the starting state for the cart using previous or default data.
+ * @param supermarket - The supermarket code
+ * @returns The starting cart for the specified supermarket
+ */
+export const getStartingState = (supermarket: ShopCode): Cart => {
   const localData = getLocalData("cart");
   if (localData) {
     return localData[supermarket] || {};
