@@ -142,124 +142,7 @@ export const partialCart_quantityUpdated = {
   wls: {},
 };
 
-// ----- CART WITH ALL PRODUCT TYPES -----
-
-export const fullCart = {
-  nw: {
-    [nwProduct.id]: {
-      product: nwProduct,
-      quantity: 4,
-    },
-    [nwProduct_unitless.id]: {
-      product: nwProduct_unitless,
-      quantity: 3,
-    },
-    [nwProduct_promoTag.id]: {
-      product: nwProduct_promoTag,
-      quantity: 6,
-    },
-    [nwProduct_promoTag_everyday.id]: {
-      product: nwProduct_promoTag_everyday,
-      quantity: 3,
-    },
-    [nwProduct_promo.id]: {
-      product: nwProduct_promo,
-      quantity: 6,
-    },
-    [nwProduct_promo_withLimit.id]: {
-      product: nwProduct_promo_withLimit,
-      quantity: 3,
-    },
-    [nwProduct_multibuy.id]: {
-      product: nwProduct_multibuy,
-      quantity: 2,
-    },
-    [nwProduct_multibuy_unitless.id]: {
-      product: nwProduct_multibuy_unitless,
-      quantity: 1,
-    },
-    [nwProduct_membersCard_withLimit.id]: {
-      product: nwProduct_membersCard_withLimit,
-      quantity: 3,
-    },
-    [nwProduct_membersCard_multibuy.id]: {
-      product: nwProduct_membersCard_multibuy,
-      quantity: 5,
-    },
-  },
-  pns: {
-    [pnsProduct.id]: {
-      product: pnsProduct,
-      quantity: 4,
-    },
-    [pnsProduct_unitless.id]: {
-      product: pnsProduct_unitless,
-      quantity: 7,
-    },
-    [pnsProduct_promoTag.id]: {
-      product: pnsProduct_promoTag,
-      quantity: 10,
-    },
-    [pnsProduct_promoTag_unitless.id]: {
-      product: pnsProduct_promoTag_unitless,
-      quantity: 4,
-    },
-    [pnsProduct_promo_withLimit.id]: {
-      product: pnsProduct_promo_withLimit,
-      quantity: 2,
-    },
-    [pnsProduct_multibuy.id]: {
-      product: pnsProduct_multibuy,
-      quantity: 5,
-    },
-  },
-  wls: {
-    [wlsProduct.id]: {
-      product: wlsProduct,
-      quantity: 2,
-    },
-    [wlsProduct_unitless.id]: {
-      product: wlsProduct_unitless,
-      quantity: 1,
-    },
-    [wlsProduct_promoTag.id]: {
-      product: wlsProduct_promoTag,
-      quantity: 4,
-    },
-    [wlsProduct_promo.id]: {
-      product: wlsProduct_promo,
-      quantity: 5,
-    },
-    [wlsProduct_promo_unitless.id]: {
-      product: wlsProduct_promo_unitless,
-      quantity: 2,
-    },
-    [wlsProduct_multibuy.id]: {
-      product: wlsProduct_multibuy,
-      quantity: 5,
-    },
-    [wlsProduct_multibuy_low.id]: {
-      product: wlsProduct_multibuy_low,
-      quantity: 3,
-    },
-    [wlsProduct_multibuy_fresh.id]: {
-      product: wlsProduct_multibuy_fresh,
-      quantity: 1,
-    },
-    [wlsProduct_membersCard.id]: {
-      product: wlsProduct_membersCard,
-      quantity: 5,
-    },
-    [wlsProduct_disney.id]: {
-      product: wlsProduct_disney,
-      quantity: 2,
-    },
-    [wlsProduct_disney_promo.id]: {
-      product: wlsProduct_disney_promo,
-      quantity: 4,
-    },
-  },
-};
+// ----- ALL PRODUCT TYPES IN COMBINED AND SUBCATEGORY CARTS -----
 
 export const fullCart_simple = {
   nw: {
@@ -393,5 +276,23 @@ export const fullCart_multibuy = {
       product: wlsProduct_multibuy_fresh,
       quantity: 1,
     },
+  },
+};
+
+export const fullCart = {
+  nw: {
+    ...fullCart_simple.nw,
+    ...fullCart_specials.nw,
+    ...fullCart_multibuy.nw,
+  },
+  pns: {
+    ...fullCart_simple.pns,
+    ...fullCart_specials.pns,
+    ...fullCart_multibuy.pns,
+  },
+  wls: {
+    ...fullCart_simple.wls,
+    ...fullCart_specials.wls,
+    ...fullCart_multibuy.wls,
   },
 };
