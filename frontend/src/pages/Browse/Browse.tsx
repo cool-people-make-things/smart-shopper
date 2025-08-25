@@ -1,14 +1,14 @@
 import { ProductColumn } from "@/components/ProductColumn";
 import { Input } from "@/components/retroui";
-import nwData from "@/lib/test/fixtures/nw_actual.json";
-import pnsData from "@/lib/test/fixtures/pns_actual.json";
-import wlsData from "@/lib/test/fixtures/wls_actual.json";
+import { nwData } from "@/lib/test/fixtures/nw_actual";
+import { pnsData } from "@/lib/test/fixtures/pns_actual";
+import { wlsData } from "@/lib/test/fixtures/wls_actual";
 
 export function Browse() {
   const dummyData = {
-    nw: { data: nwData as Product[], store: "New World" },
-    pns: { data: pnsData as Product[], store: "Pak'n'Save" },
-    wls: { data: wlsData as Product[], store: "Woolworths" },
+    nw: { data: nwData, store: "New World" },
+    pns: { data: pnsData, store: "Pak'n'Save" },
+    wls: { data: wlsData, store: "Woolworths" },
   };
 
   return (

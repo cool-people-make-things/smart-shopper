@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { apiClient } from "@/lib/apiClient";
-import nwFixture from "@/lib/test/fixtures/nw_actual.json";
+import { nwData as mockProducts } from "@/lib/test/fixtures/nw_actual";
 
 import { searchProducts } from "./search";
 
@@ -10,8 +10,6 @@ vi.mock("@/lib/apiClient", async () => {
     apiClient: vi.fn<typeof apiClient>(),
   };
 });
-
-const mockProducts = nwFixture;
 
 const mockResponse = {
   query: "eggs",

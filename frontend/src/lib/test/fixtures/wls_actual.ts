@@ -1,0 +1,869 @@
+export const wlsData: Product[] = [
+  {
+    id: "266023",
+    supermarket: "wls",
+    title: "watties spaghetti in tomato sauce Cans 3pack",
+    image:
+      "https://assets.woolworths.com.au/images/2010/266023.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=266023&name=watties-spaghetti-in-tomato-sauce",
+    price: {
+      value: "6.89",
+      per: "ea",
+      unitPrice: "0.55",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+  {
+    id: "44571",
+    supermarket: "wls",
+    title: "essentials pasta spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/44571.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=44571&name=essentials-pasta-spaghetti",
+    price: {
+      value: "1.80",
+      per: "ea",
+      unitPrice: "0.36",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "4485",
+    supermarket: "wls",
+    title: "watties spaghetti in tomato sauce Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/4485.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=4485&name=watties-spaghetti-in-tomato-sauce",
+    price: {
+      value: "2.99",
+      per: "ea",
+      unitPrice: "0.55",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+      value: "2.30",
+      per: "ea",
+      unitPrice: null,
+      unit: null,
+    },
+  },
+  {
+    id: "727664",
+    supermarket: "wls",
+    title: "diamond pasta spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/727664.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=727664&name=diamond-pasta-spaghetti",
+    price: {
+      value: "2.79",
+      per: "ea",
+      unitPrice: "0.56",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "266027",
+    supermarket: "wls",
+    title: "oak spaghetti in tomato sauce Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/266027.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=266027&name=oak-spaghetti-in-tomato-sauce",
+    price: {
+      value: "1.49",
+      per: "ea",
+      unitPrice: "0.35",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "346830",
+    supermarket: "wls",
+    title: "woolworths pasta spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/346830.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=346830&name=woolworths-pasta-spaghetti",
+    price: {
+      value: "2.30",
+      per: "ea",
+      unitPrice: "0.46",
+      unit: "100g",
+    },
+    promo: {
+      tag: "LOW PRICE",
+    },
+  },
+  {
+    id: "74613",
+    supermarket: "wls",
+    title: "la molisana pasta spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/74613.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=74613&name=la-molisana-pasta-spaghetti",
+    price: {
+      value: "3.50",
+      per: "ea",
+      unitPrice: "0.70",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $5.00",
+      unitPrice: "0.50",
+      unit: "100g",
+    },
+  },
+  {
+    id: "47681",
+    supermarket: "wls",
+    title: "woolworths spaghetti in tomato sauce 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/47681.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=47681&name=woolworths-spaghetti-in-tomato-sauce",
+    price: {
+      value: "1.00",
+      per: "ea",
+      unitPrice: "0.24",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $1.00",
+      unitPrice: "0.12",
+      unit: "100g",
+    },
+  },
+  {
+    id: "83763",
+    supermarket: "wls",
+    title: "barilla pasta spaghetti no. 5 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/83763.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=83763&name=barilla-pasta-spaghetti-no-5",
+    price: {
+      value: "4.29",
+      per: "ea",
+      unitPrice: "0.68",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "3.40",
+      per: "ea",
+      unitPrice: null,
+      unit: null,
+    },
+  },
+  {
+    id: "6351",
+    supermarket: "wls",
+    title: "watties spaghetti in tomato sauce Can 220g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/6351.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=6351&name=watties-spaghetti-in-tomato-sauce",
+    price: {
+      value: "1.99",
+      per: "ea",
+      unitPrice: "0.90",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+  {
+    id: "661387",
+    supermarket: "wls",
+    title: "watties spaghetti 50% less added sugar Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/661387.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=661387&name=watties-spaghetti-50-less-added-sugar",
+    price: {
+      value: "2.99",
+      per: "ea",
+      unitPrice: "0.55",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+      value: "2.30",
+      per: "ea",
+      unitPrice: null,
+      unit: null,
+    },
+  },
+  {
+    id: "727658",
+    supermarket: "wls",
+    title: "diamond pasta spaghetti wholemeal 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/727658.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=727658&name=diamond-pasta-spaghetti-wholemeal",
+    price: {
+      value: "2.79",
+      per: "ea",
+      unitPrice: "0.56",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "215450",
+    supermarket: "wls",
+    title: "macro organic pasta spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/215450.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=215450&name=macro-organic-pasta-spaghetti",
+    price: {
+      value: "4.00",
+      per: "ea",
+      unitPrice: "0.80",
+      unit: "100g",
+    },
+    promo: {
+      tag: "LOW PRICE",
+    },
+  },
+  {
+    id: "913866",
+    supermarket: "wls",
+    title: "woolworths pasta long spaghetti Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/913866.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=913866&name=woolworths-pasta-long-spaghetti",
+    price: {
+      value: "1.79",
+      per: "ea",
+      unitPrice: "0.43",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $1.00",
+      unitPrice: "0.12",
+      unit: "100g",
+    },
+  },
+  {
+    id: "727453",
+    supermarket: "wls",
+    title: "diamond pasta spaghetti gluten free 250g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/727453.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=727453&name=diamond-pasta-spaghetti-gluten-free",
+    price: {
+      value: "4.89",
+      per: "ea",
+      unitPrice: "1.96",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "6345",
+    supermarket: "wls",
+    title: "watties spaghetti cheesy Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/6345.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=6345&name=watties-spaghetti-cheesy",
+    price: {
+      value: "2.99",
+      per: "ea",
+      unitPrice: "0.55",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+      value: "2.30",
+      per: "ea",
+      unitPrice: null,
+      unit: null,
+    },
+  },
+  {
+    id: "916794",
+    supermarket: "wls",
+    title: "woolworths pasta cheesy spaghetti Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/916794.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=916794&name=woolworths-pasta-cheesy-spaghetti",
+    price: {
+      value: "1.99",
+      per: "ea",
+      unitPrice: "0.47",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $1.00",
+      unitPrice: "0.12",
+      unit: "100g",
+    },
+  },
+  {
+    id: "266029",
+    supermarket: "wls",
+    title: "watties spaghetti with sausages Can 300g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/266029.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=266029&name=watties-spaghetti-with-sausages",
+    price: {
+      value: "3.39",
+      per: "ea",
+      unitPrice: "1.13",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+  {
+    id: "757679",
+    supermarket: "wls",
+    title: "macro organic spaghetti in tomato sauce Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/757679.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=757679&name=macro-organic-spaghetti-in-tomato-sauce",
+    price: {
+      value: "2.00",
+      per: "ea",
+      unitPrice: "0.48",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "91105",
+    supermarket: "wls",
+    title: "vetta smart pasta spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/91105.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=91105&name=vetta-smart-pasta-spaghetti",
+    price: {
+      value: "3.00",
+      per: "ea",
+      unitPrice: "0.60",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "169421",
+    supermarket: "wls",
+    title: "maggi recipe base spaghetti bolognese Sachet 26g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/169421.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=169421&name=maggi-recipe-base-spaghetti-bolognese",
+    price: {
+      value: "1.99",
+      per: "ea",
+      unitPrice: "7.65",
+      unit: "100g",
+    },
+    promo: {
+      tag: "LOW PRICE",
+      value: "2 for $3.80",
+      unitPrice: "7.31",
+      unit: "100g",
+    },
+  },
+  {
+    id: "620646",
+    supermarket: "wls",
+    title: "barilla pasta spaghetti gluten free 340g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/620646.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=620646&name=barilla-pasta-spaghetti-gluten-free",
+    price: {
+      value: "6.20",
+      per: "ea",
+      unitPrice: "1.82",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "68343",
+    supermarket: "wls",
+    title: "macro organic pasta spaghetti wholemeal 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/68343.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=68343&name=macro-organic-pasta-spaghetti-wholemeal",
+    price: {
+      value: "4.00",
+      per: "ea",
+      unitPrice: "0.80",
+      unit: "100g",
+    },
+    promo: {
+      tag: "LOW PRICE",
+    },
+  },
+  {
+    id: "912755",
+    supermarket: "wls",
+    title: "woolworths spaghetti shortstrand 410g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/912755.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=912755&name=woolworths-spaghetti-shortstrand",
+    price: {
+      value: "1.10",
+      per: "ea",
+      unitPrice: "0.27",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $1.00",
+      unitPrice: "0.12",
+      unit: "100g",
+    },
+  },
+  {
+    id: "325330",
+    supermarket: "wls",
+    title: "garofalo pasta spaghetti no. 9 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/325330.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=325330&name=garofalo-pasta-spaghetti-no-9",
+    price: {
+      value: "6.39",
+      per: "ea",
+      unitPrice: "1.28",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "449465",
+    supermarket: "wls",
+    title: "vetta smart pasta protein spaghetti 375g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/449465.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=449465&name=vetta-smart-pasta-protein-spaghetti",
+    price: {
+      value: "3.50",
+      per: "ea",
+      unitPrice: "0.93",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "528208",
+    supermarket: "wls",
+    title: "la molisana high protein pasta spaghetti 400g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/528208.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=528208&name=la-molisana-high-protein-pasta-spaghetti",
+    price: {
+      value: "4.50",
+      per: "ea",
+      unitPrice: "1.13",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "74798",
+    supermarket: "wls",
+    title: "la molisana pasta wholewheat spaghetti 500g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/74798.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=74798&name=la-molisana-pasta-wholewheat-spaghetti",
+    price: {
+      value: "3.50",
+      per: "ea",
+      unitPrice: "0.70",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $5.00",
+      unitPrice: "0.50",
+      unit: "100g",
+    },
+  },
+  {
+    id: "4407",
+    supermarket: "wls",
+    title: "watties spaghetti with sausages Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/4407.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=4407&name=watties-spaghetti-with-sausages",
+    price: {
+      value: "4.69",
+      per: "ea",
+      unitPrice: "1.12",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+  {
+    id: "4408",
+    supermarket: "wls",
+    title: "watties spaghetti with meatballs Can 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/4408.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=4408&name=watties-spaghetti-with-meatballs",
+    price: {
+      value: "4.69",
+      per: "ea",
+      unitPrice: "1.12",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+  {
+    id: "6013481",
+    supermarket: "wls",
+    title: "delmaine chilled spaghetti 250g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/6013481.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=6013481&name=delmaine-chilled-spaghetti",
+    price: {
+      value: "3.89",
+      per: "ea",
+      unitPrice: "1.28",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "3.20",
+      per: "ea",
+      unitPrice: null,
+      unit: null,
+    },
+  },
+  {
+    id: "290971",
+    supermarket: "wls",
+    title: "san remo active plus pasta spaghetti 400g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/290971.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=290971&name=san-remo-active-plus-pasta-spaghetti",
+    price: {
+      value: "3.60",
+      per: "ea",
+      unitPrice: "0.90",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "765841",
+    supermarket: "wls",
+    title: "ceres organics pasta spaghetti quinoa 250g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/765841.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=765841&name=ceres-organics-pasta-spaghetti-quinoa",
+    price: {
+      value: "5.89",
+      per: "ea",
+      unitPrice: "2.36",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "68980",
+    supermarket: "wls",
+    title: "macro organic pasta spaghetti gluten free 350g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/68980.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=68980&name=macro-organic-pasta-spaghetti-gluten-free",
+    price: {
+      value: "4.20",
+      per: "ea",
+      unitPrice: "1.20",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "418253",
+    supermarket: "wls",
+    title: "woolworths chilled spaghetti bolognese 350g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/418253.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=418253&name=woolworths-chilled-spaghetti-bolognese",
+    price: {
+      value: "8.50",
+      per: "ea",
+      unitPrice: "2.43",
+      unit: "100g",
+    },
+    promo: {
+      tag: "LOW PRICE",
+    },
+  },
+  {
+    id: "279994",
+    supermarket: "wls",
+    title: "woolworths pasta chilled spaghetti gluten free 250g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/279994.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=279994&name=woolworths-pasta-chilled-spaghetti-gluten-free",
+    price: {
+      value: "11.90",
+      per: "ea",
+      unitPrice: "4.76",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "770320",
+    supermarket: "wls",
+    title: "woolworths diced tomatoes italian Can 400g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/770320.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=770320&name=woolworths-diced-tomatoes-italian",
+    price: {
+      value: "1.35",
+      per: "ea",
+      unitPrice: "3.38",
+      unit: "1kg",
+    },
+    promo: null,
+  },
+  {
+    id: "700721",
+    supermarket: "wls",
+    title: "san remo la pasta pasta & sauce macaroni cheese 160g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/700721.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=700721&name=san-remo-la-pasta-pasta-sauce-macaroni-cheese",
+    price: {
+      value: "2.80",
+      per: "ea",
+      unitPrice: "1.75",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $4.00",
+      unitPrice: "1.25",
+      unit: "100g",
+    },
+  },
+  {
+    id: "270751",
+    supermarket: "wls",
+    title: "watties flavoured tomatoes italian style Can 400g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/270751.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=270751&name=watties-flavoured-tomatoes-italian-style",
+    price: {
+      value: "2.00",
+      per: "ea",
+      unitPrice: "5.00",
+      unit: "1kg",
+    },
+    promo: {
+      tag: "LOW PRICE",
+    },
+  },
+  {
+    id: "647705",
+    supermarket: "wls",
+    title: "san remo gluten free brown rice pasta spaghetti 250g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/647705.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=647705&name=san-remo-gluten-free-brown-rice-pasta-spaghetti",
+    price: {
+      value: "5.00",
+      per: "ea",
+      unitPrice: "2.00",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "265330",
+    supermarket: "wls",
+    title: "wattie's very special soup italian minestrone canned 535g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/265330.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=265330&name=watties-very-special-soup-italian-minestrone-canned",
+    price: {
+      value: "4.79",
+      per: "ea",
+      unitPrice: "0.90",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Special",
+      value: "2 for $6.50",
+      unitPrice: "0.61",
+      unit: "100g",
+    },
+  },
+  {
+    id: "830129",
+    supermarket: "wls",
+    title: "slendier slim prepacked meal spaghetti 400g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/830129.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=830129&name=slendier-slim-prepacked-meal-spaghetti",
+    price: {
+      value: "4.50",
+      per: "ea",
+      unitPrice: "1.13",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "79923",
+    supermarket: "wls",
+    title: "continental classics recipe base spaghetti bolognese Pack 50g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/79923.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=79923&name=continental-classics-recipe-base-spaghetti-bolognese",
+    price: {
+      value: "1.99",
+      per: "ea",
+      unitPrice: "3.98",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "232529",
+    supermarket: "wls",
+    title: "culley's kitchen recipe base spaghetti bolognese Sachet 40g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/232529.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=232529&name=culleys-kitchen-recipe-base-spaghetti-bolognese",
+    price: {
+      value: "2.99",
+      per: "ea",
+      unitPrice: "7.48",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "257947",
+    supermarket: "wls",
+    title: "mrs rogers organic recipe base spaghetti bolognaise 30g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/257947.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=257947&name=mrs-rogers-organic-recipe-base-spaghetti-bolognaise",
+    price: {
+      value: "2.79",
+      per: "ea",
+      unitPrice: "9.30",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "312185",
+    supermarket: "wls",
+    title: "woolworths tomato sauce Refill 565g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/312185.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=312185&name=woolworths-tomato-sauce",
+    price: {
+      value: "1.79",
+      per: "ea",
+      unitPrice: "0.32",
+      unit: "100g",
+    },
+    promo: null,
+  },
+  {
+    id: "279288",
+    supermarket: "wls",
+    title: "wattie's pasta sauce original 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/279288.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=279288&name=watties-pasta-sauce-original",
+    price: {
+      value: "4.00",
+      per: "ea",
+      unitPrice: "0.95",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+  {
+    id: "279301",
+    supermarket: "wls",
+    title: "wattie's pasta sauce tomato & herb 420g",
+    image:
+      "https://assets.woolworths.com.au/images/2010/279301.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
+    productPageUrl:
+      "https://www.woolworths.co.nz/shop/productdetails?stockcode=279301&name=watties-pasta-sauce-tomato-herb",
+    price: {
+      value: "4.00",
+      per: "ea",
+      unitPrice: "0.95",
+      unit: "100g",
+    },
+    promo: {
+      tag: "Disney Discs Bonus Products.",
+    },
+  },
+];
