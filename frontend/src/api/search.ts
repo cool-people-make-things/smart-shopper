@@ -1,27 +1,25 @@
 export type SearchResponse = {
   query: string;
-  supermarket: string;
+  supermarket: ShopCode;
   source: string;
   results: Product[];
 };
 
 import { apiClient } from "../lib/apiClient";
 
-export const baseURL = "/api/v1";
-
 /**
  * searchProducts - Fetches products matching the query from a specific supermarket
  *
  * @param {string} query - The search term to look for (e.g., "eggs")
- * @param {string} supermarket - The supermarket identifier (e.g., "nw", "pns")
+ * @param {ShopCode} supermarket - The supermarket identifier (e.g., "nw", "pns")
  * @returns {Promise<SearchResponse>} A promise resolving to the search results,
  *   including the original query, supermarket, source, and an array of products
  */
 export async function searchProducts(
   query: string,
-  supermarket: string,
+  supermarket: ShopCode,
 ): Promise<SearchResponse> {
-  return apiClient(`${baseURL}/search/${supermarket}`, {
+  return apiClient(`/api/v1/search/${supermarket}`, {
     method: "GET",
     query: { q: query },
   });
