@@ -1,7 +1,7 @@
 import { getLocalData } from "./localStorage";
 
 /**
- * Get the starting state for the cart using previous or default data.
+ * getStartingState - Get the starting state for the cart using previous or default data
  * @param supermarket - The supermarket code
  * @returns The starting cart for the specified supermarket
  */

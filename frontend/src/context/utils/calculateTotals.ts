@@ -1,9 +1,9 @@
 /**
- * Calculate the total prices for each supermarket cart.
+ * calculateTotals - Calculate the total prices for each supermarket cart
  * @param nwCart - The cart for New World
  * @param pnsCart - The cart for PAK'nSAVE
  * @param wlsCart - The cart for Woolworths
- * @returns Totals object with individual and combined costs in "0.00" format
+ * @returns CartTotals object with individual and combined costs in "0.00" format
  */
 export function calculateTotals(
   nwCart: Cart,
@@ -23,7 +23,9 @@ export function calculateTotals(
 }
 
 /**
- * Calculate the total price for a single cart.
+ * calculateSingleCart - Calculate the total price for a single cart
+ * @param cart - The cart to calculate
+ * @returns The total price of the cart
  */
 function calculateSingleCart(cart: Cart) {
   if (!cart || Object.keys(cart).length === 0) return 0;
@@ -33,7 +35,9 @@ function calculateSingleCart(cart: Cart) {
 }
 
 /**
- * Get the price for a single item.
+ * getItemPrice - Get the price for a single item
+ * @param item - The cart item to get the price for
+ * @returns The price of the item
  */
 function getItemPrice(item: CartItem) {
   if (!item.product.price.value || !item.quantity) return 0;
@@ -50,7 +54,9 @@ function getItemPrice(item: CartItem) {
 }
 
 /**
- * Get the price for an item with a multibuy promo.
+ * getMultiPrice - Get the price for an item with a multibuy promo
+ * @param item - The multibuy item to get the price for
+ * @returns The combined price of the item
  */
 function getMultiPrice(item: CartItemWithMultibuy) {
   const { price, promo } = item.product;
@@ -66,7 +72,9 @@ function getMultiPrice(item: CartItemWithMultibuy) {
 }
 
 /**
- * Check if an item has a multibuy promo.
+ * isMultibuy - Check if an item has a multibuy promo
+ * @param item - The cart item to check
+ * @returns True if the item has a multibuy promo, false otherwise
  */
 function isMultibuy(item: CartItem): item is CartItemWithMultibuy {
   return !!item.product.promo && "multibuyThreshold" in item.product.promo;
