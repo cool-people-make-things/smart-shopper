@@ -1,10 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 
-import mockProduct from "@/lib/test/fixtures/cart_item.json";
+import { nwProduct } from "@/lib/test/fixtures/products";
 import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { CartProduct } from "./CartProduct";
+
+const mockProduct = {
+  quantity: 17,
+  product: nwProduct,
+};
 
 describe("Given the user is looking at the cart page", () => {
   describe("When the user is looking at an individual product", () => {
