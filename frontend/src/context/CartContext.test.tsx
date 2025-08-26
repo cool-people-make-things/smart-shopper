@@ -2,6 +2,11 @@ import { act, renderHook } from "@testing-library/react";
 import { expect, vi } from "vitest";
 
 import {
+  emptyCart_costs,
+  fullCart_costs,
+  partialCart_costs,
+} from "@/lib/test/fixtures/calculatedCosts";
+import {
   cartWithSingleItem,
   emptyCart,
   fullCart,
@@ -29,6 +34,15 @@ vi.mock("./utils/localStorage", () => ({
 // ----- USER INTERACTIONS -----
 
 describe("Given a user has an empty cart", () => {
+  describe("When the totals are viewed", () => {
+    it("Then all totals show as '0.00'", () => {
+      const { result } = renderComponentWithCart(emptyCart);
+
+      const { cartCosts } = result.current;
+      expect(cartCosts).toEqual(emptyCart_costs);
+    });
+  });
+
   describe("When the user adds an item from a specific supermarket", () => {
     it("Then the cart contains that item under the correct supermarket", () => {
       const { result } = renderComponentWithCart();
@@ -64,6 +78,18 @@ describe("Given a user has an empty cart", () => {
 
       expect(result.current).toHaveCart(cartWithSingleItem);
     });
+
+    it("Then the cart totals are updated to match", () => {
+      const { result } = renderComponentWithCart();
+      expect(result.current.cartCosts).toEqual(emptyCart_costs);
+
+      act(() => {
+        result.current.addCartItem("nw", nwProduct);
+      });
+
+      expect(result.current.cartCosts.nw).toBe("5.59");
+      expect(result.current.cartCosts.total).toBe("5.59");
+    });
   });
 });
 
@@ -76,6 +102,17 @@ describe("Given a user already has items in their cart", () => {
       });
 
       expect(result.current).toHaveCart(emptyCart);
+    });
+
+    it("Then all totals reset to '0.00'", () => {
+      const { result } = renderComponentWithCart(fullCart);
+      expect(result.current.cartCosts).toEqual(fullCart_costs);
+
+      act(() => {
+        result.current.clearCart();
+      });
+
+      expect(result.current.cartCosts).toEqual(emptyCart_costs);
     });
   });
 
@@ -103,6 +140,19 @@ describe("Given a user already has items in their cart", () => {
       expect(itemInCart).toBeDefined();
       expect(itemInCart.product).toEqual(pnsProduct_promoTag);
       expect(itemInCart.quantity).toBe(1);
+    });
+
+    it("Then the total costs are updated to include the new item", () => {
+      const { result } = renderComponentWithCart(partialCart);
+      expect(result.current.cartCosts).toEqual(partialCart_costs);
+
+      act(() => {
+        result.current.addCartItem("pns", pnsProduct_promoTag);
+      });
+
+      const endCosts = result.current.cartCosts;
+      expect(endCosts.pns).toBe("25.48");
+      expect(endCosts.total).toBe("39.43");
     });
   });
 
@@ -143,6 +193,19 @@ describe("Given a user already has items in their cart", () => {
 
       expect(result.current).toHaveCart(partialCart_itemRemoved);
     });
+
+    it("Then the total costs update to exclude that item", () => {
+      const { result } = renderComponentWithCart(partialCart);
+      expect(result.current.cartCosts).toEqual(partialCart_costs);
+
+      act(() => {
+        result.current.removeCartItem("pns", "5109655");
+      });
+
+      const { cartCosts } = result.current;
+      expect(cartCosts.pns).toEqual("8.49");
+      expect(cartCosts.total).toEqual("22.44");
+    });
   });
 
   describe("When the user updates the item quantity", () => {
@@ -165,6 +228,19 @@ describe("Given a user already has items in their cart", () => {
       expect(result.current.pnsCart["5109655"].quantity).toBe(300);
 
       expect(result.current).toHaveCart(partialCart_quantityUpdated);
+    });
+
+    it("Then the total costs update to reflect the new quantity", () => {
+      const { result } = renderComponentWithCart(partialCart);
+      expect(result.current.cartCosts).toEqual(partialCart_costs);
+
+      act(() => {
+        result.current.updateCartItemQuantity("nw", "5039976", 1);
+      });
+
+      const { cartCosts } = result.current;
+      expect(cartCosts.nw).toEqual("2.79");
+      expect(cartCosts.total).toEqual("26.28");
     });
   });
 
@@ -190,6 +266,8 @@ describe("Given a user already has items in their cart", () => {
     });
   });
 });
+
+// ----- FAULTY ITEM INTERACTIONS -----
 
 describe("Given a user attempts to interact with a faulty item", () => {
   describe("When the user adds an empty item to the cart", () => {

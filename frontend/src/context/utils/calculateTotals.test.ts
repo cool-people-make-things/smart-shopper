@@ -1,4 +1,11 @@
 import {
+  emptyCart_costs,
+  fullCart_costs,
+  fullCart_multibuy_costs,
+  fullCart_simple_costs,
+  fullCart_specials_costs,
+} from "@/lib/test/fixtures/calculatedCosts";
+import {
   cartWithSingleItem,
   fullCart,
   fullCart_multibuy,
@@ -13,12 +20,7 @@ describe("Given the user has an empty cart", () => {
   describe("When calculating total prices", () => {
     it("Then all totals should be 0", () => {
       const result = calculateTotals({}, {}, {});
-      expect(result).toEqual({
-        nw: "0.00",
-        pns: "0.00",
-        wls: "0.00",
-        total: "0.00",
-      });
+      expect(result).toEqual(emptyCart_costs);
     });
   });
 });
@@ -59,12 +61,7 @@ describe("Given the user has a cart with items", () => {
       const { nw, pns, wls } = fullCart_simple;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual({
-        nw: "63.64",
-        pns: "450.25",
-        wls: "127.77",
-        total: "641.66",
-      });
+      expect(result).toEqual(fullCart_simple_costs);
     });
   });
 
@@ -73,12 +70,7 @@ describe("Given the user has a cart with items", () => {
       const { nw, pns, wls } = fullCart_specials;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual({
-        nw: "28.38",
-        pns: "39.98",
-        wls: "123.00",
-        total: "191.36",
-      });
+      expect(result).toEqual(fullCart_specials_costs);
     });
   });
 
@@ -87,12 +79,7 @@ describe("Given the user has a cart with items", () => {
       const { nw, pns, wls } = fullCart_multibuy;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual({
-        nw: "17.77",
-        pns: "6.89",
-        wls: "76.55",
-        total: "101.21",
-      });
+      expect(result).toEqual(fullCart_multibuy_costs);
     });
   });
 
@@ -101,12 +88,7 @@ describe("Given the user has a cart with items", () => {
       const { nw, pns, wls } = fullCart;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual({
-        nw: "109.79",
-        pns: "497.12",
-        wls: "327.32",
-        total: "934.23",
-      });
+      expect(result).toEqual(fullCart_costs);
     });
   });
 });
