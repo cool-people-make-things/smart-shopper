@@ -1,6 +1,11 @@
 import { getLocalData } from "./localStorage";
 
-export const getStartingState = (supermarket: ShopCode) => {
+/**
+ * getStartingState - Get the starting state for the cart using previous or default data
+ * @param supermarket - The supermarket code
+ * @returns The starting cart for the specified supermarket
+ */
+export const getStartingState = (supermarket: ShopCode): Cart => {
   const localData = getLocalData("cart");
   if (localData) {
     return localData[supermarket] || {};
@@ -340,9 +345,10 @@ const devInitialCart: CombinedCart = {
         },
         promo: {
           tag: "Special",
-          value: "2 for $5.00",
+          value: "5.00",
           unitPrice: "0.50",
           unit: "100g",
+          multibuyThreshold: "2",
         },
         supermarket: "wls",
       },

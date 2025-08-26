@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 
+import { calculateTotals } from "./utils/calculateTotals";
 import { getStartingState } from "./utils/cartData";
 import { setLocalData } from "./utils/localStorage";
 
@@ -14,6 +15,7 @@ type CartContextType = {
   nwCart: Cart;
   pnsCart: Cart;
   wlsCart: Cart;
+  cartCosts: CartTotals;
   clearCart: () => void;
   addCartItem: (supermarket: ShopCode, item: Product) => void;
   removeCartItem: (supermarket: ShopCode, itemId: string) => void;
@@ -35,6 +37,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     pns: setPnsCart,
     wls: setWlsCart,
   };
+
+  const cartCosts = useMemo(
+    () => calculateTotals(nwCart, pnsCart, wlsCart),
+    [nwCart, pnsCart, wlsCart],
+  );
 
   const cart = useMemo(
     () => ({ nw: nwCart, pns: pnsCart, wls: wlsCart }),
@@ -111,6 +118,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         nwCart,
         pnsCart,
         wlsCart,
+        cartCosts,
         clearCart,
         addCartItem,
         removeCartItem,

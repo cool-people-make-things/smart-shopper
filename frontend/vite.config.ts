@@ -32,6 +32,6 @@ export default defineConfig({
     },
     globals: true,
     environment: "jsdom",
-    setupFiles: "./vitest.setup.ts",
+    setupFiles: "./src/lib/test/vitest.setup.ts",
   },
 }) as ViteUserConfig;
