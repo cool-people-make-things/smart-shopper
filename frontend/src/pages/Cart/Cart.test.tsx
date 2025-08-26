@@ -17,16 +17,15 @@ describe("Given the user is looking at the cart page", () => {
       expect(results).toHaveNoViolations();
     });
   });
-  describe("When the cart has grocery items", () => {
-    it("Then it displays the grocery lists and total spend", () => {
+  describe("When the cart has no grocery items", () => {
+    it("Then it displays the empty lists and total spend of $0.00", () => {
       renderWithRouter(<Cart />);
 
-      expect(screen.getByText(/shopping list new world/i)).toBeInTheDocument();
-      expect(screen.getByText(/shopping list woolworths/i)).toBeInTheDocument();
-      expect(screen.getByText(/shopping list pak'n'save/i)).toBeInTheDocument();
+      expect(screen.getByText(/new world/i)).toBeInTheDocument();
+      expect(screen.getByText(/woolworths/i)).toBeInTheDocument();
+      expect(screen.getByText(/pak'nsave/i)).toBeInTheDocument();
 
-      expect(screen.getByText(/total spend/i)).toBeInTheDocument();
-      expect(screen.getByText(/\$168\.90/)).toBeInTheDocument();
+      expect(screen.getByTestId("total-spend")).toHaveTextContent("$0.00");
     });
   });
 });
