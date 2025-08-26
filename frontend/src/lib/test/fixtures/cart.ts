@@ -1,31 +1,31 @@
 import {
   nwProduct,
-  nwProduct_membersCard_multibuy,
-  nwProduct_membersCard_withLimit,
-  nwProduct_multibuy,
-  nwProduct_multibuy_unitless,
-  nwProduct_promo,
-  nwProduct_promo_withLimit,
-  nwProduct_promoTag,
-  nwProduct_promoTag_everyday,
-  nwProduct_unitless,
+  nwProductMembersCardMultibuy,
+  nwProductMembersCardWithLimit,
+  nwProductMultibuy,
+  nwProductMultibuyUnitless,
+  nwProductPromo,
+  nwProductPromoTag,
+  nwProductPromoTagEveryday,
+  nwProductPromoWithLimit,
+  nwProductUnitless,
   pnsProduct,
-  pnsProduct_multibuy,
-  pnsProduct_promo_withLimit,
-  pnsProduct_promoTag,
-  pnsProduct_promoTag_unitless,
-  pnsProduct_unitless,
+  pnsProductMultibuy,
+  pnsProductPromoTag,
+  pnsProductPromoTagUnitless,
+  pnsProductPromoWithLimit,
+  pnsProductUnitless,
   wlsProduct,
-  wlsProduct_disney,
-  wlsProduct_disney_promo,
-  wlsProduct_membersCard,
-  wlsProduct_multibuy,
-  wlsProduct_multibuy_fresh,
-  wlsProduct_multibuy_low,
-  wlsProduct_promo,
-  wlsProduct_promo_unitless,
-  wlsProduct_promoTag,
-  wlsProduct_unitless,
+  wlsProductDisney,
+  wlsProductDisneyPromo,
+  wlsProductMembersCard,
+  wlsProductMultibuy,
+  wlsProductMultibuyFresh,
+  wlsProductMultibuyLow,
+  wlsProductPromo,
+  wlsProductPromoTag,
+  wlsProductPromoUnitless,
+  wlsProductUnitless,
 } from "./products";
 
 export const fullProductDetails = {
@@ -64,7 +64,7 @@ export const cartWithSingleItem = {
 export const partialCart = {
   nw: {
     "5039976": {
-      product: nwProduct_promoTag,
+      product: nwProductPromoTag,
       quantity: 5,
     },
   },
@@ -74,17 +74,17 @@ export const partialCart = {
       quantity: 1,
     },
     "5109655": {
-      product: pnsProduct_multibuy,
+      product: pnsProductMultibuy,
       quantity: 12,
     },
   },
   wls: {},
 };
 
-export const partialCart_itemAdded = {
+export const partialCartItemAdded = {
   nw: {
     "5039976": {
-      product: nwProduct_promoTag,
+      product: nwProductPromoTag,
       quantity: 5,
     },
   },
@@ -94,7 +94,7 @@ export const partialCart_itemAdded = {
       quantity: 1,
     },
     "5109655": {
-      product: pnsProduct_multibuy,
+      product: pnsProductMultibuy,
       quantity: 12,
     },
   },
@@ -106,26 +106,26 @@ export const partialCart_itemAdded = {
   },
 };
 
-export const partialCart_itemRemoved = {
+export const partialCartItemRemoved = {
   nw: {
     "5039976": {
-      product: nwProduct_promoTag,
+      product: nwProductPromoTag,
       quantity: 5,
     },
   },
   pns: {
     "5109655": {
-      product: pnsProduct_multibuy,
+      product: pnsProductMultibuy,
       quantity: 12,
     },
   },
   wls: {},
 };
 
-export const partialCart_quantityUpdated = {
+export const partialCartQuantityUpdated = {
   nw: {
     "5039976": {
-      product: nwProduct_promoTag,
+      product: nwProductPromoTag,
       quantity: 5,
     },
   },
@@ -135,7 +135,7 @@ export const partialCart_quantityUpdated = {
       quantity: 1,
     },
     "5109655": {
-      product: pnsProduct_multibuy,
+      product: pnsProductMultibuy,
       quantity: 300,
     },
   },
@@ -144,22 +144,22 @@ export const partialCart_quantityUpdated = {
 
 // ----- ALL PRODUCT TYPES IN COMBINED AND SUBCATEGORY CARTS -----
 
-export const fullCart_simple = {
+export const fullCartSimple = {
   nw: {
     [nwProduct.id]: {
       product: nwProduct,
       quantity: 4,
     },
-    [nwProduct_unitless.id]: {
-      product: nwProduct_unitless,
+    [nwProductUnitless.id]: {
+      product: nwProductUnitless,
       quantity: 3,
     },
-    [nwProduct_promoTag.id]: {
-      product: nwProduct_promoTag,
+    [nwProductPromoTag.id]: {
+      product: nwProductPromoTag,
       quantity: 6,
     },
-    [nwProduct_promoTag_everyday.id]: {
-      product: nwProduct_promoTag_everyday,
+    [nwProductPromoTagEveryday.id]: {
+      product: nwProductPromoTagEveryday,
       quantity: 3,
     },
   },
@@ -168,16 +168,16 @@ export const fullCart_simple = {
       product: pnsProduct,
       quantity: 4,
     },
-    [pnsProduct_unitless.id]: {
-      product: pnsProduct_unitless,
+    [pnsProductUnitless.id]: {
+      product: pnsProductUnitless,
       quantity: 7,
     },
-    [pnsProduct_promoTag.id]: {
-      product: pnsProduct_promoTag,
+    [pnsProductPromoTag.id]: {
+      product: pnsProductPromoTag,
       quantity: 10,
     },
-    [pnsProduct_promoTag_unitless.id]: {
-      product: pnsProduct_promoTag_unitless,
+    [pnsProductPromoTagUnitless.id]: {
+      product: pnsProductPromoTagUnitless,
       quantity: 4,
     },
   },
@@ -186,94 +186,94 @@ export const fullCart_simple = {
       product: wlsProduct,
       quantity: 2,
     },
-    [wlsProduct_unitless.id]: {
-      product: wlsProduct_unitless,
+    [wlsProductUnitless.id]: {
+      product: wlsProductUnitless,
       quantity: 1,
     },
-    [wlsProduct_promoTag.id]: {
-      product: wlsProduct_promoTag,
+    [wlsProductPromoTag.id]: {
+      product: wlsProductPromoTag,
       quantity: 4,
     },
-    [wlsProduct_disney.id]: {
-      product: wlsProduct_disney,
+    [wlsProductDisney.id]: {
+      product: wlsProductDisney,
       quantity: 2,
     },
   },
 };
 
-export const fullCart_specials = {
+export const fullCartSpecials = {
   nw: {
-    [nwProduct_promo.id]: {
-      product: nwProduct_promo,
+    [nwProductPromo.id]: {
+      product: nwProductPromo,
       quantity: 6,
     },
-    [nwProduct_promo_withLimit.id]: {
-      product: nwProduct_promo_withLimit,
+    [nwProductPromoWithLimit.id]: {
+      product: nwProductPromoWithLimit,
       quantity: 3,
     },
-    [nwProduct_membersCard_withLimit.id]: {
-      product: nwProduct_membersCard_withLimit,
+    [nwProductMembersCardWithLimit.id]: {
+      product: nwProductMembersCardWithLimit,
       quantity: 3,
     },
   },
   pns: {
-    [pnsProduct_promo_withLimit.id]: {
-      product: pnsProduct_promo_withLimit,
+    [pnsProductPromoWithLimit.id]: {
+      product: pnsProductPromoWithLimit,
       quantity: 2,
     },
   },
   wls: {
-    [wlsProduct_promo.id]: {
-      product: wlsProduct_promo,
+    [wlsProductPromo.id]: {
+      product: wlsProductPromo,
       quantity: 5,
     },
-    [wlsProduct_promo_unitless.id]: {
-      product: wlsProduct_promo_unitless,
+    [wlsProductPromoUnitless.id]: {
+      product: wlsProductPromoUnitless,
       quantity: 2,
     },
-    [wlsProduct_membersCard.id]: {
-      product: wlsProduct_membersCard,
+    [wlsProductMembersCard.id]: {
+      product: wlsProductMembersCard,
       quantity: 5,
     },
-    [wlsProduct_disney_promo.id]: {
-      product: wlsProduct_disney_promo,
+    [wlsProductDisneyPromo.id]: {
+      product: wlsProductDisneyPromo,
       quantity: 4,
     },
   },
 };
 
-export const fullCart_multibuy = {
+export const fullCartMultibuy = {
   nw: {
-    [nwProduct_multibuy.id]: {
-      product: nwProduct_multibuy,
+    [nwProductMultibuy.id]: {
+      product: nwProductMultibuy,
       quantity: 2,
     },
-    [nwProduct_multibuy_unitless.id]: {
-      product: nwProduct_multibuy_unitless,
+    [nwProductMultibuyUnitless.id]: {
+      product: nwProductMultibuyUnitless,
       quantity: 1,
     },
-    [nwProduct_membersCard_multibuy.id]: {
-      product: nwProduct_membersCard_multibuy,
+    [nwProductMembersCardMultibuy.id]: {
+      product: nwProductMembersCardMultibuy,
       quantity: 5,
     },
   },
   pns: {
-    [pnsProduct_multibuy.id]: {
-      product: pnsProduct_multibuy,
+    [pnsProductMultibuy.id]: {
+      product: pnsProductMultibuy,
       quantity: 5,
     },
   },
   wls: {
-    [wlsProduct_multibuy.id]: {
-      product: wlsProduct_multibuy,
+    [wlsProductMultibuy.id]: {
+      product: wlsProductMultibuy,
       quantity: 5,
     },
-    [wlsProduct_multibuy_low.id]: {
-      product: wlsProduct_multibuy_low,
+    [wlsProductMultibuyLow.id]: {
+      product: wlsProductMultibuyLow,
       quantity: 3,
     },
-    [wlsProduct_multibuy_fresh.id]: {
-      product: wlsProduct_multibuy_fresh,
+    [wlsProductMultibuyFresh.id]: {
+      product: wlsProductMultibuyFresh,
       quantity: 1,
     },
   },
@@ -281,18 +281,18 @@ export const fullCart_multibuy = {
 
 export const fullCart = {
   nw: {
-    ...fullCart_simple.nw,
-    ...fullCart_specials.nw,
-    ...fullCart_multibuy.nw,
+    ...fullCartSimple.nw,
+    ...fullCartSpecials.nw,
+    ...fullCartMultibuy.nw,
   },
   pns: {
-    ...fullCart_simple.pns,
-    ...fullCart_specials.pns,
-    ...fullCart_multibuy.pns,
+    ...fullCartSimple.pns,
+    ...fullCartSpecials.pns,
+    ...fullCartMultibuy.pns,
   },
   wls: {
-    ...fullCart_simple.wls,
-    ...fullCart_specials.wls,
-    ...fullCart_multibuy.wls,
+    ...fullCartSimple.wls,
+    ...fullCartSpecials.wls,
+    ...fullCartMultibuy.wls,
   },
 };

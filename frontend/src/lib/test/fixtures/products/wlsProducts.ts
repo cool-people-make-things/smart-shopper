@@ -19,7 +19,7 @@ export const wlsProduct = {
   supermarket: wls,
 };
 
-export const wlsProduct_unitless = {
+export const wlsProductUnitless = {
   id: "907038",
   title: "speight's gold medal beer ale Bottle 24x330mL",
   image:
@@ -36,7 +36,7 @@ export const wlsProduct_unitless = {
   supermarket: wls,
 };
 
-export const wlsProduct_promoTag = {
+export const wlsProductPromoTag = {
   id: "98508",
   title: "turks free range chicken breast skinless fillet 450g",
   image:
@@ -57,7 +57,7 @@ export const wlsProduct_promoTag = {
 
 // ----- PROMO PRODUCTS -----
 
-export const wlsProduct_promo = {
+export const wlsProductPromo = {
   id: "315692",
   title: "v vitalise energy drink Single can 500mL",
   image:
@@ -78,7 +78,7 @@ export const wlsProduct_promo = {
   supermarket: wls,
 };
 
-export const wlsProduct_promo_unitless = {
+export const wlsProductPromoUnitless = {
   id: "705958",
   title: "speight's summit beer lager ultra low carb Bottle 24x330mL",
   image:
@@ -101,7 +101,7 @@ export const wlsProduct_promo_unitless = {
 
 // ----- MULTIBUY -----
 
-export const wlsProduct_multibuy = {
+export const wlsProductMultibuy = {
   id: "344618",
   title: "woolworths chicken whole Each 1.35kg",
   image:
@@ -124,7 +124,7 @@ export const wlsProduct_multibuy = {
   supermarket: wls,
 };
 
-export const wlsProduct_multibuy_low = {
+export const wlsProductMultibuyLow = {
   id: "251463",
   title: "woolworths NZ chicken mince breast 3% fat barn raised Tray 400g",
   image:
@@ -147,7 +147,7 @@ export const wlsProduct_multibuy_low = {
   supermarket: wls,
 };
 
-export const wlsProduct_multibuy_fresh = {
+export const wlsProductMultibuyFresh = {
   id: "281082",
   title: "fresh vegetable broccoli head",
   image:
@@ -170,7 +170,7 @@ export const wlsProduct_multibuy_fresh = {
 
 // ----- CLUB DEALS -----
 
-export const wlsProduct_membersCard = {
+export const wlsProductMembersCard = {
   id: "139864",
   title: "v vitalise energy drink guarana Single can 250mL",
   image:
@@ -195,7 +195,7 @@ export const wlsProduct_membersCard = {
 
 // ----- LIMITED TIME -----
 
-export const wlsProduct_disney = {
+export const wlsProductDisney = {
   id: "6014370",
   title: "tegel free range quick cook chicken steaks chargrilled 4pk 400g",
   image:
@@ -214,7 +214,7 @@ export const wlsProduct_disney = {
   supermarket: wls,
 };
 
-export const wlsProduct_disney_promo = {
+export const wlsProductDisneyPromo = {
   id: "363271",
   title: "tegel meal maker free range shredded roast chicken 100g 2 x 50g pks",
   image:

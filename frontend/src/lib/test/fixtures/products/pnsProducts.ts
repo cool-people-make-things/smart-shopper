@@ -19,7 +19,7 @@ export const pnsProduct = {
   supermarket: pns,
 };
 
-export const pnsProduct_unitless = {
+export const pnsProductUnitless = {
   id: "5297621",
   title: "Speight's Summit Ultra Low Carb Larger Beer Cans 24 x 330ml",
   image:
@@ -36,7 +36,7 @@ export const pnsProduct_unitless = {
   supermarket: pns,
 };
 
-export const pnsProduct_promoTag = {
+export const pnsProductPromoTag = {
   id: "5011024",
   title: "Arnott's Shapes Originals Chicken Crimpy Crackers 175g",
   image:
@@ -55,7 +55,7 @@ export const pnsProduct_promoTag = {
   supermarket: pns,
 };
 
-export const pnsProduct_promoTag_unitless = {
+export const pnsProductPromoTagUnitless = {
   id: "5220257",
   title: "Speight's Summit Ultra Low Carb Lager Beer Bottles 12 x 330ml",
   image:
@@ -76,7 +76,7 @@ export const pnsProduct_promoTag_unitless = {
 
 // ----- PROMO PRODUCTS -----
 
-export const pnsProduct_promo_withLimit = {
+export const pnsProductPromoWithLimit = {
   id: "5236273",
   title: "Karicare 1 Baby Infant Formula From Birth to 6 Months 900g",
   image:
@@ -101,7 +101,7 @@ export const pnsProduct_promo_withLimit = {
 
 // ----- MULTIBUY -----
 
-export const pnsProduct_multibuy = {
+export const pnsProductMultibuy = {
   id: "5109655",
   title: "Mogu Mogu Lychee Juice With Nate De Coco 320ml",
   image:

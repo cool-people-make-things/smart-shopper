@@ -19,7 +19,7 @@ export const nwProduct = {
   supermarket: nw,
 };
 
-export const nwProduct_unitless = {
+export const nwProductUnitless = {
   id: "5039956",
   title: "Broccoli ea",
   image:
@@ -36,7 +36,7 @@ export const nwProduct_unitless = {
   supermarket: nw,
 };
 
-export const nwProduct_promoTag = {
+export const nwProductPromoTag = {
   id: "5039976",
   title: "Green Kiwifruit kg",
   image:
@@ -55,7 +55,7 @@ export const nwProduct_promoTag = {
   supermarket: nw,
 };
 
-export const nwProduct_promoTag_everyday = {
+export const nwProductPromoTagEveryday = {
   id: "5008561",
   title: "Vogel's Original Mixed Grain Toast Bread 750g",
   image:
@@ -76,7 +76,7 @@ export const nwProduct_promoTag_everyday = {
 
 // ----- PROMO PRODUCTS -----
 
-export const nwProduct_promo = {
+export const nwProductPromo = {
   id: "5010998",
   title: "Peckish Original Rice Crackers 90g",
   image:
@@ -99,7 +99,7 @@ export const nwProduct_promo = {
   supermarket: nw,
 };
 
-export const nwProduct_promo_withLimit = {
+export const nwProductPromoWithLimit = {
   id: "5001548",
   title: "Coca-Cola Soft Drink 1.5l",
   image:
@@ -125,7 +125,7 @@ export const nwProduct_promo_withLimit = {
 
 // ----- MULTIBUY -----
 
-export const nwProduct_multibuy = {
+export const nwProductMultibuy = {
   id: "5020662",
   title: "V Guarana Energy Drink 500ml",
   image:
@@ -149,7 +149,7 @@ export const nwProduct_multibuy = {
   supermarket: nw,
 };
 
-export const nwProduct_multibuy_unitless = {
+export const nwProductMultibuyUnitless = {
   id: "5028110",
   title: "Avocado ea",
   image:
@@ -175,7 +175,7 @@ export const nwProduct_multibuy_unitless = {
 
 // ----- CLUB DEALS -----
 
-export const nwProduct_membersCard_withLimit = {
+export const nwProductMembersCardWithLimit = {
   id: "5318693",
   title: "Bluebird Rashuns Party Bag 190g",
   image:
@@ -199,7 +199,7 @@ export const nwProduct_membersCard_withLimit = {
   supermarket: nw,
 };
 
-export const nwProduct_membersCard_multibuy = {
+export const nwProductMembersCardMultibuy = {
   id: "5010717",
   title: "Bluebird Originals Ready Salted Potato Chips 150g",
   image:

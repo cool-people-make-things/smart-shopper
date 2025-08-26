@@ -1,3 +1,3 @@
-export * from "./nw_products";
-export * from "./pns_products";
-export * from "./wls_products";
+export * from "./nwProducts";
+export * from "./pnsProducts";
+export * from "./wlsProducts";

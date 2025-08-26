@@ -1,16 +1,16 @@
 import {
-  emptyCart_costs,
-  fullCart_costs,
-  fullCart_multibuy_costs,
-  fullCart_simple_costs,
-  fullCart_specials_costs,
+  emptyCartCosts,
+  fullCartCosts,
+  fullCartMultibuyCosts,
+  fullCartSimpleCosts,
+  fullCartSpecialsCosts,
 } from "@/lib/test/fixtures/calculatedCosts";
 import {
   cartWithSingleItem,
   fullCart,
-  fullCart_multibuy,
-  fullCart_simple,
-  fullCart_specials,
+  fullCartMultibuy,
+  fullCartSimple,
+  fullCartSpecials,
   partialCart,
 } from "@/lib/test/fixtures/cart";
 
@@ -20,7 +20,7 @@ describe("Given the user has an empty cart", () => {
   describe("When calculating total prices", () => {
     it("Then all totals should be 0", () => {
       const result = calculateTotals({}, {}, {});
-      expect(result).toEqual(emptyCart_costs);
+      expect(result).toEqual(emptyCartCosts);
     });
   });
 });
@@ -58,28 +58,28 @@ describe("Given the user has a cart with items", () => {
 
   describe("When the price of simple products are calculated", () => {
     it("Then the total should be calculated from the item prices", () => {
-      const { nw, pns, wls } = fullCart_simple;
+      const { nw, pns, wls } = fullCartSimple;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual(fullCart_simple_costs);
+      expect(result).toEqual(fullCartSimpleCosts);
     });
   });
 
   describe("When the price of special products are calculated", () => {
     it("Then the total should be calculated from the promo prices", () => {
-      const { nw, pns, wls } = fullCart_specials;
+      const { nw, pns, wls } = fullCartSpecials;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual(fullCart_specials_costs);
+      expect(result).toEqual(fullCartSpecialsCosts);
     });
   });
 
   describe("When the price of a cart with multibuy products is calculated", () => {
     it("Then the total should take account of multibuy discounts", () => {
-      const { nw, pns, wls } = fullCart_multibuy;
+      const { nw, pns, wls } = fullCartMultibuy;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual(fullCart_multibuy_costs);
+      expect(result).toEqual(fullCartMultibuyCosts);
     });
   });
 
@@ -88,7 +88,7 @@ describe("Given the user has a cart with items", () => {
       const { nw, pns, wls } = fullCart;
       const result = calculateTotals(nw, pns, wls);
 
-      expect(result).toEqual(fullCart_costs);
+      expect(result).toEqual(fullCartCosts);
     });
   });
 });

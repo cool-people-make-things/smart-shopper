@@ -2,23 +2,23 @@ import { act, renderHook } from "@testing-library/react";
 import { expect, vi } from "vitest";
 
 import {
-  emptyCart_costs,
-  fullCart_costs,
-  partialCart_costs,
+  emptyCartCosts,
+  fullCartCosts,
+  partialCartCosts,
 } from "@/lib/test/fixtures/calculatedCosts";
 import {
   cartWithSingleItem,
   emptyCart,
   fullCart,
   partialCart,
-  partialCart_itemRemoved,
-  partialCart_quantityUpdated,
+  partialCartItemRemoved,
+  partialCartQuantityUpdated,
 } from "@/lib/test/fixtures/cart";
 import {
   nwProduct,
-  nwProduct_promoTag,
+  nwProductPromoTag,
   pnsProduct,
-  pnsProduct_promoTag,
+  pnsProductPromoTag,
   wlsProduct,
 } from "@/lib/test/fixtures/products";
 
@@ -39,7 +39,7 @@ describe("Given a user has an empty cart", () => {
       const { result } = renderComponentWithCart(emptyCart);
 
       const { cartCosts } = result.current;
-      expect(cartCosts).toEqual(emptyCart_costs);
+      expect(cartCosts).toEqual(emptyCartCosts);
     });
   });
 
@@ -81,7 +81,7 @@ describe("Given a user has an empty cart", () => {
 
     it("Then the cart totals are updated to match", () => {
       const { result } = renderComponentWithCart();
-      expect(result.current.cartCosts).toEqual(emptyCart_costs);
+      expect(result.current.cartCosts).toEqual(emptyCartCosts);
 
       act(() => {
         result.current.addCartItem("nw", nwProduct);
@@ -106,13 +106,13 @@ describe("Given a user already has items in their cart", () => {
 
     it("Then all totals reset to '0.00'", () => {
       const { result } = renderComponentWithCart(fullCart);
-      expect(result.current.cartCosts).toEqual(fullCart_costs);
+      expect(result.current.cartCosts).toEqual(fullCartCosts);
 
       act(() => {
         result.current.clearCart();
       });
 
-      expect(result.current.cartCosts).toEqual(emptyCart_costs);
+      expect(result.current.cartCosts).toEqual(emptyCartCosts);
     });
   });
 
@@ -132,22 +132,22 @@ describe("Given a user already has items in their cart", () => {
     it("Then the quantity of the new item is set to 1", () => {
       const { result } = renderComponentWithCart(partialCart);
       act(() => {
-        result.current.addCartItem("pns", pnsProduct_promoTag);
+        result.current.addCartItem("pns", pnsProductPromoTag);
       });
 
       const itemInCart = result.current.pnsCart["5011024"];
 
       expect(itemInCart).toBeDefined();
-      expect(itemInCart.product).toEqual(pnsProduct_promoTag);
+      expect(itemInCart.product).toEqual(pnsProductPromoTag);
       expect(itemInCart.quantity).toBe(1);
     });
 
     it("Then the total costs are updated to include the new item", () => {
       const { result } = renderComponentWithCart(partialCart);
-      expect(result.current.cartCosts).toEqual(partialCart_costs);
+      expect(result.current.cartCosts).toEqual(partialCartCosts);
 
       act(() => {
-        result.current.addCartItem("pns", pnsProduct_promoTag);
+        result.current.addCartItem("pns", pnsProductPromoTag);
       });
 
       const endCosts = result.current.cartCosts;
@@ -164,7 +164,7 @@ describe("Given a user already has items in their cart", () => {
       expect(existingItem.quantity).toBe(5);
 
       act(() => {
-        result.current.addCartItem("nw", nwProduct_promoTag);
+        result.current.addCartItem("nw", nwProductPromoTag);
       });
 
       const updatedItem = result.current.nwCart["5039976"];
@@ -191,12 +191,12 @@ describe("Given a user already has items in their cart", () => {
         result.current.removeCartItem("pns", "5236771");
       });
 
-      expect(result.current).toHaveCart(partialCart_itemRemoved);
+      expect(result.current).toHaveCart(partialCartItemRemoved);
     });
 
     it("Then the total costs update to exclude that item", () => {
       const { result } = renderComponentWithCart(partialCart);
-      expect(result.current.cartCosts).toEqual(partialCart_costs);
+      expect(result.current.cartCosts).toEqual(partialCartCosts);
 
       act(() => {
         result.current.removeCartItem("pns", "5109655");
@@ -227,12 +227,12 @@ describe("Given a user already has items in their cart", () => {
 
       expect(result.current.pnsCart["5109655"].quantity).toBe(300);
 
-      expect(result.current).toHaveCart(partialCart_quantityUpdated);
+      expect(result.current).toHaveCart(partialCartQuantityUpdated);
     });
 
     it("Then the total costs update to reflect the new quantity", () => {
       const { result } = renderComponentWithCart(partialCart);
-      expect(result.current.cartCosts).toEqual(partialCart_costs);
+      expect(result.current.cartCosts).toEqual(partialCartCosts);
 
       act(() => {
         result.current.updateCartItemQuantity("nw", "5039976", 1);
@@ -262,7 +262,7 @@ describe("Given a user already has items in their cart", () => {
         result.current.updateCartItemQuantity("pns", "5236771", 0);
       });
 
-      expect(result.current).toHaveCart(partialCart_itemRemoved);
+      expect(result.current).toHaveCart(partialCartItemRemoved);
     });
   });
 });
