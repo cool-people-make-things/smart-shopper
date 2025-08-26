@@ -38,5 +38,11 @@ RUN bundle install
 # Copy rest of the app
 COPY . .
 
+# Precompile assets if using Rails 8 asset pipeline
+RUN RAILS_ENV=production bundle exec rails assets:precompile
+
+# Expose the Render-assigned port
+EXPOSE 10000
+
 # Start Rails server by default
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "10000"]

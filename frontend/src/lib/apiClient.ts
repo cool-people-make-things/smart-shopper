@@ -51,18 +51,18 @@ export async function apiClient<T = unknown>(
 
   const res = await fetch(url, {
     method,
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
+    headers: { "Content-Type": "application/json", ...headers },
     body: body ? JSON.stringify(body) : undefined,
     ...rest,
   });
 
   if (!res.ok) {
-    const error = await res.json().catch(() => ({}));
-    throw new Error(error.error || `API error: ${res.status}`);
+    const errorBody = await res.json().catch(() => ({}));
+    const message =
+      (errorBody && typeof errorBody === "object" && "error" in errorBody
+        ? (errorBody as any).error
+        : undefined) || `API error: ${res.status}`;
+    throw new Error(message);
   }
-
   return res.json();
 }

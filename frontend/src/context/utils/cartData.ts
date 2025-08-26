@@ -1,17 +1,24 @@
-// TODO: This (temporary) cart does not match current Cart type
-// `as Cart` is used to satisfy type checking, but replace with:
-// export const initialCart: Cart = {
-// once Parsing types from backend are finalised.
+import { getLocalData } from "./localStorage";
 
-export const initialCart = {
-  nw: [
-    {
-      id: "5263014",
+export const getStartingState = (supermarket: ShopCode) => {
+  const localData = getLocalData("cart");
+  if (localData) {
+    return localData[supermarket] || {};
+  }
+  const initialCart =
+    process.env.NODE_ENV === "development" ? devInitialCart : emptyCart;
+  return initialCart[supermarket];
+};
+
+const emptyCart = { nw: {}, pns: {}, wls: {} };
+
+const devInitialCart: CombinedCart = {
+  nw: {
+    "5263014": {
       quantity: 2,
       product: {
         id: "5263014",
-        title: "Pams Buttery Spread",
-        amt: "500g",
+        title: "Pams Buttery Spread 500g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5263014.png?w=384",
         productPageUrl:
@@ -29,15 +36,14 @@ export const initialCart = {
           unitPrice: "0.68",
           unit: "100g",
         },
+        supermarket: "nw",
       },
     },
-    {
-      id: "5023660",
+    "5023660": {
       quantity: 5,
       product: {
         id: "5023660",
-        title: "Pams Pure Butter",
-        amt: "500g",
+        title: "Pams Pure Butter 500g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384",
         productPageUrl: "/shop/product/5023660_ea_000nw?name=pams-pure-butter",
@@ -47,16 +53,15 @@ export const initialCart = {
           unitPrice: "1.70",
           unit: "100g",
         },
-        promo: {},
+        promo: null,
+        supermarket: "nw",
       },
     },
-    {
-      id: "5007494",
+    "5007494": {
       quantity: 1,
       product: {
         id: "5007494",
-        title: "V Blue Guarana Energy Drink",
-        amt: "500ml",
+        title: "V Blue Guarana Energy Drink 500ml",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5007494.png?w=384",
         productPageUrl:
@@ -75,15 +80,14 @@ export const initialCart = {
           unit: "1L",
           limit: "Limit 12 assorted",
         },
+        supermarket: "nw",
       },
     },
-    {
-      id: "5201479",
+    "5201479": {
       quantity: 40,
       product: {
         id: "5201479",
-        title: "Pams Value Standard Milk",
-        amt: "2l",
+        title: "Pams Value Standard Milk 2l",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5201479.png?w=384",
         productPageUrl:
@@ -94,18 +98,17 @@ export const initialCart = {
           unitPrice: "2.30",
           unit: "1L",
         },
-        promo: {},
+        promo: null,
+        supermarket: "nw",
       },
     },
-  ],
-  pns: [
-    {
-      id: "5002650",
+  },
+  pns: {
+    "5002650": {
       quantity: 2,
       product: {
         id: "5002650",
-        title: "Anchor Butter",
-        amt: "500g",
+        title: "Anchor Butter 500g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384",
         productPageUrl: "/shop/product/5002650_ea_000nw?name=anchor-butter",
@@ -122,16 +125,14 @@ export const initialCart = {
           unitPrice: "1.98",
           unit: "100g",
         },
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5109655",
+    "5109655": {
       quantity: 12,
       product: {
         id: "5109655",
-        title: "Mogu Mogu Lychee Juice With Nate De Coco",
-        amt: "320ml",
+        title: "Mogu Mogu Lychee Juice With Nate De Coco 320ml",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5109655.png?w=384",
         productPageUrl:
@@ -149,16 +150,14 @@ export const initialCart = {
           unit: "1L",
           multibuyThreshold: "4",
         },
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5294382",
+    "5294382": {
       quantity: 1,
       product: {
         id: "5294382",
-        title: "SB Frozen Whole Florets Broccoli",
-        amt: "1kg",
+        title: "SB Frozen Whole Florets Broccoli 1kg",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5294382.png?w=384",
         productPageUrl:
@@ -169,17 +168,15 @@ export const initialCart = {
           unitPrice: "5.49",
           unit: "1kg",
         },
-        promo: {},
+        promo: null,
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5012239",
+    "5012239": {
       quantity: 4,
       product: {
         id: "5012239",
-        title: "Wattie's Broccoli & Cauliflower Medley",
-        amt: "650g",
+        title: "Wattie's Broccoli & Cauliflower Medley 650g",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5012239.png?w=384",
         productPageUrl:
@@ -193,16 +190,14 @@ export const initialCart = {
         promo: {
           tag: "Extra Low",
         },
+        supermarket: "pns",
       },
     },
-
-    {
-      id: "5306376",
+    "5306376": {
       quantity: 1,
       product: {
         id: "5306376",
-        title: "Coca-Cola Zero Sugar Soft Drinks Cans",
-        amt: "8 x 330ml",
+        title: "Coca-Cola Zero Sugar Soft Drinks Cans 8 x 330ml",
         image:
           "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5306376.png?w=384",
         productPageUrl:
@@ -216,17 +211,16 @@ export const initialCart = {
         promo: {
           tag: "Extra Low",
         },
+        supermarket: "pns",
       },
     },
-  ],
-  wls: [
-    {
-      id: "6030021",
+  },
+  wls: {
+    "6030021": {
       quantity: 2,
       product: {
         id: "6030021",
         title: "riley coffee beans heyday 500g",
-        amt: "500g",
         image:
           "https://assets.woolworths.com.au/images/2010/6030021.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -241,18 +235,15 @@ export const initialCart = {
           tag: "Special",
           value: "22.50",
           per: "ea",
-          unitPrice: null,
-          unit: null,
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "956132",
+    "956132": {
       quantity: 10,
       product: {
         id: "956132",
         title: "whittakers chocolate block raspberry & NZ strawberry 100g",
-        amt: "100g",
         image:
           "https://assets.woolworths.com.au/images/2010/956132.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -267,18 +258,15 @@ export const initialCart = {
           tag: "Special",
           value: "4.70",
           per: "ea",
-          unitPrice: null,
-          unit: null,
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "253877",
+    "253877": {
       quantity: 1,
       product: {
         id: "253877",
         title: "macro eggs free range mixed grade Carton 12pack",
-        amt: null,
         image:
           "https://assets.woolworths.com.au/images/2010/253877.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -292,15 +280,14 @@ export const initialCart = {
         promo: {
           tag: "LOW PRICE",
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "281809",
+    "281809": {
       quantity: 5,
       product: {
         id: "281809",
         title: "woolworths cheese edam Block 1kg",
-        amt: "1kg",
         image:
           "https://assets.woolworths.com.au/images/2010/281809.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -311,16 +298,15 @@ export const initialCart = {
           unitPrice: "1.33",
           unit: "100g",
         },
-        promo: {},
+        promo: null,
+        supermarket: "wls",
       },
     },
-    {
-      id: "266023",
+    "266023": {
       quantity: 1,
       product: {
         id: "266023",
         title: "watties spaghetti in tomato sauce Cans 3pack",
-        amt: null,
         image:
           "https://assets.woolworths.com.au/images/2010/266023.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -334,15 +320,14 @@ export const initialCart = {
         promo: {
           tag: "Disney Discs Bonus Products.",
         },
+        supermarket: "wls",
       },
     },
-    {
-      id: "74613",
+    "74613": {
       quantity: 1,
       product: {
         id: "74613",
         title: "la molisana pasta spaghetti 500g",
-        amt: "500g",
         image:
           "https://assets.woolworths.com.au/images/2010/74613.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -359,7 +344,8 @@ export const initialCart = {
           unitPrice: "0.50",
           unit: "100g",
         },
+        supermarket: "wls",
       },
     },
-  ],
-} as Cart;
+  },
+};

@@ -1,5 +1,3 @@
-import type { Product } from "@/types/Product.types";
-
 import { Card } from "../Card";
 import { Text } from "../retroui";
 
@@ -12,7 +10,7 @@ export function ProductColumn({ data, store }: ProductColumnProps) {
   return (
     <div
       data-testid="nw"
-      className={`supermarket-container w-full pb-10 ${store === "Pak'nSave" ? "bg-gray-100" : "bg-gray-300"}`}
+      className={`supermarket-container w-full pb-10 ${store === "PAK'nSAVE" ? "bg-gray-100" : "bg-gray-300"}`}
     >
       <Text as={"h2"} className="py-6 text-center">
         {store ? store : "Error displaying Supermarket name"}

@@ -1,20 +1,6 @@
 class DataManager
   VALID_SUPERMARKETS = %w[nw pns wls test_shop]
 
-  # read_json_file - Reads the JSON file for the specified supermarket
-  #
-  # @param supermarket [String] The supermarket identifier
-  # @return [JSON || nil] The JSON content or nil if the file does not exist
-  def self.read_json_file(supermarket)
-    validate_supermarket!(supermarket)
-    json_path = Rails.root.join("app", "assets", "data", "#{supermarket}.json")
-
-    File.exist?(json_path) ? JSON.parse(File.read(json_path)) : nil
-  rescue => e
-    Log.warn("Error reading JSON file: #{e.message}")
-    nil
-  end
-
   # write_html_file - Writes HTML to a file for the specific supermarket
   #
   # @param supermarket [String] The supermarket identifier
@@ -55,6 +41,6 @@ class DataManager
   # @param supermarket [String] The supermarket identifier
   # @raise [ArgumentError] If the supermarket is not recognized
   def self.validate_supermarket!(supermarket)
-    Log.error(ArgumentError, "Unknown supermarket: #{supermarket}") unless VALID_SUPERMARKETS.include?(supermarket)
+    Log.error("Unknown supermarket: #{supermarket}") unless VALID_SUPERMARKETS.include?(supermarket)
   end
 end
