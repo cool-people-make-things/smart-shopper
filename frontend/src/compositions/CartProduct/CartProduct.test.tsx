@@ -15,7 +15,7 @@ describe("Given the user is looking at the cart page", () => {
   describe("When the user is looking at an individual product", () => {
     it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouter(
-        <CartProduct cartProductItem={mockProduct as CartItem} />,
+        <CartProduct cartProductItem={mockProduct} />,
       );
       const results = await axe(container, {
         rules: {
