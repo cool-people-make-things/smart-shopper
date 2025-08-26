@@ -1,9 +1,9 @@
 type LocalStorageKey = "cart" | "test";
 
-/*
- * Retrieves data from localStorage by key.
- * @param key - The key to retrieve.
- * @returns Parsed data from localStorage or null if not found or parsing fails.
+/**
+ * getLocalData - Retrieves data from localStorage by key
+ * @param key - The key to retrieve
+ * @returns Parsed data from localStorage or null if not found or parsing fails
  */
 export function getLocalData(key: LocalStorageKey): CombinedCart | null {
   if (typeof window === "undefined") return null;
@@ -17,10 +17,10 @@ export function getLocalData(key: LocalStorageKey): CombinedCart | null {
   }
 }
 
-/*
- * Saves data to localStorage under a specified key.
- * @param key - The key to save data under.
- * @param data - The data to save.
+/**
+ * setLocalData - Saves data to localStorage under a specified key
+ * @param key - The key to save data under
+ * @param data - The data to save
  */
 export function setLocalData(key: LocalStorageKey, data: CombinedCart): void {
   if (typeof window === "undefined") return;

@@ -1,3 +1,33 @@
+import {
+  nwProduct,
+  nwProductMembersCardMultibuy,
+  nwProductMembersCardWithLimit,
+  nwProductMultibuy,
+  nwProductMultibuyUnitless,
+  nwProductPromo,
+  nwProductPromoTag,
+  nwProductPromoTagEveryday,
+  nwProductPromoWithLimit,
+  nwProductUnitless,
+  pnsProduct,
+  pnsProductMultibuy,
+  pnsProductPromoTag,
+  pnsProductPromoTagUnitless,
+  pnsProductPromoWithLimit,
+  pnsProductUnitless,
+  wlsProduct,
+  wlsProductDisney,
+  wlsProductDisneyPromo,
+  wlsProductMembersCard,
+  wlsProductMultibuy,
+  wlsProductMultibuyFresh,
+  wlsProductMultibuyLow,
+  wlsProductPromo,
+  wlsProductPromoTag,
+  wlsProductPromoUnitless,
+  wlsProductUnitless,
+} from "./products";
+
 export const fullProductDetails = {
   id: "0000000",
   title: "Product Name 500g",
@@ -12,7 +42,7 @@ export const fullProductDetails = {
   promo: null,
 } as Product;
 
-// ----- CART STATES -----
+// ----- PARTIALLY FILLED CART & VARIANTS -----
 
 export const emptyCart = {
   nw: {},
@@ -22,11 +52,8 @@ export const emptyCart = {
 
 export const cartWithSingleItem = {
   nw: {
-    1110000: {
-      product: {
-        ...fullProductDetails,
-        id: "1110000",
-      },
+    "5331318": {
+      product: nwProduct,
       quantity: 1,
     },
   },
@@ -34,156 +61,238 @@ export const cartWithSingleItem = {
   wls: {},
 };
 
-export const fullCart = {
+export const partialCart = {
   nw: {
-    1110111: {
-      product: {
-        ...fullProductDetails,
-        id: "1110111",
-      },
-      quantity: 50,
-    },
-    1110222: {
-      product: {
-        ...fullProductDetails,
-        id: "1110222",
-      },
-      quantity: 16,
+    "5039976": {
+      product: nwProductPromoTag,
+      quantity: 5,
     },
   },
   pns: {
-    2220111: {
-      product: {
-        ...fullProductDetails,
-        id: "2220111",
-      },
+    "5236771": {
+      product: pnsProduct,
       quantity: 1,
     },
-    2220222: {
-      product: {
-        ...fullProductDetails,
-        id: "2220222",
-      },
-      quantity: 13,
+    "5109655": {
+      product: pnsProductMultibuy,
+      quantity: 12,
     },
-    2220333: {
-      product: {
-        ...fullProductDetails,
-        id: "2220333",
-      },
-      quantity: 74,
+  },
+  wls: {},
+};
+
+export const partialCartItemAdded = {
+  nw: {
+    "5039976": {
+      product: nwProductPromoTag,
+      quantity: 5,
+    },
+  },
+  pns: {
+    "5236771": {
+      product: pnsProduct,
+      quantity: 1,
+    },
+    "5109655": {
+      product: pnsProductMultibuy,
+      quantity: 12,
     },
   },
   wls: {
-    333011: {
-      product: {
-        ...fullProductDetails,
-        id: "333011",
-      },
-      quantity: 34,
-    },
-    3330222: {
-      product: {
-        ...fullProductDetails,
-        id: "3330222",
-      },
-      quantity: 12,
-    },
-    33303: {
-      product: {
-        ...fullProductDetails,
-        id: "33303",
-      },
-      quantity: 8,
-    },
-    3330444: {
-      product: {
-        ...fullProductDetails,
-        id: "3330444",
-      },
-      quantity: 5,
+    "132815": {
+      product: wlsProduct,
+      quantity: 1,
     },
   },
 };
 
-// ----- PARTIALLY FILLED CART & VARIANTS -----
-
-export const partialCart = {
+export const partialCartItemRemoved = {
   nw: {
-    1110001: {
-      product: {
-        ...fullProductDetails,
-        id: "1110001",
-      },
+    "5039976": {
+      product: nwProductPromoTag,
       quantity: 5,
     },
   },
   pns: {
-    2220001: {
-      product: {
-        ...fullProductDetails,
-        id: "2220001",
-      },
+    "5109655": {
+      product: pnsProductMultibuy,
       quantity: 12,
-    },
-    2220002: {
-      product: {
-        ...fullProductDetails,
-        id: "2220002",
-      },
-      quantity: 1,
     },
   },
   wls: {},
 };
 
-export const partialCart_itemRemoved = {
+export const partialCartQuantityUpdated = {
   nw: {
-    1110001: {
-      product: {
-        ...fullProductDetails,
-        id: "1110001",
-      },
+    "5039976": {
+      product: nwProductPromoTag,
       quantity: 5,
     },
   },
   pns: {
-    2220002: {
-      product: {
-        ...fullProductDetails,
-        id: "2220002",
-      },
+    "5236771": {
+      product: pnsProduct,
       quantity: 1,
     },
-  },
-  wls: {},
-};
-
-export const partialCart_quantityUpdated = {
-  nw: {
-    1110001: {
-      product: {
-        ...fullProductDetails,
-        id: "1110001",
-      },
-      quantity: 5,
-    },
-  },
-  pns: {
-    2220001: {
-      product: {
-        ...fullProductDetails,
-        id: "2220001",
-      },
+    "5109655": {
+      product: pnsProductMultibuy,
       quantity: 300,
     },
-    2220002: {
-      product: {
-        ...fullProductDetails,
-        id: "2220002",
-      },
+  },
+  wls: {},
+};
+
+// ----- ALL PRODUCT TYPES IN COMBINED AND SUBCATEGORY CARTS -----
+
+export const fullCartSimple = {
+  nw: {
+    [nwProduct.id]: {
+      product: nwProduct,
+      quantity: 4,
+    },
+    [nwProductUnitless.id]: {
+      product: nwProductUnitless,
+      quantity: 3,
+    },
+    [nwProductPromoTag.id]: {
+      product: nwProductPromoTag,
+      quantity: 6,
+    },
+    [nwProductPromoTagEveryday.id]: {
+      product: nwProductPromoTagEveryday,
+      quantity: 3,
+    },
+  },
+  pns: {
+    [pnsProduct.id]: {
+      product: pnsProduct,
+      quantity: 4,
+    },
+    [pnsProductUnitless.id]: {
+      product: pnsProductUnitless,
+      quantity: 7,
+    },
+    [pnsProductPromoTag.id]: {
+      product: pnsProductPromoTag,
+      quantity: 10,
+    },
+    [pnsProductPromoTagUnitless.id]: {
+      product: pnsProductPromoTagUnitless,
+      quantity: 4,
+    },
+  },
+  wls: {
+    [wlsProduct.id]: {
+      product: wlsProduct,
+      quantity: 2,
+    },
+    [wlsProductUnitless.id]: {
+      product: wlsProductUnitless,
+      quantity: 1,
+    },
+    [wlsProductPromoTag.id]: {
+      product: wlsProductPromoTag,
+      quantity: 4,
+    },
+    [wlsProductDisney.id]: {
+      product: wlsProductDisney,
+      quantity: 2,
+    },
+  },
+};
+
+export const fullCartSpecials = {
+  nw: {
+    [nwProductPromo.id]: {
+      product: nwProductPromo,
+      quantity: 6,
+    },
+    [nwProductPromoWithLimit.id]: {
+      product: nwProductPromoWithLimit,
+      quantity: 3,
+    },
+    [nwProductMembersCardWithLimit.id]: {
+      product: nwProductMembersCardWithLimit,
+      quantity: 3,
+    },
+  },
+  pns: {
+    [pnsProductPromoWithLimit.id]: {
+      product: pnsProductPromoWithLimit,
+      quantity: 2,
+    },
+  },
+  wls: {
+    [wlsProductPromo.id]: {
+      product: wlsProductPromo,
+      quantity: 5,
+    },
+    [wlsProductPromoUnitless.id]: {
+      product: wlsProductPromoUnitless,
+      quantity: 2,
+    },
+    [wlsProductMembersCard.id]: {
+      product: wlsProductMembersCard,
+      quantity: 5,
+    },
+    [wlsProductDisneyPromo.id]: {
+      product: wlsProductDisneyPromo,
+      quantity: 4,
+    },
+  },
+};
+
+export const fullCartMultibuy = {
+  nw: {
+    [nwProductMultibuy.id]: {
+      product: nwProductMultibuy,
+      quantity: 2,
+    },
+    [nwProductMultibuyUnitless.id]: {
+      product: nwProductMultibuyUnitless,
+      quantity: 1,
+    },
+    [nwProductMembersCardMultibuy.id]: {
+      product: nwProductMembersCardMultibuy,
+      quantity: 5,
+    },
+  },
+  pns: {
+    [pnsProductMultibuy.id]: {
+      product: pnsProductMultibuy,
+      quantity: 5,
+    },
+  },
+  wls: {
+    [wlsProductMultibuy.id]: {
+      product: wlsProductMultibuy,
+      quantity: 5,
+    },
+    [wlsProductMultibuyLow.id]: {
+      product: wlsProductMultibuyLow,
+      quantity: 3,
+    },
+    [wlsProductMultibuyFresh.id]: {
+      product: wlsProductMultibuyFresh,
       quantity: 1,
     },
   },
-  wls: {},
+};
+
+export const fullCart = {
+  nw: {
+    ...fullCartSimple.nw,
+    ...fullCartSpecials.nw,
+    ...fullCartMultibuy.nw,
+  },
+  pns: {
+    ...fullCartSimple.pns,
+    ...fullCartSpecials.pns,
+    ...fullCartMultibuy.pns,
+  },
+  wls: {
+    ...fullCartSimple.wls,
+    ...fullCartSpecials.wls,
+    ...fullCartMultibuy.wls,
+  },
 };
