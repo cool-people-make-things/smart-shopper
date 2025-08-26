@@ -1,6 +1,8 @@
 import { Card } from "@/components/Card";
 import { Text } from "@/components/retroui";
 
+// TODO use dynamic/actual data
+
 export function Featured() {
   return (
     <section
@@ -15,18 +17,21 @@ export function Featured() {
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5023660.png?w=384"
           productTitle="Pams Butter"
           price="8.45"
+          promo={{ tag: "LOW PRICE" }}
           store="New World"
         />
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
           productTitle="Anchor Butter"
           price="7.45"
+          promo={{ tag: "SPECIAL" }}
           store="PAK'nSAVE"
         />
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
           productTitle="Rolling Meadow Butter"
           price="8.9"
+          promo={{ tag: "LOW PRICE" }}
           store="Woolworths"
         />
       </div>
