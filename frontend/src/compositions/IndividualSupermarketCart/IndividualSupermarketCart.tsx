@@ -17,7 +17,7 @@ export function IndividualSupermarketCart({
 }) {
   // TODO logic will be handled in Context
   const devInitialCart = useMemo(
-    () => ({ nw: {}, pns: {}, wls: {} }) as Cart,
+    () => ({ nw: {}, pns: {}, wls: {} }) as CombinedCart,
     [],
   );
 
