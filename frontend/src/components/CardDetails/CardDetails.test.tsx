@@ -8,6 +8,7 @@ import { CardDetails } from "./CardDetails";
 const mockProps = {
   productTitle: "Pams Butter",
   price: "3.50",
+  promo: null,
   store: "Woolworths",
 };
 

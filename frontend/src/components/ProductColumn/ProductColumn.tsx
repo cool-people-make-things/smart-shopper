@@ -26,6 +26,7 @@ export function ProductColumn({ data, store }: ProductColumnProps) {
               imgSrc={product.image}
               productTitle={product.title}
               price={product.price.value}
+              promo={product.promo}
               store={store}
             />
           ))
