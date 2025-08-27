@@ -16,21 +16,23 @@ export function labelColor(label: string): LabelColors {
   const normalized = label.trim().toLowerCase();
 
   // Map of label keywords -> Tailwind classes
-  const labelColorMap: Record<string, { bg: string; border: string }> = {
+  const labelColorMap: Record<
+    string,
+    { bgClass: string; borderClass: string }
+  > = {
     "disney discs bonus products": {
-      bg: "bg-purple-800",
-      border: "border-t-purple-800",
+      bgClass: "bg-purple-800",
+      borderClass: "border-t-purple-800",
+    },
+    default: {
+      bgClass: "bg-red-600",
+      borderClass: "border-t-red-600",
     },
   };
 
-  const matchedColor = Object.entries(labelColorMap).find(([key]) =>
+  const matchedLabel = Object.keys(labelColorMap).find((key) =>
     normalized.includes(key),
   );
 
-  const bgClass = matchedColor ? matchedColor[1].bg : "bg-red-600";
-  const borderClass = matchedColor
-    ? matchedColor[1].border
-    : "border-t-red-600";
-
-  return { bgClass, borderClass };
+  return matchedLabel ? labelColorMap[matchedLabel] : labelColorMap.default;
 }
