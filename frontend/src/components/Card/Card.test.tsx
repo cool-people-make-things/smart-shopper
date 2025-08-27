@@ -16,7 +16,7 @@ const mockProduct = {
   productTitle: "Pams Butter",
   price: "8.45",
   promo: null,
-  store: "New World",
+  shopCode: "nw" as ShopCode,
 };
 
 describe("Given a user is on the home page", () => {

@@ -9,7 +9,7 @@ const mockProps = {
   productTitle: "Pams Butter",
   price: "3.50",
   promo: null,
-  store: "Woolworths",
+  shopCode: "wls" as ShopCode,
 };
 
 describe("Given the user is looking at an individual products's details", () => {
