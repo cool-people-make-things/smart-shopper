@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { axe } from "vitest-axe";
 
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
 
 import { CardDetails } from "./CardDetails";
 
@@ -15,7 +15,7 @@ const mockProps = {
 describe("Given the user is looking at an individual products's details", () => {
   describe("When the product is displayed on the home page", () => {
     it("Then the store, product name and price is displayed", () => {
-      renderWithRouter(<CardDetails {...mockProps} />);
+      renderWithRouterAndProviders(<CardDetails {...mockProps} />);
 
       expect(screen.getByText(/pams butter/i)).toBeInTheDocument();
       expect(screen.getByText(/woolworths/i)).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("Given the user is looking at an individual products's details", () => 
 
   describe("When the product is displayed on the browse page", () => {
     it("Then product name and price is displayed", () => {
-      renderWithRouter(<CardDetails {...mockProps} />, {
+      renderWithRouterAndProviders(<CardDetails {...mockProps} />, {
         route: "/browse",
         path: "/browse",
       });
@@ -38,7 +38,7 @@ describe("Given the user is looking at an individual products's details", () => 
 
   describe("When the button is rendered", () => {
     it("Then the text add to cart is displayed", async () => {
-      renderWithRouter(<CardDetails {...mockProps} />);
+      renderWithRouterAndProviders(<CardDetails {...mockProps} />);
 
       const button = screen.getByRole("button");
       expect(button).toHaveTextContent(/add to cart/i);
@@ -49,7 +49,9 @@ describe("Given the user is looking at an individual products's details", () => 
 
   describe("When the product details are displayed", () => {
     it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(<CardDetails {...mockProps} />);
+      const { container } = renderWithRouterAndProviders(
+        <CardDetails {...mockProps} />,
+      );
 
       const results = await axe(container);
       expect(results).toHaveNoViolations();

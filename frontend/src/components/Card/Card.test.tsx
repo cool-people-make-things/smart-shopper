@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
 
 import { Card } from "./Card";
 
@@ -22,7 +22,7 @@ const mockProduct = {
 describe("Given a user is on the home page", () => {
   describe("When the Card component is rendered", () => {
     it("Then the user see's the correct image", () => {
-      renderWithRouter(<Card {...mockProduct} />);
+      renderWithRouterAndProviders(<Card {...mockProduct} />);
 
       const image = screen.getByAltText(/pams butter/i);
 
@@ -34,13 +34,15 @@ describe("Given a user is on the home page", () => {
     });
 
     it("Then it renders the carddetails component", () => {
-      renderWithRouter(<Card {...mockProduct} />);
+      renderWithRouterAndProviders(<Card {...mockProduct} />);
 
       expect(screen.getByTestId("card-details")).toBeInTheDocument();
     });
 
     it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(<Card {...mockProduct} />);
+      const { container } = renderWithRouterAndProviders(
+        <Card {...mockProduct} />,
+      );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
