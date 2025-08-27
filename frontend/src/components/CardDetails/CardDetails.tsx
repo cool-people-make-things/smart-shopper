@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 
 import { Button, RUICard } from "@/components/retroui";
+import { supermarketTitles } from "@/lib/constants";
 
 import type { ProductProps } from "../Card/Card";
 
@@ -9,7 +10,11 @@ import type { ProductProps } from "../Card/Card";
 
 type CardDetailsProps = Omit<ProductProps, "imgSrc">;
 
-export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
+export function CardDetails({
+  productTitle,
+  price,
+  shopCode,
+}: CardDetailsProps) {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 
@@ -29,7 +34,7 @@ export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
     return (
       <div data-testid="card-details">
         <RUICard.Header className="py-0">
-          <RUICard.Title>{store}</RUICard.Title>
+          <RUICard.Title>{supermarketTitles[shopCode]}</RUICard.Title>
         </RUICard.Header>
         <RUICard.Content className="py-0">
           <p>{productTitle}</p>

@@ -12,7 +12,7 @@ export type ProductProps = {
   productTitle: string;
   price: string;
   promo: Promo | null;
-  store: string;
+  shopCode: ShopCode;
 };
 
 export function Card({
@@ -20,7 +20,7 @@ export function Card({
   productTitle,
   price,
   promo,
-  store,
+  shopCode,
 }: ProductProps) {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
@@ -49,7 +49,7 @@ export function Card({
         productTitle={productTitle}
         price={price}
         promo={promo}
-        store={store}
+        shopCode={shopCode}
       />
     </RUICard>
   );

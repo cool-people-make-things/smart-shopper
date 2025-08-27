@@ -1,41 +1,64 @@
+import type { MarketResult } from "@/hooks/useSearchAllSupermarkets";
+import { supermarketTitles } from "@/lib/constants";
+
 import { Card } from "../Card";
 import { Text } from "../retroui";
 
 type ProductColumnProps = {
-  data: Product[];
-  store: string;
+  marketResult: MarketResult;
+  shopCode: ShopCode;
 };
 
-export function ProductColumn({ data, store }: ProductColumnProps) {
+export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
+  const { data, isLoading, error } = marketResult;
+
+  const supermarketName = supermarketTitles[shopCode];
+
+  // TODO styled loading indcator
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error</p>;
+  }
+
   return (
     <div
-      data-testid="nw"
-      className={`supermarket-container w-full pb-10 ${store === "PAK'nSAVE" ? "bg-gray-100" : "bg-gray-300"}`}
+      className={`supermarket-container w-full pb-10 ${shopCode === "pns" ? "bg-gray-100" : "bg-gray-300"}`}
     >
       <Text as={"h2"} className="py-6 text-center">
-        {store ? store : "Error displaying Supermarket name"}
+        {supermarketName
+          ? supermarketName
+          : "Error displaying supermarket name"}
       </Text>
-      <div
-        data-testid="product-grid"
-        className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
-      >
-        {data && data.length !== 0 ? (
-          data.map((product) => (
+
+      {data && data.length !== 0 ? (
+        <div
+          data-testid="product-grid"
+          className="grid grid-cols-2 gap-2 px-2 justify-items-center"
+        >
+          {data.map((product) => (
             <Card
-              key={product.id}
+              key={`${shopCode}-${product.id}`}
               imgSrc={product.image}
               productTitle={product.title}
               price={product.price.value}
               promo={product.promo}
-              store={store}
+              shopCode={shopCode}
             />
-          ))
-        ) : (
+          ))}
+        </div>
+      ) : (
+        <div
+          data-testid="product-grid"
+          className="grid grid-cols-1 gap-2 px-2 justify-items-center"
+        >
           <Text className="text-center" as={"h4"}>
-            No products at {store}...
+            No product results to display.
           </Text>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -18,21 +18,21 @@ export function Featured() {
           productTitle="Pams Butter"
           price="8.45"
           promo={{ tag: "LOW PRICE" }}
-          store="New World"
+          shopCode="nw"
         />
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5002650.png?w=384"
           productTitle="Anchor Butter"
           price="7.45"
           promo={{ tag: "SPECIAL" }}
-          store="PAK'nSAVE"
+          shopCode="pns"
         />
         <Card
           imgSrc="https://a.fsimg.co.nz/product/retail/fan/image/400x400/5004821.png?w=384"
           productTitle="Rolling Meadow Butter"
           price="8.9"
           promo={{ tag: "LOW PRICE" }}
-          store="Woolworths"
+          shopCode="wls"
         />
       </div>
     </section>
