@@ -1,4 +1,5 @@
-import { Input, Text } from "@/components/retroui";
+import { Text } from "@/components/retroui";
+import { SearchBar } from "@/components/SearchBar";
 import { Featured } from "@/compositions/Featured";
 
 export const welcomeBlurb =
@@ -12,7 +13,7 @@ export function Home() {
     <main className="flex flex-col items-center justify-center h-8/10">
       <div className="w-screen h-7/20 flex flex-row">
         <div className="w-1/2 px-24 flex flex-col justify-center">
-          <Input type="text" placeholder="Search Product" />
+          <SearchBar />
         </div>
         <div className="bg-gray-100 w-1/2 px-16 py-10 flex flex-col justify-between border-l border-black">
           <Text as="h1">Welcome!</Text>
