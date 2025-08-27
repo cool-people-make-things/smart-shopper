@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { Input } from "../retroui";
 import { useSearch } from "./SearchContext";
 
@@ -11,7 +12,7 @@ export function SearchBar() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      const value = e.currentTarget.value;
+      const { value } = e.currentTarget;
       setQuery(value);
 
       if (location.pathname !== "/browse") {
