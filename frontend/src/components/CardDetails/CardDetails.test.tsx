@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { axe } from "vitest-axe";
 
-import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { CardDetails } from "./CardDetails";
 
@@ -27,7 +27,6 @@ describe("Given the user is looking at an individual products's details", () => 
     it("Then product name and price is displayed", () => {
       renderWithRouterAndProviders(<CardDetails {...mockProps} />, {
         route: "/browse",
-        path: "/browse",
       });
 
       expect(screen.queryByText(/woolworths/i)).not.toBeInTheDocument();

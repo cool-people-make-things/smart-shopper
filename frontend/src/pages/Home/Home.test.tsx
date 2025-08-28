@@ -4,7 +4,7 @@ import { screen } from "@testing-library/react";
 import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
-import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { Home, welcomeBlurb, welcomeSubBlurb } from "./Home";
 

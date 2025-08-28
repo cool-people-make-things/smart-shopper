@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
-import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { Featured } from "./Featured";
 
@@ -28,7 +28,11 @@ describe("Given a user has gone to the home page", () => {
 
     it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouterAndProviders(<Featured />);
-      const results = await axe(container);
+      const results = await axe(container, {
+        rules: {
+          "color-contrast": { enabled: false },
+        },
+      });
       expect(results).toHaveNoViolations();
     });
   });

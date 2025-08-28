@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 
 import { nwProduct } from "@/lib/test/fixtures/products";
-import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { CartProduct } from "./CartProduct";
 

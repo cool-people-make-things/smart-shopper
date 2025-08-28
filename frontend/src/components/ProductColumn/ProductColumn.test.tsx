@@ -4,7 +4,7 @@ import { axe } from "vitest-axe";
 
 import type { MarketResult } from "@/hooks/useSearchAllSupermarkets";
 import { nwData } from "@/lib/test/fixtures/nw_actual";
-import { renderWithRouterAndProviders } from "@/lib/test/renderWithRouterAndProviders";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { ProductColumn } from "./ProductColumn";
 
