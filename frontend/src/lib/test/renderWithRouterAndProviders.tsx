@@ -1,4 +1,5 @@
 // Boiler plate from https://testing-library.com/docs/example-react-router/
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
@@ -13,17 +14,24 @@ export function renderWithRouterAndProviders(
 ) {
   window.history.pushState({}, "Test page", route);
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false },
+    },
+  });
   return {
     user: userEvent.setup(),
     ...render(
       <MemoryRouter initialEntries={[route]}>
-        <CartProvider>
-          <SearchProvider>
-            <Routes>
-              <Route path={path} element={ui} />
-            </Routes>
-          </SearchProvider>
-        </CartProvider>
+        <QueryClientProvider client={queryClient}>
+          <CartProvider>
+            <SearchProvider>
+              <Routes>
+                <Route path={path} element={ui} />
+              </Routes>
+            </SearchProvider>
+          </CartProvider>
+        </QueryClientProvider>
       </MemoryRouter>,
     ),
   };
