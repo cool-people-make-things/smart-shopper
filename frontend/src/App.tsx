@@ -2,8 +2,8 @@
 import { Route, Routes } from "react-router";
 
 import { Toaster } from "@/components/retroui";
-import { SearchProvider } from "@/components/SearchBar/SearchContext";
 import { CartProvider } from "@/context/CartContext";
+import { SearchProvider } from "@/context/SearchContext";
 import { Browse } from "@/pages/Browse";
 import { Cart } from "@/pages/Cart";
 import { Home } from "@/pages/Home";

@@ -1,6 +1,6 @@
 import { ProductColumn } from "@/components/ProductColumn";
 import { SearchBar } from "@/components/SearchBar";
-import { useSearch } from "@/components/SearchBar/SearchContext";
+import { useSearch } from "@/context/SearchContext";
 
 export function Browse() {
   const { results } = useSearch();
