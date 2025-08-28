@@ -35,7 +35,7 @@ export function CardDetails({ product }: { product: Product }) {
         </RUICard.Content>
         <RUICard.Content className="flex justify-around  items-center">
           <p className="text-lg font-semibold">${price.value}</p>
-          <Button onClick={() => addToCart()}>Add to cart</Button>
+          <Button onClick={addToCart}>Add to cart</Button>
         </RUICard.Content>
       </div>
     );
@@ -49,7 +49,7 @@ export function CardDetails({ product }: { product: Product }) {
         </RUICard.Header>
         <RUICard.Content className="flex justify-around items-center">
           <p className="">${price.value}</p>
-          <Button onClick={() => addToCart()}>Add to cart</Button>
+          <Button onClick={addToCart}>Add to cart</Button>
         </RUICard.Content>
       </div>
     );

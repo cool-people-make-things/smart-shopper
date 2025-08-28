@@ -9,7 +9,7 @@ import { renderWithRouter } from "@/lib/test/renderWithRouter";
 
 import { CardDetails } from "./CardDetails";
 
-describe("Given the user is looking at an individual products's details", () => {
+describe("Given the user is looking at an individual product's details", () => {
   describe("When the product is displayed on the home page", () => {
     it("Then the store, product name and price is displayed", () => {
       renderWithRouter(<CardDetails product={nwProduct} />);
@@ -42,28 +42,13 @@ describe("Given the user is looking at an individual products's details", () => 
   });
 
   describe("When the button is rendered", () => {
-    it("Then the text add to cart is displayed", async () => {
+    it("Then the correct text is displayed", async () => {
       renderWithRouter(<CardDetails product={nwProduct} />);
 
       const button = screen.getByRole("button", { name: /add to cart/i });
       expect(button).toBeInTheDocument();
     });
-  });
 
-  describe("When the product details are displayed", () => {
-    it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(
-        <CardDetails product={nwProduct} />,
-      );
-
-      const results = await axe(container);
-      expect(results).toHaveNoViolations();
-    });
-  });
-
-  // --- INTERACTIONS --- //
-
-  describe("when the add to cart button is displayed", () => {
     const addCartItemMock = vi.fn();
     const removeCartItemMock = vi.fn();
 
@@ -73,9 +58,8 @@ describe("Given the user is looking at an individual products's details", () => 
     } as unknown as CartContext.CartContextType);
 
     const toastSuccessSpy = vi.spyOn(Sonner.toast, "success");
-    const toastErrorSpy = vi.spyOn(Sonner.toast, "error");
 
-    it("Then it adds item to cart", async () => {
+    it("Then it adds item to cart when clicked", async () => {
       renderWithRouter(<CardDetails product={nwProduct} />);
 
       const button = screen.getByRole("button", { name: /add to cart/i });
@@ -91,8 +75,19 @@ describe("Given the user is looking at an individual products's details", () => 
         expect.objectContaining({ richColors: true }),
       );
     });
+  });
+  describe("When an item has been added and the undo button is displayed in the toast", () => {
+    it("Then it can undo adding the item to cart", async () => {
+      const addCartItemMock = vi.fn();
+      const removeCartItemMock = vi.fn();
 
-    it("Then it can undo adding item to cart", async () => {
+      vi.spyOn(CartContext, "useCart").mockReturnValue({
+        addCartItem: addCartItemMock,
+        removeCartItem: removeCartItemMock,
+      } as unknown as CartContext.CartContextType);
+
+      const toastSuccessSpy = vi.spyOn(Sonner.toast, "success");
+      const toastErrorSpy = vi.spyOn(Sonner.toast, "error");
       renderWithRouter(<CardDetails product={nwProduct} />);
 
       await fireEvent.click(screen.getByText(/add to cart/i));
@@ -111,6 +106,17 @@ describe("Given the user is looking at an individual products's details", () => 
         `${nwProduct.title} removed`,
         expect.objectContaining({ richColors: true }),
       );
+    });
+  });
+
+  describe("When the product details are displayed", () => {
+    it("Then it has no accessibility violations", async () => {
+      const { container } = renderWithRouter(
+        <CardDetails product={nwProduct} />,
+      );
+
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
     });
   });
 });
