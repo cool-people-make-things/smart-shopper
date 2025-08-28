@@ -28,7 +28,7 @@ import {
   wlsProductUnitless,
 } from "./products";
 
-export const fullProductDetails = {
+export const fullProductDetails: Product = {
   id: "0000000",
   title: "Product Name 500g",
   image: "https://example.com/product/p1.jpg",
@@ -40,7 +40,8 @@ export const fullProductDetails = {
     unit: "100g",
   },
   promo: null,
-} as Product;
+  supermarket: "pns",
+};
 
 // ----- PARTIALLY FILLED CART & VARIANTS -----
 

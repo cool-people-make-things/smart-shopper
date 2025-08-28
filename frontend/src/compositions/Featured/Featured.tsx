@@ -1,10 +1,12 @@
 import { Card } from "@/components/Card";
 import { Text } from "@/components/retroui";
 import {
-  nwProduct,
+  nwProductPromoTag,
   pnsProduct,
-  wlsProduct,
+  wlsProductDisneyPromo,
 } from "@/lib/test/fixtures/products";
+
+// TODO use dynamic/actual data
 
 export function Featured() {
   return (
@@ -16,9 +18,9 @@ export function Featured() {
         Featured items - Butter
       </Text>
       <div className="grid grid-cols-3 text-center mt-4 w-auto justify-items-center">
-        <Card product={nwProduct} />
+        <Card product={nwProductPromoTag} />
         <Card product={pnsProduct} />
-        <Card product={wlsProduct} />
+        <Card product={wlsProductDisneyPromo} />
       </div>
     </section>
   );

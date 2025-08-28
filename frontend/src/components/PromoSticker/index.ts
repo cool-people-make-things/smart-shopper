@@ -1,0 +1,1 @@
+export { PromoSticker } from "./PromoSticker";

@@ -7,5 +7,3 @@ type Product = {
   price: Price;
   promo: Promo | null;
 };
-
-type ShopCode = "nw" | "pns" | "wls";
