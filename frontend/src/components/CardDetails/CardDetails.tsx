@@ -2,24 +2,23 @@ import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 
 import { Button, RUICard } from "@/components/retroui";
+import { useCart } from "@/context/CartContext";
 
-import type { ProductProps } from "../Card/Card";
-
-// TODO /browse comp needs styling once in the browse grid
-
-type CardDetailsProps = Omit<ProductProps, "imgSrc">;
-
-export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
+export function CardDetails({ product }: { product: Product }) {
+  const { title, price, supermarket } = product;
   const { pathname } = useLocation();
   const isHome = pathname === "/";
+  const { addCartItem, removeCartItem } = useCart();
 
-  const addToCart = (item: string) => {
-    toast.success(`${item} has been added to your cart`, {
+  const addToCart = () => {
+    addCartItem(supermarket, product);
+    toast.success(`${title} has been added to your cart`, {
       richColors: true,
       cancel: {
         label: "Undo",
         onClick: () => {
-          alert(`${item} removed`);
+          removeCartItem(supermarket, product.id);
+          toast.error(`${title} removed`, { richColors: true });
         },
       },
     });
@@ -29,14 +28,14 @@ export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
     return (
       <div data-testid="card-details">
         <RUICard.Header className="py-0">
-          <RUICard.Title>{store}</RUICard.Title>
+          <RUICard.Title>{supermarket}</RUICard.Title>
         </RUICard.Header>
         <RUICard.Content className="py-0">
-          <p>{productTitle}</p>
+          <p>{title}</p>
         </RUICard.Content>
         <RUICard.Content className="flex justify-around  items-center">
-          <p className="text-lg font-semibold">${price}</p>
-          <Button onClick={() => addToCart(productTitle)}>Add to cart</Button>
+          <p className="text-lg font-semibold">${price.value}</p>
+          <Button onClick={addToCart}>Add to cart</Button>
         </RUICard.Content>
       </div>
     );
@@ -45,12 +44,12 @@ export function CardDetails({ productTitle, price, store }: CardDetailsProps) {
       <div data-testid="card-details">
         <RUICard.Header className="py-0">
           <RUICard.Title className="text-center text-base">
-            {productTitle}
+            {title}
           </RUICard.Title>
         </RUICard.Header>
         <RUICard.Content className="flex justify-around items-center">
-          <p className="">${price}</p>
-          <Button onClick={() => addToCart(productTitle)}>Add to cart</Button>
+          <p className="">${price.value}</p>
+          <Button onClick={addToCart}>Add to cart</Button>
         </RUICard.Content>
       </div>
     );

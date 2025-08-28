@@ -7,25 +7,11 @@ import { CardDetails } from "../CardDetails";
 import { PromoSticker } from "../PromoSticker";
 import { formatPromoTagText } from "./utils/promoTag";
 
-export type ProductProps = {
-  imgSrc: string;
-  productTitle: string;
-  price: string;
-  promo: Promo | null;
-  store: string;
-};
-
-export function Card({
-  imgSrc,
-  productTitle,
-  price,
-  promo,
-  store,
-}: ProductProps) {
+export function Card({ product }: { product: Product }) {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 
-  const promoTag = formatPromoTagText(promo?.tag);
+  const promoTag = formatPromoTagText(product.promo?.tag);
 
   return (
     <RUICard
@@ -40,17 +26,12 @@ export function Card({
         className={cn("pb-4 flex justify-center", promoTag ? "pt-14" : "pt-6")}
       >
         <img
-          src={imgSrc}
+          src={product.image}
           className={cn(isHome ? "w-50 h-50 " : "w-30 h-30")}
-          alt={productTitle}
+          alt={product.title}
         />
       </RUICard.Content>
-      <CardDetails
-        productTitle={productTitle}
-        price={price}
-        promo={promo}
-        store={store}
-      />
+      <CardDetails product={product} />
     </RUICard>
   );
 }

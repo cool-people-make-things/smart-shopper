@@ -20,16 +20,7 @@ export function ProductColumn({ data, store }: ProductColumnProps) {
         className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
       >
         {data && data.length !== 0 ? (
-          data.map((product) => (
-            <Card
-              key={product.id}
-              imgSrc={product.image}
-              productTitle={product.title}
-              price={product.price.value}
-              promo={product.promo}
-              store={store}
-            />
-          ))
+          data.map((product) => <Card product={product} key={product.id} />)
         ) : (
           <Text className="text-center" as={"h4"}>
             No products at {store}...
