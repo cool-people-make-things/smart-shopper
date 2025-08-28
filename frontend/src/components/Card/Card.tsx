@@ -5,14 +5,7 @@ import { cn } from "@/lib/retroui.utils";
 
 import { CardDetails } from "../CardDetails";
 
-export type ProductProps = {
-  imgSrc: string;
-  productTitle: string;
-  price: string;
-  store: string;
-};
-
-export function Card({ imgSrc, productTitle, price, store }: ProductProps) {
+export function Card({ product }: { product: Product }) {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 
@@ -25,12 +18,12 @@ export function Card({ imgSrc, productTitle, price, store }: ProductProps) {
     >
       <RUICard.Content className="py-0 flex justify-center">
         <img
-          src={imgSrc}
+          src={product.image}
           className={cn(isHome ? "w-50 h-50 " : "w-30 h-30")}
-          alt={productTitle}
+          alt={product.title}
         />
       </RUICard.Content>
-      <CardDetails productTitle={productTitle} price={price} store={store} />
+      <CardDetails product={product} />
     </RUICard>
   );
 }
