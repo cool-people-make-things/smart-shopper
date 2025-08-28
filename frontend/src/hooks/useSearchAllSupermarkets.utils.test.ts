@@ -3,10 +3,9 @@ import { describe, expect, it } from "vitest";
 
 import { nwData as mockProducts } from "@/lib/test/fixtures/nw_actual";
 
-import type { Supermarket } from "./useSearchAllSupermarkets";
 import { groupQueryResultsBySupermarket } from "./useSearchAllSupermarkets.utils";
 
-const supermarkets: Supermarket[] = ["nw", "wls", "pns"];
+const supermarkets: ShopCode[] = ["nw", "wls", "pns"];
 
 describe("Given a request has been made to all supermarkets and the groupQueryResultsBySupermarket is called to group the results", () => {
   describe("When all request results are successful", () => {

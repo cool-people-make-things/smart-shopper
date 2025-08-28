@@ -11,7 +11,7 @@ import { calculateTotals } from "./utils/calculateTotals";
 import { getStartingState } from "./utils/cartData";
 import { setLocalData } from "./utils/localStorage";
 
-type CartContextType = {
+export type CartContextType = {
   nwCart: Cart;
   pnsCart: Cart;
   wlsCart: Cart;
@@ -26,7 +26,9 @@ type CartContextType = {
   ) => void;
 };
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined,
+);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [nwCart, setNwCart] = useState<Cart>(getStartingState("nw"));
