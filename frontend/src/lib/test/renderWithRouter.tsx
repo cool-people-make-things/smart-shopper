@@ -4,6 +4,8 @@ import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
+import { CartProvider } from "@/context/CartContext";
+
 export function renderWithRouter(
   ui: ReactElement,
   { route = "/", path = "/" }: { route?: string; path?: string } = {},
@@ -14,9 +16,11 @@ export function renderWithRouter(
     user: userEvent.setup(),
     ...render(
       <MemoryRouter initialEntries={[route]}>
-        <Routes>
-          <Route path={path} element={ui} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route path={path} element={ui} />
+          </Routes>
+        </CartProvider>
       </MemoryRouter>,
     ),
   };
