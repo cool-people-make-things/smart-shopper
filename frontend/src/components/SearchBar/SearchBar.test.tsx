@@ -1,10 +1,15 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
 import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { SearchBar } from "./SearchBar";
+
+vi.mock("./utils/cleanInput", () => ({
+  cleanInput: vi.fn((value: string) => value),
+}));
 
 describe("Given a user is on the home page", () => {
   describe("When the SearchBar component is rendered", () => {
