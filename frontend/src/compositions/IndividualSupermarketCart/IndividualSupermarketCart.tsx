@@ -1,6 +1,5 @@
-import { useMemo } from "react";
-
 import { Text } from "@/components/retroui";
+import { useCart } from "@/context/CartContext";
 import { supermarketTitles } from "@/lib/constants";
 
 import { CartProduct } from "../CartProduct";
@@ -10,26 +9,12 @@ export function IndividualSupermarketCart({
 }: {
   shopCode: ShopCode;
 }) {
-  // TODO logic will be handled in Context
-  const devInitialCart = useMemo(
-    () => ({ nw: {}, pns: {}, wls: {} }) as CombinedCart,
-    [],
-  );
-
-  // TODO logic will be handled in Context
-  const supermarketSpend = useMemo(() => {
-    const supermarketTotal = Object.values(devInitialCart[shopCode])
-      .reduce(
-        (cost, item) =>
-          cost + item.quantity * parseFloat(item.product.price.value),
-        0,
-      )
-      .toFixed(2);
-    return supermarketTotal;
-  }, [shopCode, devInitialCart]);
+  const cartsData = useCart();
+  const supermarketCart = cartsData[`${shopCode}Cart`];
+  const { cartCosts } = cartsData;
 
   return (
-    <div id="new-world-cart">
+    <div id={`${shopCode}-cart`}>
       <div className="flex flex-row justify-between mb-4">
         <Text className="text-4xl font-semibold ">
           {supermarketTitles[shopCode]}
@@ -38,12 +23,13 @@ export function IndividualSupermarketCart({
           data-testid="supermarket-spend"
           className="text-4xl font-semibold"
         >
-          ${supermarketSpend}
+          ${cartCosts[shopCode]}
         </Text>
       </div>
-      {devInitialCart[shopCode] &&
-        Object.entries(devInitialCart[shopCode]).map(([id, item]) => (
-          <CartProduct cartProductItem={item} key={id} />
+
+      {supermarketCart &&
+        Object.values(supermarketCart).map((item) => (
+          <CartProduct cartProductItem={item} key={item.product.id} />
         ))}
     </div>
   );

@@ -1,57 +1,14 @@
 import { ChevronLeft, Save, Trash } from "lucide-react";
-import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Text } from "@/components/retroui";
 import { Button } from "@/components/retroui/Button";
 import { IndividualSupermarketCart } from "@/compositions/IndividualSupermarketCart";
-
-type SupermarketSpend = {
-  nwTotal: string;
-  pnsTotal: string;
-  wlsTotal: string;
-  totalSpend: string;
-};
+import { useCart } from "@/context/CartContext";
 
 export function Cart() {
   const navigate = useNavigate();
-
-  // TODO logic will be handled in Context
-  const devInitialCart = useMemo(
-    () => ({ nw: {}, pns: {}, wls: {} }) as CombinedCart,
-    [],
-  );
-
-  // TODO logic will be handled in Context
-  const supermarketSpend: SupermarketSpend = useMemo(() => {
-    const nwTotal = Object.values(devInitialCart.nw)
-      .reduce(
-        (cost, item) =>
-          cost + item.quantity * parseFloat(item.product.price.value),
-        0,
-      )
-      .toFixed(2);
-
-    const pnsTotal = Object.values(devInitialCart.pns)
-      .reduce(
-        (cost, item) =>
-          cost + item.quantity * parseFloat(item.product.price.value),
-        0,
-      )
-      .toFixed(2);
-
-    const wlsTotal = Object.values(devInitialCart.wls)
-      .reduce(
-        (cost, item) =>
-          cost + item.quantity * parseFloat(item.product.price.value),
-        0,
-      )
-      .toFixed(2);
-
-    const totalSpend = (+nwTotal + +pnsTotal + +wlsTotal).toFixed(2);
-
-    return { nwTotal, pnsTotal, wlsTotal, totalSpend };
-  }, [devInitialCart]);
+  const { cartCosts } = useCart();
 
   return (
     <div className="min-h-screen flex flex-col gap-5 w-2/3 mx-auto">
@@ -83,9 +40,7 @@ export function Cart() {
             <Text as={"h3"} className="text-2xl font-semibold">
               Total Spend
             </Text>
-            <Text className="text-2xl font-semibold">
-              ${supermarketSpend.totalSpend}
-            </Text>
+            <Text className="text-2xl font-semibold">${cartCosts.total}</Text>
           </div>
         </div>
 
