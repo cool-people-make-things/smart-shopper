@@ -1,11 +1,10 @@
-import type { MarketResult } from "@/hooks/useSearchAllSupermarkets";
 import { supermarketTitles } from "@/lib/constants";
 
 import { Card } from "../Card";
 import { Text } from "../retroui";
 
 type ProductColumnProps = {
-  marketResult: MarketResult;
+  marketResult: SearchData;
   shopCode: ShopCode;
 };
 
@@ -14,7 +13,7 @@ export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
 
   const supermarketName = supermarketTitles[shopCode];
 
-  // TODO styled loading indcator
+  // TODO styled loading indicator
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -32,33 +31,25 @@ export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
           ? supermarketName
           : "Error displaying supermarket name"}
       </Text>
-
-      {data && data.length !== 0 ? (
-        <div
-          data-testid="product-grid"
-          className="grid grid-cols-2 gap-2 px-2 justify-items-center"
-        >
-          {data.map((product) => (
-            <Card
-              key={`${shopCode}-${product.id}`}
-              imgSrc={product.image}
-              productTitle={product.title}
-              price={product.price.value}
-              promo={product.promo}
-              shopCode={shopCode}
-            />
-          ))}
-        </div>
-      ) : (
-        <div
-          data-testid="product-grid"
-          className="grid grid-cols-1 gap-2 px-2 justify-items-center"
-        >
-          <Text className="text-center" as={"h4"}>
-            No product results to display.
-          </Text>
-        </div>
-      )}
+      <div
+        data-testid="product-grid"
+        className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
+      >
+        {data && data.length !== 0 ? (
+          data.map((product: Product) => (
+            <Card product={product} key={product.id} />
+          ))
+        ) : (
+          <div
+            data-testid="product-grid"
+            className="grid grid-cols-1 gap-2 px-2 justify-items-center"
+          >
+            <Text className="text-center" as={"h4"}>
+              No product results to display.
+            </Text>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

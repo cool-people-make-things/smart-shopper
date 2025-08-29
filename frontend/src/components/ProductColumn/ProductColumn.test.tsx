@@ -2,13 +2,12 @@ import { screen } from "@testing-library/react";
 import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
-import type { MarketResult } from "@/hooks/useSearchAllSupermarkets";
 import { nwData } from "@/lib/test/fixtures/nw_actual";
 import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { ProductColumn } from "./ProductColumn";
 
-const mockMarketResult: MarketResult = {
+const mockMarketResult: SearchData = {
   data: nwData as Product[],
   isLoading: false,
   error: undefined,
@@ -53,7 +52,7 @@ describe("Given a user is looking at an individual supermarkets product column "
     });
   });
   describe("When there are no product results to display", () => {
-    const mockEmptyMarketResult: MarketResult = {
+    const mockEmptyMarketResult: SearchData = {
       data: [] as Product[],
       isLoading: false,
       error: undefined,
