@@ -33,8 +33,8 @@ export function IndividualSupermarketCart({
       </div>
 
       {supermarketCart &&
-        Object.entries(supermarketCart).map(([id, item]) => (
-          <CartProduct cartProductItem={item} key={id} />
+        Object.values(supermarketCart).map((item) => (
+          <CartProduct cartProductItem={item} key={item.product.id} />
         ))}
     </div>
   );

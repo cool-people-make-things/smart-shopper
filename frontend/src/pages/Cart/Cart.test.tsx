@@ -40,8 +40,21 @@ describe("Given the user is looking at the cart page", () => {
     });
   });
 
-  describe("When the cart has no grocery items", () => {
-    it("Then it displays the empty lists and total spend of $0.00", () => {
+  describe("When the total spend is displayed", () => {
+    it("Then it displays the total spend", () => {
+      (useCart as Mock).mockReturnValue({
+        cartCosts: { total: "1005560.56" },
+      });
+      renderWithRouter(<Cart />);
+
+      expect(screen.getByText(/new world/i)).toBeInTheDocument();
+      expect(screen.getByText(/woolworths/i)).toBeInTheDocument();
+      expect(screen.getByText(/pak'nsave/i)).toBeInTheDocument();
+
+      const totalCost = screen.getByTestId("total-spend");
+      expect(totalCost).toHaveTextContent("$1005560.56");
+    });
+    it("Then it displays total spend of $0.00 when there are no items", () => {
       (useCart as Mock).mockReturnValue({
         cartCosts: { total: "0.00" },
       });
@@ -55,22 +68,6 @@ describe("Given the user is looking at the cart page", () => {
 
       const totalCost = screen.getByTestId("total-spend");
       expect(totalCost).toHaveTextContent("$0.00");
-    });
-  });
-
-  describe("When the cart has grocery items", () => {
-    it("Then it displays the total spend", () => {
-      (useCart as Mock).mockReturnValue({
-        cartCosts: { total: "1005560.56" },
-      });
-      renderWithRouter(<Cart />);
-
-      expect(screen.getByText(/new world/i)).toBeInTheDocument();
-      expect(screen.getByText(/woolworths/i)).toBeInTheDocument();
-      expect(screen.getByText(/pak'nsave/i)).toBeInTheDocument();
-
-      const totalCost = screen.getByTestId("total-spend");
-      expect(totalCost).toHaveTextContent("$1005560.56");
     });
   });
 });
