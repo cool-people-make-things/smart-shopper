@@ -3,16 +3,22 @@ import { Button, Dialog, Text } from "@/components/retroui";
 type ConfirmDeleteDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  title: string;
+  title?: string;
   onConfirm: () => void;
+  mode: "removeProduct" | "clearCart";
 };
 
-export function DeleteConfirmation({
+export function ConfirmationPopup({
   open,
   onOpenChange,
   title,
   onConfirm,
+  mode,
 }: ConfirmDeleteDialogProps) {
+  const message =
+    mode === "removeProduct"
+      ? `Are you sure you want to remove ${title} from your cart?`
+      : "Are you sure you want to clear your cart?";
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <Dialog.Content aria-describedby={undefined}>
@@ -21,7 +27,7 @@ export function DeleteConfirmation({
         </Dialog.Header>
         <section className="flex flex-col gap-4 p-4">
           <section className="text-xl">
-            <Text>Are you sure you want to remove {title} from your cart?</Text>
+            <Text>{message}</Text>
           </section>
           <section className="flex flex-row gap-4 justify-end">
             <Dialog.Trigger asChild>
