@@ -14,7 +14,17 @@ const singleMockProduct = {
 } as CartItem;
 
 describe("Given a user is looking at a product in a supermarket cart", () => {
-  describe("when the user is looking the product actions", () => {
+  describe("When the user is looking the product actions", () => {
+    it("Then it should display the correct quantity", () => {
+      renderWithRouter(
+        <CartProductActions cartProductItem={singleMockProduct} />,
+      );
+
+      const quantityInput = screen.getByTestId(
+        "cart-product-input",
+      ) as HTMLInputElement;
+      expect(quantityInput.value).toBe("782");
+    });
     it("Then it should have no accessibility violations", async () => {
       const { container } = renderWithRouter(
         <CartProductActions cartProductItem={singleMockProduct} />,
@@ -28,21 +38,8 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
     });
   });
 
-  describe("When the user views the product actions", () => {
-    it("Then it should display the correct quantity", () => {
-      renderWithRouter(
-        <CartProductActions cartProductItem={singleMockProduct} />,
-      );
-
-      const quantityInput = screen.getByTestId(
-        "cart-product-input",
-      ) as HTMLInputElement;
-      expect(quantityInput.value).toBe("782");
-    });
-  });
-
-  describe("When the user interacts the product action buttons", () => {
-    it("Then using the manual input should update the cart total", async () => {
+  describe("When the user interacts with the product action buttons", () => {
+    it("Then using the typing input updates the cart total", async () => {
       const updateCartItemQuantityMock = vi.fn();
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
@@ -66,7 +63,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
       );
     });
 
-    it("Then using the minus button should decrease item quantity by 1", async () => {
+    it("Then clicking the minus button decreases item quantity by 1", async () => {
       const updateCartItemQuantityMock = vi.fn();
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
@@ -87,7 +84,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
       );
     });
 
-    it("Then using the plus button should increase item quantity by 1", async () => {
+    it("Then clicking the plus button increases item quantity by 1", async () => {
       const updateCartItemQuantityMock = vi.fn();
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
@@ -108,7 +105,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
       );
     });
 
-    it("Then using the trash button should remove the product from the cart", async () => {
+    it("Then clicking the trash button removes the product from the cart", async () => {
       const removeCartItemMock = vi.fn();
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
@@ -135,7 +132,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
       );
     });
 
-    it("Then using the minus button when the quantity is 1 should ask the user for deletion confirmation ", async () => {
+    it("Then clicking the minus button when the quantity is 1 asks the user for deletion confirmation ", async () => {
       const updateCartItemQuantityMock = vi.fn();
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
@@ -161,7 +158,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
     });
   });
 
-  describe("When the user incorrectly inputs invalid data", () => {
+  describe("When the user inputs invalid data", () => {
     let updateCartItemQuantityMock: ReturnType<typeof vi.fn>;
     let quantityInput: HTMLInputElement;
 
@@ -181,31 +178,19 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
       ) as HTMLInputElement;
     });
 
-    it("Then using the manual input with an value of 0 should update the cart total to 1", async () => {
+    it("Then using the typing input with a value of 0 updates the cart total to 1", async () => {
       fireEvent.change(quantityInput, { target: { value: "0" } });
-      expect(updateCartItemQuantityMock).toHaveBeenCalledWith(
-        singleMockProduct.product.supermarket,
-        singleMockProduct.product.id,
-        1,
-      );
+      expect(updateCartItemQuantityMock).not.toHaveBeenCalled();
     });
 
-    it("Then using the manual input with an invalid input should update the cart total to 1", async () => {
+    it("Then using the typing input with an invalid input changes the cart total to 1", async () => {
       fireEvent.change(quantityInput, { target: { value: "-5" } });
-      expect(updateCartItemQuantityMock).toHaveBeenCalledWith(
-        singleMockProduct.product.supermarket,
-        singleMockProduct.product.id,
-        1,
-      );
+      expect(updateCartItemQuantityMock).not.toHaveBeenCalled();
     });
 
-    it("Then using the manual input with an invalid input should update the cart total to 1", async () => {
+    it("Then using the typing input with a NaN input keeps quantity as previous value", async () => {
       fireEvent.change(quantityInput, { target: { value: NaN } });
-      expect(updateCartItemQuantityMock).toHaveBeenCalledWith(
-        singleMockProduct.product.supermarket,
-        singleMockProduct.product.id,
-        1,
-      );
+      expect(updateCartItemQuantityMock).not.toHaveBeenCalled();
     });
   });
 });

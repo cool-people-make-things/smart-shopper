@@ -10,12 +10,12 @@ type UtilArgs = {
   removeCartItem: CartContextType["removeCartItem"];
 };
 
-interface CartActionArgs {
+type CartActionArgs = {
   action: CartActionType;
   utilArgs: UtilArgs;
   value?: number;
   onRequireConfirm?: () => void;
-}
+};
 
 /**
  * handleCartAction - Handles cart updates based on the specified action
@@ -54,6 +54,9 @@ export function handleCartAction({
       break;
     }
     case "input": {
+      if (value === undefined || isNaN(value) || value <= 0) {
+        return;
+      }
       const newQuantity = Math.max(1, Number(value) || 1);
       updateCartItemQuantity(supermarket, id, newQuantity);
       break;
