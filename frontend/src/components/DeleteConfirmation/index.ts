@@ -1,0 +1,1 @@
+export { DeleteConfirmation } from "./DeleteConfirmation";
