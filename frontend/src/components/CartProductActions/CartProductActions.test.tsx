@@ -4,7 +4,7 @@ import { axe } from "vitest-axe";
 
 import * as CartContext from "@/context/CartContext";
 import { nwProduct } from "@/lib/test/fixtures/products";
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { CartProductActions } from "./CartProductActions";
 
@@ -16,7 +16,7 @@ const singleMockProduct = {
 describe("Given a user is looking at a product in a supermarket cart", () => {
   describe("When the user is looking the product actions", () => {
     it("Then it should display the correct quantity", () => {
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
 
@@ -26,7 +26,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
       expect(quantityInput.value).toBe("782");
     });
     it("Then it should have no accessibility violations", async () => {
-      const { container } = renderWithRouter(
+      const { container } = renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
       const results = await axe(container, {
@@ -46,7 +46,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
         updateCartItemQuantity: updateCartItemQuantityMock,
       } as unknown as CartContext.CartContextType);
 
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
 
@@ -70,7 +70,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
         updateCartItemQuantity: updateCartItemQuantityMock,
       } as unknown as CartContext.CartContextType);
 
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
 
@@ -91,7 +91,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
         updateCartItemQuantity: updateCartItemQuantityMock,
       } as unknown as CartContext.CartContextType);
 
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
 
@@ -112,7 +112,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
         removeCartItem: removeCartItemMock,
       } as unknown as CartContext.CartContextType);
 
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
 
@@ -139,7 +139,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
         updateCartItemQuantity: updateCartItemQuantityMock,
       } as unknown as CartContext.CartContextType);
 
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions
           cartProductItem={{
             quantity: 1,
@@ -169,7 +169,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
         updateCartItemQuantity: updateCartItemQuantityMock,
       } as unknown as CartContext.CartContextType);
 
-      renderWithRouter(
+      renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
       );
 

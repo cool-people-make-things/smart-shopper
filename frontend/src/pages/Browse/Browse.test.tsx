@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { Browse } from "./Browse";
 
@@ -15,7 +15,7 @@ vi.mock("@/components/ProductColumn", () => ({
 describe("Given a user is on to the browse page", () => {
   describe("When the browse page is rendered", () => {
     it("Then it displays 3 supermarket product grids", async () => {
-      renderWithRouter(<Browse />);
+      renderWithRouterAndProviders(<Browse />);
       const supermarketContainer = screen.getAllByTestId(
         "supermarket-container",
       );
@@ -23,7 +23,7 @@ describe("Given a user is on to the browse page", () => {
     });
 
     it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(<Browse />);
+      const { container } = renderWithRouterAndProviders(<Browse />);
       const results = await axe(container, {
         rules: {
           "color-contrast": { enabled: false },

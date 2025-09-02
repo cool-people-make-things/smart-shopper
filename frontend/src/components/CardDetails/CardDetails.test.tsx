@@ -5,14 +5,14 @@ import { axe } from "vitest-axe";
 
 import * as CartContext from "@/context/CartContext";
 import { nwProduct } from "@/lib/test/fixtures/products";
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { CardDetails } from "./CardDetails";
 
 describe("Given the user is looking at an individual product's details", () => {
   describe("When the product is displayed on the home page", () => {
     it("Then the store, product name and price is displayed", () => {
-      renderWithRouter(<CardDetails product={nwProduct} />);
+      renderWithRouterAndProviders(<CardDetails product={nwProduct} />);
 
       expect(
         screen.getByText(
@@ -26,9 +26,8 @@ describe("Given the user is looking at an individual product's details", () => {
 
   describe("When the product is displayed on the browse page", () => {
     it("Then product name and price is displayed", () => {
-      renderWithRouter(<CardDetails product={nwProduct} />, {
+      renderWithRouterAndProviders(<CardDetails product={nwProduct} />, {
         route: "/browse",
-        path: "/browse",
       });
 
       expect(screen.queryByText(/new world/i)).not.toBeInTheDocument();
@@ -43,7 +42,7 @@ describe("Given the user is looking at an individual product's details", () => {
 
   describe("When the button is rendered", () => {
     it("Then the correct text is displayed", async () => {
-      renderWithRouter(<CardDetails product={nwProduct} />);
+      renderWithRouterAndProviders(<CardDetails product={nwProduct} />);
 
       const button = screen.getByRole("button", { name: /add to cart/i });
       expect(button).toBeInTheDocument();
@@ -60,7 +59,7 @@ describe("Given the user is looking at an individual product's details", () => {
     const toastSuccessSpy = vi.spyOn(Sonner.toast, "success");
 
     it("Then it adds item to cart when clicked", async () => {
-      renderWithRouter(<CardDetails product={nwProduct} />);
+      renderWithRouterAndProviders(<CardDetails product={nwProduct} />);
 
       const button = screen.getByRole("button", { name: /add to cart/i });
       await fireEvent.click(button);
@@ -88,7 +87,7 @@ describe("Given the user is looking at an individual product's details", () => {
 
       const toastSuccessSpy = vi.spyOn(Sonner.toast, "success");
       const toastErrorSpy = vi.spyOn(Sonner.toast, "error");
-      renderWithRouter(<CardDetails product={nwProduct} />);
+      renderWithRouterAndProviders(<CardDetails product={nwProduct} />);
 
       await fireEvent.click(screen.getByText(/add to cart/i));
 
@@ -111,7 +110,7 @@ describe("Given the user is looking at an individual product's details", () => {
 
   describe("When the product details are displayed", () => {
     it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(
+      const { container } = renderWithRouterAndProviders(
         <CardDetails product={nwProduct} />,
       );
 

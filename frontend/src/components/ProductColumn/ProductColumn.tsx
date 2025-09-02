@@ -1,30 +1,53 @@
+import { supermarketTitles } from "@/lib/constants";
+
 import { Card } from "../Card";
 import { Text } from "../retroui";
 
 type ProductColumnProps = {
-  data: Product[];
-  store: string;
+  marketResult: SearchData;
+  shopCode: ShopCode;
 };
 
-export function ProductColumn({ data, store }: ProductColumnProps) {
+export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
+  const { data, isLoading, error } = marketResult;
+
+  const supermarketName = supermarketTitles[shopCode];
+
+  // TODO styled loading indicator
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error</p>;
+  }
+
   return (
     <div
-      data-testid="nw"
-      className={`supermarket-container w-full pb-10 ${store === "PAK'nSAVE" ? "bg-gray-100" : "bg-gray-300"}`}
+      className={`supermarket-container w-full pb-10 ${shopCode === "pns" ? "bg-gray-100" : "bg-gray-300"}`}
     >
       <Text as={"h2"} className="py-6 text-center">
-        {store ? store : "Error displaying Supermarket name"}
+        {supermarketName
+          ? supermarketName
+          : "Error displaying supermarket name"}
       </Text>
       <div
         data-testid="product-grid"
         className=" grid grid-cols-2 gap-2 px-2 justify-items-center "
       >
         {data && data.length !== 0 ? (
-          data.map((product) => <Card product={product} key={product.id} />)
+          data.map((product: Product) => (
+            <Card product={product} key={product.id} />
+          ))
         ) : (
-          <Text className="text-center" as={"h4"}>
-            No products at {store}...
-          </Text>
+          <div
+            data-testid="product-grid"
+            className="grid grid-cols-1 gap-2 px-2 justify-items-center"
+          >
+            <Text className="text-center" as={"h4"}>
+              No product results to display.
+            </Text>
+          </div>
         )}
       </div>
     </div>

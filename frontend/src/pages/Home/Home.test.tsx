@@ -4,7 +4,7 @@ import { screen } from "@testing-library/react";
 import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { Home, welcomeBlurb, welcomeSubBlurb } from "./Home";
 
@@ -15,7 +15,7 @@ vi.mock("@/compositions/Featured", () => ({
 describe("Given a user is looking at the home page", () => {
   describe("When the home page is rendered", () => {
     it("Then it displays a welcome title", async () => {
-      renderWithRouter(<Home />);
+      renderWithRouterAndProviders(<Home />);
 
       const heading = await screen.findByRole("heading", { level: 1 });
 
@@ -25,18 +25,18 @@ describe("Given a user is looking at the home page", () => {
     });
 
     it("Then it displays a welcome blurb", () => {
-      renderWithRouter(<Home />);
+      renderWithRouterAndProviders(<Home />);
       expect(screen.getByText(welcomeBlurb)).toBeInTheDocument();
       expect(screen.getByText(welcomeSubBlurb)).toBeInTheDocument();
     });
 
     it("Then it displays the featured component", () => {
-      renderWithRouter(<Home />);
+      renderWithRouterAndProviders(<Home />);
       expect(screen.getByTestId("featured-component")).toBeInTheDocument();
     });
 
     it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(<Home />);
+      const { container } = renderWithRouterAndProviders(<Home />);
 
       const results = await axe(container, {
         rules: {

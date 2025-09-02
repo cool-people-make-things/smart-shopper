@@ -3,6 +3,7 @@ import { toast } from "sonner";
 
 import { Button, RUICard } from "@/components/retroui";
 import { useCart } from "@/context/CartContext";
+import { supermarketTitles } from "@/lib/constants";
 
 export function CardDetails({ product }: { product: Product }) {
   const { title, price, supermarket } = product;
@@ -28,7 +29,7 @@ export function CardDetails({ product }: { product: Product }) {
     return (
       <div data-testid="card-details">
         <RUICard.Header className="py-0">
-          <RUICard.Title>{supermarket}</RUICard.Title>
+          <RUICard.Title>{supermarketTitles[supermarket]}</RUICard.Title>
         </RUICard.Header>
         <RUICard.Content className="py-0">
           <p>{title}</p>

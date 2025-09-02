@@ -1,13 +1,8 @@
 import { Text } from "@/components/retroui";
 import { useCart } from "@/context/CartContext";
+import { supermarketTitles } from "@/lib/constants";
 
 import { CartProduct } from "../CartProduct";
-
-const supermarketTitles = {
-  nw: "New World",
-  pns: "PAK'nSAVE",
-  wls: "Woolworths",
-};
 
 export function IndividualSupermarketCart({
   shopCode,

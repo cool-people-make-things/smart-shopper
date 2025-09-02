@@ -3,7 +3,7 @@ import { type Mock, vi } from "vitest";
 import { axe } from "vitest-axe";
 
 import { useCart } from "@/context/CartContext";
-import { renderWithRouter } from "@/lib/test/renderWithRouter";
+import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { Cart } from "./Cart";
 
@@ -25,15 +25,15 @@ describe("Given the user is looking at the cart page", () => {
 
   describe("When the cart page is rendered", () => {
     it("Then it displays the back link", () => {
-      renderWithRouter(<Cart />);
+      renderWithRouterAndProviders(<Cart />);
     });
     it("Then it has no accessibility violations", async () => {
-      const { container } = renderWithRouter(<Cart />);
+      const { container } = renderWithRouterAndProviders(<Cart />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
     it("Then it displays the correct heading", () => {
-      renderWithRouter(<Cart />);
+      renderWithRouterAndProviders(<Cart />);
 
       const totalSpendHeading = screen.getByRole("heading", { level: 3 });
       expect(totalSpendHeading).toHaveTextContent("Total Spend");
@@ -45,7 +45,7 @@ describe("Given the user is looking at the cart page", () => {
       (useCart as Mock).mockReturnValue({
         cartCosts: { total: "1005560.56" },
       });
-      renderWithRouter(<Cart />);
+      renderWithRouterAndProviders(<Cart />);
 
       expect(screen.getByText(/new world/i)).toBeInTheDocument();
       expect(screen.getByText(/woolworths/i)).toBeInTheDocument();
@@ -58,7 +58,7 @@ describe("Given the user is looking at the cart page", () => {
       (useCart as Mock).mockReturnValue({
         cartCosts: { total: "0.00" },
       });
-      renderWithRouter(<Cart />);
+      renderWithRouterAndProviders(<Cart />);
 
       expect(screen.getByText(/new world/i)).toBeInTheDocument();
       expect(screen.getByText(/woolworths/i)).toBeInTheDocument();

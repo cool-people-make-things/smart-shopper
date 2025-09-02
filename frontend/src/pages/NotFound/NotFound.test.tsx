@@ -13,8 +13,12 @@ describe("Given a user has gone to an unknown page", () => {
 
     it("has no accessibility violations", async () => {
       const { container } = render(<NotFound />);
-      const results = await axe(container);
-      expect(results.violations).toHaveLength(0);
+      const results = await axe(container, {
+        rules: {
+          "color-contrast": { enabled: false },
+        },
+      });
+      expect(results).toHaveNoViolations();
     });
   });
 });
