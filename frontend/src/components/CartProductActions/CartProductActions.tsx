@@ -1,10 +1,10 @@
 import { Minus, Plus, Trash } from "lucide-react";
 import { useState } from "react";
 
+import { DeleteConfirmation } from "@/components/DeleteConfirmation";
 import { Button, Input, Label } from "@/components/retroui";
 import { useCart } from "@/context/CartContext";
 
-import { DeleteConfirmation } from "../DeleteConfirmation";
 import { handleCartAction } from "./utils/cartActions";
 
 export function CartProductActions({
