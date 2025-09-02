@@ -1,13 +1,12 @@
-import { Minus, Plus, Trash } from "lucide-react";
-
-import { Button, Input, Label, Text } from "@/components/retroui";
+import { CartProductActions } from "@/components/CartProductActions";
+import { Text } from "@/components/retroui";
 
 export function CartProduct({
   cartProductItem,
 }: {
   cartProductItem: CartItem;
 }) {
-  const { product, quantity } = cartProductItem;
+  const { product } = cartProductItem;
   return (
     <div className="flex border items-center justify-center">
       <div className=" p-6">
@@ -25,34 +24,7 @@ export function CartProduct({
           ${product?.price?.value ?? "0.00"}
         </Text>
       </div>
-      <div className="flex-1 flex justify-around min-h-full items-center gap-6">
-        <div className="flex flex-row gap-4 items-center justify-around">
-          <Label htmlFor="quantity" className="font-sans text-base">
-            Quantity:
-          </Label>
-          <div className="w-[50%]">
-            <Input type="number" value={quantity ?? 0} id="quantity" />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5">
-          <div className="flex gap-5 justify-between items-center">
-            <Button size="icon" aria-label="Decrease quantity">
-              <Minus className="w-4 h-4" />
-            </Button>
-            <Button size="icon" aria-label="Increase quantity">
-              <Plus className="w-4 h-4" />
-            </Button>
-            <Button
-              size="icon"
-              className="bg-destructive text-white hover:bg-destructive/90"
-              aria-label="Remove from cart"
-            >
-              <Trash className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </div>
+      <CartProductActions cartProductItem={cartProductItem} />
     </div>
   );
 }
