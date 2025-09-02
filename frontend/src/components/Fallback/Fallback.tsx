@@ -3,7 +3,7 @@ import { InfoIcon } from "lucide-react";
 import { Alert } from "@/components/retroui/Alert";
 
 type FallbackProps = {
-  error?: Error;
+  error?: Error | null;
   resetErrorBoundary?: () => void;
   message?: string;
 };
