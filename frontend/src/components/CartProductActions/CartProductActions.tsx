@@ -1,11 +1,11 @@
 import { Minus, Plus, Trash } from "lucide-react";
 import { useState } from "react";
 
-import { DeleteConfirmation } from "@/components/DeleteConfirmation";
+import { ConfirmationPopup } from "@/components/ConfirmationPopup";
 import { Button, Input, Label } from "@/components/retroui";
 import { useCart } from "@/context/CartContext";
 
-import { handleCartAction } from "./utils/cartActions";
+import { handleProductAction } from "./utils/cartActions";
 
 export function CartProductActions({
   cartProductItem,
@@ -42,7 +42,7 @@ export function CartProductActions({
             id="quantity"
             name="quantity"
             onChange={(e) => {
-              handleCartAction({
+              handleProductAction({
                 action: "input",
                 utilArgs,
                 value: Number(e.target.value),
@@ -57,7 +57,7 @@ export function CartProductActions({
           <Button
             data-testid="cart-product-minus"
             onClick={() =>
-              handleCartAction({
+              handleProductAction({
                 action: "decrease",
                 utilArgs,
                 onRequireConfirm: () => setOpenConfirmDelete(true),
@@ -72,7 +72,7 @@ export function CartProductActions({
           <Button
             data-testid="cart-product-increase"
             onClick={() =>
-              handleCartAction({
+              handleProductAction({
                 action: "increase",
                 utilArgs,
               })
@@ -93,16 +93,17 @@ export function CartProductActions({
             <Trash className="w-4 h-4" />
           </Button>
 
-          <DeleteConfirmation
+          <ConfirmationPopup
             open={openConfirmDelete}
             onOpenChange={setOpenConfirmDelete}
             title={title}
             onConfirm={() =>
-              handleCartAction({
+              handleProductAction({
                 action: "delete",
                 utilArgs,
               })
             }
+            mode="removeProduct"
           />
         </div>
       </div>
