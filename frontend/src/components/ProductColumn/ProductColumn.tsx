@@ -9,7 +9,7 @@ type ProductColumnProps = {
   shopCode: ShopCode;
 };
 
-export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
+function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
   const { data, isLoading, error } = marketResult;
 
   const supermarketName = supermarketTitles[shopCode];
