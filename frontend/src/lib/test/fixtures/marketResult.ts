@@ -21,3 +21,14 @@ export const mockEmptyMarketResult = {
   marketResult: mockMarketResultEmptyData,
   shopCode: "nw" as ShopCode,
 };
+
+const mockLoadingMarketResultData: SearchData = {
+  data: [] as Product[],
+  isLoading: true,
+  error: undefined,
+};
+
+export const mockLoadingMarketResult = {
+  marketResult: mockLoadingMarketResultData,
+  shopCode: "nw" as ShopCode,
+};

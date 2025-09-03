@@ -4,6 +4,7 @@ import { axe } from "vitest-axe";
 
 import {
   mockEmptyMarketResult,
+  mockLoadingMarketResult,
   mockMarketResult,
 } from "@/lib/test/fixtures/marketResult";
 import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
@@ -62,7 +63,7 @@ describe("Given a user is looking at an individual supermarkets product column "
 
   describe("When the product column is loading", () => {
     it("Then the loading indicator is displayed", () => {
-      const mockLoadingResult = { ...mockMarketResult, isLoading: true };
+      const mockLoadingResult = { ...mockLoadingMarketResult };
       renderWithRouterAndProviders(<ProductColumn {...mockLoadingResult} />);
       expect(screen.getByTestId("loading-indicator")).toBeInTheDocument();
     });
