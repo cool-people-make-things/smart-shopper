@@ -15,6 +15,7 @@ export type CartContextType = {
   nwCart: Cart;
   pnsCart: Cart;
   wlsCart: Cart;
+  cart: CombinedCart;
   cartCosts: CartTotals;
   clearCart: () => void;
   addCartItem: (supermarket: ShopCode, item: Product) => void;
@@ -120,6 +121,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         nwCart,
         pnsCart,
         wlsCart,
+        cart,
         cartCosts,
         clearCart,
         addCartItem,

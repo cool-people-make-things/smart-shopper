@@ -6,10 +6,11 @@ import { Button } from "@/components/retroui/Button";
 import { EmptyCartButton } from "@/compositions/elements/EmptyCartButton";
 import { IndividualSupermarketCart } from "@/compositions/IndividualSupermarketCart";
 import { useCart } from "@/context/CartContext";
+import { writeToClipboard } from "@/lib/clipboard";
 
 export function Cart() {
   const navigate = useNavigate();
-  const { cartCosts } = useCart();
+  const { cart, cartCosts } = useCart();
 
   return (
     <div className="min-h-screen flex flex-col gap-5 w-2/3 mx-auto">
@@ -19,7 +20,7 @@ export function Cart() {
           Back
         </Button>
         <span className="text-lg font-semibold flex gap-4 flex-row">
-          <Button>
+          <Button onClick={() => writeToClipboard(cart)}>
             <Save className="h-4 w-4 mr-2" />
             Save To Clipboard
           </Button>
@@ -44,7 +45,7 @@ export function Cart() {
         </div>
 
         <div className="text-lg font-semibold flex gap-20 flex-row justify-center my-8">
-          <Button>
+          <Button onClick={() => writeToClipboard(cart)}>
             <Save className="h-4 w-4 mr-2" />
             Save To Clipboard
           </Button>
