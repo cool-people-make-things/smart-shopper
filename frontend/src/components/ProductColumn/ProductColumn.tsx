@@ -1,3 +1,4 @@
+import { LoadingIndicator } from "@/elements/LoadingIndicator";
 import { supermarketTitles } from "@/lib/constants";
 
 import { Card } from "../Card";
@@ -13,9 +14,8 @@ export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
 
   const supermarketName = supermarketTitles[shopCode];
 
-  // TODO styled loading indicator
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   if (error) {

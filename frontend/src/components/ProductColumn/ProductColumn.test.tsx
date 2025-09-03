@@ -10,8 +10,14 @@ import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { ProductColumn } from "./ProductColumn";
 
-vi.mock("../Card", () => ({
+vi.mock("@/components/Card", () => ({
   Card: () => <div data-testid="card-component">Mocked Card</div>,
+}));
+
+vi.mock("@/elements/LoadingIndicator", () => ({
+  LoadingIndicator: () => (
+    <div data-testid="loading-indicator">Mocked LoadingIndicator</div>
+  ),
 }));
 
 describe("Given a user is looking at an individual supermarkets product column ", () => {
@@ -51,6 +57,14 @@ describe("Given a user is looking at an individual supermarkets product column "
       expect(
         screen.getByText(/No product results to display/i),
       ).toBeInTheDocument();
+    });
+  });
+
+  describe("When the product column is loading", () => {
+    it("Then the loading indicator is displayed", () => {
+      const mockLoadingResult = { ...mockMarketResult, isLoading: true };
+      renderWithRouterAndProviders(<ProductColumn {...mockLoadingResult} />);
+      expect(screen.getByTestId("loading-indicator")).toBeInTheDocument();
     });
   });
 });
