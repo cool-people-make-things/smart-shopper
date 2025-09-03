@@ -43,10 +43,12 @@ Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
 declare module "vitest" {
   interface Assertion {
     toHaveCart(expected: CombinedCart): void;
+    toHaveBeenCalledWithPartialStr(expected: string): void;
   }
 
   interface AsymmetricMatchersContaining {
     toHaveCart(expected: CombinedCart): void;
+    toHaveBeenCalledWithPartialStr(expected: string): void;
   }
 }
 
@@ -64,6 +66,29 @@ expect.extend({
         this.utils.printExpected(expected) +
         "\nReceived:\n" +
         this.utils.printReceived(resultingCart),
+    };
+  },
+
+  toHaveBeenCalledWithPartialStr(received, expected: string) {
+    if (typeof received !== "function" || !received.mock) {
+      return {
+        pass: false,
+        message: () => "Received value is not a spy/mock function",
+      };
+    }
+
+    const calls = received.mock.calls.flat();
+    const pass = calls.some(
+      (arg: unknown) => typeof arg === "string" && arg.includes(expected),
+    );
+
+    return {
+      pass,
+      message: () =>
+        `Expected mock ${pass ? "not " : ""}to have been called with a string containing:\n` +
+        this.utils.printExpected(expected) +
+        "\nReceived calls:\n" +
+        this.utils.printReceived(calls),
     };
   },
 });
