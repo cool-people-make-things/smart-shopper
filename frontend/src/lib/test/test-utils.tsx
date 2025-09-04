@@ -5,8 +5,10 @@ import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { MemoryRouter, useLocation } from "react-router-dom";
 
-import { CartProvider } from "@/context/CartContext";
+import { CartContext, type CartContextType } from "@/context/CartContext";
 import { SearchProvider } from "@/context/SearchContext";
+
+import { mockedCartContextValue } from "./fixtures/mockedCartContext";
 
 /**
  * renderWithRouterAndProviders - Test utility for rendering React components with all required providers and routing context
@@ -30,7 +32,12 @@ export function renderWithRouterAndProviders(
   {
     routeHistory = [],
     route = "/",
-  }: { route?: string; routeHistory?: string[] } = {},
+    cartContextValue = {},
+  }: {
+    route?: string;
+    routeHistory?: string[];
+    cartContextValue?: Partial<CartContextType>;
+  } = {},
 ) {
   window.history.pushState({}, "Test page", route);
 
@@ -57,11 +64,13 @@ export function renderWithRouterAndProviders(
       <MemoryRouter initialEntries={[...routeHistory, route]}>
         <LocationDisplay />
         <QueryClientProvider client={queryClient}>
-          <CartProvider>
+          <CartContext.Provider
+            value={{ ...mockedCartContextValue, ...cartContextValue }}
+          >
             <SearchProvider>
               <>{ui}</>
             </SearchProvider>
-          </CartProvider>
+          </CartContext.Provider>
         </QueryClientProvider>
       </MemoryRouter>,
     ),
