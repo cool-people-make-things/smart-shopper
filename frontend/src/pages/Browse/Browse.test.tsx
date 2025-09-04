@@ -7,8 +7,10 @@ import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 import { Browse } from "./Browse";
 
 vi.mock("@/components/ProductColumn", () => ({
-  ProductColumn: () => (
-    <div data-testid="supermarket-container">Mocked ProductColumn</div>
+  ProductColumnWithErrorBoundary: () => (
+    <div data-testid="supermarket-container">
+      Mocked ProductColumn component
+    </div>
   ),
 }));
 

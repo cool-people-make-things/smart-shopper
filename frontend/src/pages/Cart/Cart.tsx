@@ -1,8 +1,9 @@
-import { ChevronLeft, Save, Trash } from "lucide-react";
+import { ChevronLeft, Save } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { Text } from "@/components/retroui";
 import { Button } from "@/components/retroui/Button";
+import { EmptyCartButton } from "@/compositions/elements/EmptyCartButton";
 import { IndividualSupermarketCart } from "@/compositions/IndividualSupermarketCart";
 import { useCart } from "@/context/CartContext";
 
@@ -22,9 +23,7 @@ export function Cart() {
             <Save className="h-4 w-4 mr-2" />
             Save To Clipboard
           </Button>
-          <Button className="bg-destructive text-white hover:bg-destructive/90">
-            <Trash className="h-4 w-4 mr-2" /> Empty Cart
-          </Button>
+          <EmptyCartButton />
         </span>
       </div>
 
@@ -49,10 +48,7 @@ export function Cart() {
             <Save className="h-4 w-4 mr-2" />
             Save To Clipboard
           </Button>
-          <Button className="bg-destructive text-white hover:bg-destructive/90">
-            <Trash className="h-4 w-4 mr-2" />
-            Empty Cart
-          </Button>
+          <EmptyCartButton />
         </div>
       </>
     </div>
