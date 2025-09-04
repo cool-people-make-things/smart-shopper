@@ -29,7 +29,7 @@ describe("Given the user is looking at the cart page", () => {
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
-    it("Then it displays the correct heading", () => {
+    it("Then it displays three IndividualSupermarketCart components", () => {
       renderWithRouterAndProviders(<Cart />);
 
       const totalSpendHeading = screen.getByRole("heading", { level: 3 });
