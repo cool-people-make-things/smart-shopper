@@ -4,53 +4,79 @@ import { axe } from "vitest-axe";
 
 import {
   mockEmptyMarketResult,
+  mockErrorMarketResult,
   mockMarketResult,
 } from "@/lib/test/fixtures/marketResult";
 import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
-import { ProductColumn } from "./ProductColumn";
+import { ProductColumnWithErrorBoundary } from "./ProductColumn";
 
-vi.mock("../Card", () => ({
-  Card: () => <div data-testid="card-component">Mocked Card</div>,
+vi.mock("@/components/Card", () => ({
+  Card: () => <div data-testid="mock-card-component">Mocked Card</div>,
 }));
 
-describe("Given a user is looking at an individual supermarkets product column ", () => {
+vi.mock("@/components/Fallback", () => ({
+  Fallback: () => (
+    <div data-testid="mock-fallback-component">Fallback Component</div>
+  ),
+}));
+
+describe("Given a user is looking at an individual supermarkets product column", () => {
   describe("When the product grid is displayed in the supermarket column", () => {
     it("Then the heading of the column is the supermarket name", () => {
-      renderWithRouterAndProviders(<ProductColumn {...mockMarketResult} />);
+      renderWithRouterAndProviders(
+        <ProductColumnWithErrorBoundary {...mockMarketResult} />,
+      );
 
       const heading = screen.getByRole("heading", { level: 2 });
       expect(heading).toBeInTheDocument();
       expect(heading).toHaveTextContent(/new world/i);
     });
-    it("Then all the product cards for that supermarket are displayed", () => {
-      renderWithRouterAndProviders(<ProductColumn {...mockMarketResult} />);
 
-      const supermarketProducts = screen.getAllByTestId("card-component");
+    it("Then all the product cards for that supermarket are displayed", () => {
+      renderWithRouterAndProviders(
+        <ProductColumnWithErrorBoundary {...mockMarketResult} />,
+      );
+
+      const supermarketProducts = screen.getAllByTestId("mock-card-component");
       expect(supermarketProducts).toHaveLength(11);
     });
+
     it("Then it displays the product cards in a 2 column grid", () => {
-      renderWithRouterAndProviders(<ProductColumn {...mockMarketResult} />);
+      renderWithRouterAndProviders(
+        <ProductColumnWithErrorBoundary {...mockMarketResult} />,
+      );
 
       const productGridDiv = screen.getByTestId("product-grid");
       expect(productGridDiv).toHaveClass("grid grid-cols-2");
     });
+
     it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouterAndProviders(
-        <ProductColumn {...mockMarketResult} />,
+        <ProductColumnWithErrorBoundary {...mockMarketResult} />,
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
   });
-  describe("When there are no product results to display", () => {
-    it("Then a user sees a no products message", () => {
+
+  describe("When the product result request is succesful but there are no product results to display", () => {
+    it("Then the user sees a 'no products' message", () => {
       renderWithRouterAndProviders(
-        <ProductColumn {...mockEmptyMarketResult} />,
+        <ProductColumnWithErrorBoundary {...mockEmptyMarketResult} />,
       );
       expect(
         screen.getByText(/No product results to display/i),
       ).toBeInTheDocument();
+    });
+  });
+
+  describe("When the product result request failed", () => {
+    it("Then the user sees the fallback UI", () => {
+      renderWithRouterAndProviders(
+        <ProductColumnWithErrorBoundary {...mockErrorMarketResult} />,
+      );
+      expect(screen.getByText(/Fallback component/i)).toBeInTheDocument();
     });
   });
 });

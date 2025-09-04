@@ -1,14 +1,15 @@
+import { Card } from "@/components/Card";
+import { Fallback } from "@/components/Fallback";
+import { withErrorBoundary } from "@/components/Fallback/WithErrorBoundary";
+import { Text } from "@/components/retroui";
 import { supermarketTitles } from "@/lib/constants";
-
-import { Card } from "../Card";
-import { Text } from "../retroui";
 
 type ProductColumnProps = {
   marketResult: SearchData;
   shopCode: ShopCode;
 };
 
-export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
+function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
   const { data, isLoading, error } = marketResult;
 
   const supermarketName = supermarketTitles[shopCode];
@@ -19,7 +20,12 @@ export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
   }
 
   if (error) {
-    return <p>Error</p>;
+    return (
+      <Fallback
+        error={error}
+        message="Something went wrong while fetching products. Please try again later."
+      />
+    );
   }
 
   return (
@@ -53,3 +59,8 @@ export function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
     </div>
   );
 }
+
+export const ProductColumnWithErrorBoundary = withErrorBoundary(ProductColumn, {
+  message: "Unable to display products for this store",
+  FallbackComponent: Fallback,
+});

@@ -1,1 +1,1 @@
-export { ProductColumn } from "./ProductColumn";
+export { ProductColumnWithErrorBoundary } from "./ProductColumn";

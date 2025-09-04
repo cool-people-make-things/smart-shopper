@@ -3,7 +3,7 @@ type ShopCode = "nw" | "pns" | "wls";
 type SearchData = {
   data: Product[];
   isLoading: boolean;
-  error: unknown;
+  error: Error | null;
 };
 
 type MarketResults = Record<ShopCode, SearchData>;

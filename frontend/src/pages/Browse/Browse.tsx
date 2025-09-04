@@ -1,4 +1,4 @@
-import { ProductColumn } from "@/components/ProductColumn";
+import { ProductColumnWithErrorBoundary } from "@/components/ProductColumn";
 import { SearchBar } from "@/components/SearchBar";
 import { useSearch } from "@/context/SearchContext";
 
@@ -15,7 +15,7 @@ export function Browse() {
 
       <div className="browse-container grid grid-cols-3 divide-x divide-gray-600">
         {Object.entries(results).map(([shopCode, marketResult]) => (
-          <ProductColumn
+          <ProductColumnWithErrorBoundary
             key={shopCode}
             marketResult={marketResult}
             shopCode={shopCode as ShopCode}
