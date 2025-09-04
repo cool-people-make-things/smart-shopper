@@ -5,6 +5,7 @@ import { axe } from "vitest-axe";
 import {
   mockEmptyMarketResult,
   mockErrorMarketResult,
+  mockLoadingMarketResult,
   mockMarketResult,
 } from "@/lib/test/fixtures/marketResult";
 import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
@@ -13,6 +14,12 @@ import { ProductColumnWithErrorBoundary } from "./ProductColumn";
 
 vi.mock("@/components/Card", () => ({
   Card: () => <div data-testid="mock-card-component">Mocked Card</div>,
+}));
+
+vi.mock("@/elements/LoadingIndicator", () => ({
+  LoadingIndicator: () => (
+    <div data-testid="mock-loading-indicator">Mocked LoadingIndicator</div>
+  ),
 }));
 
 vi.mock("@/components/Fallback", () => ({
@@ -68,6 +75,16 @@ describe("Given a user is looking at an individual supermarkets product column",
       expect(
         screen.getByText(/No product results to display/i),
       ).toBeInTheDocument();
+    });
+  });
+
+  describe("When the product column is loading", () => {
+    it("Then the loading indicator is displayed", () => {
+      const mockLoadingResult = { ...mockLoadingMarketResult };
+      renderWithRouterAndProviders(
+        <ProductColumnWithErrorBoundary {...mockLoadingResult} />,
+      );
+      expect(screen.getByTestId("mock-loading-indicator")).toBeInTheDocument();
     });
   });
 

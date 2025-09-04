@@ -2,6 +2,7 @@ import { Card } from "@/components/Card";
 import { Fallback } from "@/components/Fallback";
 import { withErrorBoundary } from "@/components/Fallback/WithErrorBoundary";
 import { Text } from "@/components/retroui";
+import { LoadingIndicator } from "@/elements/LoadingIndicator";
 import { supermarketTitles } from "@/lib/constants";
 
 type ProductColumnProps = {
@@ -14,9 +15,8 @@ function ProductColumn({ marketResult, shopCode }: ProductColumnProps) {
 
   const supermarketName = supermarketTitles[shopCode];
 
-  // TODO styled loading indicator
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   if (error) {

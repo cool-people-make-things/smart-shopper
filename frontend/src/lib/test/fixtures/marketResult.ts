@@ -24,6 +24,18 @@ export const mockEmptyMarketResult = {
   shopCode: "nw" as ShopCode,
 };
 
+// ----- LOADING -----
+const mockLoadingMarketResultData: SearchData = {
+  data: [] as Product[],
+  isLoading: true,
+  error: null,
+};
+
+export const mockLoadingMarketResult = {
+  marketResult: mockLoadingMarketResultData,
+  shopCode: "nw" as ShopCode,
+};
+
 // ----- ERROR -----
 const mockMarketResultError: SearchData = {
   data: [] as Product[],
