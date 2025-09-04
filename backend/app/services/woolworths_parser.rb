@@ -188,9 +188,10 @@ class WoolworthsParser
 
     promo = {
       tag: get_tag(node),
-      value: get_tag_text(node),
+      value: get_tag_text(node).split(" ").last.strip.gsub("$", ""),
       unitPrice: promo_unit_price,
       unit: promo_unit,
+      multibuyThreshold: get_tag_text(node).split(" ").first,
     }
     return { price: current_price, promo: promo }
   end
