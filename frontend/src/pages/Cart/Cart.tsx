@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { Text } from "@/components/retroui";
 import { Button } from "@/components/retroui/Button";
-import { EmptyCartButton } from "@/compositions/elements/EmptyCartButton";
 import { IndividualSupermarketCart } from "@/compositions/IndividualSupermarketCart";
 import { useCart } from "@/context/CartContext";
+import { EmptyCartButton } from "@/elements/EmptyCartButton";
 import { writeToClipboard } from "@/lib/clipboard";
 
 export function Cart() {
