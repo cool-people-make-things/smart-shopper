@@ -1,16 +1,16 @@
-import { ChevronLeft, Save } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { Text } from "@/components/retroui";
 import { Button } from "@/components/retroui/Button";
 import { IndividualSupermarketCart } from "@/compositions/IndividualSupermarketCart";
 import { useCart } from "@/context/CartContext";
+import { ClipboardButton } from "@/elements/ClipboardButton";
 import { EmptyCartButton } from "@/elements/EmptyCartButton";
-import { writeToClipboard } from "@/lib/clipboard";
 
 export function Cart() {
   const navigate = useNavigate();
-  const { cart, cartCosts } = useCart();
+  const { cartCosts } = useCart();
 
   return (
     <div className="min-h-screen flex flex-col gap-5 w-2/3 mx-auto">
@@ -20,10 +20,7 @@ export function Cart() {
           Back
         </Button>
         <span className="text-lg font-semibold flex gap-4 flex-row">
-          <Button onClick={() => writeToClipboard(cart)}>
-            <Save className="h-4 w-4 mr-2" />
-            Save To Clipboard
-          </Button>
+          <ClipboardButton />
           <EmptyCartButton />
         </span>
       </div>
@@ -45,10 +42,7 @@ export function Cart() {
         </div>
 
         <div className="text-lg font-semibold flex gap-20 flex-row justify-center my-8">
-          <Button onClick={() => writeToClipboard(cart)}>
-            <Save className="h-4 w-4 mr-2" />
-            Save To Clipboard
-          </Button>
+          <ClipboardButton />
           <EmptyCartButton />
         </div>
       </>

@@ -24,9 +24,6 @@ describe("Given the user is looking at the cart page", () => {
   });
 
   describe("When the cart page is rendered", () => {
-    it("Then it displays the back link", () => {
-      renderWithRouterAndProviders(<Cart />);
-    });
     it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouterAndProviders(<Cart />);
       const results = await axe(container);
@@ -37,6 +34,30 @@ describe("Given the user is looking at the cart page", () => {
 
       const totalSpendHeading = screen.getByRole("heading", { level: 3 });
       expect(totalSpendHeading).toHaveTextContent("Total Spend");
+    });
+    it("Then it displays the back link", () => {
+      renderWithRouterAndProviders(<Cart />);
+
+      const backLink = screen.getByRole("button", { name: /back/i });
+      expect(backLink).toBeInTheDocument();
+    });
+    it("Then it displays both the clipboard buttons", () => {
+      renderWithRouterAndProviders(<Cart />);
+
+      const clipboardButtons = screen.getAllByRole("button", {
+        name: /clipboard/i,
+      });
+      expect(clipboardButtons[0]).toBeInTheDocument();
+      expect(clipboardButtons[1]).toBeInTheDocument();
+    });
+    it("Then it displays both the empty cart buttons", () => {
+      renderWithRouterAndProviders(<Cart />);
+
+      const emptyCartButtons = screen.getAllByRole("button", {
+        name: /empty cart/i,
+      });
+      expect(emptyCartButtons[0]).toBeInTheDocument();
+      expect(emptyCartButtons[1]).toBeInTheDocument();
     });
   });
 
