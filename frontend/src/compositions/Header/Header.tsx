@@ -4,14 +4,14 @@ import { Text } from "@/components/retroui";
 import { useCart } from "@/context/CartContext";
 
 export function Header() {
-  const { nwCart, pnsCart, wlsCart } = useCart();
+  const { nwCart, pnsCart, wlsCart, cartCosts } = useCart();
   const cartCount =
     Object.keys(nwCart).length +
     Object.keys(pnsCart).length +
     Object.keys(wlsCart).length;
 
   return (
-    <header className="sticky top-0 flex justify-between items-center py-2 px-20 bg-gray-300 border-b z-50">
+    <header className="sticky top-0 flex justify-between items-center py-2 px-30 bg-gray-300 border-b z-50">
       <a
         href="/"
         className="flex items-center gap-2"
@@ -28,24 +28,27 @@ export function Header() {
         </div>
       </a>
 
-      <nav aria-label="Main navigation" className="flex items-center gap-10">
-        <a href="/about" className="text-xl">
+      <nav aria-label="Main navigation" className="flex items-center gap-4">
+        <a href="/about" className="text-xl mr-6">
           About
         </a>
         <a
           href="/cart"
-          className="relative"
+          className="flex items-center gap-4 pr-2"
           aria-label={`View shopping cart with ${cartCount} item${cartCount !== 1 ? "s" : ""}`}
         >
-          <ShoppingCart className="h-10 w-auto pr-2" />
-          {cartCount > 0 && (
-            <span
-              data-testid="cart-count"
-              className="absolute -top-1.5 -right-0.5 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full"
-            >
-              {cartCount}
-            </span>
-          )}
+          <div className="relative">
+            <ShoppingCart className="h-10 w-auto" />
+            {cartCount > 0 && (
+              <span
+                data-testid="cart-count"
+                className="absolute -top-1.5 -right-2.5 flex items-center justify-center min-w-[1.25rem] h-5 p-1.5 text-xs font-bold text-white bg-red-500 rounded-full"
+              >
+                {cartCount}
+              </span>
+            )}
+          </div>
+          <Text className="text-xl">$ {cartCosts.total}</Text>
         </a>
       </nav>
     </header>

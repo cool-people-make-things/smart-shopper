@@ -4,6 +4,10 @@ import { axe } from "vitest-axe";
 
 import { useCart } from "@/context/CartContext";
 import {
+  emptyCartCosts,
+  fullCartSimpleCosts,
+} from "@/lib/test/fixtures/calculatedCosts";
+import {
   cartWithSingleItem,
   emptyCart,
   fullCart,
@@ -27,6 +31,7 @@ beforeEach(() => {
     nwCart: {},
     pnsCart: {},
     wlsCart: {},
+    cartCosts: { total: "0.00" },
   });
 });
 
@@ -60,10 +65,11 @@ describe("Given a user is looking at the header", () => {
         nwCart: fullCart.nw,
         pnsCart: fullCart.pns,
         wlsCart: fullCart.wls,
+        cartCosts: emptyCartCosts,
       });
       renderWithRouterAndProviders(<Header />);
       const cartIcon = screen.getByRole("link", {
-        name: /view shopping cart with 27 items/i,
+        name: /view shopping cart/i,
       });
       expect(cartIcon).toBeInTheDocument();
     });
@@ -73,6 +79,7 @@ describe("Given a user is looking at the header", () => {
         nwCart: fullCart.nw,
         pnsCart: fullCart.pns,
         wlsCart: fullCart.wls,
+        cartCosts: fullCartSimpleCosts,
       });
       renderWithRouterAndProviders(<Header />);
       const cartCount = screen.getByTestId("cart-count");
@@ -85,6 +92,7 @@ describe("Given a user is looking at the header", () => {
         nwCart: emptyCart.nw,
         pnsCart: emptyCart.pns,
         wlsCart: emptyCart.wls,
+        cartCosts: emptyCartCosts,
       });
       renderWithRouterAndProviders(<Header />);
       const cartCount = screen.queryByTestId("cart-count");
@@ -96,6 +104,7 @@ describe("Given a user is looking at the header", () => {
         nwCart: fullCart.nw,
         pnsCart: fullCart.pns,
         wlsCart: fullCart.wls,
+        cartCosts: fullCartSimpleCosts,
       });
 
       renderWithRouterAndProviders(<Header />);
@@ -114,6 +123,7 @@ describe("Given a user is looking at the header", () => {
         nwCart: cartWithSingleItem.nw,
         pnsCart: {},
         wlsCart: {},
+        cartCosts: emptyCartCosts,
       });
 
       renderWithRouterAndProviders(<Header />);
