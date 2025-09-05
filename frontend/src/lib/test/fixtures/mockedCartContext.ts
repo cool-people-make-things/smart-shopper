@@ -1,6 +1,6 @@
-import type { CartContextType } from "@/context/CartContext";
+import type { CartContextValue } from "@/context/CartContext";
 
-export const mockedCartContextValue: CartContextType = {
+export const mockedCartContextValue: CartContextValue = {
   nwCart: {},
   pnsCart: {},
   wlsCart: {},

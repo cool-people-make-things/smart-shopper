@@ -11,7 +11,7 @@ import { calculateTotals } from "./utils/calculateTotals";
 import { getStartingState } from "./utils/cartData";
 import { setLocalData } from "./utils/localStorage";
 
-export type CartContextType = {
+export type CartContextValue = {
   nwCart: Cart;
   pnsCart: Cart;
   wlsCart: Cart;
@@ -27,7 +27,7 @@ export type CartContextType = {
   ) => void;
 };
 
-export const CartContext = createContext<CartContextType | undefined>(
+export const CartContext = createContext<CartContextValue | undefined>(
   undefined,
 );
 
