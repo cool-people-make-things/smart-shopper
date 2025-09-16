@@ -217,7 +217,7 @@ class WoolworthsParser
 
     promo[:tag] = get_tag(node)
 
-    promo[:value] = current_price[:value]
+    promo[:value] = current_price[:value][/\d+(\.\d+)?/]
     promo[:per] = current_price[:per]
     promo[:unitPrice] = nil
     promo[:unit] = nil
