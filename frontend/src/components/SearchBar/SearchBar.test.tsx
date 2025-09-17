@@ -11,6 +11,21 @@ vi.mock("./utils/cleanInput", () => ({
   cleanInput: vi.fn((value: string) => value),
 }));
 
+beforeEach(() => {
+  global.fetch = vi.fn(() =>
+    Promise.resolve(
+      new Response(JSON.stringify([]), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }),
+    ),
+  );
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
+
 describe("Given a user is on the home page", () => {
   describe("When the SearchBar component is rendered", () => {
     it("Then the user can see the search bar", () => {
