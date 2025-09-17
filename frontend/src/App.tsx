@@ -2,6 +2,7 @@
 import { Route, Routes } from "react-router";
 
 import { Toaster } from "@/components/retroui";
+import { Header } from "@/compositions/Header";
 import { CartProvider } from "@/context/CartContext";
 import { SearchProvider } from "@/context/SearchContext";
 import { Browse } from "@/pages/Browse";
@@ -13,11 +14,8 @@ function App() {
   return (
     <CartProvider>
       <SearchProvider>
-        <main className="h-screen">
-          <div className="bg-gray-400 w-screen h-1/10 text-center flex items-center justify-center text-5xl">
-            I AM A HEADER
-          </div>
-
+        <Header />
+        <main>
           <Routes>
             <Route index element={<Home />} />
             <Route path="browse" element={<Browse />} />
