@@ -14,7 +14,7 @@ describe("Given a user is looking at their cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         clearCart: clearCartMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(<EmptyCartButton />);
 

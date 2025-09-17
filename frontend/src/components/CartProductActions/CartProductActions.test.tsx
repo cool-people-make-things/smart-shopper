@@ -44,7 +44,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         updateCartItemQuantity: updateCartItemQuantityMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
@@ -68,7 +68,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         updateCartItemQuantity: updateCartItemQuantityMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
@@ -89,7 +89,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         updateCartItemQuantity: updateCartItemQuantityMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
@@ -110,7 +110,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         removeCartItem: removeCartItemMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
@@ -137,7 +137,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         updateCartItemQuantity: updateCartItemQuantityMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(
         <CartProductActions
@@ -167,7 +167,7 @@ describe("Given a user is looking at a product in a supermarket cart", () => {
 
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         updateCartItemQuantity: updateCartItemQuantityMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       renderWithRouterAndProviders(
         <CartProductActions cartProductItem={singleMockProduct} />,
