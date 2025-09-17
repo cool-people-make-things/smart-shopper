@@ -5,8 +5,8 @@ import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { TotalSpend } from "./TotalSpend";
 
-describe("Given the user is looking at the total spend component", () => {
-  describe("When the total spend component is rendered", () => {
+describe("Given the user is looking at the total spend of all their cart items", () => {
+  describe("When the total spend amount is displayed", () => {
     it("Then it has no accessibility violations", async () => {
       const { container } = renderWithRouterAndProviders(
         <TotalSpend total="0.00" />,
@@ -24,7 +24,7 @@ describe("Given the user is looking at the total spend component", () => {
   });
 
   describe("When the total spend is displayed", () => {
-    it("Then it displays the total spend", () => {
+    it("Then it displays the accurate total spend amount for all items in the users cart", () => {
       renderWithRouterAndProviders(<TotalSpend total="1005560.56" />);
 
       const totalCost = screen.getByTestId("total-spend");
