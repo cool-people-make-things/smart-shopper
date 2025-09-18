@@ -39,7 +39,7 @@ function calculateSingleCart(cart: Cart) {
  * @param item - The cart item to get the price for
  * @returns The price of the item
  */
-function getItemPrice(item: CartItem) {
+export function getItemPrice(item: CartItem) {
   if (!item.product.price.value || !item.quantity) return 0;
 
   const { price, promo } = item.product;

@@ -1,5 +1,11 @@
 import { CartProductActions } from "@/components/CartProductActions";
 import { Text } from "@/components/retroui";
+import { getItemPrice } from "@/context/utils/calculateTotals";
+import {
+  getLimit,
+  getMultibuyThreshold,
+  getPrimaryData,
+} from "@/lib/productDetails";
 
 export function CartProduct({
   cartProductItem,
@@ -7,24 +13,66 @@ export function CartProduct({
   cartProductItem: CartItem;
 }) {
   const { product } = cartProductItem;
+  const { price, promo } = product;
+
+  const primaryData = getPrimaryData(price, promo);
+  const multibuyThreshold = getMultibuyThreshold(promo);
+  const limit = getLimit(promo);
+  const runningItemPrice = getItemPrice(cartProductItem).toFixed(2);
+
   return (
-    <div className="flex border items-center justify-center">
-      <div className=" p-6">
+    <section className="flex border items-center justify-center py-1">
+      <div id="image-container" className="p-4">
         <img
           src={product?.image}
           alt={product?.title}
-          className=" w-16 h-16 object-cover"
+          className=" w-24 h-24 object-cover"
         />
       </div>
-      <div className="flex-1 min-h-full">
-        <Text className="text-xl font-medium font-sans">
-          {product?.title ?? ""}
-        </Text>
-        <Text className="inline-block bg-gray-100 rounded-md text-xl font-sans py-1 px-3">
-          ${product?.price?.value ?? "0.00"}
+
+      <div id="information-container" className="flex-1">
+        <div
+          id="product-info"
+          className="flex flex-col justify-between gap-2 mr-8"
+        >
+          <div id="product-title" className="">
+            <Text className="text-xl font-medium">{product?.title}</Text>
+          </div>
+          <div id="promo-info" className="flex flex-row gap-2">
+            <Text className="text-xl font-medium">
+              ${multibuyThreshold ? price.value : primaryData.value}
+            </Text>
+            {promo && "value" in promo && !("multibuyThreshold" in promo) && (
+              <div id="product-promo-info" className="">
+                <span className="flex flex-row gap-2 bg-gray-100 py-1 px-2">
+                  <Text className="text-sm">Was ${price.value}</Text>
+                </span>
+              </div>
+            )}
+
+            {promo && "multibuyThreshold" in promo && (
+              <Text className="text-sm bg-gray-100 py-1 px-2">
+                {multibuyThreshold} for ${primaryData.value}
+              </Text>
+            )}
+
+            {limit && (
+              <span>
+                <Text className="text-sm bg-gray-100 py-1 px-2">
+                  limit {limit}
+                </Text>
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <CartProductActions cartProductItem={cartProductItem} />
+      <div id="running cost" className="mx-8 w-26 text-center">
+        <Text className="text-2xl font-bold text-left">
+          $ {runningItemPrice}
         </Text>
       </div>
-      <CartProductActions cartProductItem={cartProductItem} />
-    </div>
+    </section>
   );
 }
