@@ -66,7 +66,15 @@ export function CardDetails({ product }: { product: Product }) {
           </div>
           {promo && "value" in promo && (
             <div className="flex flex-row gap-2 text-right">
-              <p className="self-center">Was</p>
+              {multibuyThreshold ? (
+                <span className="flex flex-col self-center text-sm">
+                  <p>Single</p>
+                  <p>item</p>
+                </span>
+              ) : (
+                <p className="self-center">Was</p>
+              )}
+
               <div className="self-center">
                 <p className={isHome ? "font-bold text-2xl" : "font-bold"}>
                   ${price.value}
