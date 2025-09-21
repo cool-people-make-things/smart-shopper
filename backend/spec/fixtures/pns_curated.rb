@@ -23,7 +23,7 @@ module MockTestData
   PNS_LIMIT_OBJ = {
     supermarket: "pns",
     id: "5236273",
-    title: "Karicare 1 Baby Infant Formula From Birth to 6 Months 900g",
+    title: "Karicare 1 Baby Infant Formula From Birth To 6 Months 900g",
     image: "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5236273.png?w=384",
     productPageUrl: "https://www.paknsave.co.nz/shop/product/5236273_ea_000pns?name=karicare-1-baby-infant-formula-from-birth-to-6-months",
     price: {

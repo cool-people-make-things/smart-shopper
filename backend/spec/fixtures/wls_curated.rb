@@ -2,7 +2,7 @@ module MockTestData
   WLS_MEMBER_PRICE_OBJ = {
     supermarket: "wls",
     id: "139864",
-    title: "v vitalise energy drink guarana Single can 250mL",
+    title: "V Vitalise Energy Drink Guarana Single Can 250mL",
     image: "https://assets.woolworths.com.au/images/2010/139864.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=139864&name=v-vitalise-energy-drink-guarana",
     price: {
@@ -23,7 +23,7 @@ module MockTestData
   WLS_NORMAL_OBJ = {
     supermarket: "wls",
     id: "132815",
-    title: "v vitalise energy drink 250ml Can 4pack",
+    title: "V Vitalise Energy Drink 250ml Can 4pack",
     image: "https://assets.woolworths.com.au/images/2010/132815.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=132815&name=v-vitalise-energy-drink-250ml",
     price: {
@@ -38,7 +38,7 @@ module MockTestData
   WLS_SPECIAL_OBJ = {
     supermarket: "wls",
     id: "315692",
-    title: "v vitalise energy drink Single can 500mL",
+    title: "V Vitalise Energy Drink Single Can 500mL",
     image: "https://assets.woolworths.com.au/images/2010/315692.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=315692&name=v-vitalise-energy-drink",
     price: {
@@ -59,7 +59,7 @@ module MockTestData
   WLS_LOW_PRICE_OBJ = {
     supermarket: "wls",
     id: "98508",
-    title: "turks free range chicken breast skinless fillet 450g",
+    title: "Turks Free Range Chicken Breast Skinless Fillet 450g",
     image: "https://assets.woolworths.com.au/images/2010/98508.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=98508&name=turks-free-range-chicken-breast-skinless-fillet",
     price: {
@@ -76,7 +76,7 @@ module MockTestData
   WLS_SPECIAL_MULTI_BUY_OBJ = {
     supermarket: "wls",
     id: "344618",
-    title: "woolworths chicken whole Each 1.35kg",
+    title: "Woolworths Chicken Whole Each 1.35kg",
     image: "https://assets.woolworths.com.au/images/2010/344618.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=344618&name=woolworths-chicken-whole",
     price: {
@@ -97,7 +97,7 @@ module MockTestData
   WLS_DISNEY_DISC_SPECIAL_OBJ = {
     supermarket: "wls",
     id: "363271",
-    title: "tegel meal maker free range shredded roast chicken 100g 2 x 50g pks",
+    title: "Tegel Meal Maker Free Range Shredded Roast Chicken 100g 2 x 50g Pks",
     image: "https://assets.woolworths.com.au/images/2010/363271.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=363271&name=tegel-meal-maker-free-range-shredded-roast-chicken",
     price: {
@@ -118,7 +118,7 @@ module MockTestData
   WLS_LOW_PRICE_MULTI_BUY_OBJ = {
     supermarket: "wls",
     id: "251463",
-    title: "woolworths NZ chicken mince breast 3% fat barn raised Tray 400g",
+    title: "Woolworths NZ Chicken Mince Breast 3% Fat Barn Raised Tray 400g",
     image: "https://assets.woolworths.com.au/images/2010/251463.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=251463&name=woolworths-nz-chicken-mince-breast-3-fat-barn-raised",
     price: {
@@ -139,7 +139,7 @@ module MockTestData
   WLS_DISNEY_DISC_OBJ = {
     supermarket: "wls",
     id: "6014370",
-    title: "tegel free range quick cook chicken steaks chargrilled 4pk 400g",
+    title: "Tegel Free Range Quick Cook Chicken Steaks Chargrilled 4pk 400g",
     image: "https://assets.woolworths.com.au/images/2010/6014370.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=6014370&name=tegel-free-range-quick-cook-chicken-steaks-chargrilled",
     price: {
@@ -156,7 +156,7 @@ module MockTestData
   WLS_FRESH_DEAL_MULTI_BUY_OBJ = {
     supermarket: "wls",
     id: "281082",
-    title: "fresh vegetable broccoli head",
+    title: "Fresh Vegetable Broccoli Head",
     image: "https://assets.woolworths.com.au/images/2010/281082.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=281082&name=fresh-vegetable-broccoli-head",
     price: {
@@ -177,7 +177,7 @@ module MockTestData
   WLS_UNITLESS_PROMO_OBJ = {
     supermarket: "wls",
     id: "705958",
-    title: "speight's summit beer lager ultra low carb Bottle 24x330mL",
+    title: "Speight's Summit Beer Lager Ultra Low Carb Bottle 24x330mL",
     image: "https://assets.woolworths.com.au/images/2010/705958.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=705958&name=speights-summit-beer-lager-ultra-low-carb",
     price: {
@@ -198,7 +198,7 @@ module MockTestData
   WLS_UNITLESS_OBJ = {
     supermarket: "wls",
     id: "907038",
-    title: "speight's gold medal beer ale Bottle 24x330mL",
+    title: "Speight's Gold Medal Beer Ale Bottle 24x330mL",
     image: "https://assets.woolworths.com.au/images/2010/907038.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl: "https://www.woolworths.co.nz/shop/productdetails?stockcode=907038&name=speights-gold-medal-beer-ale",
     price: {

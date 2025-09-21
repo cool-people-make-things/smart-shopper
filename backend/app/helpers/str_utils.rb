@@ -3,6 +3,11 @@ class StrUtils
     special_cases = {
       "nz" => "NZ",
       "x" => "x",
+      "ea" => "ea",
+      "ea." => "ea.",
+      "ml" => "mL",
+      "kg" => "kg",
+      "g" => "g",
     }
 
     str.split.map { |word| special_cases[word] || capitalise(word) }.join(" ")
