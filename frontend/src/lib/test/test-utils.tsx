@@ -5,8 +5,14 @@ import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { MemoryRouter, useLocation } from "react-router-dom";
 
-import { CartProvider } from "@/context/CartContext";
-import { SearchProvider } from "@/context/SearchContext";
+import { CartContext, type CartContextValue } from "@/context/CartContext";
+import {
+  SearchContext,
+  type SearchContextValue,
+} from "@/context/SearchContext";
+
+import { mockedCartContextValue } from "./fixtures/mockedCartContext";
+import { mockedSearchContextValue } from "./fixtures/mockedSearchContextValue";
 
 /**
  * renderWithRouterAndProviders - Test utility for rendering React components with all required providers and routing context
@@ -21,6 +27,8 @@ import { SearchProvider } from "@/context/SearchContext";
  * @param {Object} [options] - Optional configuration for routing
  * @param {string} [options.route="/"] - Initial route path to set before rendering
  * @param {string[]} [options.routeHistory=[]] - Additional history entries for MemoryRouter
+ * @param {Partial<CartContextValue>} [options.cartContextValue={}] - Optional values for CartContext
+ * @param {Partial<SearchContextValue>} [options.searchContextValue={}] - Optional values for SearchContext
  * @returns {Object} The result of React Testing Library's (RTL) render function extended with:
  *   - `user`: a userEvent instance for simulating user interactions
  *   - All standard query functions from RTL (e.g getByText, queryByTestId)
@@ -30,7 +38,14 @@ export function renderWithRouterAndProviders(
   {
     routeHistory = [],
     route = "/",
-  }: { route?: string; routeHistory?: string[] } = {},
+    cartContextValue = {},
+    searchContextValue = {},
+  }: {
+    route?: string;
+    routeHistory?: string[];
+    cartContextValue?: Partial<CartContextValue>;
+    searchContextValue?: Partial<SearchContextValue>;
+  } = {},
 ) {
   window.history.pushState({}, "Test page", route);
 
@@ -57,11 +72,15 @@ export function renderWithRouterAndProviders(
       <MemoryRouter initialEntries={[...routeHistory, route]}>
         <LocationDisplay />
         <QueryClientProvider client={queryClient}>
-          <CartProvider>
-            <SearchProvider>
+          <CartContext.Provider
+            value={{ ...mockedCartContextValue, ...cartContextValue }}
+          >
+            <SearchContext.Provider
+              value={{ ...mockedSearchContextValue, ...searchContextValue }}
+            >
               <>{ui}</>
-            </SearchProvider>
-          </CartProvider>
+            </SearchContext.Provider>
+          </CartContext.Provider>
         </QueryClientProvider>
       </MemoryRouter>,
     ),

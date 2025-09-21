@@ -1,4 +1,4 @@
-import { type CartContextType } from "@/context/CartContext";
+import { type CartContextValue } from "@/context/CartContext";
 
 type CartActionType =
   | "increase"
@@ -11,12 +11,12 @@ type ProductUtilArgs = {
   supermarket: ShopCode;
   id: string;
   quantity: number;
-  updateCartItemQuantity: CartContextType["updateCartItemQuantity"];
-  removeCartItem: CartContextType["removeCartItem"];
+  updateCartItemQuantity: CartContextValue["updateCartItemQuantity"];
+  removeCartItem: CartContextValue["removeCartItem"];
 };
 
 type ClearCartUtilArgs = {
-  clearCart: CartContextType["clearCart"];
+  clearCart: CartContextValue["clearCart"];
 };
 
 type CartActionArgs = {

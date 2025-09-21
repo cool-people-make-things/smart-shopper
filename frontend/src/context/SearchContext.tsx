@@ -2,13 +2,13 @@ import { createContext, useContext, useState } from "react";
 
 import { useSearchAllSupermarkets } from "@/hooks/useSearchAllSupermarkets";
 
-type SearchContextValue = {
+export type SearchContextValue = {
   query: string;
   setQuery: (q: string) => void;
   results: ReturnType<typeof useSearchAllSupermarkets>;
 };
 
-const SearchContext = createContext<SearchContextValue | null>(null);
+export const SearchContext = createContext<SearchContextValue | null>(null);
 
 export function SearchProvider({ children }: { children: React.ReactNode }) {
   const [query, setQuery] = useState("");

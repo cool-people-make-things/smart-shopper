@@ -54,7 +54,7 @@ describe("Given the user is looking at an individual product's details", () => {
     vi.spyOn(CartContext, "useCart").mockReturnValue({
       addCartItem: addCartItemMock,
       removeCartItem: removeCartItemMock,
-    } as unknown as CartContext.CartContextType);
+    } as unknown as CartContext.CartContextValue);
 
     const toastSuccessSpy = vi.spyOn(Sonner.toast, "success");
 
@@ -83,7 +83,7 @@ describe("Given the user is looking at an individual product's details", () => {
       vi.spyOn(CartContext, "useCart").mockReturnValue({
         addCartItem: addCartItemMock,
         removeCartItem: removeCartItemMock,
-      } as unknown as CartContext.CartContextType);
+      } as unknown as CartContext.CartContextValue);
 
       const toastSuccessSpy = vi.spyOn(Sonner.toast, "success");
       const toastErrorSpy = vi.spyOn(Sonner.toast, "error");
