@@ -11,10 +11,10 @@ PAK'nSAVE:
 - Speight's Summit Ultra Low Carb Larger Beer Cans 24 x 330ml (x7)
 
 Woolworths:
-- turks free range chicken breast skinless fillet 450g (x4)
-- v vitalise energy drink 250ml Can 4pack (x2)
-- speight's gold medal beer ale Bottle 24x330mL (x1)
-- tegel free range quick cook chicken steaks chargrilled 4pk 400g (x2)
+- Turks Free Range Chicken Breast Skinless Fillet 450g (x4)
+- V Vitalise Energy Drink 250ml Can 4pack (x2)
+- Speight's Gold Medal Beer Ale Bottle 24x330mL (x1)
+- Tegel Free Range Quick Cook Chicken Steaks Chargrilled 4pk 400g (x2)
 `;
 
 export const partialCartStr = `New World:

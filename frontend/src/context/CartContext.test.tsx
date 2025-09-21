@@ -54,7 +54,7 @@ describe("Given a user has an empty cart", () => {
 
       expect(itemInCart).toBeDefined();
       expect(itemInCart.product.title).toBe(
-        "v vitalise energy drink 250ml Can 4pack",
+        "V Vitalise Energy Drink 250ml Can 4pack",
       );
     });
 
