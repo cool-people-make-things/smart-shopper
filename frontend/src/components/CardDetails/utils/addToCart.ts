@@ -1,16 +1,5 @@
 import { toast } from "sonner";
 
-export const getPrimaryData = (price: Price, promo: Promo | null) => {
-  if (promo && "value" in promo) return promo;
-  return price;
-};
-
-export const getMultibuyThreshold = (promo: Promo | null) =>
-  promo && "multibuyThreshold" in promo ? promo.multibuyThreshold : null;
-
-export const getLimit = (promo: Promo | null) =>
-  promo && "limit" in promo ? promo.limit : null;
-
 export function addToCartWithToast({
   addCartItem,
   removeCartItem,

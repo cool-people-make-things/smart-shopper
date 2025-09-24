@@ -3,13 +3,14 @@ import { useLocation } from "react-router-dom";
 import { Button, RUICard } from "@/components/retroui";
 import { useCart } from "@/context/CartContext";
 import { supermarketTitles } from "@/lib/constants";
-
 import {
-  addToCartWithToast,
-  getLimit,
-  getMultibuyThreshold,
   getPrimaryData,
-} from "../../lib/productDetails";
+  hasLimit,
+  hasMultibuyThreshold,
+  isPromoWithValue,
+} from "@/lib/typeGuards";
+
+import { addToCartWithToast } from "./utils/addToCart";
 
 export function CardDetails({ product }: { product: Product }) {
   const { title, price, supermarket, promo } = product;
@@ -18,8 +19,10 @@ export function CardDetails({ product }: { product: Product }) {
   const { addCartItem, removeCartItem } = useCart();
 
   const primaryData = getPrimaryData(price, promo);
-  const multibuyThreshold = getMultibuyThreshold(promo);
-  const limit = getLimit(promo);
+
+  const isPromo = isPromoWithValue(promo);
+  const isMultibuyPromo = hasMultibuyThreshold(promo);
+  const isLimitPromo = hasLimit(promo);
 
   const addToCart = () =>
     addToCartWithToast({ addCartItem, removeCartItem, supermarket, product });
@@ -44,13 +47,15 @@ export function CardDetails({ product }: { product: Product }) {
       <RUICard.Content className="flex flex-col gap-4">
         <div className="flex flex-row justify-between flex-1 ">
           <div className="flex flex-col justify-center">
-            {limit && (
-              <p className={isHome ? "text-md" : "text-sm"}>limit {limit}</p>
+            {isLimitPromo && (
+              <p className={isHome ? "text-md" : "text-sm"}>
+                limit {promo.limit}
+              </p>
             )}
 
-            {multibuyThreshold && (
+            {isMultibuyPromo && (
               <p className={isHome ? "text-md" : "text-sm"}>
-                {multibuyThreshold} for
+                {promo.multibuyThreshold} for
               </p>
             )}
 
@@ -64,21 +69,19 @@ export function CardDetails({ product }: { product: Product }) {
               </p>
             )}
           </div>
-          {promo && "value" in promo && (
-            <div className="flex flex-row gap-2 text-right">
-              {multibuyThreshold ? (
-                <span className="flex flex-col self-center text-sm">
-                  <p>Single</p>
-                  <p>item</p>
-                </span>
-              ) : (
-                <p className="self-center">Was</p>
-              )}
 
+          {isPromo && (
+            <div className="flex flex-col gap-2 text-right justify-center">
               <div className="self-center">
-                <p className={isHome ? "font-bold text-2xl" : "font-bold"}>
-                  ${price.value}
-                </p>
+                <div className="flex flex-row gap-2 items-end justify-end">
+                  <p className="self-center text-sm">
+                    {isMultibuyPromo ? "Each" : "Was"}
+                  </p>
+                  <p className={isHome ? "font-bold text-2xl" : "font-bold"}>
+                    ${price.value}
+                  </p>
+                </div>
+
                 <p className={isHome ? "text-sm" : "text-xs"}>
                   {price.unitPrice != null && (
                     <span>

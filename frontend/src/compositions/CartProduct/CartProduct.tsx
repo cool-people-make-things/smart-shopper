@@ -2,10 +2,11 @@ import { CartProductActions } from "@/components/CartProductActions";
 import { Text } from "@/components/retroui";
 import { getItemPrice } from "@/context/utils/calculateTotals";
 import {
-  getLimit,
-  getMultibuyThreshold,
   getPrimaryData,
-} from "@/lib/productDetails";
+  hasLimit,
+  hasMultibuyThreshold,
+  isPromoWithValue,
+} from "@/lib/typeGuards";
 
 export function CartProduct({
   cartProductItem,
@@ -16,9 +17,11 @@ export function CartProduct({
   const { price, promo } = product;
 
   const primaryData = getPrimaryData(price, promo);
-  const multibuyThreshold = getMultibuyThreshold(promo);
-  const limit = getLimit(promo);
   const runningItemPrice = getItemPrice(cartProductItem).toFixed(2);
+  const isNonMultibuyPromo =
+    isPromoWithValue(promo) && !hasMultibuyThreshold(promo);
+  const isMultibuyPromo = hasMultibuyThreshold(promo);
+  const isLimitPromo = hasLimit(promo);
 
   return (
     <section className="flex border items-center justify-center py-1">
@@ -38,11 +41,13 @@ export function CartProduct({
           <div id="product-title" className="">
             <Text className="text-xl font-medium">{product?.title}</Text>
           </div>
+
           <div id="promo-info" className="flex flex-row gap-2">
             <Text className="text-xl font-medium">
-              ${multibuyThreshold ? price.value : primaryData.value}
+              ${isMultibuyPromo ? price.value : primaryData.value}
             </Text>
-            {promo && "value" in promo && !("multibuyThreshold" in promo) && (
+
+            {isNonMultibuyPromo && (
               <div id="product-promo-info" className="">
                 <span className="flex flex-row gap-2 bg-gray-100 py-1 px-2">
                   <Text className="text-sm">Was ${price.value}</Text>
@@ -50,16 +55,16 @@ export function CartProduct({
               </div>
             )}
 
-            {promo && "multibuyThreshold" in promo && (
+            {isMultibuyPromo && (
               <Text className="text-sm bg-gray-100 py-1 px-2">
-                {multibuyThreshold} for ${primaryData.value}
+                {promo.multibuyThreshold} for ${primaryData.value}
               </Text>
             )}
 
-            {limit && (
+            {isLimitPromo && (
               <span>
                 <Text className="text-sm bg-gray-100 py-1 px-2">
-                  limit {limit}
+                  limit {promo.limit}
                 </Text>
               </span>
             )}
