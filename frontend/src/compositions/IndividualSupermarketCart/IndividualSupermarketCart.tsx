@@ -14,7 +14,7 @@ export function IndividualSupermarketCart({
   const { cartCosts } = cartsData;
 
   return (
-    <div id={`${shopCode}-cart`}>
+    <div data-testid="individual-shopping-cart" id={`${shopCode}-cart`}>
       <div className="flex flex-row justify-between mb-4">
         <Text className="text-4xl font-semibold ">
           {supermarketTitles[shopCode]}
