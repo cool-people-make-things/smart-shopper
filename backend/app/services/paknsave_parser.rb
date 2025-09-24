@@ -36,7 +36,7 @@ class PaknsaveParser
     {
       supermarket: "pns",
       id: extract_id(node),
-      title: product_title,
+      title: StrUtils.to_title_case(product_title),
       image: extract_img(node),
       productPageUrl: extract_product_page_url(node),
       price: extract_price(node),

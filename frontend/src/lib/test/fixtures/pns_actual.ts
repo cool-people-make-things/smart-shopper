@@ -70,7 +70,7 @@ export const pnsData: Product[] = [
   {
     id: "5329222",
     supermarket: "pns",
-    title: "Dairyworks Tasty Natural Cheese and Griffins Snax Crackers 4 x 30g",
+    title: "Dairyworks Tasty Natural Cheese And Griffins Snax Crackers 4 x 30g",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5329222.png?w=384",
     productPageUrl:

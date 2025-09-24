@@ -39,7 +39,7 @@ describe("Given a user has items in their cart", () => {
       writeToClipboard(fullCartSimple);
 
       expect(mockWriteToClipboard).toHaveBeenCalledWithPartialStr(
-        "- speight's gold medal beer ale Bottle 24x330mL (x1)",
+        "- Speight's Gold Medal Beer Ale Bottle 24x330mL (x1)",
       );
       expect(mockWriteToClipboard).toHaveBeenCalledWithPartialStr(
         "- Chia Sisters Gut Lemon & Golden Kiwifruit Sparkling Drink 250ml (x4)",

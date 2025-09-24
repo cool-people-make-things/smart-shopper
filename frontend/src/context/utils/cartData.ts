@@ -225,7 +225,7 @@ const devInitialCart: CombinedCart = {
       quantity: 2,
       product: {
         id: "6030021",
-        title: "riley coffee beans heyday 500g",
+        title: "Riley Coffee Beans Heyday 500g",
         image:
           "https://assets.woolworths.com.au/images/2010/6030021.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -248,7 +248,7 @@ const devInitialCart: CombinedCart = {
       quantity: 10,
       product: {
         id: "956132",
-        title: "whittakers chocolate block raspberry & NZ strawberry 100g",
+        title: "Whittakers Chocolate Block Raspberry & NZ Strawberry 100g",
         image:
           "https://assets.woolworths.com.au/images/2010/956132.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -271,7 +271,7 @@ const devInitialCart: CombinedCart = {
       quantity: 1,
       product: {
         id: "253877",
-        title: "macro eggs free range mixed grade Carton 12pack",
+        title: "Macro Eggs Free Range Mixed Grade Carton 12pack",
         image:
           "https://assets.woolworths.com.au/images/2010/253877.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -292,7 +292,7 @@ const devInitialCart: CombinedCart = {
       quantity: 5,
       product: {
         id: "281809",
-        title: "woolworths cheese edam Block 1kg",
+        title: "Woolworths Cheese Edam Block 1kg",
         image:
           "https://assets.woolworths.com.au/images/2010/281809.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -311,7 +311,7 @@ const devInitialCart: CombinedCart = {
       quantity: 1,
       product: {
         id: "266023",
-        title: "watties spaghetti in tomato sauce Cans 3pack",
+        title: "Watties Spaghetti In Tomato Sauce Cans 3pack",
         image:
           "https://assets.woolworths.com.au/images/2010/266023.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:
@@ -332,7 +332,7 @@ const devInitialCart: CombinedCart = {
       quantity: 1,
       product: {
         id: "74613",
-        title: "la molisana pasta spaghetti 500g",
+        title: "La Molisana Pasta Spaghetti 500g",
         image:
           "https://assets.woolworths.com.au/images/2010/74613.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
         productPageUrl:

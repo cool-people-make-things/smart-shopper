@@ -2,7 +2,7 @@ export const wlsData: Product[] = [
   {
     id: "266023",
     supermarket: "wls",
-    title: "watties spaghetti in tomato sauce Cans 3pack",
+    title: "Watties Spaghetti In Tomato Sauce Cans 3pack",
     image:
       "https://assets.woolworths.com.au/images/2010/266023.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -20,7 +20,7 @@ export const wlsData: Product[] = [
   {
     id: "44571",
     supermarket: "wls",
-    title: "essentials pasta spaghetti 500g",
+    title: "Essentials Pasta Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/44571.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -36,7 +36,7 @@ export const wlsData: Product[] = [
   {
     id: "4485",
     supermarket: "wls",
-    title: "watties spaghetti in tomato sauce Can 420g",
+    title: "Watties Spaghetti In Tomato Sauce Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/4485.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -56,7 +56,7 @@ export const wlsData: Product[] = [
   {
     id: "727664",
     supermarket: "wls",
-    title: "diamond pasta spaghetti 500g",
+    title: "Diamond Pasta Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/727664.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -72,7 +72,7 @@ export const wlsData: Product[] = [
   {
     id: "266027",
     supermarket: "wls",
-    title: "oak spaghetti in tomato sauce Can 420g",
+    title: "Oak Spaghetti In Tomato Sauce Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/266027.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -88,7 +88,7 @@ export const wlsData: Product[] = [
   {
     id: "346830",
     supermarket: "wls",
-    title: "woolworths pasta spaghetti 500g",
+    title: "Woolworths Pasta Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/346830.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -106,7 +106,7 @@ export const wlsData: Product[] = [
   {
     id: "74613",
     supermarket: "wls",
-    title: "la molisana pasta spaghetti 500g",
+    title: "La Molisana Pasta Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/74613.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -127,7 +127,7 @@ export const wlsData: Product[] = [
   {
     id: "47681",
     supermarket: "wls",
-    title: "woolworths spaghetti in tomato sauce 420g",
+    title: "Woolworths Spaghetti In Tomato Sauce 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/47681.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -148,7 +148,7 @@ export const wlsData: Product[] = [
   {
     id: "83763",
     supermarket: "wls",
-    title: "barilla pasta spaghetti no. 5 500g",
+    title: "Barilla Pasta Spaghetti No. 5 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/83763.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -168,7 +168,7 @@ export const wlsData: Product[] = [
   {
     id: "6351",
     supermarket: "wls",
-    title: "watties spaghetti in tomato sauce Can 220g",
+    title: "Watties Spaghetti In Tomato Sauce Can 220g",
     image:
       "https://assets.woolworths.com.au/images/2010/6351.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -186,7 +186,7 @@ export const wlsData: Product[] = [
   {
     id: "661387",
     supermarket: "wls",
-    title: "watties spaghetti 50% less added sugar Can 420g",
+    title: "Watties Spaghetti 50% Less Added Sugar Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/661387.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -206,7 +206,7 @@ export const wlsData: Product[] = [
   {
     id: "727658",
     supermarket: "wls",
-    title: "diamond pasta spaghetti wholemeal 500g",
+    title: "Diamond Pasta Spaghetti Wholemeal 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/727658.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -222,7 +222,7 @@ export const wlsData: Product[] = [
   {
     id: "215450",
     supermarket: "wls",
-    title: "macro organic pasta spaghetti 500g",
+    title: "Macro Organic Pasta Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/215450.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -240,7 +240,7 @@ export const wlsData: Product[] = [
   {
     id: "913866",
     supermarket: "wls",
-    title: "woolworths pasta long spaghetti Can 420g",
+    title: "Woolworths Pasta Long Spaghetti Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/913866.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -261,7 +261,7 @@ export const wlsData: Product[] = [
   {
     id: "727453",
     supermarket: "wls",
-    title: "diamond pasta spaghetti gluten free 250g",
+    title: "Diamond Pasta Spaghetti Gluten Free 250g",
     image:
       "https://assets.woolworths.com.au/images/2010/727453.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -277,7 +277,7 @@ export const wlsData: Product[] = [
   {
     id: "6345",
     supermarket: "wls",
-    title: "watties spaghetti cheesy Can 420g",
+    title: "Watties Spaghetti Cheesy Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/6345.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -297,7 +297,7 @@ export const wlsData: Product[] = [
   {
     id: "916794",
     supermarket: "wls",
-    title: "woolworths pasta cheesy spaghetti Can 420g",
+    title: "Woolworths Pasta Cheesy Spaghetti Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/916794.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -318,7 +318,7 @@ export const wlsData: Product[] = [
   {
     id: "266029",
     supermarket: "wls",
-    title: "watties spaghetti with sausages Can 300g",
+    title: "Watties Spaghetti With Sausages Can 300g",
     image:
       "https://assets.woolworths.com.au/images/2010/266029.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -336,7 +336,7 @@ export const wlsData: Product[] = [
   {
     id: "757679",
     supermarket: "wls",
-    title: "macro organic spaghetti in tomato sauce Can 420g",
+    title: "Macro Organic Spaghetti In Tomato Sauce Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/757679.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -352,7 +352,7 @@ export const wlsData: Product[] = [
   {
     id: "91105",
     supermarket: "wls",
-    title: "vetta smart pasta spaghetti 500g",
+    title: "Vetta Smart Pasta Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/91105.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -368,7 +368,7 @@ export const wlsData: Product[] = [
   {
     id: "169421",
     supermarket: "wls",
-    title: "maggi recipe base spaghetti bolognese Sachet 26g",
+    title: "Maggi Recipe Base Spaghetti Bolognese Sachet 26g",
     image:
       "https://assets.woolworths.com.au/images/2010/169421.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -389,7 +389,7 @@ export const wlsData: Product[] = [
   {
     id: "620646",
     supermarket: "wls",
-    title: "barilla pasta spaghetti gluten free 340g",
+    title: "Barilla Pasta Spaghetti Gluten Free 340g",
     image:
       "https://assets.woolworths.com.au/images/2010/620646.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -405,7 +405,7 @@ export const wlsData: Product[] = [
   {
     id: "68343",
     supermarket: "wls",
-    title: "macro organic pasta spaghetti wholemeal 500g",
+    title: "Macro Organic Pasta Spaghetti Wholemeal 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/68343.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -423,7 +423,7 @@ export const wlsData: Product[] = [
   {
     id: "912755",
     supermarket: "wls",
-    title: "woolworths spaghetti shortstrand 410g",
+    title: "Woolworths Spaghetti Shortstrand 410g",
     image:
       "https://assets.woolworths.com.au/images/2010/912755.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -444,7 +444,7 @@ export const wlsData: Product[] = [
   {
     id: "325330",
     supermarket: "wls",
-    title: "garofalo pasta spaghetti no. 9 500g",
+    title: "Garofalo Pasta Spaghetti No. 9 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/325330.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -460,7 +460,7 @@ export const wlsData: Product[] = [
   {
     id: "449465",
     supermarket: "wls",
-    title: "vetta smart pasta protein spaghetti 375g",
+    title: "Vetta Smart Pasta Protein Spaghetti 375g",
     image:
       "https://assets.woolworths.com.au/images/2010/449465.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -476,7 +476,7 @@ export const wlsData: Product[] = [
   {
     id: "528208",
     supermarket: "wls",
-    title: "la molisana high protein pasta spaghetti 400g",
+    title: "La Molisana High Protein Pasta Spaghetti 400g",
     image:
       "https://assets.woolworths.com.au/images/2010/528208.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -492,7 +492,7 @@ export const wlsData: Product[] = [
   {
     id: "74798",
     supermarket: "wls",
-    title: "la molisana pasta wholewheat spaghetti 500g",
+    title: "La Molisana Pasta Wholewheat Spaghetti 500g",
     image:
       "https://assets.woolworths.com.au/images/2010/74798.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -513,7 +513,7 @@ export const wlsData: Product[] = [
   {
     id: "4407",
     supermarket: "wls",
-    title: "watties spaghetti with sausages Can 420g",
+    title: "Watties Spaghetti With Sausages Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/4407.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -531,7 +531,7 @@ export const wlsData: Product[] = [
   {
     id: "4408",
     supermarket: "wls",
-    title: "watties spaghetti with meatballs Can 420g",
+    title: "Watties Spaghetti With Meatballs Can 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/4408.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -549,7 +549,7 @@ export const wlsData: Product[] = [
   {
     id: "6013481",
     supermarket: "wls",
-    title: "delmaine chilled spaghetti 250g",
+    title: "Delmaine Chilled Spaghetti 250g",
     image:
       "https://assets.woolworths.com.au/images/2010/6013481.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -569,7 +569,7 @@ export const wlsData: Product[] = [
   {
     id: "290971",
     supermarket: "wls",
-    title: "san remo active plus pasta spaghetti 400g",
+    title: "San Remo Active Plus Pasta Spaghetti 400g",
     image:
       "https://assets.woolworths.com.au/images/2010/290971.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -585,7 +585,7 @@ export const wlsData: Product[] = [
   {
     id: "765841",
     supermarket: "wls",
-    title: "ceres organics pasta spaghetti quinoa 250g",
+    title: "Ceres Organics Pasta Spaghetti Quinoa 250g",
     image:
       "https://assets.woolworths.com.au/images/2010/765841.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -601,7 +601,7 @@ export const wlsData: Product[] = [
   {
     id: "68980",
     supermarket: "wls",
-    title: "macro organic pasta spaghetti gluten free 350g",
+    title: "Macro Organic Pasta Spaghetti Gluten Free 350g",
     image:
       "https://assets.woolworths.com.au/images/2010/68980.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -617,7 +617,7 @@ export const wlsData: Product[] = [
   {
     id: "418253",
     supermarket: "wls",
-    title: "woolworths chilled spaghetti bolognese 350g",
+    title: "Woolworths Chilled Spaghetti Bolognese 350g",
     image:
       "https://assets.woolworths.com.au/images/2010/418253.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -635,7 +635,7 @@ export const wlsData: Product[] = [
   {
     id: "279994",
     supermarket: "wls",
-    title: "woolworths pasta chilled spaghetti gluten free 250g",
+    title: "Woolworths Pasta Chilled Spaghetti Gluten Free 250g",
     image:
       "https://assets.woolworths.com.au/images/2010/279994.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -651,7 +651,7 @@ export const wlsData: Product[] = [
   {
     id: "770320",
     supermarket: "wls",
-    title: "woolworths diced tomatoes italian Can 400g",
+    title: "Woolworths Diced Tomatoes Italian Can 400g",
     image:
       "https://assets.woolworths.com.au/images/2010/770320.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -667,7 +667,7 @@ export const wlsData: Product[] = [
   {
     id: "700721",
     supermarket: "wls",
-    title: "san remo la pasta pasta & sauce macaroni cheese 160g",
+    title: "San Remo La Pasta Pasta & Sauce Macaroni Cheese 160g",
     image:
       "https://assets.woolworths.com.au/images/2010/700721.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -688,7 +688,7 @@ export const wlsData: Product[] = [
   {
     id: "270751",
     supermarket: "wls",
-    title: "watties flavoured tomatoes italian style Can 400g",
+    title: "Watties Flavoured Tomatoes Italian Style Can 400g",
     image:
       "https://assets.woolworths.com.au/images/2010/270751.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -706,7 +706,7 @@ export const wlsData: Product[] = [
   {
     id: "647705",
     supermarket: "wls",
-    title: "san remo gluten free brown rice pasta spaghetti 250g",
+    title: "San Remo Gluten Free Brown Rice Pasta Spaghetti 250g",
     image:
       "https://assets.woolworths.com.au/images/2010/647705.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -722,7 +722,7 @@ export const wlsData: Product[] = [
   {
     id: "265330",
     supermarket: "wls",
-    title: "wattie's very special soup italian minestrone canned 535g",
+    title: "Wattie's Very Special Soup Italian Minestrone Canned 535g",
     image:
       "https://assets.woolworths.com.au/images/2010/265330.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -743,7 +743,7 @@ export const wlsData: Product[] = [
   {
     id: "830129",
     supermarket: "wls",
-    title: "slendier slim prepacked meal spaghetti 400g",
+    title: "Slendier Slim Prepacked Meal Spaghetti 400g",
     image:
       "https://assets.woolworths.com.au/images/2010/830129.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -759,7 +759,7 @@ export const wlsData: Product[] = [
   {
     id: "79923",
     supermarket: "wls",
-    title: "continental classics recipe base spaghetti bolognese Pack 50g",
+    title: "Continental Classics Recipe Base Spaghetti Bolognese Pack 50g",
     image:
       "https://assets.woolworths.com.au/images/2010/79923.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -775,7 +775,7 @@ export const wlsData: Product[] = [
   {
     id: "232529",
     supermarket: "wls",
-    title: "culley's kitchen recipe base spaghetti bolognese Sachet 40g",
+    title: "Culley's Kitchen Recipe Base Spaghetti Bolognese Sachet 40g",
     image:
       "https://assets.woolworths.com.au/images/2010/232529.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -791,7 +791,7 @@ export const wlsData: Product[] = [
   {
     id: "257947",
     supermarket: "wls",
-    title: "mrs rogers organic recipe base spaghetti bolognaise 30g",
+    title: "Mrs Rogers Organic Recipe Base Spaghetti Bolognaise 30g",
     image:
       "https://assets.woolworths.com.au/images/2010/257947.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -807,7 +807,7 @@ export const wlsData: Product[] = [
   {
     id: "312185",
     supermarket: "wls",
-    title: "woolworths tomato sauce Refill 565g",
+    title: "Woolworths Tomato Sauce Refill 565g",
     image:
       "https://assets.woolworths.com.au/images/2010/312185.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -823,7 +823,7 @@ export const wlsData: Product[] = [
   {
     id: "279288",
     supermarket: "wls",
-    title: "wattie's pasta sauce original 420g",
+    title: "Wattie's Pasta Sauce Original 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/279288.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:
@@ -841,7 +841,7 @@ export const wlsData: Product[] = [
   {
     id: "279301",
     supermarket: "wls",
-    title: "wattie's pasta sauce tomato & herb 420g",
+    title: "Wattie's Pasta Sauce Tomato & Herb 420g",
     image:
       "https://assets.woolworths.com.au/images/2010/279301.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
     productPageUrl:

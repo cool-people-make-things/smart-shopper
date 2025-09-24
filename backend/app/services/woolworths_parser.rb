@@ -41,7 +41,7 @@ class WoolworthsParser
     {
       supermarket: "wls",
       id: extract_id(node),
-      title: title,
+      title: StrUtils.to_title_case(title),
       image: extract_image(node),
       productPageUrl: extract_product_page_url(node),
       price: ticketed_prices[:price],

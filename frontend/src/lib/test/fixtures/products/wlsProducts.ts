@@ -4,7 +4,7 @@ const wls: ShopCode = "wls";
 
 export const wlsProduct = {
   id: "132815",
-  title: "v vitalise energy drink 250ml Can 4pack",
+  title: "V Vitalise Energy Drink 250ml Can 4pack",
   image:
     "https://assets.woolworths.com.au/images/2010/132815.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -21,7 +21,7 @@ export const wlsProduct = {
 
 export const wlsProductUnitless = {
   id: "907038",
-  title: "speight's gold medal beer ale Bottle 24x330mL",
+  title: "Speight's Gold Medal Beer Ale Bottle 24x330mL",
   image:
     "https://assets.woolworths.com.au/images/2010/907038.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -38,7 +38,7 @@ export const wlsProductUnitless = {
 
 export const wlsProductPromoTag = {
   id: "98508",
-  title: "turks free range chicken breast skinless fillet 450g",
+  title: "Turks Free Range Chicken Breast Skinless Fillet 450g",
   image:
     "https://assets.woolworths.com.au/images/2010/98508.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -59,7 +59,7 @@ export const wlsProductPromoTag = {
 
 export const wlsProductPromo = {
   id: "315692",
-  title: "v vitalise energy drink Single can 500mL",
+  title: "V Vitalise Energy Drink Single Can 500mL",
   image:
     "https://assets.woolworths.com.au/images/2010/315692.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -80,7 +80,7 @@ export const wlsProductPromo = {
 
 export const wlsProductPromoUnitless = {
   id: "705958",
-  title: "speight's summit beer lager ultra low carb Bottle 24x330mL",
+  title: "Speight's Summit Beer Lager Ultra Low Carb Bottle 24x330mL",
   image:
     "https://assets.woolworths.com.au/images/2010/705958.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -103,7 +103,7 @@ export const wlsProductPromoUnitless = {
 
 export const wlsProductMultibuy = {
   id: "344618",
-  title: "woolworths chicken whole Each 1.35kg",
+  title: "Woolworths Chicken Whole Each 1.35kg",
   image:
     "https://assets.woolworths.com.au/images/2010/344618.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -126,7 +126,7 @@ export const wlsProductMultibuy = {
 
 export const wlsProductMultibuyLow = {
   id: "251463",
-  title: "woolworths NZ chicken mince breast 3% fat barn raised Tray 400g",
+  title: "Woolworths NZ Chicken Mince Breast 3% Fat Barn Raised Tray 400g",
   image:
     "https://assets.woolworths.com.au/images/2010/251463.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -149,7 +149,7 @@ export const wlsProductMultibuyLow = {
 
 export const wlsProductMultibuyFresh = {
   id: "281082",
-  title: "fresh vegetable broccoli head",
+  title: "Fresh Vegetable Broccoli Head",
   image:
     "https://assets.woolworths.com.au/images/2010/281082.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -172,7 +172,7 @@ export const wlsProductMultibuyFresh = {
 
 export const wlsProductMembersCard = {
   id: "139864",
-  title: "v vitalise energy drink guarana Single can 250mL",
+  title: "V Vitalise Energy Drink Guarana Single Can 250mL",
   image:
     "https://assets.woolworths.com.au/images/2010/139864.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -197,7 +197,7 @@ export const wlsProductMembersCard = {
 
 export const wlsProductDisney = {
   id: "6014370",
-  title: "tegel free range quick cook chicken steaks chargrilled 4pk 400g",
+  title: "Tegel Free Range Quick Cook Chicken Steaks Chargrilled 4pk 400g",
   image:
     "https://assets.woolworths.com.au/images/2010/6014370.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:
@@ -216,7 +216,7 @@ export const wlsProductDisney = {
 
 export const wlsProductDisneyPromo = {
   id: "363271",
-  title: "tegel meal maker free range shredded roast chicken 100g 2 x 50g pks",
+  title: "Tegel Meal Maker Free Range Shredded Roast Chicken 100g 2 x 50g Pks",
   image:
     "https://assets.woolworths.com.au/images/2010/363271.jpg?impolicy=wowcdxwbjbx&w=200&h=200",
   productPageUrl:

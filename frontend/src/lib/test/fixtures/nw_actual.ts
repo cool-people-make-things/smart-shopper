@@ -18,7 +18,7 @@ export const nwData: Product[] = [
   {
     id: "5330062",
     supermarket: "nw",
-    title: "eg. Free Range Jumbo Tray Eggs 20pk",
+    title: "Eg. Free Range Jumbo Tray Eggs 20pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5330062.png?w=384",
     productPageUrl:
@@ -34,7 +34,7 @@ export const nwData: Product[] = [
   {
     id: "5330060",
     supermarket: "nw",
-    title: "eg. Free Range  Jumbo Eggs 6pk",
+    title: "Eg. Free Range Jumbo Eggs 6pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5330060.png?w=384",
     productPageUrl:
@@ -50,7 +50,7 @@ export const nwData: Product[] = [
   {
     id: "5330059",
     supermarket: "nw",
-    title: "eg. Free Range Mixed Grade Eggs 6pk",
+    title: "Eg. Free Range Mixed Grade Eggs 6pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5330059.png?w=384",
     productPageUrl:
@@ -66,7 +66,7 @@ export const nwData: Product[] = [
   {
     id: "5330058",
     supermarket: "nw",
-    title: "eg. Free Range Size 7 Tray Eggs 20pk",
+    title: "Eg. Free Range Size 7 Tray Eggs 20pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5330058.png?w=384",
     productPageUrl:
@@ -82,7 +82,7 @@ export const nwData: Product[] = [
   {
     id: "5322431",
     supermarket: "nw",
-    title: "eg. Free Range Size 7 Eggs 20pk",
+    title: "Eg. Free Range Size 7 Eggs 20pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5322431.png?w=384",
     productPageUrl:
@@ -98,7 +98,7 @@ export const nwData: Product[] = [
   {
     id: "5322430",
     supermarket: "nw",
-    title: "eg. Free Range Size 7 Eggs 6pk",
+    title: "Eg. Free Range Size 7 Eggs 6pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5322430.png?w=384",
     productPageUrl:
@@ -114,7 +114,7 @@ export const nwData: Product[] = [
   {
     id: "5322429",
     supermarket: "nw",
-    title: "eg. Free Range Size 7 Eggs 12pk",
+    title: "Eg. Free Range Size 7 Eggs 12pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5322429.png?w=384",
     productPageUrl:
@@ -130,7 +130,7 @@ export const nwData: Product[] = [
   {
     id: "5322428",
     supermarket: "nw",
-    title: "eg. Mixed Grade Free Range Eggs 20pk",
+    title: "Eg. Mixed Grade Free Range Eggs 20pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5322428.png?w=384",
     productPageUrl:
@@ -146,7 +146,7 @@ export const nwData: Product[] = [
   {
     id: "5322427",
     supermarket: "nw",
-    title: "eg. Mixed Grade Free Range Eggs 12pk",
+    title: "Eg. Mixed Grade Free Range Eggs 12pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5322427.png?w=384",
     productPageUrl:
@@ -162,7 +162,7 @@ export const nwData: Product[] = [
   {
     id: "5322426",
     supermarket: "nw",
-    title: "eg. Mixed Grade Free Range Eggs 20pk",
+    title: "Eg. Mixed Grade Free Range Eggs 20pk",
     image:
       "https://a.fsimg.co.nz/product/retail/fan/image/400x400/5322426.png?w=384",
     productPageUrl:
