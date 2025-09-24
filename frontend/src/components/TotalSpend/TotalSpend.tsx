@@ -1,6 +1,11 @@
 import { Text } from "@/components/retroui";
+import { useCart } from "@/context/CartContext";
 
-export function TotalSpend({ total }: { total: string }) {
+export function TotalSpend() {
+  const {
+    cartCosts: { total },
+  } = useCart();
+
   return (
     <div
       data-testid="total-spend"
