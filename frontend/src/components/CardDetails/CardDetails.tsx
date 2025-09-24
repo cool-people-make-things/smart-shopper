@@ -54,17 +54,27 @@ export function CardDetails({ product }: { product: Product }) {
             )}
 
             {isMultibuyPromo && (
-              <p className={isHome ? "text-md" : "text-sm"}>
+              <p
+                className={
+                  isHome ? "text-md text-red-600" : "text-sm text-red-600"
+                }
+              >
                 {promo.multibuyThreshold} for
               </p>
             )}
 
-            <p className={isHome ? "font-bold text-4xl" : "font-bold text-3xl"}>
+            <p
+              className={
+                isHome
+                  ? `font-bold text-4xl ${isPromo && "text-red-600"}`
+                  : `font-bold text-3xl ${isPromo && "text-red-600"}`
+              }
+            >
               ${primaryData.value}
             </p>
 
             {primaryData.unitPrice != null && (
-              <p className="text-left text-sm">
+              <p className={`text-left text-sm ${isPromo && "text-red-600"}`}>
                 ${primaryData.unitPrice}/{primaryData.unit}
               </p>
             )}

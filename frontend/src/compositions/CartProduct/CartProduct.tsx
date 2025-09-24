@@ -56,7 +56,7 @@ export function CartProduct({
             )}
 
             {isMultibuyPromo && (
-              <Text className="text-sm bg-gray-100 py-1 px-2">
+              <Text className="text-sm bg-gray-100 py-1 px-2 text-red-500">
                 {promo.multibuyThreshold} for ${primaryData.value}
               </Text>
             )}
