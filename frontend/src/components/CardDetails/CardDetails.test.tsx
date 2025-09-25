@@ -4,7 +4,11 @@ import { vi } from "vitest";
 import { axe } from "vitest-axe";
 
 import * as CartContext from "@/context/CartContext";
-import { nwProduct } from "@/lib/test/fixtures/products";
+import {
+  nwProduct,
+  nwProductMultibuy,
+  nwProductPromoWithLimit,
+} from "@/lib/test/fixtures/products";
 import { renderWithRouterAndProviders } from "@/lib/test/test-utils";
 
 import { CardDetails } from "./CardDetails";
@@ -19,8 +23,28 @@ describe("Given the user is looking at an individual product's details", () => {
           /Chia Sisters Gut Lemon & Golden Kiwifruit Sparkling Drink 250ml/i,
         ),
       ).toBeInTheDocument();
-      // TODO expect(screen.getByText(/new world/i)).toBeInTheDocument(); When the shop code is fixed
+      expect(screen.getByText(/new world/i)).toBeInTheDocument();
       expect(screen.getByText("$5.59")).toBeInTheDocument();
+    });
+
+    it("Then the limit is displayed for limited products", () => {
+      renderWithRouterAndProviders(
+        <CardDetails product={nwProductPromoWithLimit} />,
+      );
+
+      const limitText = screen.getByText(/limit 12/i);
+      expect(limitText).toBeInTheDocument();
+      expect(limitText).toHaveClass("text-md");
+      expect(screen.getByText("$2.99")).toBeInTheDocument();
+    });
+
+    it("Then the multibuy threshold is displayed for multibuy products", () => {
+      renderWithRouterAndProviders(<CardDetails product={nwProductMultibuy} />);
+
+      const multibuyText = screen.getByText(/2 for/i);
+      expect(multibuyText).toBeInTheDocument();
+      expect(multibuyText).toHaveClass("text-md");
+      expect(screen.getByText("$5.00")).toBeInTheDocument();
     });
   });
 
@@ -37,6 +61,34 @@ describe("Given the user is looking at an individual product's details", () => {
         ),
       ).toBeInTheDocument();
       expect(screen.getByText("$5.59")).toBeInTheDocument();
+    });
+
+    it("Then the limit is displayed for limited products", () => {
+      renderWithRouterAndProviders(
+        <CardDetails product={nwProductPromoWithLimit} />,
+        {
+          route: "/browse",
+        },
+      );
+
+      const limitText = screen.getByText(/limit 12/i);
+      expect(limitText).toBeInTheDocument();
+      expect(limitText).toHaveClass("text-sm");
+      expect(screen.getByText("$2.99")).toBeInTheDocument();
+    });
+
+    it("Then the multibuy threshold is displayed for multibuy products", () => {
+      renderWithRouterAndProviders(
+        <CardDetails product={nwProductMultibuy} />,
+        {
+          route: "/browse",
+        },
+      );
+
+      const multibuyText = screen.getByText(/2 for/i);
+      expect(multibuyText).toBeInTheDocument();
+      expect(multibuyText).toHaveClass("text-sm");
+      expect(screen.getByText("$5.00")).toBeInTheDocument();
     });
   });
 
